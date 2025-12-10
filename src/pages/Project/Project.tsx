@@ -1,3 +1,7 @@
+import { useProjectPageContext } from "../../contexts/projectContext";
+
 export default function Project() {
-  return <div>Project</div>;
+  const projectContent = useProjectPageContext();
+
+  return <div>{projectContent.title}</div>;
 }

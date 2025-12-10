@@ -1,3 +1,7 @@
+import { useHobbyPageContext } from "../../contexts/hobbyContext";
+
 export default function Hobby() {
-  return <div>Hobby</div>;
+  const hobbyContent = useHobbyPageContext();
+
+  return <div>{hobbyContent.title}</div>;
 }

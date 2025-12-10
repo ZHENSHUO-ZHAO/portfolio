@@ -1,3 +1,7 @@
+import { useAboutPageContext } from "../../contexts/aboutContext";
+
 export default function About() {
-  return <div>About</div>;
+  const aboutContent = useAboutPageContext();
+
+  return <div>{aboutContent.title}</div>;
 }

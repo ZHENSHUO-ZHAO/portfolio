@@ -1,3 +1,7 @@
+import { useHomePageContext } from "../../contexts/homeContext";
+
 export default function Home() {
-  return <div>Home</div>;
+  const homeContent = useHomePageContext();
+
+  return <div>{homeContent.title}</div>;
 }

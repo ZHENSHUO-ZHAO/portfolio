@@ -1,3 +1,7 @@
+import { useSkillPageContext } from "../../contexts/skillContext";
+
 export default function Skill() {
-  return <div>Skill</div>;
+  const skillContent = useSkillPageContext();
+
+  return <div>{skillContent.title}</div>;
 }

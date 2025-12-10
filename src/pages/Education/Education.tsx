@@ -1,3 +1,6 @@
+import { useEducationPageContext } from "../../contexts/educationContext";
+
 export default function Education() {
-  return <div>Education</div>;
+  const educationContent = useEducationPageContext();
+  return <div>{educationContent.title}</div>;
 }
