@@ -1,12 +1,13 @@
 import { useHobbyPageContext } from "../../contexts/hobbyContext";
 import type { DescriptiveItem } from "../../contexts/pageContext";
+import PageBase from "../PageBase";
 
 export default function Hobby() {
   const content = useHobbyPageContext();
 
   return (
-    <main>
-      <header>
+    <PageBase content={content}>
+      <section>
         <h2>{content.header.title}</h2>
         <p>{content.header.desc}</p>
         <ul>
@@ -14,7 +15,7 @@ export default function Hobby() {
             <li key={i}>{interest}</li>
           ))}
         </ul>
-      </header>
+      </section>
       <Item
         title={content.qualifications.title}
         items={content.qualifications.certificates}
@@ -24,7 +25,7 @@ export default function Hobby() {
         <h3>{content.daily.title}</h3>
         <p>{content.daily.desc}</p>
       </section>
-    </main>
+    </PageBase>
   );
 }
 

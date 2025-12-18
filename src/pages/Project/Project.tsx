@@ -3,16 +3,17 @@ import {
   type ProjectCategory,
   type ProjectItem,
 } from "../../contexts/projectContext";
+import PageBase from "../PageBase";
 
 export default function Project() {
   const content = useProjectPageContext();
 
   return (
-    <main>
+    <PageBase content={content}>
       <Category categoryData={content.projects.commercial} />
       <Category categoryData={content.projects.edutainment} />
       <Category categoryData={content.projects.research} />
-    </main>
+    </PageBase>
   );
 }
 

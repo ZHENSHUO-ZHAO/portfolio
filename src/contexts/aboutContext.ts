@@ -11,7 +11,7 @@ export type AboutContent = ContextPageBase & {
 };
 
 export const aboutContent = {
-  pageTitle: "About Page",
+  pageTitle: "Who am I?",
   introduction:
     "I'm a software engineer, game developer, and project manager with extensive experience delivering commercial games, interactive products, and scalable digital systems. My work blends engineering, UX-driven design, and cross-functional collaboration to build products enjoyed by global audiences.",
   strength: [

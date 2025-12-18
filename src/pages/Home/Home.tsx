@@ -1,19 +1,11 @@
 import { useHomePageContext } from "../../contexts/homeContext";
+import PageBase from "../PageBase";
 
 export default function Home() {
   const content = useHomePageContext();
 
   return (
-    <main>
-      <header>
-        <h1>{content.name}</h1>
-        <ul>
-          {content.roles.map((r) => (
-            <li key={r}>{r}</li>
-          ))}
-        </ul>
-        <p>{content.statement}</p>
-      </header>
+    <PageBase content={content} headerElement={HomePageHeader}>
       <section>
         <h2>Highlights</h2>
         <ul>
@@ -34,6 +26,22 @@ export default function Home() {
         ))}
       </section>
       <p>{content.bio}</p>
-    </main>
+    </PageBase>
+  );
+}
+
+function HomePageHeader() {
+  const content = useHomePageContext();
+
+  return (
+    <>
+      <h1>{content.name}</h1>
+      <ul>
+        {content.roles.map((r) => (
+          <li key={r}>{r}</li>
+        ))}
+      </ul>
+      <p>{content.statement}</p>
+    </>
   );
 }

@@ -11,7 +11,7 @@ export type HobbyContent = ContextPageBase & {
 };
 
 export const hobbyContent = {
-  pageTitle: "Hobby Page",
+  pageTitle: "Beyond Work",
   header: {
     title: "My Passion for Specialty Coffee",
     desc: "Coffee is a craft that blends science, sensory awareness, and iterative refinement — qualities that also shape how I think as an engineer. I enjoy experimenting with:",

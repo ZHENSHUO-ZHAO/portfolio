@@ -12,7 +12,7 @@ export type Degree = {
 export type EducationContent = ContextPageBase & { degrees: Degree[] };
 
 export const educationContent = {
-  pageTitle: "Education Page",
+  pageTitle: "Certifications & Academic Achievements",
   degrees: [
     {
       qualification: "Master of Information Technology",

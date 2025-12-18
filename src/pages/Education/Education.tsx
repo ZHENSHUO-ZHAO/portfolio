@@ -2,15 +2,16 @@ import {
   useEducationPageContext,
   type Degree,
 } from "../../contexts/educationContext";
+import PageBase from "../PageBase";
 
 export default function Education() {
   const content = useEducationPageContext();
   return (
-    <main>
+    <PageBase content={content}>
       {content.degrees.map((d, i) => (
         <Item key={i} degreeData={d} />
       ))}
-    </main>
+    </PageBase>
   );
 }
 

@@ -23,7 +23,7 @@ export type ProjectContent = ContextPageBase & {
 };
 
 export const projectContent = {
-  pageTitle: "Project Page",
+  pageTitle: "Notable Projects",
   projects: {
     commercial: {
       category: "Commercial Game Platforms",

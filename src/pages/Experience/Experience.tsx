@@ -2,16 +2,17 @@ import {
   useExperiencePageContext,
   type Job,
 } from "../../contexts/experienceContext";
+import PageBase from "../PageBase";
 
 export default function Experience() {
-  const experienceContent = useExperiencePageContext();
+  const content = useExperiencePageContext();
 
   return (
-    <main>
-      {experienceContent.jobs.map((j, i) => (
+    <PageBase content={content}>
+      {content.jobs.map((j, i) => (
         <Item key={i} jobData={j} />
       ))}
-    </main>
+    </PageBase>
   );
 }
 

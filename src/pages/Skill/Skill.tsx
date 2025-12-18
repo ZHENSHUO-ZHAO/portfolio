@@ -1,14 +1,15 @@
 import { useSkillPageContext, type Skill } from "../../contexts/skillContext";
+import PageBase from "../PageBase";
 
 export default function Skill() {
   const content = useSkillPageContext();
 
   return (
-    <main>
+    <PageBase content={content}>
       {content.stacks.map((s, i) => (
         <Item key={i} stack={s} />
       ))}
-    </main>
+    </PageBase>
   );
 }
 

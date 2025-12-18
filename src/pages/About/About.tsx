@@ -1,14 +1,11 @@
 import { useAboutPageContext } from "../../contexts/aboutContext";
+import PageBase from "../PageBase";
 
 export default function About() {
   const content = useAboutPageContext();
 
   return (
-    <main>
-      <header>
-        <h1>Who am I?</h1>
-        <p>{content.introduction} </p>
-      </header>
+    <PageBase content={content} headerElement={AboutPageHeader}>
       <section>
         <h2>My strongest work combines:</h2>
         <ul>
@@ -56,6 +53,17 @@ export default function About() {
         <h2>Outside of Work</h2>
         <p>{content.leisure}</p>
       </section>
-    </main>
+    </PageBase>
+  );
+}
+
+function AboutPageHeader() {
+  const content = useAboutPageContext();
+
+  return (
+    <>
+      <h1>{content.pageTitle}</h1>
+      <p>{content.introduction} </p>
+    </>
   );
 }

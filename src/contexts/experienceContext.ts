@@ -15,7 +15,7 @@ export type Job = {
 export type ExperienceContent = ContextPageBase & { jobs: Job[] };
 
 export const experienceContent = {
-  pageTitle: "Experience Page",
+  pageTitle: "My Career Life",
   jobs: [
     {
       title: "Casual Tutor - Software Engineering Project Management",

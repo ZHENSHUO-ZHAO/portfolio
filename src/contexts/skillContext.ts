@@ -6,7 +6,7 @@ export type Skill = { category: string; skills: string[] };
 export type SkillContent = ContextPageBase & { stacks: Skill[] };
 
 export const skillContent = {
-  pageTitle: "Skill Page",
+  pageTitle: "Core Skills",
   stacks: [
     {
       category: "Full-Stack Engineering",
