@@ -1,7 +1,12 @@
 import createPageContext from "./pageContext";
+import type { ContextPageBase } from "./pageContext";
+
+export type Skill = { category: string; skills: string[] };
+
+export type SkillContent = ContextPageBase & { stacks: Skill[] };
 
 export const skillContent = {
-  title: "Skill Page",
+  pageTitle: "Skill Page",
   stacks: [
     {
       category: "Full-Stack Engineering",
@@ -55,7 +60,7 @@ export const skillContent = {
       ],
     },
   ],
-};
+} satisfies SkillContent;
 
 export const [SkillPageContext, useSkillPageContext] =
   createPageContext(skillContent);

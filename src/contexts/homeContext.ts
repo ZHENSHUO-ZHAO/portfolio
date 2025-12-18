@@ -1,7 +1,17 @@
 import createPageContext from "./pageContext";
+import type { ContextPageBase, DescriptiveItem } from "./pageContext";
+
+export type HomeContent = ContextPageBase & {
+  name: string;
+  roles: string[];
+  statement: string;
+  highlight: DescriptiveItem[];
+  snapshot: string[];
+  bio: string;
+};
 
 export const homeContent = {
-  title: "Home Page",
+  pageTitle: "Home Page",
   name: "Zhenshuo (Vincent) Zhao",
   roles: [
     "Software Engineer",
@@ -34,7 +44,7 @@ export const homeContent = {
     "International experience across Hong Kong, UK & Australia",
   ],
   bio: "I'm a software engineer passionate about crafting user-centred, technically sound digital experiences. I enjoy solving complex problems, building interactive systems, and mentoring upcoming developers.",
-};
+} satisfies HomeContent;
 
 export const [HomePageContext, useHomePageContext] =
   createPageContext(homeContent);

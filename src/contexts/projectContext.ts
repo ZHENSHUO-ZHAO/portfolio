@@ -1,9 +1,31 @@
 import createPageContext from "./pageContext";
+import type { ContextPageBase, DescriptiveItem } from "./pageContext";
+
+export type ProjectCategory = {
+  category: string;
+  items: ProjectItem[];
+};
+
+export type ProjectItem = {
+  company: string;
+  time: string;
+  role: string;
+  releases?: string[];
+  skills: string[];
+} & DescriptiveItem;
+
+export type ProjectContent = ContextPageBase & {
+  projects: {
+    commercial: ProjectCategory;
+    edutainment: ProjectCategory;
+    research: ProjectCategory;
+  };
+};
 
 export const projectContent = {
-  title: "Project Page",
-  projects: [
-    {
+  pageTitle: "Project Page",
+  projects: {
+    commercial: {
       category: "Commercial Game Platforms",
       items: [
         {
@@ -38,7 +60,7 @@ export const projectContent = {
         },
       ],
     },
-    {
+    edutainment: {
       category: "Edutainment",
       items: [
         {
@@ -73,7 +95,7 @@ export const projectContent = {
         },
       ],
     },
-    {
+    research: {
       category: "Research & Experimental Projects",
       items: [
         {
@@ -94,8 +116,8 @@ export const projectContent = {
         },
       ],
     },
-  ],
-};
+  },
+} satisfies ProjectContent;
 
 export const [ProjectPageContext, useProjectPageContext] =
   createPageContext(projectContent);

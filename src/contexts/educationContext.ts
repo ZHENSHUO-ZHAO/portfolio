@@ -1,7 +1,18 @@
 import createPageContext from "./pageContext";
+import type { ContextPageBase } from "./pageContext";
+
+export type Degree = {
+  qualification: string;
+  university: string;
+  time: string;
+  gpa?: string;
+  achievements: string[];
+};
+
+export type EducationContent = ContextPageBase & { degrees: Degree[] };
 
 export const educationContent = {
-  title: "Education Page",
+  pageTitle: "Education Page",
   degrees: [
     {
       qualification: "Master of Information Technology",
@@ -32,7 +43,7 @@ export const educationContent = {
       achievements: ["Scholarship for academic excellence"],
     },
   ],
-};
+} satisfies EducationContent;
 
 export const [EducationPageContext, useEducationPageContext] =
   createPageContext(educationContent);

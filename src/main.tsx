@@ -26,10 +26,11 @@ import {
   EducationPageContext,
 } from "./contexts/educationContext.ts";
 import { hobbyContent, HobbyPageContext } from "./contexts/hobbyContext.ts";
+import type { ContextPageBase } from "./contexts/pageContext.ts";
 
 const routes: {
   path?: string;
-  content: unknown;
+  content: ContextPageBase;
   PageContext: React.Context<unknown>;
   PageComponent: React.ComponentType;
 }[] = [

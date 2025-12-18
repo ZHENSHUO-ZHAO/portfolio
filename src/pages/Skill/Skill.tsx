@@ -1,7 +1,26 @@
-import { useSkillPageContext } from "../../contexts/skillContext";
+import { useSkillPageContext, type Skill } from "../../contexts/skillContext";
 
 export default function Skill() {
-  const skillContent = useSkillPageContext();
+  const content = useSkillPageContext();
 
-  return <div>{skillContent.title}</div>;
+  return (
+    <main>
+      {content.stacks.map((s, i) => (
+        <Item key={i} stack={s} />
+      ))}
+    </main>
+  );
+}
+
+function Item({ stack }: { stack: Skill }) {
+  return (
+    <section>
+      <h2>{stack.category}</h2>
+      <ul>
+        {stack.skills.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
+      </ul>
+    </section>
+  );
 }

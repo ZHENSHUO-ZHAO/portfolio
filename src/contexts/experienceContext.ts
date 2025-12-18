@@ -1,7 +1,21 @@
 import createPageContext from "./pageContext";
+import type { ContextPageBase } from "./pageContext";
+
+export type Job = {
+  title: string;
+  company: string;
+  time: string;
+  location: { city: string; country: string };
+  tasks: string[];
+  skills: string[];
+  products?: string[];
+  markets?: string[];
+};
+
+export type ExperienceContent = ContextPageBase & { jobs: Job[] };
 
 export const experienceContent = {
-  title: "Experience Page",
+  pageTitle: "Experience Page",
   jobs: [
     {
       title: "Casual Tutor - Software Engineering Project Management",
@@ -56,6 +70,7 @@ export const experienceContent = {
         "Agile PM",
       ],
       products: ["YoPlay Platform", "Fish Hunter"],
+      markets: ["Asia"],
     },
     {
       title: "Analyst Programmer",
@@ -79,6 +94,7 @@ export const experienceContent = {
         "GitLab",
       ],
       products: ["YoPlay Platform", "金牛元帅", "零用钱大冒险"],
+      markets: ["Asia"],
     },
     {
       title: "Game Developer",
@@ -111,7 +127,7 @@ export const experienceContent = {
         "Being Considerate",
         "Playground",
       ],
-      markets: "US/CA markets",
+      markets: ["US", "CA"],
     },
     {
       title: "Game Designer",
@@ -133,7 +149,7 @@ export const experienceContent = {
         "Flash/ActionScript 3",
       ],
       products: ["Cars 2", "Hello Kitty (2 titles)", "Brave"],
-      markets: "US/UK/EU markets",
+      markets: ["US", "UK", "EU"],
     },
     {
       title: "Project Assistant",
@@ -187,7 +203,7 @@ export const experienceContent = {
       skills: ["Early VR frameworks", "Photoshop", "Maya"],
     },
   ],
-};
+} satisfies ExperienceContent;
 
 export const [ExperiencePageContext, useExperiencePageContext] =
   createPageContext(experienceContent);
