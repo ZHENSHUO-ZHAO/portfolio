@@ -2,6 +2,7 @@ import {
   useExperiencePageContext,
   type Job,
 } from "../../contexts/experienceContext";
+import { jobSlug } from "../../utils/util";
 import PageBase from "../PageBase";
 
 export default function Experience() {
@@ -9,18 +10,20 @@ export default function Experience() {
 
   return (
     <PageBase content={content}>
-      {content.jobs.map((j, i) => (
-        <Item key={i} jobData={j} />
+      {content.jobs.map((j) => (
+        <Item key={j.time} jobData={j} />
       ))}
     </PageBase>
   );
 }
 
 function Item({ jobData }: { jobData: Job }) {
+  const jobId = jobSlug(jobData.time, jobData.title, jobData.company);
+
   return (
-    <section>
+    <section aria-labelledby={jobId}>
       <header>
-        <h2>{jobData.title}</h2>
+        <h2 id={jobId}>{jobData.title}</h2>
         <p>{jobData.company}</p>
         <p>
           <time>{jobData.time}</time>

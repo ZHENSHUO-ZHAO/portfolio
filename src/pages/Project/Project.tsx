@@ -3,6 +3,7 @@ import {
   type ProjectCategory,
   type ProjectItem,
 } from "../../contexts/projectContext";
+import { jobSlug, slugify } from "../../utils/util";
 import PageBase from "../PageBase";
 
 export default function Project() {
@@ -18,12 +19,17 @@ export default function Project() {
 }
 
 function Category({ categoryData }: { categoryData: ProjectCategory }) {
+  const categoryId = slugify(categoryData.category);
+
   return (
-    <section>
-      <h2>{categoryData.category}</h2>
+    <section aria-labelledby={categoryId}>
+      <h2 id={categoryId}>{categoryData.category}</h2>
       <ol>
-        {categoryData.items.map((item, i) => (
-          <Item key={i} itemData={item} />
+        {categoryData.items.map((item) => (
+          <Item
+            key={jobSlug(item.time, item.title, item.company)}
+            itemData={item}
+          />
         ))}
       </ol>
     </section>
@@ -31,35 +37,39 @@ function Category({ categoryData }: { categoryData: ProjectCategory }) {
 }
 
 function Item({ itemData }: { itemData: ProjectItem }) {
+  const projectId = jobSlug(itemData.time, itemData.title, itemData.company);
+
   return (
     <li>
-      <h3>{itemData.title}</h3>
-      <h4>{itemData.company}</h4>
-      <p>
-        <time>{itemData.time}</time>
-      </p>
-      <p>{itemData.desc}</p>
-      <p>
-        <strong>Role:</strong> {itemData.role}
-      </p>
-      {itemData.releases && (
-        <>
-          <h5>Releases:</h5>
+      <article aria-labelledby={projectId}>
+        <h3 id={projectId}>{itemData.title}</h3>
+        <h4>{itemData.company}</h4>
+        <p>
+          <time>{itemData.time}</time>
+        </p>
+        <p>{itemData.desc}</p>
+        <p>
+          <strong>Role:</strong> {itemData.role}
+        </p>
+        {itemData.releases && (
+          <>
+            <h4>Releases:</h4>
+            <ol>
+              {itemData.releases.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ol>
+          </>
+        )}
+        <h4>Skills</h4>
+        {
           <ol>
-            {itemData.releases.map((r) => (
-              <li key={r}>{r}</li>
+            {itemData.skills.map((s) => (
+              <li key={s}>{s}</li>
             ))}
           </ol>
-        </>
-      )}
-      <h5>Skills</h5>
-      {
-        <ol>
-          {itemData.skills.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ol>
-      }
+        }
+      </article>
     </li>
   );
 }

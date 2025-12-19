@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <PageBase content={content} headerElement={HomePageHeader}>
-      <section>
-        <h2>Highlights</h2>
+      <section aria-labelledby="highlights">
+        <h2 id="highlights">Highlights</h2>
         <ul>
           {content.highlight.map((h) => (
             <li key={h.title}>
@@ -19,13 +19,20 @@ export default function Home() {
           ))}
         </ul>
       </section>
-      <section>
-        <h2>Snapshots</h2>
-        {content.snapshot.map((s) => (
-          <p key={s}>{s}</p>
-        ))}
+      <section aria-labelledby="snapshots">
+        <h2 id="snapshots">Snapshots</h2>
+        <ul>
+          {content.snapshot.map((s) => (
+            <li key={s}>{s}</li>
+          ))}
+        </ul>
       </section>
-      <p>{content.bio}</p>
+      <section aria-labelledby="bio">
+        <h2 id="bio" className="sr-only">
+          About me
+        </h2>
+        <p>{content.bio}</p>
+      </section>
     </PageBase>
   );
 }
@@ -36,7 +43,7 @@ function HomePageHeader() {
   return (
     <>
       <h1>{content.name}</h1>
-      <ul>
+      <ul aria-label="Professional roles">
         {content.roles.map((r) => (
           <li key={r}>{r}</li>
         ))}

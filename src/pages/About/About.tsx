@@ -6,16 +6,16 @@ export default function About() {
 
   return (
     <PageBase content={content} headerElement={AboutPageHeader}>
-      <section>
-        <h2>My strongest work combines:</h2>
+      <section aria-labelledby="strength-heading">
+        <h2 id="strength-heading">My strongest work combines:</h2>
         <ul>
           {content.strength.map((s) => (
             <li key={s}>{s}</li>
           ))}
         </ul>
       </section>
-      <section>
-        <h2>My Professional Journey</h2>
+      <section aria-labelledby="journey-heading">
+        <h2 id="journey-heading">My Professional Journey</h2>
         <ol>
           {content.journey.map((j) => (
             <li key={j.title}>
@@ -27,8 +27,8 @@ export default function About() {
           ))}
         </ol>
       </section>
-      <section>
-        <h2>My Engineering Philosophy</h2>
+      <section aria-labelledby="philosophy-heading">
+        <h2 id="philosophy-heading">My Engineering Philosophy</h2>
         <ul>
           {content.philosophy.map((p) => (
             <li key={p.title}>
@@ -40,8 +40,8 @@ export default function About() {
           ))}
         </ul>
       </section>
-      <section>
-        <h2>What I'm Looking For</h2>
+      <section aria-labelledby="aim-heading">
+        <h2 id="aim-heading">What I'm Looking For</h2>
         <p>{content.aim.desc}</p>
         <ul>
           {content.aim.roles.map((r) => (
@@ -49,8 +49,8 @@ export default function About() {
           ))}
         </ul>
       </section>
-      <section>
-        <h2>Outside of Work</h2>
+      <section aria-labelledby="leisure-heading">
+        <h2 id="leisure-heading">Outside of Work</h2>
         <p>{content.leisure}</p>
       </section>
     </PageBase>
