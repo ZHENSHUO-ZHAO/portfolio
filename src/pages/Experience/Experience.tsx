@@ -2,8 +2,8 @@ import {
   useExperiencePageContext,
   type Job,
 } from "../../contexts/experienceContext";
-import { jobSlug } from "../../utils/util";
-import PageBase from "../PageBase";
+import { h3Style, jobSlug } from "../../utils/util";
+import PageBase, { ItemList, Section } from "../PageBase";
 
 export default function Experience() {
   const content = useExperiencePageContext();
@@ -19,49 +19,38 @@ export default function Experience() {
 
 function Item({ jobData }: { jobData: Job }) {
   const jobId = jobSlug(jobData.time, jobData.title, jobData.company);
+  const headingStyle = `${h3Style} mt-2`;
 
   return (
-    <section aria-labelledby={jobId}>
-      <header>
-        <h2 id={jobId}>{jobData.title}</h2>
-        <p>{jobData.company}</p>
-        <p>
-          <time>{jobData.time}</time>
-        </p>
-        <p>{`${jobData.location.city}, ${jobData.location.country}`}</p>
-      </header>
-      <h3>Achievements</h3>
-      <ul>
-        {jobData.tasks.map((t) => (
-          <li key={t}>{t}</li>
-        ))}
-      </ul>
+    <Section
+      id={jobId}
+      title={jobData.title}
+      headerChildren={
+        <div className="my-2">
+          <p>{jobData.company}</p>
+          <p>
+            <time>{jobData.time}</time>
+          </p>
+          <p>{`${jobData.location.city}, ${jobData.location.country}`}</p>
+        </div>
+      }
+    >
+      <h3 className={headingStyle}>Achievements</h3>
+      <ItemList listData={jobData.tasks} />
       {jobData.products && (
         <>
-          <h3>Notable Products</h3>
-          <ul>
-            {jobData.products.map((p) => (
-              <li key={p}>{p}</li>
-            ))}
-          </ul>
+          <h3 className={headingStyle}>Notable Products</h3>
+          <ItemList listData={jobData.products} />
         </>
       )}
       {jobData.markets && (
         <>
-          <h3>Markets</h3>
-          <ul>
-            {jobData.markets.map((m) => (
-              <li key={m}>{m}</li>
-            ))}
-          </ul>
+          <h3 className={headingStyle}>Markets</h3>
+          <ItemList listData={jobData.markets} />
         </>
       )}
-      <h3>Skills</h3>
-      <ul>
-        {jobData.skills.map((s) => (
-          <li key={s}>{s}</li>
-        ))}
-      </ul>
-    </section>
+      <h3 className={headingStyle}>Skills</h3>
+      <ItemList listData={jobData.skills} />
+    </Section>
   );
 }

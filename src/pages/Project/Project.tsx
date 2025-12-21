@@ -3,8 +3,8 @@ import {
   type ProjectCategory,
   type ProjectItem,
 } from "../../contexts/projectContext";
-import { jobSlug, slugify } from "../../utils/util";
-import PageBase from "../PageBase";
+import { h3Style, h4Style, jobSlug, slugify } from "../../utils/util";
+import PageBase, { ItemList, Section } from "../PageBase";
 
 export default function Project() {
   const content = useProjectPageContext();
@@ -22,9 +22,8 @@ function Category({ categoryData }: { categoryData: ProjectCategory }) {
   const categoryId = slugify(categoryData.category);
 
   return (
-    <section aria-labelledby={categoryId}>
-      <h2 id={categoryId}>{categoryData.category}</h2>
-      <ol>
+    <Section id={categoryId} title={categoryData.category}>
+      <ol className="space-y-6">
         {categoryData.items.map((item) => (
           <Item
             key={jobSlug(item.time, item.title, item.company)}
@@ -32,7 +31,7 @@ function Category({ categoryData }: { categoryData: ProjectCategory }) {
           />
         ))}
       </ol>
-    </section>
+    </Section>
   );
 }
 
@@ -42,33 +41,27 @@ function Item({ itemData }: { itemData: ProjectItem }) {
   return (
     <li>
       <article aria-labelledby={projectId}>
-        <h3 id={projectId}>{itemData.title}</h3>
-        <h4>{itemData.company}</h4>
-        <p>
-          <time>{itemData.time}</time>
-        </p>
+        <h3 className={h3Style} id={projectId}>
+          {itemData.title}
+        </h3>
+        <div className="my-2">
+          <h4>{itemData.company}</h4>
+          <p>
+            <time>{itemData.time}</time>
+          </p>
+        </div>
         <p>{itemData.desc}</p>
-        <p>
-          <strong>Role:</strong> {itemData.role}
+        <p className="my-2">
+          <span className={h4Style}>Role:</span> {itemData.role}
         </p>
         {itemData.releases && (
           <>
-            <h4>Releases:</h4>
-            <ol>
-              {itemData.releases.map((r) => (
-                <li key={r}>{r}</li>
-              ))}
-            </ol>
+            <h4 className={h4Style}>Releases:</h4>
+            <ItemList listData={itemData.releases} ordered />
           </>
         )}
-        <h4>Skills</h4>
-        {
-          <ol>
-            {itemData.skills.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ol>
-        }
+        <h4 className={h4Style}>Skills</h4>
+        <ItemList listData={itemData.skills} ordered />
       </article>
     </li>
   );

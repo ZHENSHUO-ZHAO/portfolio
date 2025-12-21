@@ -1,38 +1,27 @@
+import { NavLink } from "react-router";
 import { useHomePageContext } from "../../contexts/homeContext";
-import PageBase from "../PageBase";
+import PageBase, { ArticleList, Section } from "../PageBase";
 
 export default function Home() {
   const content = useHomePageContext();
 
   return (
     <PageBase content={content} headerElement={HomePageHeader}>
-      <section aria-labelledby="highlights">
-        <h2 id="highlights">Highlights</h2>
-        <ul>
-          {content.highlight.map((h) => (
-            <li key={h.title}>
-              <article>
-                <h3>{h.title}</h3>
-                <p>{h.desc}</p>
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section aria-labelledby="snapshots">
-        <h2 id="snapshots">Snapshots</h2>
-        <ul>
+      <Section id="highlights" title="Highlights">
+        <ArticleList listData={content.highlight} />
+      </Section>
+
+      <Section id="snapshots" title="Snapshots">
+        <ul className="space-y-2">
           {content.snapshot.map((s) => (
             <li key={s}>{s}</li>
           ))}
         </ul>
-      </section>
-      <section aria-labelledby="bio">
-        <h2 id="bio" className="sr-only">
-          About me
-        </h2>
+      </Section>
+
+      <Section id="bio" title="About me" headingClassName="sr-only">
         <p>{content.bio}</p>
-      </section>
+      </Section>
     </PageBase>
   );
 }
@@ -41,14 +30,32 @@ function HomePageHeader() {
   const content = useHomePageContext();
 
   return (
-    <>
-      <h1>{content.name}</h1>
-      <ul aria-label="Professional roles">
+    <div className="h-screen flex flex-col gap-7 justify-center items-center">
+      <h1 className="text-2xl font-extrabold">{content.name}</h1>
+      <ul
+        aria-label="Professional roles"
+        className="flex flex-row flex-wrap gap-x-2 gap-y-0"
+      >
         {content.roles.map((r) => (
-          <li key={r}>{r}</li>
+          <li key={r} className="whitespace-nowrap text-xl">
+            {r}
+          </li>
         ))}
       </ul>
-      <p>{content.statement}</p>
-    </>
+      <ul className="w-full flex flex-col gap-4 items-center">
+        <li>
+          <NavLink to="/project">View My Projects</NavLink>
+        </li>
+        <li>
+          <a href="/resume.pdf" download>
+            Download Resume
+          </a>
+        </li>
+        <li>
+          <a href="/contact">Contact Me</a>
+        </li>
+      </ul>
+      <p className="text-lg">{content.statement}</p>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useSkillPageContext, type Skill } from "../../contexts/skillContext";
 import { slugify } from "../../utils/util";
-import PageBase from "../PageBase";
+import PageBase, { ItemList, Section } from "../PageBase";
 
 export default function Skill() {
   const content = useSkillPageContext();
@@ -18,13 +18,8 @@ function Item({ stack }: { stack: Skill }) {
   const skillId = slugify(stack.category);
 
   return (
-    <section aria-labelledby={skillId}>
-      <h2 id={skillId}>{stack.category}</h2>
-      <ul>
-        {stack.skills.map((s) => (
-          <li key={s}>{s}</li>
-        ))}
-      </ul>
-    </section>
+    <Section id={skillId} title={stack.category}>
+      <ItemList listData={stack.skills} />
+    </Section>
   );
 }

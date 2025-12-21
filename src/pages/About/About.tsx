@@ -1,68 +1,53 @@
 import { useAboutPageContext } from "../../contexts/aboutContext";
-import PageBase from "../PageBase";
+import PageBase, { ArticleList, Section } from "../PageBase";
 
 export default function About() {
   const content = useAboutPageContext();
 
   return (
-    <PageBase content={content} headerElement={AboutPageHeader}>
-      <section aria-labelledby="strength-heading">
-        <h2 id="strength-heading">My strongest work combines:</h2>
+    <PageBase
+      content={content}
+      headerElement={AboutPageHeader}
+      headerClassName="mb-8"
+    >
+      <Section id="strength-heading" title="My strongest work combines:">
         <ul>
           {content.strength.map((s) => (
             <li key={s}>{s}</li>
           ))}
         </ul>
-      </section>
-      <section aria-labelledby="journey-heading">
-        <h2 id="journey-heading">My Professional Journey</h2>
-        <ol>
-          {content.journey.map((j) => (
-            <li key={j.title}>
-              <article>
-                <h3>{j.title}</h3>
-                <p>{j.desc}</p>
-              </article>
-            </li>
-          ))}
-        </ol>
-      </section>
-      <section aria-labelledby="philosophy-heading">
-        <h2 id="philosophy-heading">My Engineering Philosophy</h2>
-        <ul>
-          {content.philosophy.map((p) => (
-            <li key={p.title}>
-              <article>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section aria-labelledby="aim-heading">
-        <h2 id="aim-heading">What I'm Looking For</h2>
+      </Section>
+
+      <Section id="journey-heading" title="My Professional Journey">
+        <ArticleList listData={content.journey} ordered />
+      </Section>
+
+      <Section id="philosophy-heading" title="My Engineering Philosophy">
+        <ArticleList listData={content.philosophy} />
+      </Section>
+
+      <Section id="aim-heading" title="What I'm Looking For">
         <p>{content.aim.desc}</p>
         <ul>
           {content.aim.roles.map((r) => (
             <li key={r}>{r}</li>
           ))}
         </ul>
-      </section>
-      <section aria-labelledby="leisure-heading">
-        <h2 id="leisure-heading">Outside of Work</h2>
+      </Section>
+
+      <Section id="leisure-heading" title="Outside of Work">
         <p>{content.leisure}</p>
-      </section>
+      </Section>
     </PageBase>
   );
 }
 
-function AboutPageHeader() {
+function AboutPageHeader(headingClassName: string) {
   const content = useAboutPageContext();
 
   return (
     <>
-      <h1>{content.pageTitle}</h1>
+      <h1 className={headingClassName}>{content.pageTitle}</h1>
       <p>{content.introduction} </p>
     </>
   );
