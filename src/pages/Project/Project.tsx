@@ -40,28 +40,30 @@ function Item({ itemData }: { itemData: ProjectItem }) {
 
   return (
     <li>
-      <article aria-labelledby={projectId}>
+      <article aria-labelledby={projectId} className="space-y-2">
         <h3 className={h3Style} id={projectId}>
           {itemData.title}
         </h3>
-        <div className="my-2">
+        <div>
           <h4>{itemData.company}</h4>
           <p>
             <time>{itemData.time}</time>
           </p>
         </div>
         <p>{itemData.desc}</p>
-        <p className="my-2">
+        <p>
           <span className={h4Style}>Role:</span> {itemData.role}
         </p>
         {itemData.releases && (
-          <>
+          <div>
             <h4 className={h4Style}>Releases:</h4>
             <ItemList listData={itemData.releases} ordered />
-          </>
+          </div>
         )}
-        <h4 className={h4Style}>Skills</h4>
-        <ItemList listData={itemData.skills} ordered />
+        <div>
+          <h4 className={h4Style}>Skills</h4>
+          <ItemList listData={itemData.skills} ordered />
+        </div>
       </article>
     </li>
   );
