@@ -34,7 +34,7 @@ function HomePageHeader() {
       <h1 className="text-2xl font-extrabold">{content.name}</h1>
       <ul
         aria-label="Professional roles"
-        className="flex flex-row flex-wrap gap-x-2 gap-y-0"
+        className="flex flex-row flex-wrap gap-x-2 gap-y-0 justify-center"
       >
         {content.roles.map((r) => (
           <li key={r} className="whitespace-nowrap text-xl">

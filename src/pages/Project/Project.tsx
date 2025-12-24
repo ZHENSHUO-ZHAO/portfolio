@@ -51,12 +51,13 @@ function Item({ itemData }: { itemData: ProjectItem }) {
           </p>
         </div>
         <p>{itemData.desc}</p>
-        <p>
-          <span className={h4Style}>Role:</span> {itemData.role}
-        </p>
+        <div>
+          <h4 className={h4Style}>Role</h4>
+          <p> {itemData.role} </p>
+        </div>
         {itemData.releases && (
           <div>
-            <h4 className={h4Style}>Releases:</h4>
+            <h4 className={h4Style}>Releases</h4>
             <ItemList listData={itemData.releases} ordered />
           </div>
         )}

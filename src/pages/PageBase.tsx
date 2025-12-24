@@ -15,8 +15,8 @@ export default function PageBase({
 }) {
   const headingClassName = `${h1Style} mb-2`;
   return (
-    <main className="w-full px-4">
-      <header className={`w-full mb-2 ${headerClassName || ""}`}>
+    <main className="px-4">
+      <header className={`mb-2 ${headerClassName || ""}`}>
         {headerElement ? (
           headerElement(headingClassName)
         ) : (

@@ -1,7 +1,11 @@
 import { useEffect } from "react";
-import { NavLink, Outlet, useLocation } from "react-router";
+import { Outlet, useLocation } from "react-router";
+import MobileRouter from "./components/router/MobileRouter";
+import PcRouter from "./components/router/PcRouter";
 
-const navList: { to: string; title: string; end?: boolean }[] = [
+export type RouterData = { to: string; title: string; end?: boolean }[];
+
+const navList: RouterData = [
   { to: "/", title: "Home", end: true },
   { to: "/about", title: "About" },
   { to: "/experience", title: "Experience" },
@@ -20,24 +24,9 @@ function App() {
 
   return (
     <div className="relative size-full flex flex-col justify-center items-center">
-      <header className="sticky top-4 w-full">
-        <nav aria-label="Primary" className="overflow-x-auto">
-          <ul className="flex gap-2 flex-nowrap mx-4 w-fit">
-            {navList.map((item) => (
-              <li key={item.title}>
-                <NavLink
-                  to={item.to}
-                  end={item.end}
-                  className="whitespace-nowrap text-lg font-normal"
-                >
-                  {item.title}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
-      <div className="size-full pt-6">
+      <PcRouter routes={navList} />
+      <MobileRouter routes={navList} />
+      <div className="pt-23 lg:pt-10 ">
         <Outlet />
       </div>
     </div>
