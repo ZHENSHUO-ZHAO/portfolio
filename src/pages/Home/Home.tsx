@@ -31,7 +31,7 @@ function HomePageHeader() {
 
   return (
     <div className="h-screen flex flex-col gap-7 justify-center items-center">
-      <h1 className="text-2xl font-extrabold">{content.name}</h1>
+      <h1 className="text-6xl font-extrabold font-hero">{content.name}</h1>
       <ul
         aria-label="Professional roles"
         className="flex flex-row flex-wrap gap-x-2 gap-y-0 justify-center"

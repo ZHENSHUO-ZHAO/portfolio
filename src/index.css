@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  /* For body and nav bar */
+  --font-sans: "Inter", system-ui, sans-serif;
+  /* For all headings */
+  --font-display: "DM Sans", system-ui, sans-serif;
+  /* For the name in the hero page ONLY */
+  --font-hero: "Manrope", system-ui, sans-serif;
+}
+
+@layer base {
+  body,
+  a {
+    @apply font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}

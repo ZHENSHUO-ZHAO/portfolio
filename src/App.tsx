@@ -26,7 +26,7 @@ function App() {
     <div className="relative size-full flex flex-col justify-center items-center">
       <PcRouter routes={navList} />
       <MobileRouter routes={navList} />
-      <div className="pt-23 lg:pt-10 ">
+      <div className="pt-23 max-w-4xl lg:pt-10 ">
         <Outlet />
       </div>
     </div>

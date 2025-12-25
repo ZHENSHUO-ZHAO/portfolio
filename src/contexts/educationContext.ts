@@ -20,6 +20,7 @@ export const educationContent = {
       time: "2023 - 2025",
       gpa: "3.7",
       achievements: [
+        "Graduated with Distinction",
         "Major Coursework: Software Engineering, Cloud Computing, Project Management, Databases, System Design",
         "Relevant technologies: React.js • Node.js • Express.js • AWS • Docker • CI/CD • SQL/NoSQL",
         "Casual Tutor in Software Engineering Project Management",

@@ -22,7 +22,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                 <NavLink
                   to={item.to}
                   end={item.end}
-                  className="whitespace-nowrap text-lg font-semibold text-center block"
+                  className="whitespace-nowrap text-lg font-normal text-center block"
                 >
                   {item.title}
                 </NavLink>

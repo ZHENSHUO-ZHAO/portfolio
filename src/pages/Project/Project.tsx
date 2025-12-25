@@ -45,7 +45,7 @@ function Item({ itemData }: { itemData: ProjectItem }) {
           {itemData.title}
         </h3>
         <div>
-          <h4>{itemData.company}</h4>
+          <p>{itemData.company}</p>
           <p>
             <time>{itemData.time}</time>
           </p>
