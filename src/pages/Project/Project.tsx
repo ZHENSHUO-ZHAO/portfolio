@@ -44,7 +44,7 @@ function Item({ itemData }: { itemData: ProjectItem }) {
         <h3 id={projectId}>{itemData.title}</h3>
         <div className="sm:flex sm:flex-row sm:items-baseline sm:gap-3">
           <p className="text-neutral-900 font-medium">{itemData.company}</p>
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm text-muted">
             <time>{itemData.time}</time>
           </p>
         </div>

@@ -28,7 +28,7 @@ function Item({ degreeData }: { degreeData: Degree }) {
           <p className="text-neutral-900 font-medium">
             {degreeData.university}
           </p>
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm text-muted">
             <time>{degreeData.time}</time>
           </p>
         </div>

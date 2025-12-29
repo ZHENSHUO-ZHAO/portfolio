@@ -26,9 +26,9 @@ function Item({ jobData }: { jobData: Job }) {
       id={jobId}
       title={jobData.title}
       headerChildren={
-        <div className="my-2 text-neutral-600">
+        <div className="my-2">
           <p className="text-neutral-900 font-medium">{jobData.company}</p>
-          <p>
+          <p className="text-muted">
             <time>{jobData.time}</time>
           </p>
           <p>{`${jobData.location.city}, ${jobData.location.country}`}</p>
