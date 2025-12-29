@@ -11,8 +11,3 @@ export function jobSlug(time: string, title: string, company: string) {
   const startYear = time.match(/\b\d{4}\b/)?.[0] ?? "";
   return slugify(`${title} ${company} ${startYear}`);
 }
-
-export const h1Style = "text-2xl font-bold";
-export const h2Style = "text-xl font-semibold";
-export const h3Style = "text-lg font-medium";
-export const h4Style = "text-normal font-semibold uppercase tracking-wide";

@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { ContextPageBase } from "../contexts/pageContext";
-import { h1Style, h2Style, h3Style } from "../utils/util";
 
 export default function PageBase({
   content,
@@ -13,7 +12,7 @@ export default function PageBase({
   headerClassName?: string;
   children: ReactNode;
 }) {
-  const headingClassName = `${h1Style} mb-2`;
+  const headingClassName = "mb-2";
   return (
     <main className="px-4">
       <header className={`mb-2 ${headerClassName || ""}`}>
@@ -41,7 +40,7 @@ export function Section({
   headerChildren?: ReactNode;
   headingClassName?: string;
 }) {
-  const h2ClassName = `${h2Style} mb-2 ${headingClassName || ""}`;
+  const h2ClassName = `mb-2 ${headingClassName || ""}`;
 
   return (
     <section
@@ -98,7 +97,7 @@ function Articles({
       {listData.map((data) => (
         <li key={data.title}>
           <article>
-            <h3 className={h3Style}>{data.title}</h3>
+            <h3>{data.title}</h3>
             <p>{data.desc}</p>
           </article>
         </li>

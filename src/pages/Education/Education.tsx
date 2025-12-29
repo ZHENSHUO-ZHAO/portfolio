@@ -2,7 +2,7 @@ import {
   useEducationPageContext,
   type Degree,
 } from "../../contexts/educationContext";
-import { h3Style, slugify } from "../../utils/util";
+import { slugify } from "../../utils/util";
 import PageBase, { Section } from "../PageBase";
 
 export default function Education() {
@@ -36,11 +36,11 @@ function Item({ degreeData }: { degreeData: Degree }) {
     >
       {degreeData.gpa && (
         <>
-          <h3 className={`${h3Style} inline-block mr-2 mt-2`}>GPA: </h3>
+          <h3 className="inline-block mr-2 mt-2">GPA: </h3>
           <p className="inline-block">{degreeData.gpa}</p>
         </>
       )}
-      <h3 className={`${h3Style} mt-4 mb-1`}>Achievements</h3>
+      <h3 className="mt-4 mb-1">Achievements</h3>
       <ul className="space-y-1">
         {degreeData.achievements.map((a) => (
           <li key={a}>{a}</li>

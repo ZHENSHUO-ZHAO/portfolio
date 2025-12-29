@@ -3,7 +3,7 @@ import {
   type ProjectCategory,
   type ProjectItem,
 } from "../../contexts/projectContext";
-import { h3Style, h4Style, jobSlug, slugify } from "../../utils/util";
+import { jobSlug, slugify } from "../../utils/util";
 import PageBase, { ItemList, Section } from "../PageBase";
 
 export default function Project() {
@@ -41,9 +41,7 @@ function Item({ itemData }: { itemData: ProjectItem }) {
   return (
     <li>
       <article aria-labelledby={projectId} className="space-y-3 sm:space-y-4">
-        <h3 className={h3Style} id={projectId}>
-          {itemData.title}
-        </h3>
+        <h3 id={projectId}>{itemData.title}</h3>
         <div className="sm:flex sm:flex-row sm:items-baseline sm:gap-3">
           <p className="text-neutral-900 font-medium">{itemData.company}</p>
           <p className="text-sm text-neutral-600">
@@ -52,17 +50,17 @@ function Item({ itemData }: { itemData: ProjectItem }) {
         </div>
         <p>{itemData.desc}</p>
         <div>
-          <h4 className={h4Style}>Role</h4>
+          <h4>Role</h4>
           <p> {itemData.role} </p>
         </div>
         {itemData.releases && (
           <div>
-            <h4 className={h4Style}>Releases</h4>
+            <h4>Releases</h4>
             <ItemList listData={itemData.releases} ordered />
           </div>
         )}
         <div>
-          <h4 className={h4Style}>Skills</h4>
+          <h4>Skills</h4>
           <ItemList listData={itemData.skills} ordered />
         </div>
       </article>

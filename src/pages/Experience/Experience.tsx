@@ -2,7 +2,7 @@ import {
   useExperiencePageContext,
   type Job,
 } from "../../contexts/experienceContext";
-import { h3Style, jobSlug } from "../../utils/util";
+import { jobSlug } from "../../utils/util";
 import PageBase, { ItemList, Section } from "../PageBase";
 
 export default function Experience() {
@@ -19,7 +19,7 @@ export default function Experience() {
 
 function Item({ jobData }: { jobData: Job }) {
   const jobId = jobSlug(jobData.time, jobData.title, jobData.company);
-  const headingStyle = `${h3Style} mt-4 sm:mt-6`;
+  const headingStyle = "mt-4 sm:mt-6";
 
   return (
     <Section
