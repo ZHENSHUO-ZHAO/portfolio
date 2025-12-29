@@ -41,7 +41,7 @@ function HomePageHeader() {
         {content.roles.map((r) => (
           <li
             key={r}
-            className="whitespace-nowrap text-base font-medium opacity-80 leading-snug lg:text-lg"
+            className="whitespace-nowrap text-base font-medium leading-snug lg:text-lg"
           >
             {r}
           </li>
