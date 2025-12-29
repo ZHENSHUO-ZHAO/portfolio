@@ -25,8 +25,10 @@ function Item({ degreeData }: { degreeData: Degree }) {
       title={degreeData.qualification}
       headerChildren={
         <div className="my-2">
-          <p>{degreeData.university}</p>
-          <p>
+          <p className="text-neutral-900 font-medium">
+            {degreeData.university}
+          </p>
+          <p className="text-sm text-neutral-600">
             <time>{degreeData.time}</time>
           </p>
         </div>
@@ -38,8 +40,8 @@ function Item({ degreeData }: { degreeData: Degree }) {
           <p className="inline-block">{degreeData.gpa}</p>
         </>
       )}
-      <h3 className={`${h3Style} mt-2`}>Achievements</h3>
-      <ul>
+      <h3 className={`${h3Style} mt-4 mb-1`}>Achievements</h3>
+      <ul className="space-y-1">
         {degreeData.achievements.map((a) => (
           <li key={a}>{a}</li>
         ))}

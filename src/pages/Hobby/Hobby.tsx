@@ -31,7 +31,7 @@ function HobbyPageHeader(headingClassName: string) {
   return (
     <>
       <h1 className={headingClassName}>{content.header.title}</h1>
-      <p>{content.header.desc}</p>
+      <p className="mb-2">{content.header.desc}</p>
       <ItemList listData={content.header.interests} />
     </>
   );

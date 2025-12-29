@@ -31,18 +31,23 @@ function HomePageHeader() {
 
   return (
     <div className="h-screen flex flex-col gap-7 justify-center items-center">
-      <h1 className="text-6xl font-extrabold font-hero">{content.name}</h1>
+      <h1 className="text-4xl font-bold font-hero tracking-tight leading-[1.05] sm:text-5xl lg:text-6xl">
+        {content.name}
+      </h1>
       <ul
         aria-label="Professional roles"
         className="flex flex-row flex-wrap gap-x-2 gap-y-0 justify-center"
       >
         {content.roles.map((r) => (
-          <li key={r} className="whitespace-nowrap text-xl">
+          <li
+            key={r}
+            className="whitespace-nowrap text-base font-medium opacity-80 leading-snug lg:text-lg"
+          >
             {r}
           </li>
         ))}
       </ul>
-      <ul className="w-full flex flex-col gap-4 items-center">
+      <ul className="w-full flex flex-col gap-4 items-center text-base font-medium text-slate-800">
         <li>
           <NavLink to="/project">View My Projects</NavLink>
         </li>
@@ -55,7 +60,9 @@ function HomePageHeader() {
           <a href="/contact">Contact Me</a>
         </li>
       </ul>
-      <p className="text-lg">{content.statement}</p>
+      <p className="text-base text-center max-w-prose lg:text-lg">
+        {content.statement}
+      </p>
     </div>
   );
 }

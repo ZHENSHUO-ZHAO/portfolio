@@ -23,7 +23,7 @@ function Category({ categoryData }: { categoryData: ProjectCategory }) {
 
   return (
     <Section id={categoryId} title={categoryData.category}>
-      <ol className="space-y-6">
+      <ol className="space-y-8 sm:space-y-10">
         {categoryData.items.map((item) => (
           <Item
             key={jobSlug(item.time, item.title, item.company)}
@@ -40,13 +40,13 @@ function Item({ itemData }: { itemData: ProjectItem }) {
 
   return (
     <li>
-      <article aria-labelledby={projectId} className="space-y-2">
+      <article aria-labelledby={projectId} className="space-y-3 sm:space-y-4">
         <h3 className={h3Style} id={projectId}>
           {itemData.title}
         </h3>
-        <div>
-          <p>{itemData.company}</p>
-          <p>
+        <div className="sm:flex sm:flex-row sm:items-baseline sm:gap-3">
+          <p className="text-neutral-900 font-medium">{itemData.company}</p>
+          <p className="text-sm text-neutral-600">
             <time>{itemData.time}</time>
           </p>
         </div>

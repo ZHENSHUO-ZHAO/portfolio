@@ -44,7 +44,10 @@ export function Section({
   const h2ClassName = `${h2Style} mb-2 ${headingClassName || ""}`;
 
   return (
-    <section className="mb-8" aria-labelledby={id}>
+    <section
+      className="mb-10 text-sm leading-relaxed sm:text-base sm:leading-loose"
+      aria-labelledby={id}
+    >
       {headerChildren ? (
         <header>
           <h2 className={h2ClassName} id={id}>
@@ -111,7 +114,7 @@ export function ItemList({
   listData: string[];
   ordered?: boolean;
 }) {
-  const containerStyle = "flex flex-row flex-wrap gap-x-2 gap-y-0";
+  const containerStyle = "flex flex-row flex-wrap gap-x-2 gap-y-1 sm:gap-y-0";
 
   return (
     <>

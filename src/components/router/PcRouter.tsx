@@ -9,7 +9,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
   const rounded = "rounded-3xl";
 
   return (
-    <header className="sticky top-4 w-full hidden lg:block">
+    <header className="fixed top-4 w-full hidden lg:block">
       <nav
         aria-label="Primary"
         className="mx-4 bg-slate-400/40 py-2 rounded-3xl backdrop-blur-md"
@@ -22,7 +22,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                 <NavLink
                   to={item.to}
                   end={item.end}
-                  className="whitespace-nowrap text-lg font-normal text-center block"
+                  className="whitespace-nowrap text-base font-medium text-center tracking-tight block"
                 >
                   {item.title}
                 </NavLink>

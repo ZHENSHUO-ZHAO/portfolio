@@ -19,15 +19,15 @@ export default function Experience() {
 
 function Item({ jobData }: { jobData: Job }) {
   const jobId = jobSlug(jobData.time, jobData.title, jobData.company);
-  const headingStyle = `${h3Style} mt-2`;
+  const headingStyle = `${h3Style} mt-4 sm:mt-6`;
 
   return (
     <Section
       id={jobId}
       title={jobData.title}
       headerChildren={
-        <div className="my-2">
-          <p>{jobData.company}</p>
+        <div className="my-2 text-neutral-600">
+          <p className="text-neutral-900 font-medium">{jobData.company}</p>
           <p>
             <time>{jobData.time}</time>
           </p>

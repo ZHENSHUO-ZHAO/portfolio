@@ -26,7 +26,11 @@ function App() {
     <div className="relative size-full flex flex-col justify-center items-center">
       <PcRouter routes={navList} />
       <MobileRouter routes={navList} />
-      <div className="pt-23 max-w-4xl lg:pt-10 ">
+      <div
+        className={`max-w-4xl ${
+          location.pathname !== "/" ? "pt-23 lg:pt-20" : ""
+        }`}
+      >
         <Outlet />
       </div>
     </div>
