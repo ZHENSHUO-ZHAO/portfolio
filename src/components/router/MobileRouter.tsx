@@ -47,10 +47,11 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                     <NavLink
                       to={item.to}
                       end={item.end}
-                      className="whitespace-nowrap text-lg font-normal"
+                      className="whitespace-nowrap flex items-center gap-2"
                       onClick={() => setIsOpen(false)}
                     >
-                      {item.title}
+                      <item.icon size={16} />
+                      <span>{item.title}</span>
                     </NavLink>
                   </li>
                 ))}
@@ -109,7 +110,7 @@ function Path({ d }: { d: string }) {
 function BackgroundClip({ isOpen, size }: { isOpen: boolean; size: Size }) {
   return (
     <div
-      className="absolute inset-0 pointer-events-none bg-slate-400/40 border-r border-white backdrop-blur-xs rounded-r-2xl mr-3"
+      className="absolute inset-0 pointer-events-none bg-slate-400/40 border-r border-white backdrop-blur-md rounded-r-2xl mr-3"
       style={{
         boxShadow: "5px 0 5px rgb(0 0 0 / 30%)",
         clipPath: `${

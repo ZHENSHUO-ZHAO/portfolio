@@ -13,9 +13,10 @@
   --color-primary: theme(colors.neutral.900);
   --color-secondary: theme(colors.neutral.700);
   --color-muted: theme(colors.neutral.500);
+  --color-accent: theme(colors.sky.400);
 
-  --color-link: theme(colors.slate.600);
-  --color-link-hover: theme(colors.slate.800);
+  --color-link: theme(colors.slate.700);
+  --color-link-hover: theme(colors.slate.900);
 }
 
 @layer base {
@@ -53,11 +54,11 @@
   }
 
   h1 {
-    @apply text-2xl font-bold;
+    @apply text-3xl font-bold sm:text-4xl;
   }
 
   h2 {
-    @apply text-xl font-semibold;
+    @apply text-xl font-semibold sm:text-2xl;
   }
 
   h3 {

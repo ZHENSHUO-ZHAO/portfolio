@@ -47,7 +47,7 @@ function HomePageHeader() {
           </li>
         ))}
       </ul>
-      <ul className="w-full flex flex-col gap-4 items-center text-base font-medium text-slate-800">
+      <ul className="w-full flex flex-col gap-4 items-center text-base text-slate-800">
         <li>
           <NavLink to="/project">View My Projects</NavLink>
         </li>

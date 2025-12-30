@@ -2,17 +2,34 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import MobileRouter from "./components/router/MobileRouter";
 import PcRouter from "./components/router/PcRouter";
+import {
+  House,
+  CircleUserRound,
+  BriefcaseBusiness,
+  FolderGit2,
+  Cpu,
+  GraduationCap,
+  Coffee,
+  type LucideProps,
+} from "lucide-react";
 
-export type RouterData = { to: string; title: string; end?: boolean }[];
+export type RouterData = {
+  to: string;
+  title: string;
+  end?: boolean;
+  icon: React.ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+  >;
+}[];
 
 const navList: RouterData = [
-  { to: "/", title: "Home", end: true },
-  { to: "/about", title: "About" },
-  { to: "/experience", title: "Experience" },
-  { to: "/project", title: "Project" },
-  { to: "/skill", title: "Skill" },
-  { to: "/education", title: "Education" },
-  { to: "/hobby", title: "Hobby" },
+  { to: "/", title: "Home", end: true, icon: House },
+  { to: "/about", title: "About", icon: CircleUserRound },
+  { to: "/experience", title: "Experience", icon: BriefcaseBusiness },
+  { to: "/project", title: "Project", icon: FolderGit2 },
+  { to: "/skill", title: "Skill", icon: Cpu },
+  { to: "/education", title: "Education", icon: GraduationCap },
+  { to: "/hobby", title: "Hobby", icon: Coffee },
 ];
 
 function App() {
