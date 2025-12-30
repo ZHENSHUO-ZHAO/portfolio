@@ -72,7 +72,7 @@ function MenuToggle({
 }) {
   return (
     <button
-      className="fixed top-7 left-7 z-1 size-6"
+      className="fixed top-5 left-5 z-1 size-10 p-2 cursor-pointer"
       onClick={() => setIsOpen((state) => !state)}
       aria-expanded={isOpen}
       aria-label={isOpen ? "Close menu" : "Open menu"}
