@@ -85,4 +85,13 @@
   a:hover {
     color: var(--color-link-hover);
   }
+
+  :root {
+    --tw-ring-color: var(--color-link);
+  }
+
+  :focus-visible {
+    outline: none;
+    @apply ring-2 rounded-xs;
+  }
 }
