@@ -14,6 +14,7 @@
   --color-secondary: theme(colors.neutral.700);
   --color-muted: theme(colors.neutral.500);
   --color-accent: theme(colors.sky.400);
+  --color-complement: theme(colors.emerald.400);
 
   --color-link: theme(colors.slate.700);
   --color-link-hover: theme(colors.slate.900);
@@ -88,7 +89,7 @@
   }
 
   :root {
-    --tw-ring-color: var(--color-link);
+    --tw-ring-color: var(--color-accent);
   }
 
   :focus-visible {

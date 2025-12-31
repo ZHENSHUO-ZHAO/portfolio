@@ -1,26 +1,110 @@
 import { NavLink } from "react-router";
 import type { RouterData } from "../../App";
-import React from "react";
+import React, { useState } from "react";
 import GlowOutline from "../glowOutline/GlowOutline";
-import { AnimatePresence, motion } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  type TargetAndTransition,
+  type Transition,
+} from "motion/react";
+
+const createConicGradient = (degree: number, ...colors: string[]) => {
+  return `conic-gradient(from ${degree}deg, ${colors.join(", ")})`;
+};
+
+const colors = {
+  sky1: "color-mix(in oklch, var(--color-accent) 75%, transparent)",
+  sky2: "color-mix(in oklch, var(--color-complement) 65%, transparent)",
+  transparent: "color-mix(in oklch, var(--color-accent) 0%, transparent)",
+};
+
+const gradientKeyframes: TargetAndTransition = {
+  background: [
+    createConicGradient(
+      0,
+      colors.transparent,
+      colors.transparent,
+      colors.transparent,
+      colors.transparent
+    ),
+    createConicGradient(
+      60,
+      colors.transparent,
+      colors.sky1,
+      colors.sky1,
+      colors.transparent
+    ),
+    createConicGradient(
+      120,
+      colors.sky2,
+      colors.sky1,
+      colors.sky1,
+      colors.sky2
+    ),
+    createConicGradient(
+      180,
+      colors.sky2,
+      colors.sky1,
+      colors.sky1,
+      colors.sky2
+    ),
+    createConicGradient(
+      240,
+      colors.sky2,
+      colors.transparent,
+      colors.transparent,
+      colors.sky2
+    ),
+    createConicGradient(
+      360,
+      colors.transparent,
+      colors.transparent,
+      colors.transparent,
+      colors.transparent
+    ),
+  ],
+};
+
+const gradientTransition: Transition<string> = {
+  ease: "linear",
+  duration: 0.8,
+  repeat: 0,
+  times: [0.1, 0.4, 0.6, 0.9, 1],
+};
+
+const rounded = "rounded-3xl";
+
+const iconVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.15 },
+};
 
 export default function PcRouter({ routes }: { routes: RouterData }) {
-  const gradient =
-    "conic-gradient(in oklch, color-mix(in oklch, yellow 80%, transparent) 0deg, lime 85deg, color-mix(in oklch, teal 60%, transparent) 95deg, transparent 100deg, transparent 150deg, color-mix(in oklch, lime 60%, transparent) 250deg, color-mix(in oklch, yellow 80%, transparent) 360deg )";
-  const rounded = "rounded-3xl";
+  const [show, setShow] = useState(false);
 
-  const iconVariants = {
-    rest: { scale: 1 },
-    hover: { scale: 1.15 },
+  const handleClick = () => {
+    if (!show) {
+      setShow(true);
+      setTimeout(() => setShow(false), 800);
+    }
   };
 
   return (
-    <header className="fixed top-4 w-full hidden lg:block">
+    <header className="fixed top-6 w-full hidden lg:block">
       <nav
         aria-label="Primary"
-        className="mx-auto max-w-4xl bg-neutral-400/40 py-3 rounded-3xl backdrop-blur-md"
+        className="mx-auto max-w-4xl bg-slate-400/40 py-3 rounded-3xl backdrop-blur-md"
       >
-        {/* <GlowOutline gradient={gradient} rounded={rounded} /> */}
+        {show && (
+          <GlowOutline
+            gradient={{
+              keyframes: gradientKeyframes,
+              transition: gradientTransition,
+            }}
+            rounded={rounded}
+          />
+        )}
         <ul className="flex flex-nowrap items-center mx-auto">
           {routes.map((item, i) => (
             <React.Fragment key={item.title}>
@@ -28,6 +112,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                 <NavLink
                   to={item.to}
                   end={item.end}
+                  onClick={handleClick}
                   className="whitespace-nowrap text-sm flex flex-col items-center justify-center tracking-tight"
                 >
                   {({ isActive }) => (

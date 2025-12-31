@@ -1,8 +1,19 @@
+import {
+  motion,
+  type TargetAndTransition,
+  type Transition,
+} from "motion/react";
+
+export type GradientAnimation = {
+  keyframes: TargetAndTransition;
+  transition: Transition<string>;
+};
+
 export default function GlowOutline({
   gradient,
   rounded,
 }: {
-  gradient: string;
+  gradient: string | GradientAnimation;
   rounded?: string;
 }) {
   //   const gradient =
@@ -26,7 +37,7 @@ function Outline({
   rounded,
   thickness,
 }: {
-  gradient: string;
+  gradient: string | GradientAnimation;
   rounded?: string;
   thickness: string;
 }) {
@@ -35,16 +46,30 @@ function Outline({
 
   return (
     <div className="absolute inset-0 pointer-events-none">
-      <div
-        className={`size-full ${rounded || ""} ${thickness}`}
-        style={{
-          background: `${gradient}`,
-          WebkitMask: `${mask}`,
-          WebkitMaskComposite: "xor",
-          mask: `${mask}`,
-          maskComposite: "exclude",
-        }}
-      />
+      {typeof gradient === "string" ? (
+        <div
+          className={`size-full ${rounded || ""} ${thickness}`}
+          style={{
+            background: `${gradient}`,
+            WebkitMask: `${mask}`,
+            WebkitMaskComposite: "xor",
+            mask: `${mask}`,
+            maskComposite: "exclude",
+          }}
+        />
+      ) : (
+        <motion.div
+          className={`size-full ${rounded || ""} ${thickness}`}
+          animate={gradient.keyframes}
+          transition={gradient.transition}
+          style={{
+            WebkitMask: `${mask}`,
+            WebkitMaskComposite: "xor",
+            mask: `${mask}`,
+            maskComposite: "exclude",
+          }}
+        />
+      )}
     </div>
   );
 }

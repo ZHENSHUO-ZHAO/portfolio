@@ -45,7 +45,7 @@ function App() {
       <MobileRouter routes={navList} />
       <div
         className={`max-w-4xl ${
-          location.pathname !== "/" ? "pt-23 lg:pt-20" : ""
+          location.pathname !== "/" ? "pt-23 lg:pt-22" : ""
         }`}
       >
         <Outlet />
