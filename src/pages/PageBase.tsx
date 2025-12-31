@@ -43,10 +43,7 @@ export function Section({
   const h2ClassName = `mb-2 ${headingClassName || ""}`;
 
   return (
-    <section
-      className="mb-10 text-sm leading-relaxed sm:text-base sm:leading-loose"
-      aria-labelledby={id}
-    >
+    <section className="mb-10" aria-labelledby={id}>
       {headerChildren ? (
         <header>
           <h2 className={h2ClassName} id={id}>

@@ -43,7 +43,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
         <nav
           aria-label="Primary"
           aria-hidden={!isOpen}
-          className="relative overflow-y-auto pt-17 w-fit min-w-20 max-w-2/3 h-screen"
+          className="relative overflow-y-auto pt-17 w-fit min-w-20 max-w-full h-screen"
         >
           <BackgroundClip />
           <div className="relative">
@@ -65,8 +65,8 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                         className={({ isActive }) =>
                           `relative pl-7 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 ${
                             isActive
-                              ? "border-l-2 border-l-accent bg-complement/10"
-                              : ""
+                              ? "border-l-4 border-l-accent bg-complement/10"
+                              : "border-l-4 border-l-transparent"
                           }`
                         }
                         onClick={handleClick}

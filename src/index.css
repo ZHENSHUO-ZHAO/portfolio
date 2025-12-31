@@ -3,10 +3,8 @@
 @theme {
   /* For body and nav bar */
   --font-sans: "Inter", system-ui, sans-serif;
-  /* For all headings */
-  --font-display: "DM Sans", system-ui, sans-serif;
-  /* For the name in the hero page ONLY */
-  --font-hero: "Manrope", system-ui, sans-serif;
+  /* For all headings and hero page */
+  --font-display: "Manrope", system-ui, sans-serif;
 
   --color-bg: theme(colors.neutral.50);
 
@@ -29,7 +27,7 @@
   body {
     color: var(--color-primary);
     background-color: var(--color-bg);
-    @apply leading-normal;
+    @apply text-lg sm:text-base;
   }
 
   h1,
@@ -42,42 +40,28 @@
     @apply font-display;
   }
 
-  h1,
-  h2,
-  h3 {
-    @apply leading-tight;
-  }
-
-  h4,
-  h5,
-  h6 {
-    @apply leading-snug;
-  }
-
   h1 {
-    @apply text-3xl font-bold sm:text-4xl;
+    @apply text-2xl font-extrabold sm:text-3xl;
   }
 
   h2 {
-    @apply text-xl font-semibold sm:text-2xl;
+    @apply text-xl font-bold sm:text-2xl;
   }
 
   h3 {
-    @apply text-lg font-medium;
+    @apply text-lg font-semibold;
   }
 
   h4 {
-    @apply text-base font-semibold uppercase tracking-wide;
+    @apply font-medium uppercase tracking-wide;
   }
 
   p {
     color: var(--color-secondary);
-    @apply leading-relaxed sm:leading-loose;
   }
 
   li {
     color: var(--color-secondary);
-    @apply leading-relaxed;
   }
 
   a {
