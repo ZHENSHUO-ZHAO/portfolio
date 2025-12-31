@@ -31,7 +31,7 @@ function HomePageHeader() {
 
   return (
     <div className="h-screen flex flex-col gap-7 justify-center items-center">
-      <h1 className="text-4xl font-bold font-hero tracking-tight leading-[1.05] sm:text-5xl lg:text-6xl">
+      <h1 className="text-3xl font-bold font-hero tracking-tight leading-[1.05] sm:text-5xl lg:text-6xl">
         {content.name}
       </h1>
       <ul
