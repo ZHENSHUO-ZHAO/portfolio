@@ -18,12 +18,10 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen]);
 
-  //   useEffect(() => {
-  //     if (!isOpen) return;
-
-  //     const id = requestAnimationFrame(() => setIsOpen(false));
-  //     return () => cancelAnimationFrame(id);
-  //   }, [size]);
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    setIsOpen(false);
+  };
 
   return (
     <div className="fixed inset-0 lg:hidden">
@@ -48,7 +46,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                       to={item.to}
                       end={item.end}
                       className="whitespace-nowrap flex items-center gap-2"
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleClick}
                     >
                       <item.icon size={16} />
                       <span>{item.title}</span>

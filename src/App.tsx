@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Outlet, useLocation } from "react-router";
+import { Outlet } from "react-router";
 import MobileRouter from "./components/router/MobileRouter";
 import PcRouter from "./components/router/PcRouter";
 import {
@@ -33,12 +32,6 @@ const navList: RouterData = [
 ];
 
 function App() {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [location]);
-
   return (
     <div className="relative size-full flex flex-col justify-center items-center">
       <PcRouter routes={navList} />

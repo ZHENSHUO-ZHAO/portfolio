@@ -84,6 +84,8 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
+    // The view to be scrolled to top before animating the underline of the NavLink. Otherwise, the previous page's y offset is counted in the animation, causing the underline to move from somewhere down the bar.
+    window.scrollTo({ top: 0, behavior: "instant" });
     if (!show) {
       setShow(true);
       setTimeout(() => setShow(false), 800);
