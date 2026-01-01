@@ -29,7 +29,9 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
 
   return (
     <motion.div
-      className="fixed inset-0 lg:hidden"
+      className={`fixed inset-0 lg:hidden ${
+        isOpen ? "pointer-events-auto" : "pointer-events-none"
+      }`}
       custom={size.height}
       initial={false}
       animate={isOpen ? "open" : "closed"}
@@ -43,7 +45,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
         <nav
           aria-label="Primary"
           aria-hidden={!isOpen}
-          className="relative overflow-y-auto pt-17 w-fit min-w-20 max-w-full h-screen"
+          className="relative overflow-y-auto pt-17 w-fit min-w-20 max-w-full h-screen pointer-events-auto"
         >
           <BackgroundClip />
           <div className="relative">
@@ -98,7 +100,7 @@ function MenuToggle({
   return (
     <button
       ref={ref}
-      className="fixed top-5 left-5 z-1 size-10 p-2 cursor-pointer"
+      className="fixed top-5 left-5 z-1 size-10 p-2 cursor-pointer pointer-events-auto"
       onClick={() => setIsOpen((state) => !state)}
       aria-expanded={isOpen}
       aria-label={isOpen ? "Close menu" : "Open menu"}
