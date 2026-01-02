@@ -16,7 +16,6 @@ export const homeContent = {
   roles: [
     "Software Engineer",
     "Game Developer",
-    "Full-Stack Engineer",
     "Project Manager",
     "RMIT Tutor",
   ],

@@ -29,7 +29,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
 
   return (
     <motion.div
-      className={`fixed inset-0 lg:hidden ${
+      className={`fixed inset-0 z-50 lg:hidden ${
         isOpen ? "pointer-events-auto" : "pointer-events-none"
       }`}
       custom={size.height}

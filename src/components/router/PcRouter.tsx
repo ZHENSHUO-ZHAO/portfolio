@@ -7,6 +7,7 @@ import {
   motion,
   type TargetAndTransition,
   type Transition,
+  type Variants,
 } from "motion/react";
 
 const createConicGradient = (degree: number, ...colors: string[]) => {
@@ -75,7 +76,7 @@ const gradientTransition: Transition<string> = {
 
 const rounded = "rounded-3xl";
 
-const iconVariants = {
+const iconVariants: Variants = {
   rest: { scale: 1 },
   hover: { scale: 1.15 },
 };
@@ -93,7 +94,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
   };
 
   return (
-    <header className="fixed top-6 w-full hidden lg:block">
+    <header className="fixed top-6 w-full z-50 hidden lg:block">
       <nav
         aria-label="Primary"
         className="mx-auto max-w-4xl bg-slate-400/40 py-3 rounded-3xl backdrop-blur-md"
