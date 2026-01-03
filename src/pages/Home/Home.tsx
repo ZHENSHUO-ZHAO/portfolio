@@ -7,6 +7,7 @@ import useMeasure from "../../hooks/measureHook";
 import { FileDown, MessageCircleMore, ScanSearch } from "lucide-react";
 import GlowOutline from "../../components/glowOutline/GlowOutline";
 import { motion, type Variants } from "motion/react";
+import portrait from "../../assets/images/home/portrait.png";
 
 export default function Home() {
   const content = useHomePageContext();
@@ -42,7 +43,7 @@ function HomePageHeader() {
     const itemsPerRow = content.roles.length / rows;
     const newRoles = [];
     for (let i = 0; i < rows; i++) {
-      if (i != rows) {
+      if (i < rows - 1) {
         newRoles.push(
           content.roles.slice(i * itemsPerRow, (i + 1) * itemsPerRow)
         );
@@ -58,9 +59,10 @@ function HomePageHeader() {
   return (
     <div
       ref={ref}
-      className="h-screen flex flex-col gap-7 justify-center items-center"
+      className="h-screen flex flex-col gap-4 justify-center items-center"
     >
-      <h1 className="text-center text-3xl font-bold font-display tracking-tight leading-[1.05] sm:text-5xl lg:text-6xl">
+      <Portrait />
+      <h1 className="text-center text-3xl font-extrabold font-display tracking-tight sm:text-5xl lg:text-6xl">
         {content.name}
       </h1>
       <ul
@@ -74,7 +76,7 @@ function HomePageHeader() {
           >
             {row.map((r, j, array) => (
               <React.Fragment key={r}>
-                <li className="whitespace-nowrap text-base font-medium leading-snug lg:text-lg">
+                <li className="whitespace-nowrap text-base font-medium lg:text-lg">
                   {r}
                 </li>
                 {j < array.length - 1 && (
@@ -85,11 +87,12 @@ function HomePageHeader() {
           </div>
         ))}
       </ul>
-      <ul className="w-full flex flex-col sm:flex-row gap-8 justify-center items-center text-base text-slate-800">
+      <ul className="my-6 w-full flex flex-col sm:flex-row gap-8 justify-center items-center text-base text-slate-800">
         <CtaButton
           gradientColor="var(--color-accent), transparent, var(--color-complement), var(--color-accent)"
           link="/project"
           useNavLink
+          priority="primary"
         >
           <ScanSearch width={20} />
           View Projects
@@ -99,6 +102,7 @@ function HomePageHeader() {
           link="/resume.pdf"
           bgColor="bg-accent/20"
           linkProps={{ download: true }}
+          priority="secondary"
         >
           <FileDown width={20} />
           Download CV
@@ -107,6 +111,7 @@ function HomePageHeader() {
           gradientColor="color-mix(in oklch, var(--color-complement) 5%, transparent), color-mix(in oklch, var(--color-complement) 40%, transparent), color-mix(in oklch, var(--color-complement) 10%, transparent"
           link="/contact"
           bgColor="bg-complement/10"
+          priority="tertiary"
         >
           <MessageCircleMore width={20} />
           Contact Me
@@ -160,6 +165,7 @@ function CtaButton({
   useNavLink,
   linkProps,
   children,
+  priority,
 }: {
   gradientColor: string;
   link: string;
@@ -167,6 +173,7 @@ function CtaButton({
   useNavLink?: boolean;
   linkProps?: object;
   children: React.ReactNode;
+  priority: "primary" | "secondary" | "tertiary";
 }) {
   const linkStyle = "flex justify-center gap-2 rounded-full px-6 py-2";
   const glowVariants: Variants = {
@@ -195,10 +202,17 @@ function CtaButton({
 
   return (
     <motion.li
-      className="relative flex-1 w-[180px] sm:max-w-[180px]"
+      className={`relative flex-1 ${
+        priority === "primary"
+          ? "w-[280px] sm:max-w-[200px]"
+          : priority === "secondary"
+          ? "w-[200px] sm:max-w-[180px]"
+          : "w-[200px] sm:max-w-[170px]"
+      }`}
       animate="rest"
       whileHover="hover"
       whileTap="hover"
+      tabIndex={-1}
     >
       <GlowOutline
         gradient={{ variants: glowVariants }}
@@ -218,5 +232,46 @@ function CtaButton({
         </a>
       )}
     </motion.li>
+  );
+}
+
+function Portrait() {
+  return (
+    <>
+      <svg viewBox="0 0 100 150" className="absolute w-0 h-0">
+        <defs>
+          <mask id="portrait-mask" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="0.6667" fill="white" />
+
+            <ellipse cx="0.5" cy="0.6667" rx="0.5" ry="0.3333" fill="white" />
+          </mask>
+        </defs>
+      </svg>
+
+      <div className="relative w-50 aspect-[1/1.5]">
+        <div className="absolute aspect-square bottom-0 w-full">
+          <GlowOutline
+            gradient="conic-gradient(from 0deg, transparent, color-mix(in oklch, var(--color-accent) 10%, transparent), var(--color-complement), var(--color-accent), var(--color-complement), color-mix(in oklch, var(--color-accent) 10%, transparent), transparent)"
+            rounded="rounded-full"
+          />
+        </div>
+        <div
+          className="w-full h-full"
+          style={{
+            mask: "url(#portrait-mask)",
+            WebkitMask: "url(#portrait-mask)",
+          }}
+        >
+          <div className="relative size-full grid grid-cols-1 place-items-end">
+            <div className="relative w-full col-start-1 row-start-1 aspect-square rounded-full " />
+            <img
+              src={portrait}
+              alt="Portrait of Vincent Zhao"
+              className="relative w-full col-start-1 row-start-1"
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

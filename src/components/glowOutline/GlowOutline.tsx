@@ -64,6 +64,7 @@ function Outline({
             mask: `${mask}`,
             maskComposite: "exclude",
           }}
+          tabIndex={-1}
         />
       ) : (
         <motion.div
@@ -78,6 +79,7 @@ function Outline({
             mask: `${mask}`,
             maskComposite: "exclude",
           }}
+          tabIndex={-1}
         />
       )}
     </div>
