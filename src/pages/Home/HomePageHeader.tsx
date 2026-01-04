@@ -5,6 +5,7 @@ import Portrait from "./Portrait";
 import React from "react";
 import CtaButton from "./CtaButton";
 import { FileDown, MessageCircleMore, ScanSearch } from "lucide-react";
+import { mixColor } from "../../utils/util";
 
 export default function HomePageHeader() {
   const content = useHomePageContext();
@@ -77,9 +78,9 @@ export default function HomePageHeader() {
         </CtaButton>
         <CtaButton
           gradientColor={[
-            "color-mix(in oklch, var(--color-accent) 5%, transparent)",
-            "color-mix(in oklch, var(--color-accent) 60%, transparent)",
-            "color-mix(in oklch, var(--color-accent) 10%, transparent)",
+            mixColor(5, "var(--color-accent)", "transparent"),
+            mixColor(60, "var(--color-accent)", "transparent"),
+            mixColor(10, "var(--color-accent)", "transparent"),
           ]}
           link="/resume.pdf"
           bgColor="bg-accent/20"
@@ -91,9 +92,9 @@ export default function HomePageHeader() {
         </CtaButton>
         <CtaButton
           gradientColor={[
-            "color-mix(in oklch, var(--color-complement) 5%, transparent)",
-            "color-mix(in oklch, var(--color-complement) 40%, transparent)",
-            "color-mix(in oklch, var(--color-complement) 10%, transparent",
+            mixColor(5, "var(--color-complement)", "transparent"),
+            mixColor(40, "var(--color-complement)", "transparent"),
+            mixColor(10, "var(--color-complement)", "transparent"),
           ]}
           link="/contact"
           bgColor="bg-complement/10"
