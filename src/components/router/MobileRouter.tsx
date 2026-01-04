@@ -45,7 +45,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
         <nav
           aria-label="Primary"
           aria-hidden={!isOpen}
-          className="relative overflow-y-auto pt-17 w-fit min-w-20 max-w-full h-screen pointer-events-auto"
+          className="relative overflow-y-auto pt-17 w-fit min-w-23 max-w-full h-screen pointer-events-auto"
         >
           <BackgroundClip />
           <div className="relative">
@@ -65,7 +65,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                         to={item.to}
                         end={item.end}
                         className={({ isActive }) =>
-                          `relative pl-7 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 ${
+                          `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 ${
                             isActive
                               ? "border-l-4 border-l-accent bg-complement/10"
                               : "border-l-4 border-l-transparent"
@@ -100,7 +100,7 @@ function MenuToggle({
   return (
     <button
       ref={ref}
-      className="fixed top-5 left-5 z-1 size-10 p-2 cursor-pointer pointer-events-auto"
+      className="fixed top-5 left-8 z-1 size-10 p-2 cursor-pointer pointer-events-auto"
       onClick={() => setIsOpen((state) => !state)}
       aria-expanded={isOpen}
       aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -152,7 +152,7 @@ function Path(pathProps: PathProps) {
 
 const backgroundVariants: Variants = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2}px at 40px 40px)`,
+    clipPath: `circle(${height * 2}px at 52px 40px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -160,7 +160,7 @@ const backgroundVariants: Variants = {
     },
   }),
   closed: {
-    clipPath: "circle(24px at 40px 40px)",
+    clipPath: "circle(24px at 52px 40px)",
     transition: {
       delay: 0.2,
       type: "spring",
