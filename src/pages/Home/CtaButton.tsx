@@ -49,10 +49,10 @@ export default function CtaButton({
     <motion.li
       className={`relative flex-1 ${
         priority === "primary"
-          ? "w-[280px] sm:max-w-[190px] lg:max-w-[210px]"
+          ? "w-[280px] md:max-w-[190px] lg:max-w-[240px]"
           : priority === "secondary"
-          ? "w-[200px] sm:max-w-[180px] lg:max-w-[180px]"
-          : "w-[200px] sm:max-w-[140px] lg:max-w-[150px]"
+          ? "w-[200px] md:max-w-[180px] lg:max-w-[190px]"
+          : "w-[200px] md:max-w-[140px] lg:max-w-[150px]"
       }`}
       animate="rest"
       whileHover="hover"
