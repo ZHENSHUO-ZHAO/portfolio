@@ -20,7 +20,7 @@ export const homeContent = {
     "RMIT Tutor",
   ],
   statement:
-    "I craft engaging digital experiences — from immersive games to intuitive educational platforms — blending technical expertise with creative problem-solving to deliver solutions that make an impact.",
+    "I craft engaging digital experiences \n — from immersive games to intuitive educational platforms — \n blending technical expertise with creative problem-solving \n to deliver solutions that make an impact.",
   highlight: [
     { title: "YoPlay", desc: "Large-scale multiplayer casual casino platform" },
     {

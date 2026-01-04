@@ -6,6 +6,10 @@
   /* For hero page and all headings */
   --font-display: "Manrope", system-ui, sans-serif;
 
+  --font-quote: Georgia, serif;
+
+  --breakpoint-xs: 30rem;
+
   --color-bg: theme(colors.neutral.50);
 
   --color-primary: theme(colors.neutral.900);

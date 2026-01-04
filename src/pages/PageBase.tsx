@@ -14,7 +14,7 @@ export default function PageBase({
 }) {
   const headingClassName = "mb-2";
   return (
-    <main className="px-4">
+    <main className="px-8">
       <header className={`mb-2 ${headerClassName || ""}`}>
         {headerElement ? (
           headerElement(headingClassName)

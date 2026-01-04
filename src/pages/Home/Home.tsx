@@ -87,7 +87,7 @@ function HomePageHeader() {
           </div>
         ))}
       </ul>
-      <ul className="my-6 w-full flex flex-col sm:flex-row gap-8 justify-center items-center text-base text-slate-800">
+      <ul className="my-8 w-full flex flex-col sm:flex-row gap-8 justify-center items-center text-base text-slate-800">
         <CtaButton
           gradientColor="var(--color-accent), transparent, var(--color-complement), var(--color-accent)"
           link="/project"
@@ -95,7 +95,7 @@ function HomePageHeader() {
           priority="primary"
         >
           <ScanSearch width={20} />
-          View Projects
+          <span className="font-medium">View Projects</span>
         </CtaButton>
         <CtaButton
           gradientColor="color-mix(in oklch, var(--color-accent) 5%, transparent), color-mix(in oklch, var(--color-accent) 60%, transparent), color-mix(in oklch, var(--color-accent) 10%, transparent)"
@@ -114,7 +114,7 @@ function HomePageHeader() {
           priority="tertiary"
         >
           <MessageCircleMore width={20} />
-          Contact Me
+          Contact
         </CtaButton>
         {/* <li className={ctaLiClass}>
           <GlowOutline
@@ -151,9 +151,11 @@ function HomePageHeader() {
           </a>
         </li> */}
       </ul>
-      <p className="text-base text-center max-w-prose lg:text-lg">
-        {content.statement}
-      </p>
+      <div className="bg-slate-600/10 rounded-r-md border-l-4 border-l-accent mb-8">
+        <p className="text-base max-w-prose px-6 py-2 lg:text-lg sm:whitespace-pre-line sm:text-center">
+          {content.statement}
+        </p>
+      </div>
     </div>
   );
 }
@@ -204,10 +206,10 @@ function CtaButton({
     <motion.li
       className={`relative flex-1 ${
         priority === "primary"
-          ? "w-[280px] sm:max-w-[200px]"
+          ? "w-[280px] sm:max-w-[210px]"
           : priority === "secondary"
           ? "w-[200px] sm:max-w-[180px]"
-          : "w-[200px] sm:max-w-[170px]"
+          : "w-[200px] sm:max-w-[150px]"
       }`}
       animate="rest"
       whileHover="hover"
@@ -219,13 +221,16 @@ function CtaButton({
         rounded="rounded-full"
       />
       {useNavLink ? (
-        <NavLink to={link} className={`${linkStyle} ${bgColor || ""}`}>
+        <NavLink
+          to={link}
+          className={`${linkStyle} ${bgColor || ""} text-slate-800`}
+        >
           {children}
         </NavLink>
       ) : (
         <a
           href={link}
-          className={`${linkStyle} ${bgColor || ""}`}
+          className={`${linkStyle} ${bgColor || ""} text-slate-500`}
           {...linkProps}
         >
           {children}
@@ -248,7 +253,7 @@ function Portrait() {
         </defs>
       </svg>
 
-      <div className="relative w-50 aspect-[1/1.5]">
+      <div className="relative w-30 sm:w-50 aspect-[1/1.5]">
         <div className="absolute aspect-square bottom-0 w-full">
           <GlowOutline
             gradient="conic-gradient(from 0deg, transparent, color-mix(in oklch, var(--color-accent) 10%, transparent), var(--color-complement), var(--color-accent), var(--color-complement), color-mix(in oklch, var(--color-accent) 10%, transparent), transparent)"
