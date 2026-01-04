@@ -43,7 +43,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
           onClick={() => setIsOpen(false)}
         ></div>
         <nav
-          aria-label="Primary"
+          aria-label="Navigation Menu"
           aria-hidden={!isOpen}
           className="relative overflow-y-auto pt-17 w-fit min-w-23 max-w-full h-screen pointer-events-auto"
         >

@@ -87,8 +87,8 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
   return (
     <header className="fixed top-6 w-full z-50 hidden lg:block">
       <nav
-        aria-label="Primary"
-        className="mx-auto max-w-4xl bg-slate-400/40 py-3 rounded-3xl backdrop-blur-md"
+        aria-label="Navigation Bar"
+        className="mx-auto max-w-[calc(56rem+10px)] bg-slate-400/40 py-3 rounded-3xl backdrop-blur-md"
       >
         {show && (
           <GlowOutline
