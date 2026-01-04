@@ -1,19 +1,19 @@
-import { useMemo } from "react";
+import { useCallback, useContext } from "react";
 import { useHomePageContext } from "../../contexts/homeContext";
-import useMeasure from "../../hooks/measureHook";
 import Portrait from "./Portrait";
 import React from "react";
 import CtaButton from "./CtaButton";
 import { FileDown, MessageCircleMore, ScanSearch } from "lucide-react";
 import { mixColor } from "../../utils/util";
+import { SettingContext } from "../../contexts/settingContext";
 
 export default function HomePageHeader() {
   const content = useHomePageContext();
-  const [ref, size] = useMeasure<HTMLDivElement>();
+  const { deviceWidth } = useContext(SettingContext);
 
-  const roles = useMemo(() => {
-    // When screen size is less than 640 px, change to the roles from 1 row to 2 rows. 32 accounts for the px-4 of the content coded in the page base.
-    const rows = size.width + 32 >= 640 ? 1 : 2;
+  const getRoles = useCallback(() => {
+    // When screen size is less than 640 px (40rem), change to the roles from 1 row to 2 rows.
+    const rows = deviceWidth >= 40 ? 1 : 2;
     const itemsPerRow = content.roles.length / rows;
     const newRoles = [];
     for (let i = 0; i < rows; i++) {
@@ -28,22 +28,19 @@ export default function HomePageHeader() {
       }
     }
     return newRoles;
-  }, [size.width, content.roles]);
+  }, [deviceWidth, content.roles]);
 
   return (
-    <div
-      ref={ref}
-      className="h-screen flex flex-col gap-4 justify-center items-center"
-    >
+    <div className="h-screen flex flex-col gap-4 justify-center items-center">
       <Portrait />
-      <h1 className="text-center text-3xl font-extrabold font-display tracking-tight sm:text-5xl lg:text-6xl">
+      <h1 className="text-center text-3xl font-extrabold font-display tracking-tight sm:text-4xl lg:text-6xl">
         {content.name}
       </h1>
       <ul
         aria-label="Professional roles"
         className="flex flex-col justify-center items-center"
       >
-        {roles.map((row, i) => (
+        {getRoles().map((row, i) => (
           <div
             key={`RoleRow_${i}`}
             className="flex gap-2 justify-center items-center"
@@ -61,7 +58,7 @@ export default function HomePageHeader() {
           </div>
         ))}
       </ul>
-      <ul className="my-8 w-full flex flex-col sm:flex-row gap-8 justify-center items-center text-base text-slate-800">
+      <ul className="my-8 w-full flex flex-col sm:flex-row gap-8 sm:gap-5 lg:gap-8 justify-center items-center text-base text-slate-800">
         <CtaButton
           gradientColor={[
             "var(--color-accent)",

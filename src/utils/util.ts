@@ -27,3 +27,10 @@ export function mixColor(
 ): string {
   return `color-mix(in oklch, ${color1} ${color1Percentage}%, ${color2})`;
 }
+
+export function getRem(pixels: number): number {
+  const rootFontSize = parseFloat(
+    getComputedStyle(document.documentElement).fontSize
+  );
+  return pixels / rootFontSize;
+}

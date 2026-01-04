@@ -11,6 +11,10 @@ import {
   Coffee,
   type LucideProps,
 } from "lucide-react";
+import useMeasure from "./hooks/measureHook";
+import { useMemo } from "react";
+import { SettingContext } from "./contexts/settingContext";
+import { getRem } from "./utils/util";
 
 export type RouterData = {
   to: string;
@@ -33,9 +37,16 @@ const navList: RouterData = [
 
 function App() {
   const location = useLocation();
+  const [ref, size] = useMeasure<HTMLDivElement>();
+  const deviceWidth = useMemo(() => {
+    return getRem(size.width);
+  }, [size]);
 
   return (
-    <div className="relative size-full flex flex-col justify-center items-center">
+    <div
+      ref={ref}
+      className="relative size-full flex flex-col justify-center items-center"
+    >
       <PcRouter routes={navList} />
       <MobileRouter routes={navList} />
       <div
@@ -43,7 +54,9 @@ function App() {
           location.pathname !== "/" ? "pt-23 lg:pt-22" : ""
         }`}
       >
-        <Outlet />
+        <SettingContext value={{ deviceWidth }}>
+          <Outlet />
+        </SettingContext>
       </div>
     </div>
   );
