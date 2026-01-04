@@ -62,7 +62,12 @@ export default function HomePageHeader() {
       </ul>
       <ul className="my-8 w-full flex flex-col sm:flex-row gap-8 justify-center items-center text-base text-slate-800">
         <CtaButton
-          gradientColor="var(--color-accent), transparent, var(--color-complement), var(--color-accent)"
+          gradientColor={[
+            "var(--color-accent)",
+            "transparent",
+            "var(--color-complement)",
+            "var(--color-accent)",
+          ]}
           link="/project"
           useNavLink
           priority="primary"
@@ -71,7 +76,11 @@ export default function HomePageHeader() {
           <span className="font-medium">View Projects</span>
         </CtaButton>
         <CtaButton
-          gradientColor="color-mix(in oklch, var(--color-accent) 5%, transparent), color-mix(in oklch, var(--color-accent) 60%, transparent), color-mix(in oklch, var(--color-accent) 10%, transparent)"
+          gradientColor={[
+            "color-mix(in oklch, var(--color-accent) 5%, transparent)",
+            "color-mix(in oklch, var(--color-accent) 60%, transparent)",
+            "color-mix(in oklch, var(--color-accent) 10%, transparent)",
+          ]}
           link="/resume.pdf"
           bgColor="bg-accent/20"
           linkProps={{ download: true }}
@@ -81,7 +90,11 @@ export default function HomePageHeader() {
           Download CV
         </CtaButton>
         <CtaButton
-          gradientColor="color-mix(in oklch, var(--color-complement) 5%, transparent), color-mix(in oklch, var(--color-complement) 40%, transparent), color-mix(in oklch, var(--color-complement) 10%, transparent"
+          gradientColor={[
+            "color-mix(in oklch, var(--color-complement) 5%, transparent)",
+            "color-mix(in oklch, var(--color-complement) 40%, transparent)",
+            "color-mix(in oklch, var(--color-complement) 10%, transparent",
+          ]}
           link="/contact"
           bgColor="bg-complement/10"
           priority="tertiary"

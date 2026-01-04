@@ -1,5 +1,6 @@
 import GlowOutline from "../../components/glowOutline/GlowOutline";
 import portrait from "../../assets/images/home/portrait.png";
+import { createConicGradient, mixColor } from "../../utils/util";
 
 export default function Portrait() {
   return (
@@ -17,7 +18,15 @@ export default function Portrait() {
       <div className="relative w-30 sm:w-50 aspect-[1/1.5]">
         <div className="absolute aspect-square bottom-0 w-full">
           <GlowOutline
-            gradient="conic-gradient(from 0deg, transparent, color-mix(in oklch, var(--color-accent) 10%, transparent), var(--color-complement), var(--color-accent), var(--color-complement), color-mix(in oklch, var(--color-accent) 10%, transparent), transparent)"
+            gradient={createConicGradient(0, [
+              "transparent",
+              mixColor(10, "var(--color-accent)", "transparent"),
+              "var(--color-complement)",
+              "var(--color-accent)",
+              "var(--color-complement)",
+              mixColor(10, "var(--color-accent)", "transparent"),
+              "transparent",
+            ])}
             rounded="rounded-full"
           />
         </div>

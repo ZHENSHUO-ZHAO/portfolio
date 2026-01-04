@@ -9,61 +9,52 @@ import {
   type Transition,
   type Variants,
 } from "motion/react";
-
-const createConicGradient = (degree: number, ...colors: string[]) => {
-  return `conic-gradient(from ${degree}deg, ${colors.join(", ")})`;
-};
+import { createConicGradient, mixColor } from "../../utils/util";
 
 const colors = {
-  sky1: "color-mix(in oklch, var(--color-accent) 75%, transparent)",
-  sky2: "color-mix(in oklch, var(--color-complement) 65%, transparent)",
-  transparent: "color-mix(in oklch, var(--color-accent) 0%, transparent)",
+  sky1: mixColor(75, "var(--color-accent)", "transparent"),
+  sky2: mixColor(65, "var(--color-complement)", "transparent"),
+  transparent: mixColor(0, "var(--color-accent)", "transparent"),
 };
 
 const gradientKeyframes: TargetAndTransition = {
   background: [
-    createConicGradient(
-      0,
+    createConicGradient(0, [
       colors.transparent,
       colors.transparent,
       colors.transparent,
-      colors.transparent
-    ),
-    createConicGradient(
-      60,
+      colors.transparent,
+    ]),
+    createConicGradient(60, [
       colors.transparent,
       colors.sky1,
       colors.sky1,
-      colors.transparent
-    ),
-    createConicGradient(
-      120,
+      colors.transparent,
+    ]),
+    createConicGradient(120, [
       colors.sky2,
       colors.sky1,
       colors.sky1,
-      colors.sky2
-    ),
-    createConicGradient(
-      180,
+      colors.sky2,
+    ]),
+    createConicGradient(180, [
       colors.sky2,
       colors.sky1,
       colors.sky1,
-      colors.sky2
-    ),
-    createConicGradient(
-      240,
+      colors.sky2,
+    ]),
+    createConicGradient(240, [
       colors.sky2,
       colors.transparent,
       colors.transparent,
-      colors.sky2
-    ),
-    createConicGradient(
-      360,
+      colors.sky2,
+    ]),
+    createConicGradient(360, [
       colors.transparent,
       colors.transparent,
       colors.transparent,
-      colors.transparent
-    ),
+      colors.transparent,
+    ]),
   ],
 };
 
