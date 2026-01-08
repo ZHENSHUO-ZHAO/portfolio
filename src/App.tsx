@@ -38,8 +38,8 @@ const navList: RouterData = [
 function App() {
   const location = useLocation();
   const [ref, size] = useMeasure<HTMLDivElement>();
-  const deviceWidth = useMemo(() => {
-    return getRem(size.width);
+  const deviceWidth: { pixel: number; rem: number } = useMemo(() => {
+    return { pixel: size.width, rem: getRem(size.width) };
   }, [size]);
 
   return (

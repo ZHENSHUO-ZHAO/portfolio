@@ -13,7 +13,7 @@ export default function HomePageHeader() {
 
   const getRoles = useCallback(() => {
     // When screen size is less than 640 px (40rem), change to the roles from 1 row to 2 rows.
-    const rows = deviceWidth >= 40 ? 1 : 2;
+    const rows = deviceWidth.rem >= 40 ? 1 : 2;
     const itemsPerRow = content.roles.length / rows;
     const newRoles = [];
     for (let i = 0; i < rows; i++) {

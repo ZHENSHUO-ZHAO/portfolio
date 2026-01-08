@@ -360,12 +360,12 @@ export default function CarouselContent<T>({
   return (
     <>
       {/* This div is the holder for the drag view as well as the buttons. The buttons cannot be inside the drag view as the maskImage dim the button due to its opacity gradients. The buttons group use absolute position to overlay the drag view aligning with the center of the drag view vertically. */}
-      <div className="relative size-full">
+      <div className="relative w-full">
         <motion.div
           ref={containerRef}
           dragConstraints={{ left: 0, right: 0 }}
           drag="x"
-          className="relative size-full flex-none flex justify-center"
+          className="relative w-full flex justify-center"
           dragMomentum={false}
           dragElastic={0}
           onDragStart={onDragStart}

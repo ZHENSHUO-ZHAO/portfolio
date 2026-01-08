@@ -20,19 +20,21 @@ export default function Highlights({
   const { deviceWidth } = useContext(SettingContext);
 
   const getAspectRatio = useCallback(() => {
-    if (deviceWidth >= 64) return 1.4;
-    else if (deviceWidth >= 48) return 1.3;
-    else if (deviceWidth >= 40) return 1.1;
-    else if (deviceWidth >= 30) return 1.1;
-    else return 1;
+    const width = deviceWidth.pixel;
+    if (width >= 948) return 1.4;
+    else if (width >= 750) return 1.2;
+    else if (width >= 650) return 1.1;
+    else if (width >= 547) return 1;
+    else if (width >= 450) return 0.9;
+    else if (width >= 420) return 0.85;
+    else if (width >= 401) return 0.75;
+    else if (width >= 340) return 0.65;
+    else if (width >= 336) return 0.65;
+    else return 0.5;
   }, [deviceWidth]);
 
   return (
     <div className="">
-      {/* <ul className="grid grid-cols-1 md:grid-cols-2 gap-6"> */}
-      {/* {listData.map((data) => (
-        <Card key={data.title} data={data} />
-      ))} */}
       <Carousel
         aspectRatio={getAspectRatio()}
         CardComponent={Card}
@@ -41,11 +43,6 @@ export default function Highlights({
     </div>
   );
 }
-
-// interface HighlightContent {
-//   title: string;
-//   desc: string;
-// }
 
 function Card({ content }: CardItem<DescriptiveItem>) {
   const [isHover, setHover] = useState(false);
@@ -60,7 +57,7 @@ function Card({ content }: CardItem<DescriptiveItem>) {
 
   return (
     <motion.div
-      className="relative w-full h-[92%] flex flex-col"
+      className="relative w-full h-[90%] flex flex-col justify-between"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -77,17 +74,22 @@ function Card({ content }: CardItem<DescriptiveItem>) {
         )}
       </AnimatePresence>
       <div className="absolute inset-0 bg-card rounded-2xl border border-white" />
-      <img
-        className="relative w-full aspect-[2.37] rounded-t-2xl border-x border-t border-white object-cover"
-        src={content.image}
-        alt={`screenshot of ${content.title}`}
-      />
-      <div className="relative flex-1 p-6 flex flex-col justify-between items-start">
-        <div className="mb-6">
+      <div className="relative overflow-hidden rounded-t-2xl border-x border-t border-white">
+        <motion.img
+          src={content.image}
+          alt={`screenshot of ${content.title}`}
+          className="w-full aspect-[2.37] object-cover"
+          animate={{ scale: isHover ? 1.03 : 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        />
+      </div>
+      <div className="relative flex-1 p-4 xs:p-6 flex flex-col justify-end items-start">
+        <div className="flex-2">
           <h3>{content.title}</h3>
           <p>{content.desc}</p>
         </div>
-        <div className="overflow-hidden w-full">
+        <div className="shrink h-[1ch]" />
+        <div className="flex-none overflow-hidden w-full flex items-end">
           <motion.button
             className="flex gap-2 items-center"
             animate={
