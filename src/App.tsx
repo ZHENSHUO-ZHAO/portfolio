@@ -50,7 +50,7 @@ function App() {
       <PcRouter routes={navList} />
       <MobileRouter routes={navList} />
       <div
-        className={`max-w-4xl ${
+        className={`mx-8 lg:mx-0 max-w-4xl ${
           location.pathname !== "/" ? "pt-23 lg:pt-22" : ""
         }`}
       >

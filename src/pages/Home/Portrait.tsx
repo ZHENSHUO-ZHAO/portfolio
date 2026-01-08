@@ -1,5 +1,5 @@
-import GlowOutline from "../../components/glowOutline/GlowOutline";
-import portrait from "../../assets/images/home/portrait.png";
+import GlowOutline from "../../components/glowFx/GlowOutline";
+import portrait from "../../assets/images/home/portrait.webp";
 import { createConicGradient, mixColor } from "../../utils/util";
 
 export default function Portrait() {

@@ -1,5 +1,5 @@
 import { motion, type Variants } from "motion/react";
-import GlowOutline from "../../components/glowOutline/GlowOutline";
+import GlowOutline from "../../components/glowFx/GlowOutline";
 import { NavLink } from "react-router";
 import { createLinearGradient } from "../../utils/util";
 
@@ -49,10 +49,10 @@ export default function CtaButton({
     <motion.li
       className={`relative flex-1 ${
         priority === "primary"
-          ? "w-[280px] md:max-w-[190px] lg:max-w-[240px]"
+          ? "w-[280px] sm:max-w-[190px] lg:max-w-[240px]"
           : priority === "secondary"
-          ? "w-[200px] md:max-w-[180px] lg:max-w-[190px]"
-          : "w-[200px] md:max-w-[140px] lg:max-w-[150px]"
+          ? "w-[200px] sm:max-w-[180px] lg:max-w-[190px]"
+          : "w-[200px] sm:max-w-[140px] lg:max-w-[150px]"
       }`}
       animate="rest"
       whileHover="hover"

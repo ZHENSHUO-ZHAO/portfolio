@@ -45,7 +45,9 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
         <nav
           aria-label="Navigation Menu"
           aria-hidden={!isOpen}
-          className="relative overflow-y-auto pt-17 w-fit min-w-23 max-w-full h-screen pointer-events-auto"
+          className={`relative overflow-y-auto pt-17 w-fit min-w-23 max-w-full h-screen ${
+            isOpen ? "pointer-events-auto" : "pointer-events-none"
+          }`}
         >
           <BackgroundClip />
           <div className="relative">

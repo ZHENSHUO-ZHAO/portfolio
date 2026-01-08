@@ -1,5 +1,9 @@
 import createPageContext from "./pageContext";
 import type { ContextPageBase, DescriptiveItem } from "./pageContext";
+import yoplay from "../assets/images/home/yoplay.webp";
+import fishHunter from "../assets/images/home/fish-hunter.webp";
+import ninjaSaga from "../assets/images/home/ninja-saga.webp";
+import brainsic from "../assets/images/home/brainsic.webp";
 
 export type HomeContent = ContextPageBase & {
   name: string;
@@ -22,18 +26,25 @@ export const homeContent = {
   statement:
     "I craft engaging digital experiences \n — from immersive games to intuitive educational platforms — \n blending technical expertise with creative problem-solving \n to deliver solutions that make an impact.",
   highlight: [
-    { title: "YoPlay", desc: "Large-scale multiplayer casual casino platform" },
+    {
+      title: "YoPlay",
+      desc: "Large-scale multiplayer casual casino platform",
+      image: yoplay,
+    },
     {
       title: "Fish Hunter",
       desc: "High-performance real-time arcade shooter slot game",
+      image: fishHunter,
     },
     {
       title: "Ninja Saga",
       desc: "Hong Kong's first casual RPG game on Facebook",
+      image: ninjaSaga,
     },
     {
       title: "Brainsic",
       desc: "Neuroscience-driven game supporting clinical training for children with ADD",
+      image: brainsic,
     },
   ],
   snapshot: [

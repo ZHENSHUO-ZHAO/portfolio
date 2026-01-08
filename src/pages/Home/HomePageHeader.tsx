@@ -58,7 +58,7 @@ export default function HomePageHeader() {
           </div>
         ))}
       </ul>
-      <ul className="my-8 w-full flex flex-col md:flex-row gap-8 lg:gap-12 justify-center items-center text-base text-slate-800">
+      <ul className="my-8 w-full flex flex-col sm:flex-row gap-8 lg:gap-12 justify-center items-center text-base text-slate-800">
         <CtaButton
           gradientColor={[
             "var(--color-accent)",
@@ -101,7 +101,7 @@ export default function HomePageHeader() {
           Contact
         </CtaButton>
       </ul>
-      <div className="bg-slate-600/10 rounded-r-md border-l-4 border-l-accent mb-8">
+      <div className="bg-card rounded-r-md border-l-4 border-l-accent mb-8">
         <p className="text-base px-6 py-4 lg:text-lg sm:whitespace-pre-line sm:text-center">
           {content.statement}
         </p>

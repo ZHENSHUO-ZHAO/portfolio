@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import type { RouterData } from "../../App";
 import React, { useState } from "react";
-import GlowOutline from "../glowOutline/GlowOutline";
+import GlowOutline from "../glowFx/GlowOutline";
 import {
   AnimatePresence,
   motion,
