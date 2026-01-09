@@ -11,6 +11,8 @@ import {
 } from "motion/react";
 import { createConicGradient, mixColor } from "../../utils/util";
 
+export const routerBgColor: string = "bg-slate-300/60";
+
 const colors = {
   sky1: mixColor(75, "var(--color-accent)", "transparent"),
   sky2: mixColor(65, "var(--color-complement)", "transparent"),
@@ -88,7 +90,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
     <header className="fixed top-6 w-full z-50 hidden lg:block">
       <nav
         aria-label="Navigation Bar"
-        className="mx-auto max-w-[calc(56rem+10px)] bg-slate-400/40 py-3 rounded-3xl backdrop-blur-md"
+        className={`mx-auto max-w-[calc(56rem+10px)] py-3 rounded-3xl backdrop-blur-md ${routerBgColor}`}
       >
         {show && (
           <GlowOutline
@@ -107,7 +109,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                   to={item.to}
                   end={item.end}
                   onClick={handleClick}
-                  className="whitespace-nowrap text-sm flex flex-col items-center justify-center tracking-tight"
+                  className="whitespace-nowrap text-sm flex flex-col items-center justify-center tracking-tight font-medium"
                 >
                   {({ isActive }) => (
                     <>

@@ -3,6 +3,7 @@ import useMeasure from "../../hooks/measureHook";
 import { NavLink } from "react-router";
 import type { RouterData } from "../../App";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
+import { routerBgColor } from "./PcRouter";
 
 export default function MobileRouter({ routes }: { routes: RouterData }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                         to={item.to}
                         end={item.end}
                         className={({ isActive }) =>
-                          `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 ${
+                          `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 font-medium ${
                             isActive
                               ? "border-l-4 border-l-accent bg-complement/10"
                               : "border-l-4 border-l-transparent"
@@ -202,7 +203,7 @@ function BackgroundClip() {
   return (
     <motion.div
       variants={backgroundVariants}
-      className="absolute inset-0 pointer-events-none bg-slate-400/40 border-r border-white backdrop-blur-md rounded-r-2xl mr-3"
+      className={`absolute inset-0 pointer-events-none border-r border-white backdrop-blur-md rounded-r-2xl mr-3 ${routerBgColor}`}
       style={{
         boxShadow: "5px 0 5px rgb(0 0 0 / 30%)",
       }}
