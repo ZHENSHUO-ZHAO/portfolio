@@ -111,7 +111,7 @@ function Card({ content }: CardItem<DescriptiveItem>) {
         <motion.img
           src={content.image}
           alt={`screenshot of ${content.title}`}
-          className="size-full object-cover"
+          className="size-full object-cover pointer-events-none"
           animate={{ scale: isHover ? 1.03 : 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         />

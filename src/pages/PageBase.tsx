@@ -33,17 +33,19 @@ export function Section({
   children,
   headerChildren,
   headingClassName,
+  className = "",
 }: {
   id: string;
   title: string;
   children: ReactNode;
   headerChildren?: ReactNode;
   headingClassName?: string;
+  className?: string;
 }) {
   const h2ClassName = `mb-2 ${headingClassName || ""}`;
 
   return (
-    <section className="mb-10" aria-labelledby={id}>
+    <section className={`mb-10 ${className}`} aria-labelledby={id}>
       {headerChildren ? (
         <header>
           <h2 className={h2ClassName} id={id}>
