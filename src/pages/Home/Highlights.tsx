@@ -6,40 +6,72 @@ import {
 } from "motion/react";
 import { createConicGradient, mixColor } from "../../utils/util";
 import Glow from "../../components/glowFx/Glow";
-import { useCallback, useContext, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Carousel from "../../components/carousel/Carousel";
 import { type CardItem } from "../../components/carousel/carouselTypes";
 import type { DescriptiveItem } from "../../contexts/pageContext";
-import { SettingContext } from "../../contexts/settingContext";
+import useMeasure from "../../hooks/measureHook";
 
 export default function Highlights({
   listData,
 }: {
   listData: DescriptiveItem[];
 }) {
-  const { deviceWidth } = useContext(SettingContext);
+  const [aspectRatio, setAspectRatio] = useState(1);
 
-  const getAspectRatio = useCallback(() => {
-    const width = deviceWidth.pixel;
-    if (width >= 948) return 1.4;
-    else if (width >= 750) return 1.2;
-    else if (width >= 650) return 1.1;
-    else if (width >= 547) return 1;
-    else if (width >= 450) return 0.9;
-    else if (width >= 420) return 0.85;
-    else if (width >= 401) return 0.75;
-    else if (width >= 340) return 0.65;
-    else if (width >= 336) return 0.65;
-    else return 0.5;
-  }, [deviceWidth]);
-
+  // The 4th highlight content has the longest description. Use it in the tracker to calculate the maximum height, which can be used to calculate the aspect ration for the Carousel. It enforce all cards in the Carousel with the same size. As the aspect ration depends on the track, it's unnecessary to add breakpoints to aspect ratio.
   return (
-    <div className="">
+    <div className="relative">
+      <CardMaxHeightTracker
+        content={listData[3]}
+        setAspectRatio={setAspectRatio}
+      />
       <Carousel
-        aspectRatio={getAspectRatio()}
+        aspectRatio={aspectRatio}
         CardComponent={Card}
         contentList={listData}
       />
+    </div>
+  );
+}
+
+function CardMaxHeightTracker({
+  content,
+  setAspectRatio,
+}: {
+  content: DescriptiveItem;
+  setAspectRatio: React.Dispatch<React.SetStateAction<number>>;
+}) {
+  const [ref, size] = useMeasure<HTMLDivElement>();
+
+  useLayoutEffect(() => {
+    setAspectRatio(
+      size.width > 0 && size.height > 0 ? size.width / size.height : 1
+    );
+  }, [size, setAspectRatio]);
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden="true"
+      role="presentation"
+      tabIndex={-1}
+      className="absolute left-0 top-0 w-[70%] h-fit bg-amber-600 pointer-events-none select-none invisible"
+    >
+      <div className="w-full py-4 flex flex-col justify-between">
+        <div className="rounded-t-2xl border-x border-t border-white">
+          <img className="w-full aspect-[2.37]" />
+          <div className="p-4 xs:p-6 flex flex-col justify-between items-start gap-4">
+            <div>
+              <h3>{content.title}</h3>
+              <p>{content.desc}</p>
+            </div>
+            <div className="w-full">
+              <span>More Details</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -64,6 +96,7 @@ function Card({ content }: CardItem<DescriptiveItem>) {
       <AnimatePresence>
         {isHover && (
           <motion.div
+            className="absolute inset-0 pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             exit={{ opacity: 0 }}
@@ -74,22 +107,21 @@ function Card({ content }: CardItem<DescriptiveItem>) {
         )}
       </AnimatePresence>
       <div className="absolute inset-0 bg-card rounded-2xl border border-white" />
-      <div className="relative overflow-hidden rounded-t-2xl border-x border-t border-white">
+      <div className="relative overflow-hidden w-full aspect-[2.37] rounded-t-2xl border-x border-t border-white">
         <motion.img
           src={content.image}
           alt={`screenshot of ${content.title}`}
-          className="w-full aspect-[2.37] object-cover"
+          className="size-full object-cover"
           animate={{ scale: isHover ? 1.03 : 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         />
       </div>
-      <div className="relative flex-1 p-4 xs:p-6 flex flex-col justify-end items-start">
-        <div className="flex-2">
+      <div className="relative flex-1 p-4 xs:p-6 flex flex-col justify-between items-start gap-4">
+        <div>
           <h3>{content.title}</h3>
           <p>{content.desc}</p>
         </div>
-        <div className="shrink h-[1ch]" />
-        <div className="flex-none overflow-hidden w-full flex items-end">
+        <div className="overflow-hidden w-full flex items-end">
           <motion.button
             className="flex gap-2 items-center"
             animate={
