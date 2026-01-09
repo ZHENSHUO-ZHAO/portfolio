@@ -7,17 +7,27 @@ export default function Snapshots({
   snapshot: DescriptiveItem[];
 }) {
   return (
-    <ul className="flex flex-col gap-4 items-center">
-      {snapshot.map((s) => (
+    <ul className="flex flex-col gap-4 items-stretch min-[540px]:items-center">
+      {snapshot.map((s, i) => (
         <li
           key={s.desc}
-          className="rounded-l-full text-left px-4 py-2"
+          className={`${
+            i % 2 === 0 ? "rounded-l-full" : "rounded-r-full"
+          } text-left px-5 min-[540px]:px-4 py-2`}
           style={{
-            background: createLinearGradient(90, [
-              mixColor(30, "var(--color-accent)", "transparent"),
-              mixColor(10, "var(--color-complement)", "transparent"),
-              "transparent",
-            ]),
+            background: `${
+              i % 2 === 0
+                ? createLinearGradient(90, [
+                    mixColor(30, "var(--color-accent)", "transparent"),
+                    mixColor(10, "var(--color-complement)", "transparent"),
+                    "transparent",
+                  ])
+                : createLinearGradient(270, [
+                    mixColor(30, "var(--color-accent)", "transparent"),
+                    mixColor(10, "var(--color-complement)", "transparent"),
+                    "transparent",
+                  ])
+            }`,
           }}
         >
           {s.desc}
