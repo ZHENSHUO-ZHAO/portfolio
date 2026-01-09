@@ -203,7 +203,7 @@ function BackgroundClip() {
   return (
     <motion.div
       variants={backgroundVariants}
-      className={`absolute inset-0 pointer-events-none border-r border-white backdrop-blur-md rounded-r-2xl mr-3 ${routerBgColor}`}
+      className={`absolute inset-0 pointer-events-none border-r border-white backdrop-blur-lg rounded-r-2xl mr-3 ${routerBgColor}`}
       style={{
         boxShadow: "5px 0 5px rgb(0 0 0 / 30%)",
       }}
