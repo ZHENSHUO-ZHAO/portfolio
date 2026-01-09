@@ -10,7 +10,7 @@ export type HomeContent = ContextPageBase & {
   roles: string[];
   statement: string;
   highlight: DescriptiveItem[];
-  snapshot: string[];
+  snapshot: DescriptiveItem[];
   bio: string;
 };
 
@@ -48,10 +48,14 @@ export const homeContent = {
     },
   ],
   snapshot: [
-    "10+ years in game & interactive media development",
-    "Full-stack & cloud dev (React, Node.js, AWS)",
-    "Tutor in Software Engineering Project Management at RMIT",
-    "International experience across Hong Kong, UK & Australia",
+    { desc: "10+ years in game & interactive media development" },
+    { desc: "Full-stack & cloud dev (React, Node.js, AWS)" },
+    {
+      desc: "Tutor in Software Engineering Project Management at RMIT",
+    },
+    {
+      desc: "International experience across Hong Kong, UK & Australia",
+    },
   ],
   bio: "I'm a software engineer passionate about crafting user-centred, technically sound digital experiences. I enjoy solving complex problems, building interactive systems, and mentoring upcoming developers.",
 } satisfies HomeContent;

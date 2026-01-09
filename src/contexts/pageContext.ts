@@ -10,4 +10,4 @@ export default function createPageContext<T extends ContextPageBase>(
 
 export type ContextPageBase = { pageTitle: string };
 
-export type DescriptiveItem = { title: string; desc: string; image?: string };
+export type DescriptiveItem = { title?: string; desc?: string; image?: string };
