@@ -11,7 +11,7 @@ export default function Hobby() {
     <PageBase
       content={content}
       headerElement={HobbyPageHeader}
-      headerClassName="mb-8"
+      headerClassName="pb-8"
     >
       <Item
         title={content.qualifications.title}
@@ -25,15 +25,15 @@ export default function Hobby() {
   );
 }
 
-function HobbyPageHeader(headingClassName: string) {
+function HobbyPageHeader({ headingClassName }: { headingClassName: string }) {
   const content = useHobbyPageContext();
 
   return (
-    <>
-      <h1 className={headingClassName}>{content.header.title}</h1>
+    <div className={headingClassName}>
+      <h1>{content.header.title}</h1>
       <p className="mb-2">{content.header.desc}</p>
       <ItemList listData={content.header.interests} />
-    </>
+    </div>
   );
 }
 

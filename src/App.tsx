@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router";
+import { Outlet } from "react-router";
 import MobileRouter from "./components/router/MobileRouter";
 import PcRouter from "./components/router/PcRouter";
 import {
@@ -36,7 +36,6 @@ const navList: RouterData = [
 ];
 
 function App() {
-  const location = useLocation();
   const [ref, size] = useMeasure<HTMLDivElement>();
   const deviceWidth: { pixel: number; rem: number } = useMemo(() => {
     return { pixel: size.width, rem: getRem(size.width) };
@@ -49,11 +48,7 @@ function App() {
     >
       <PcRouter routes={navList} />
       <MobileRouter routes={navList} />
-      <div
-        className={`mx-8 lg:mx-0 max-w-4xl ${
-          location.pathname !== "/" ? "pt-23 lg:pt-22" : ""
-        }`}
-      >
+      <div className="mx-8 lg:mx-0 max-w-4xl">
         <SettingContext value={{ deviceWidth }}>
           <Outlet />
         </SettingContext>

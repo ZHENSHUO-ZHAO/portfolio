@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import type { ContextPageBase } from "../contexts/pageContext";
+import type { ContextPageBase, DescriptiveItem } from "../contexts/pageContext";
+import { useLocation } from "react-router";
 
 export default function PageBase({
   content,
@@ -8,22 +9,39 @@ export default function PageBase({
   children,
 }: {
   content: ContextPageBase;
-  headerElement?: (headingClassName: string) => ReactNode;
+  headerElement?: ({
+    headingClassName,
+  }: {
+    headingClassName: string;
+  }) => ReactNode;
   headerClassName?: string;
   children: ReactNode;
 }) {
-  const headingClassName = "mb-2";
+  const headingClassName = "relative pb-2";
+  const location = useLocation();
+
   return (
     <main className="w-full grid grid-cols-1">
-      <header className={`mb-2 ${headerClassName || ""}`}>
+      <header
+        className={`relative pb-2 ${headerClassName || ""} ${
+          location.pathname !== "/" ? "pt-23 lg:pt-22" : ""
+        }`}
+      >
+        <FullBleedContainer />
         {headerElement ? (
-          headerElement(headingClassName)
+          headerElement({ headingClassName })
         ) : (
           <h1 className={headingClassName}>{content.pageTitle}</h1>
         )}
       </header>
       {children}
     </main>
+  );
+}
+
+export function FullBleedContainer() {
+  return (
+    <div className="absolute w-screen inset-y-0 left-1/2 -translate-x-1/2 bg-bg" />
   );
 }
 
@@ -42,12 +60,13 @@ export function Section({
   headingClassName?: string;
   className?: string;
 }) {
-  const h2ClassName = `mb-2 ${headingClassName || ""}`;
+  const h2ClassName = `relative pb-2 ${headingClassName || ""}`;
 
   return (
-    <section className={`mb-10 ${className}`} aria-labelledby={id}>
+    <section className={`relative pb-10 ${className}`} aria-labelledby={id}>
+      <FullBleedContainer />
       {headerChildren ? (
-        <header>
+        <header className="relative">
           <h2 className={h2ClassName} id={id}>
             {title}
           </h2>
@@ -58,8 +77,7 @@ export function Section({
           {title}
         </h2>
       )}
-
-      {children}
+      <div className="relative">{children}</div>
     </section>
   );
 }
@@ -68,7 +86,7 @@ export function ArticleList({
   listData,
   ordered,
 }: {
-  listData: { title: string; desc: string }[];
+  listData: DescriptiveItem[];
   ordered?: boolean;
 }) {
   return (
@@ -86,11 +104,7 @@ export function ArticleList({
   );
 }
 
-function Articles({
-  listData,
-}: {
-  listData: { title: string; desc: string }[];
-}) {
+function Articles({ listData }: { listData: DescriptiveItem[] }) {
   return (
     <>
       {listData.map((data) => (

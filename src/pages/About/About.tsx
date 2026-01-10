@@ -8,7 +8,7 @@ export default function About() {
     <PageBase
       content={content}
       headerElement={AboutPageHeader}
-      headerClassName="mb-8"
+      headerClassName="pb-8"
     >
       <Section id="strength-heading" title="My strongest work combines:">
         <ul>
@@ -42,13 +42,13 @@ export default function About() {
   );
 }
 
-function AboutPageHeader(headingClassName: string) {
+function AboutPageHeader({ headingClassName }: { headingClassName: string }) {
   const content = useAboutPageContext();
 
   return (
-    <>
-      <h1 className={headingClassName}>{content.pageTitle}</h1>
+    <div className={headingClassName}>
+      <h1>{content.pageTitle}</h1>
       <p>{content.introduction} </p>
-    </>
+    </div>
   );
 }
