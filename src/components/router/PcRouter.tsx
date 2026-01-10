@@ -10,6 +10,7 @@ import {
   type Variants,
 } from "motion/react";
 import { createConicGradient, mixColor } from "../../utils/util";
+import GlassSurface from "../glassFx/GlassSurface";
 
 export const routerBgColor: string = "bg-slate-300/60";
 
@@ -90,7 +91,8 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
     <header className="fixed top-6 w-full z-50 hidden lg:block">
       <nav
         aria-label="Navigation Bar"
-        className={`mx-auto max-w-[calc(56rem+10px)] py-3 rounded-3xl backdrop-blur-md ${routerBgColor}`}
+        className={`relative mx-auto max-w-[calc(56rem+10px)]`}
+        // className={`mx-auto max-w-[calc(56rem+10px)] py-3 rounded-3xl backdrop-blur-md ${routerBgColor}`}
       >
         {show && (
           <GlowOutline
@@ -101,62 +103,73 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
             rounded={rounded}
           />
         )}
-        <ul className="flex flex-nowrap items-center mx-auto">
-          {routes.map((item, i) => (
-            <React.Fragment key={item.title}>
-              <li className="flex-1">
-                <NavLink
-                  to={item.to}
-                  end={item.end}
-                  onClick={handleClick}
-                  className="whitespace-nowrap text-sm flex flex-col items-center justify-center tracking-tight font-medium"
-                >
-                  {({ isActive }) => (
-                    <>
-                      <div className="relative flex flex-col justify-start items-center w-fit">
-                        <AnimatePresence>
-                          {isActive && (
+        <div className="absolute inset-0 rounded-3xl bg-slate-50/60" />
+        <GlassSurface
+          displace={5}
+          backgroundOpacity={0.1}
+          greenOffset={0}
+          blueOffset={0}
+          width="100%"
+          height="50px"
+          borderRadius={24}
+        >
+          <ul className="flex flex-nowrap items-center w-full">
+            {routes.map((item, i) => (
+              <React.Fragment key={item.title}>
+                <li className="flex-1">
+                  <NavLink
+                    to={item.to}
+                    end={item.end}
+                    onClick={handleClick}
+                    className="whitespace-nowrap text-sm flex flex-col items-center justify-center tracking-tight font-medium"
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <div className="relative flex flex-col justify-start items-center w-fit">
+                          <AnimatePresence>
+                            {isActive && (
+                              <motion.span
+                                layoutId="nav-underline"
+                                className="absolute -bottom-1 h-0.5 w-full rounded-full bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 500,
+                                  damping: 40,
+                                }}
+                              />
+                            )}
+                          </AnimatePresence>
+
+                          <motion.div
+                            className="flex items-center gap-2"
+                            initial="rest"
+                            animate="rest"
+                            whileHover={!isActive ? "hover" : "rest"}
+                          >
                             <motion.span
-                              layoutId="nav-underline"
-                              className="absolute -bottom-1 h-0.5 w-full rounded-full bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"
+                              variants={iconVariants}
                               transition={{
                                 type: "spring",
-                                stiffness: 500,
-                                damping: 40,
+                                stiffness: 800,
+                                damping: 15,
                               }}
-                            />
-                          )}
-                        </AnimatePresence>
-
-                        <motion.div
-                          className="flex items-center gap-2"
-                          initial="rest"
-                          animate="rest"
-                          whileHover={!isActive ? "hover" : "rest"}
-                        >
-                          <motion.span
-                            variants={iconVariants}
-                            transition={{
-                              type: "spring",
-                              stiffness: 800,
-                              damping: 15,
-                            }}
-                          >
-                            <item.icon size={18} strokeWidth={2} />
-                          </motion.span>
-                          <span>{item.title}</span>
-                        </motion.div>
-                      </div>
-                    </>
-                  )}
-                </NavLink>
-              </li>
-              {i < routes.length - 1 && (
-                <div className="flex-none h-4 w-px border-r border-r-slate-500/50 border-l border-l-slate-100/50 rounded-full" />
-              )}
-            </React.Fragment>
-          ))}
-        </ul>
+                            >
+                              <item.icon size={18} strokeWidth={2} />
+                            </motion.span>
+                            <span>{item.title}</span>
+                          </motion.div>
+                        </div>
+                      </>
+                    )}
+                  </NavLink>
+                </li>
+                {i < routes.length - 1 && (
+                  <div className="flex-none h-4 w-px border-r border-r-slate-500/50 border-l border-l-slate-100/50 rounded-full" />
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </GlassSurface>
       </nav>
     </header>
   );

@@ -4,6 +4,7 @@ import { NavLink } from "react-router";
 import type { RouterData } from "../../App";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { routerBgColor } from "./PcRouter";
+import GlassSurface from "../glassFx/GlassSurface";
 
 export default function MobileRouter({ routes }: { routes: RouterData }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,10 +40,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
     >
       <MenuToggle ref={toggleRef} isOpen={isOpen} setIsOpen={setIsOpen} />
       <aside ref={ref} className="absolute inset-0">
-        <div
-          className="absolute inset-0"
-          onClick={() => setIsOpen(false)}
-        ></div>
+        <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
         <nav
           aria-label="Navigation Menu"
           aria-hidden={!isOpen}
