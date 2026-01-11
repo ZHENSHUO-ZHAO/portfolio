@@ -24,7 +24,7 @@ export default function PageBase({
     <main className="w-full grid grid-cols-1">
       <header
         className={`relative pb-2 ${headerClassName || ""} ${
-          location.pathname !== "/" ? "pt-23 lg:pt-22" : ""
+          location.pathname !== "/" ? "pt-23 lg:pt-30" : ""
         }`}
       >
         <FullBleedContainer />

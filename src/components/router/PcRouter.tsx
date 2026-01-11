@@ -68,7 +68,7 @@ const gradientTransition: Transition<string> = {
   times: [0.1, 0.4, 0.6, 0.9, 1],
 };
 
-const rounded = "rounded-3xl";
+const rounded = "rounded-4xl";
 
 const iconVariants: Variants = {
   rest: { scale: 1 },
@@ -92,26 +92,16 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
       <nav
         aria-label="Navigation Bar"
         className={`relative mx-auto max-w-[calc(56rem+10px)]`}
-        // className={`mx-auto max-w-[calc(56rem+10px)] py-3 rounded-3xl backdrop-blur-md ${routerBgColor}`}
       >
-        {show && (
-          <GlowOutline
-            gradient={{
-              keyframes: gradientKeyframes,
-              transition: gradientTransition,
-            }}
-            rounded={rounded}
-          />
-        )}
-        <div className="absolute inset-0 rounded-3xl bg-slate-50/60" />
+        <div className={`absolute inset-0 bg-slate-50/60 ${rounded}`} />
         <GlassSurface
           displace={5}
           backgroundOpacity={0.1}
           greenOffset={0}
           blueOffset={0}
           width="100%"
-          height="50px"
-          borderRadius={24}
+          height="55px"
+          borderRadius={32}
         >
           <ul className="flex flex-nowrap items-center w-full">
             {routes.map((item, i) => (
@@ -170,6 +160,15 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
             ))}
           </ul>
         </GlassSurface>
+        {show && (
+          <GlowOutline
+            gradient={{
+              keyframes: gradientKeyframes,
+              transition: gradientTransition,
+            }}
+            rounded={rounded}
+          />
+        )}
       </nav>
     </header>
   );

@@ -1,3 +1,4 @@
+import type { LucideProps } from "lucide-react";
 import { createContext, useContext } from "react";
 
 export default function createPageContext<T extends ContextPageBase>(
@@ -10,4 +11,11 @@ export default function createPageContext<T extends ContextPageBase>(
 
 export type ContextPageBase = { pageTitle: string };
 
-export type DescriptiveItem = { title?: string; desc?: string; image?: string };
+export type DescriptiveItem = {
+  title?: string;
+  desc?: string;
+  image?: string;
+  icon?: React.ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+  >;
+};

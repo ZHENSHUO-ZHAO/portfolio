@@ -116,7 +116,7 @@ function Card({ content }: CardItem<DescriptiveItem>) {
           transition={{ duration: 0.4, ease: "easeOut" }}
         />
       </div>
-      <div className="relative flex-1 p-4 xs:p-6 flex flex-col justify-between items-start gap-4">
+      <div className="relative flex-1 p-4 xs:p-6 flex flex-col justify-between items-start gap-4 pointer-events-none">
         <div>
           <h3>{content.title}</h3>
           <p>{content.desc}</p>

@@ -4,6 +4,12 @@ import yoplay from "../assets/images/home/yoplay.webp";
 import fishHunter from "../assets/images/home/fish-hunter.webp";
 import ninjaSaga from "../assets/images/home/ninja-saga.webp";
 import brainsic from "../assets/images/home/brainsic.webp";
+import {
+  FileBracesCorner,
+  Gamepad2,
+  GraduationCap,
+  MapPinned,
+} from "lucide-react";
 
 export type HomeContent = ContextPageBase & {
   name: string;
@@ -48,13 +54,25 @@ export const homeContent = {
     },
   ],
   snapshot: [
-    { desc: "10+ years in game & interactive media development" },
-    { desc: "Full-stack & cloud dev (React, Node.js, AWS)" },
     {
-      desc: "Tutor in Software Engineering Project Management at RMIT",
+      title: "Industry Experience",
+      desc: "10+ years in game & interactive media development",
+      icon: Gamepad2,
     },
     {
+      title: "Modern Engineering",
+      desc: "Full-stack & cloud dev (React, Node.js, AWS)",
+      icon: FileBracesCorner,
+    },
+    {
+      title: "Academic Mentorship",
+      desc: "Tutor in Software Engineering Project Management at RMIT",
+      icon: GraduationCap,
+    },
+    {
+      title: "Global Collaboration",
       desc: "International experience across Hong Kong, UK & Australia",
+      icon: MapPinned,
     },
   ],
   bio: "I'm a software engineer passionate about crafting user-centred, technically sound digital experiences. I enjoy solving complex problems, building interactive systems, and mentoring upcoming developers.",

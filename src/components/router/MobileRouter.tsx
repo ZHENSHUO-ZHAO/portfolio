@@ -4,7 +4,6 @@ import { NavLink } from "react-router";
 import type { RouterData } from "../../App";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { routerBgColor } from "./PcRouter";
-import GlassSurface from "../glassFx/GlassSurface";
 
 export default function MobileRouter({ routes }: { routes: RouterData }) {
   const [isOpen, setIsOpen] = useState(false);
