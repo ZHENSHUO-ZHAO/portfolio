@@ -10,24 +10,20 @@ import {
 
 const outlineVariants: Variants = {
   rest: {
-    background: createLinearGradient(135, [
-      mixColor(30, "var(--color-accent)", "transparent"),
-      "transparent",
-      "transparent",
-      "transparent",
-      mixColor(30, "var(--color-complement)", "transparent"),
-    ]),
+    opacity: 0,
   },
   hover: {
-    background: createLinearGradient(135, [
-      mixColor(60, "var(--color-accent)", "transparent"),
-      "transparent",
-      "transparent",
-      "transparent",
-      mixColor(60, "var(--color-complement)", "transparent"),
-    ]),
+    opacity: 1,
   },
 };
+
+const outlineGradient: string = createLinearGradient(135, [
+  mixColor(60, "var(--color-accent)", "transparent"),
+  "transparent",
+  "transparent",
+  "transparent",
+  mixColor(60, "var(--color-complement)", "transparent"),
+]);
 
 const topLeftVariants: Variants = {
   rest: {
@@ -35,11 +31,13 @@ const topLeftVariants: Variants = {
       undefined,
       undefined,
       [
-        [mixColor(30, "var(--color-accent)", "transparent"), 0],
+        [mixColor(20, "var(--color-accent)", "transparent"), 0],
         ["transparent", 30],
       ],
-      "top left"
+      "20% 20%"
     ),
+    filter: "grayscale(0.6)",
+    opacity: 0.7,
   },
   hover: {
     background: createRadialGradientWithStops(
@@ -49,8 +47,10 @@ const topLeftVariants: Variants = {
         [mixColor(50, "var(--color-accent)", "transparent"), 0],
         ["transparent", 30],
       ],
-      "top left"
+      "0% 0%"
     ),
+    filter: "grayscale(0)",
+    opacity: 1,
   },
 };
 
@@ -60,11 +60,13 @@ const bottomRightVariants: Variants = {
       undefined,
       undefined,
       [
-        [mixColor(30, "var(--color-complement)", "transparent"), 0],
+        [mixColor(20, "var(--color-complement)", "transparent"), 0],
         ["transparent", 30],
       ],
-      "bottom right"
+      "80% 80%"
     ),
+    filter: "grayscale(0.6)",
+    opacity: 0.7,
   },
   hover: {
     background: createRadialGradientWithStops(
@@ -74,13 +76,15 @@ const bottomRightVariants: Variants = {
         [mixColor(50, "var(--color-complement)", "transparent"), 0],
         ["transparent", 30],
       ],
-      "bottom right"
+      "100% 100%"
     ),
+    filter: "grayscale(0)",
+    opacity: 1,
   },
 };
 
 const iconVariants: Variants = {
-  rest: {
+  hover: {
     boxShadow: `${createInnerShadow(
       "-6px",
       "-6px",
@@ -88,7 +92,7 @@ const iconVariants: Variants = {
       "rgba(255,255,255,0.8)"
     )}, ${createInnerShadow("6px", "6px", "10px", "rgba(0,0,0,0.25)")}`,
   },
-  hover: {
+  rest: {
     boxShadow: `${createInnerShadow(
       "-6px",
       "-6px",
@@ -109,7 +113,7 @@ export default function Snapshots({
         <motion.li
           key={s.desc}
           className="
-          relative flex flex-col justify-start items-center gap-4 py-4 px-4 rounded-xl bg-slate-500/10"
+          relative flex flex-col justify-start items-center gap-4 py-4 px-4 rounded-xl bg-slate-500/10 border border-slate-200"
           initial="rest"
           whileHover="hover"
           whileTap="hover"
@@ -154,10 +158,9 @@ export default function Snapshots({
             <p className="text-md font-medium text-neutral-500">{s.desc}</p>
           </div>
 
-          <GlowOutline
-            gradient={{ variants: outlineVariants }}
-            rounded="rounded-xl"
-          />
+          <motion.div className="absolute inset-0" variants={outlineVariants}>
+            <GlowOutline gradient={outlineGradient} rounded="rounded-xl" />
+          </motion.div>
         </motion.li>
       ))}
     </ul>
