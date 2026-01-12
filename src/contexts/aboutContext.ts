@@ -45,19 +45,19 @@ export const aboutContent = {
   philosophy: [
     {
       title: "User-first design",
-      desc: "great products begin with understanding user intention.",
+      desc: "Great products begin with understanding user intention.",
     },
     {
       title: "Systems thinking",
-      desc: "good architecture enables stability and growth.",
+      desc: "Good architecture enables stability and growth.",
     },
     {
       title: "Data-driven iteration",
-      desc: "metrics guide refinement and long-term success.",
+      desc: "Metrics guide refinement and long-term success.",
     },
     {
       title: "Clear collaboration",
-      desc: "strong communication strengthens every team.",
+      desc: "Strong communication strengthens every team.",
     },
   ],
   aim: {

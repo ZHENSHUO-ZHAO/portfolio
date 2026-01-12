@@ -57,13 +57,16 @@ export default function HomePageHeader({
                   {r}
                 </li>
                 {j < array.length - 1 && (
-                  <div className="h-2/3 w-px border-r border-r-slate-500/50 border-l border-l-slate-200/50 rounded-full" />
+                  <div className="h-3 w-px border-r border-r-slate-500/50 border-l border-l-slate-200/50 rounded-full" />
                 )}
               </React.Fragment>
             ))}
           </div>
         ))}
       </ul>
+      <p className="text-sm px-6 py-4 sm:whitespace-pre-line sm:text-center">
+        {content.statement}
+      </p>
       <ul className="my-8 w-full flex flex-col sm:flex-row gap-8 lg:gap-12 justify-center items-center text-base text-slate-800">
         <CtaButton
           gradientColor={[
@@ -107,11 +110,11 @@ export default function HomePageHeader({
           Contact
         </CtaButton>
       </ul>
-      <div className="bg-card rounded-r-md border-l-4 border-l-accent mb-8">
-        <p className="text-base px-6 py-4 lg:text-lg sm:whitespace-pre-line sm:text-center">
-          {content.statement}
-        </p>
-      </div>
+      {/* <div className="bg-card rounded-r-md border-l-4 border-l-accent mb-8"> */}
+      {/* <p className="text-sm px-6 py-4 sm:whitespace-pre-line sm:text-center">
+        {content.statement}
+      </p> */}
+      {/* </div> */}
     </div>
   );
 }
