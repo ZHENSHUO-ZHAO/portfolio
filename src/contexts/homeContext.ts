@@ -17,7 +17,7 @@ export type HomeContent = ContextPageBase & {
   statement: string;
   highlight: DescriptiveItem[];
   snapshot: DescriptiveItem[];
-  bio: string;
+  bio: DescriptiveItem;
 };
 
 export const homeContent = {
@@ -75,7 +75,10 @@ export const homeContent = {
       icon: MapPinned,
     },
   ],
-  bio: "I'm a software engineer passionate about crafting user-centred, technically sound digital experiences. I enjoy solving complex problems, building interactive systems, and mentoring upcoming developers.",
+  bio: {
+    title: "A Quick Introduction",
+    desc: "I'm a software engineer who enjoys turning complex problems into clear, well-structured systems. My work focuses on building interactive products that balance performance, usability, and maintainability. I'm especially motivated by collaborative problem-solving and mentoring developers as they grow.",
+  },
 } satisfies HomeContent;
 
 export const [HomePageContext, useHomePageContext] =

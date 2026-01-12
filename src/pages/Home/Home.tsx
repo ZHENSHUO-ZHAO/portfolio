@@ -22,13 +22,18 @@ export default function Home() {
         id="snapshots"
         title="Snapshots"
         className="text-center"
-        headingClassName="mb-7"
+        // headingClassName="mb-7"
       >
         <Snapshots snapshot={content.snapshot} />
       </Section>
 
-      <Section id="bio" title="About me" headingClassName="sr-only">
-        <Bio bio={content.bio} />
+      <Section
+        id="bio"
+        title={content.bio.title}
+        className="text-center"
+        // headingClassName="mb-7"
+      >
+        <Bio bio={content.bio.desc} />
       </Section>
     </PageBase>
   );

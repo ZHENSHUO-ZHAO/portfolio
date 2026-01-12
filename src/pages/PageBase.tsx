@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { ContextPageBase, DescriptiveItem } from "../contexts/pageContext";
-import { useLocation } from "react-router";
 
 export default function PageBase({
   content,
@@ -18,15 +17,10 @@ export default function PageBase({
   children: ReactNode;
 }) {
   const headingClassName = "relative pb-2";
-  const location = useLocation();
 
   return (
     <main className="w-full grid grid-cols-1">
-      <header
-        className={`relative pb-2 ${headerClassName || ""} ${
-          location.pathname !== "/" ? "pt-23 lg:pt-30" : ""
-        }`}
-      >
+      <header className={`relative pb-2 mb-2 pt-23 ${headerClassName || ""}`}>
         <FullBleedContainer />
         {headerElement ? (
           headerElement({ headingClassName })
@@ -60,7 +54,7 @@ export function Section({
   headingClassName?: string;
   className?: string;
 }) {
-  const h2ClassName = `relative pb-2 ${headingClassName || ""}`;
+  const h2ClassName = `relative pb-2 mb-2 ${headingClassName || ""}`;
 
   return (
     <section className={`relative pb-10 ${className}`} aria-labelledby={id}>

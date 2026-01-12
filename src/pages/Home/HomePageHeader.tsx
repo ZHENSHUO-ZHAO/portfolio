@@ -36,7 +36,7 @@ export default function HomePageHeader({
 
   return (
     <div
-      className={`${headingClassName} h-screen flex flex-col gap-4 justify-center items-center`}
+      className={`${headingClassName} flex flex-col gap-4 justify-center items-center`}
     >
       <Portrait />
       <h1 className="text-center text-2xl font-extrabold font-display tracking-tight xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">

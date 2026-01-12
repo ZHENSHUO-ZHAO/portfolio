@@ -113,7 +113,7 @@ export default function Snapshots({
         <motion.li
           key={s.desc}
           className="
-          relative flex flex-col justify-start items-center gap-4 py-4 px-4 rounded-xl bg-slate-500/10 border border-slate-200"
+          relative flex flex-col justify-start items-center gap-4 py-4 px-4 rounded-xl bg-card border border-slate-200"
           initial="rest"
           whileHover="hover"
           whileTap="hover"
