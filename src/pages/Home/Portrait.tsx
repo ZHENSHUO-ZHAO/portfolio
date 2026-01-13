@@ -2,9 +2,9 @@ import GlowOutline from "../../components/glowFx/GlowOutline";
 import portrait from "../../assets/images/home/portrait.webp";
 import { createConicGradient, mixColor } from "../../utils/util";
 
-export default function Portrait() {
+export default function Portrait({ className }: { className: string }) {
   return (
-    <>
+    <div className={className}>
       <svg viewBox="0 0 100 150" className="absolute w-0 h-0">
         <defs>
           <mask id="portrait-mask" maskContentUnits="objectBoundingBox">
@@ -15,7 +15,7 @@ export default function Portrait() {
         </defs>
       </svg>
 
-      <div className="relative w-30 sm:w-50 aspect-[1/1.5]">
+      <div className="relative w-full aspect-[1/1.5]">
         <div className="absolute aspect-square bottom-0 w-full">
           <GlowOutline
             gradient={createConicGradient(0, [
@@ -47,6 +47,6 @@ export default function Portrait() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

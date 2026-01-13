@@ -20,7 +20,7 @@ export default function PageBase({
 
   return (
     <main className="w-full grid grid-cols-1">
-      <header className={`relative pb-2 mb-2 pt-23 ${headerClassName || ""}`}>
+      <header className={`relative pb-4 pt-23 ${headerClassName || ""}`}>
         <FullBleedContainer />
         {headerElement ? (
           headerElement({ headingClassName })
@@ -35,7 +35,7 @@ export default function PageBase({
 
 export function FullBleedContainer() {
   return (
-    <div className="absolute w-screen inset-y-0 left-1/2 -translate-x-1/2 bg-bg" />
+    <div className="absolute w-screen inset-y-0 left-1/2 -translate-x-1/2" />
   );
 }
 

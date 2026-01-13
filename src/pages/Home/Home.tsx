@@ -18,21 +18,11 @@ export default function Home() {
         <Highlights listData={content.highlight} />
       </Section>
 
-      <Section
-        id="snapshots"
-        title="Snapshots"
-        className="text-center"
-        // headingClassName="mb-7"
-      >
+      <Section id="snapshots" title="Snapshots" className="text-center">
         <Snapshots snapshot={content.snapshot} />
       </Section>
 
-      <Section
-        id="bio"
-        title={content.bio.title}
-        className="text-center"
-        // headingClassName="mb-7"
-      >
+      <Section id="bio" title={content.bio.title} className="text-center">
         <Bio bio={content.bio.desc} />
       </Section>
     </PageBase>

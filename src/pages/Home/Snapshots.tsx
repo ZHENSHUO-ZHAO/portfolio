@@ -8,105 +8,105 @@ import {
   mixColor,
 } from "../../utils/util";
 
-const outlineVariants: Variants = {
-  rest: {
-    opacity: 0,
-  },
-  hover: {
-    opacity: 1,
-  },
-};
-
-const outlineGradient: string = createLinearGradient(135, [
-  mixColor(60, "var(--color-accent)", "transparent"),
-  "transparent",
-  "transparent",
-  "transparent",
-  mixColor(60, "var(--color-complement)", "transparent"),
-]);
-
-const topLeftVariants: Variants = {
-  rest: {
-    background: createRadialGradientWithStops(
-      undefined,
-      undefined,
-      [
-        [mixColor(20, "var(--color-accent)", "transparent"), 0],
-        ["transparent", 30],
-      ],
-      "20% 20%"
-    ),
-    filter: "grayscale(0.6)",
-    opacity: 0.7,
-  },
-  hover: {
-    background: createRadialGradientWithStops(
-      undefined,
-      undefined,
-      [
-        [mixColor(50, "var(--color-accent)", "transparent"), 0],
-        ["transparent", 30],
-      ],
-      "0% 0%"
-    ),
-    filter: "grayscale(0)",
-    opacity: 1,
-  },
-};
-
-const bottomRightVariants: Variants = {
-  rest: {
-    background: createRadialGradientWithStops(
-      undefined,
-      undefined,
-      [
-        [mixColor(20, "var(--color-complement)", "transparent"), 0],
-        ["transparent", 30],
-      ],
-      "80% 80%"
-    ),
-    filter: "grayscale(0.6)",
-    opacity: 0.7,
-  },
-  hover: {
-    background: createRadialGradientWithStops(
-      undefined,
-      undefined,
-      [
-        [mixColor(50, "var(--color-complement)", "transparent"), 0],
-        ["transparent", 30],
-      ],
-      "100% 100%"
-    ),
-    filter: "grayscale(0)",
-    opacity: 1,
-  },
-};
-
-const iconVariants: Variants = {
-  hover: {
-    boxShadow: `${createInnerShadow(
-      "-6px",
-      "-6px",
-      "8px",
-      "rgba(255,255,255,0.8)"
-    )}, ${createInnerShadow("6px", "6px", "10px", "rgba(0,0,0,0.25)")}`,
-  },
-  rest: {
-    boxShadow: `${createInnerShadow(
-      "-6px",
-      "-6px",
-      "8px",
-      "rgba(0,0,0,0.25)"
-    )}, ${createInnerShadow("6px", "6px", "10px", "rgba(255,255,255,0.8)")}`,
-  },
-};
-
 export default function Snapshots({
   snapshot,
 }: {
   snapshot: DescriptiveItem[];
 }) {
+  const outlineVariants: Variants = {
+    rest: {
+      opacity: 0,
+    },
+    hover: {
+      opacity: 1,
+    },
+  };
+
+  const outlineGradient: string = createLinearGradient(135, [
+    mixColor(60, "var(--color-accent)", "transparent"),
+    "transparent",
+    "transparent",
+    "transparent",
+    mixColor(60, "var(--color-complement)", "transparent"),
+  ]);
+
+  const topLeftVariants: Variants = {
+    rest: {
+      background: createRadialGradientWithStops(
+        undefined,
+        undefined,
+        [
+          [mixColor(20, "var(--color-accent)", "transparent"), 0],
+          ["transparent", 30],
+        ],
+        "20% 20%"
+      ),
+      filter: "grayscale(0.6)",
+      opacity: 0.7,
+    },
+    hover: {
+      background: createRadialGradientWithStops(
+        undefined,
+        undefined,
+        [
+          [mixColor(50, "var(--color-accent)", "transparent"), 0],
+          ["transparent", 30],
+        ],
+        "0% 0%"
+      ),
+      filter: "grayscale(0)",
+      opacity: 1,
+    },
+  };
+
+  const bottomRightVariants: Variants = {
+    rest: {
+      background: createRadialGradientWithStops(
+        undefined,
+        undefined,
+        [
+          [mixColor(20, "var(--color-complement)", "transparent"), 0],
+          ["transparent", 30],
+        ],
+        "80% 80%"
+      ),
+      filter: "grayscale(0.6)",
+      opacity: 0.7,
+    },
+    hover: {
+      background: createRadialGradientWithStops(
+        undefined,
+        undefined,
+        [
+          [mixColor(50, "var(--color-complement)", "transparent"), 0],
+          ["transparent", 30],
+        ],
+        "100% 100%"
+      ),
+      filter: "grayscale(0)",
+      opacity: 1,
+    },
+  };
+
+  const iconVariants: Variants = {
+    hover: {
+      boxShadow: `${createInnerShadow(
+        "-6px",
+        "-6px",
+        "8px",
+        "rgba(255,255,255,0.8)"
+      )}, ${createInnerShadow("6px", "6px", "10px", "rgba(0,0,0,0.25)")}`,
+    },
+    rest: {
+      boxShadow: `${createInnerShadow(
+        "-6px",
+        "-6px",
+        "8px",
+        "rgba(0,0,0,0.25)"
+      )}, ${createInnerShadow("6px", "6px", "10px", "rgba(255,255,255,0.8)")}`,
+    },
+  };
+
   return (
     <ul className="grid grid-cols-1 min-[430px]:grid-cols-2 lg:grid-cols-4 gap-4">
       {snapshot.map((s, i) => (

@@ -11,6 +11,7 @@ export default function CtaButton({
   linkProps,
   children,
   priority,
+  className,
 }: {
   gradientColor: string[];
   link: string;
@@ -19,6 +20,7 @@ export default function CtaButton({
   linkProps?: object;
   children: React.ReactNode;
   priority: "primary" | "secondary" | "tertiary";
+  className?: string;
 }) {
   const linkStyle = "flex justify-center gap-2 rounded-full px-6 py-2";
   const glowVariants: Variants = {
@@ -47,13 +49,7 @@ export default function CtaButton({
 
   return (
     <motion.li
-      className={`relative flex-1 ${
-        priority === "primary"
-          ? "w-[280px] sm:max-w-[190px] lg:max-w-[240px]"
-          : priority === "secondary"
-          ? "w-[200px] sm:max-w-[180px] lg:max-w-[190px]"
-          : "w-[200px] sm:max-w-[140px] lg:max-w-[150px]"
-      }`}
+      className={`relative ${className}`}
       animate="rest"
       whileHover="hover"
       whileTap="hover"
@@ -62,6 +58,7 @@ export default function CtaButton({
       <GlowOutline
         gradient={{ variants: glowVariants }}
         rounded="rounded-full"
+        excludeGlow={priority !== "primary"}
       />
       {useNavLink ? (
         <NavLink

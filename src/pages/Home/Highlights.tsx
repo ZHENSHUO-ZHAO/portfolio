@@ -87,6 +87,28 @@ function Card({ content }: CardItem<DescriptiveItem>) {
     setHover(false);
   };
 
+  const gradientColors: string[] = [
+    "transparent",
+    mixColor(10, "var(--color-accent)", "transparent"),
+    "var(--color-complement)",
+    "var(--color-accent)",
+    "var(--color-complement)",
+    mixColor(10, "var(--color-accent)", "transparent"),
+    "transparent",
+  ];
+
+  const glowKeyframes: TargetAndTransition = {
+    background: [
+      createConicGradient(0, gradientColors),
+      createConicGradient(360, gradientColors),
+    ],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "linear",
+    },
+  };
+
   return (
     <motion.div
       className="relative w-full h-[90%] flex flex-col justify-between"
@@ -138,25 +160,3 @@ function Card({ content }: CardItem<DescriptiveItem>) {
     </motion.div>
   );
 }
-
-const gradientColors: string[] = [
-  "transparent",
-  mixColor(10, "var(--color-accent)", "transparent"),
-  "var(--color-complement)",
-  "var(--color-accent)",
-  "var(--color-complement)",
-  mixColor(10, "var(--color-accent)", "transparent"),
-  "transparent",
-];
-
-const glowKeyframes: TargetAndTransition = {
-  background: [
-    createConicGradient(0, gradientColors),
-    createConicGradient(360, gradientColors),
-  ],
-  transition: {
-    duration: 3,
-    repeat: Infinity,
-    ease: "linear",
-  },
-};
