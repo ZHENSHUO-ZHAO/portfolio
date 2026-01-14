@@ -45,6 +45,7 @@ export function Section({
   children,
   headerChildren,
   headingClassName,
+  childrenContainerClassName,
   className = "",
 }: {
   id: string;
@@ -52,12 +53,17 @@ export function Section({
   children: ReactNode;
   headerChildren?: ReactNode;
   headingClassName?: string;
+  childrenContainerClassName?: string;
   className?: string;
 }) {
   const h2ClassName = `relative pb-2 mb-2 ${headingClassName || ""}`;
 
   return (
-    <section className={`relative pb-10 ${className}`} aria-labelledby={id}>
+    <section
+      className={`relative pb-10 ${className}`}
+      aria-labelledby={id}
+      id={id}
+    >
       <FullBleedContainer />
       {headerChildren ? (
         <header className="relative">
@@ -71,7 +77,9 @@ export function Section({
           {title}
         </h2>
       )}
-      <div className="relative">{children}</div>
+      <div className={`relative ${childrenContainerClassName ?? ""}`}>
+        {children}
+      </div>
     </section>
   );
 }

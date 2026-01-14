@@ -12,10 +12,14 @@ export type Job = {
   markets?: string[];
 };
 
-export type ExperienceContent = ContextPageBase & { jobs: Job[] };
+export type ExperienceContent = ContextPageBase & {
+  introduction: string;
+  jobs: Job[];
+};
 
 export const experienceContent = {
   pageTitle: "My Career Life",
+  introduction: "10+ years of building interactive experiences",
   jobs: [
     {
       title: "Casual Tutor - Software Engineering Project Management",
@@ -108,7 +112,8 @@ export const experienceContent = {
         "Mentored junior developers and improved development workflows.",
       ],
       skills: ["Unity3D", "C#", "Flash/ActionScript 3", "REST API", "SVN"],
-      products: ["Ninja Saga(Facebook + Mobile)"],
+      products: ["Ninja Saga (Facebook + Mobile)"],
+      markets: ["Asia"],
     },
     {
       title: "Game Programmer",
@@ -148,7 +153,12 @@ export const experienceContent = {
         "Story Writing",
         "Flash/ActionScript 3",
       ],
-      products: ["Cars 2", "Hello Kitty (2 titles)", "Brave"],
+      products: [
+        "Cars 2",
+        "Hello Kitty (V.Reader)",
+        "Hello Kitty (InnoTab)",
+        "Brave",
+      ],
       markets: ["US", "UK", "EU"],
     },
     {
@@ -168,6 +178,7 @@ export const experienceContent = {
         "HCI Prototyping",
       ],
       products: ["Brainsic"],
+      markets: ["Hong Kong"],
     },
     {
       title: "Interactive Designer & Animation Tutor",

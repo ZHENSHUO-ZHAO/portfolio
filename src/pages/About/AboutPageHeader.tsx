@@ -14,7 +14,7 @@ export function AboutPageHeader({
         <div className="size-10 bg-amber-700 rounded-full" />
         <h1>{content.pageTitle}</h1>
       </div>
-      <p>{content.introduction} </p>
+      <p className="text-secondary">{content.introduction} </p>
       <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4 place-items-center">
         {content.strength.map((s) => (
           <li

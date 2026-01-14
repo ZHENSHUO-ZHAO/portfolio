@@ -56,7 +56,7 @@ export const homeContent = {
   snapshot: [
     {
       title: "Industry Experience",
-      desc: "10+ years in game & interactive media development",
+      desc: "10+ years in gaming & interactive media development",
       icon: Gamepad2,
     },
     {

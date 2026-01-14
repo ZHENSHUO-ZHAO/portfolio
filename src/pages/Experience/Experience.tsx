@@ -1,56 +1,35 @@
-import {
-  useExperiencePageContext,
-  type Job,
-} from "../../contexts/experienceContext";
-import { jobSlug } from "../../utils/util";
-import PageBase, { ItemList, Section } from "../PageBase";
+import { useLocation } from "react-router";
+import { useExperiencePageContext } from "../../contexts/experienceContext";
+import PageBase from "../PageBase";
+import ExperiencePageHeader from "./ExperiencePageHeader";
+import { Job as JobItem } from "./Job";
+import { useEffect } from "react";
 
 export default function Experience() {
   const content = useExperiencePageContext();
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+
+    const el = document.querySelector(hash);
+    el?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [hash]);
 
   return (
-    <PageBase content={content}>
-      {content.jobs.map((j) => (
-        <Item key={j.time} jobData={j} />
-      ))}
-    </PageBase>
-  );
-}
-
-function Item({ jobData }: { jobData: Job }) {
-  const jobId = jobSlug(jobData.time, jobData.title, jobData.company);
-  const headingStyle = "mt-4 sm:mt-6";
-
-  return (
-    <Section
-      id={jobId}
-      title={jobData.title}
-      headerChildren={
-        <div className="my-2">
-          <p className="text-neutral-900 font-medium">{jobData.company}</p>
-          <p className="text-muted">
-            <time>{jobData.time}</time>
-          </p>
-          <p>{`${jobData.location.city}, ${jobData.location.country}`}</p>
-        </div>
-      }
+    <PageBase
+      content={content}
+      headerElement={ExperiencePageHeader}
+      headerClassName="pb-8"
     >
-      <h3 className={headingStyle}>Achievements</h3>
-      <ItemList listData={jobData.tasks} />
-      {jobData.products && (
-        <>
-          <h3 className={headingStyle}>Notable Products</h3>
-          <ItemList listData={jobData.products} />
-        </>
-      )}
-      {jobData.markets && (
-        <>
-          <h3 className={headingStyle}>Markets</h3>
-          <ItemList listData={jobData.markets} />
-        </>
-      )}
-      <h3 className={headingStyle}>Skills</h3>
-      <ItemList listData={jobData.skills} />
-    </Section>
+      <div className="flex flex-col gap-6 items-stretch pb-10">
+        {content.jobs.map((j) => (
+          <JobItem key={j.time} job={j} />
+        ))}
+      </div>
+    </PageBase>
   );
 }
