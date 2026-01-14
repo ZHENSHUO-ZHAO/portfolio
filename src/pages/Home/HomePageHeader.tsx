@@ -39,10 +39,7 @@ export default function HomePageHeader({
       className={`${headingClassName} mx-2 lg:mx-4 min-h-[80dvh] flex justify-center items-center`}
     >
       <div className="lg:flex lg:gap-15 sm:justify-between sm:items-center">
-        {/* <div className="sm:flex sm:flex-row sm:gap-10 md:gap-13 lg:gap-15 sm:justify-between sm:items-center"> */}
-        {/* <Portrait className="w-1/2 max-w-[220px] mx-auto mb-4 sm:mb-0 sm:w-auto sm:flex-3 min-[44rem]:flex-2 md:flex-1 lg:flex-2" /> */}
         <Portrait className="w-1/2 max-w-[220px] mx-auto mb-8 lg:flex-2 lg:mb-0" />
-        {/* <div className="sm:flex-4 min-[44rem]:flex-4 md:flex-3 lg:flex-8 flex flex-col items-stretch sm:items-start"> */}
         <div className="lg:flex-8 flex flex-col items-stretch lg:items-start">
           <h1 className="text-center text-xl min-[370px]:text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold font-display tracking-tight">
             {content.name}

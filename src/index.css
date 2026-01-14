@@ -40,7 +40,6 @@
   h5,
   h6 {
     color: var(--color-primary);
-    @apply font-display;
   }
 
   h1 {

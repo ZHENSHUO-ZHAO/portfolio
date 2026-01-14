@@ -13,6 +13,7 @@ export type ContextPageBase = { pageTitle: string };
 
 export type DescriptiveItem = {
   title?: string;
+  subtitle?: string;
   desc?: string;
   image?: string;
   icon?: React.ForwardRefExoticComponent<

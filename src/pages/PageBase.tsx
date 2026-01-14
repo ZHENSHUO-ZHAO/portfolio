@@ -20,7 +20,7 @@ export default function PageBase({
 
   return (
     <main className="w-full grid grid-cols-1">
-      <header className={`relative pb-4 pt-23 ${headerClassName || ""}`}>
+      <header className={`relative pb-4 pt-30 ${headerClassName || ""}`}>
         <FullBleedContainer />
         {headerElement ? (
           headerElement({ headingClassName })
