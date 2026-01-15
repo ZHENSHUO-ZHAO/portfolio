@@ -12,14 +12,26 @@ export type Job = {
   markets?: string[];
 };
 
+export type Stat = {
+  amount: number;
+  unit: string;
+};
+
 export type ExperienceContent = ContextPageBase & {
   introduction: string;
+  stats: Stat[];
   jobs: Job[];
 };
 
 export const experienceContent = {
   pageTitle: "My Career Life",
   introduction: "10+ years of building interactive experiences",
+  stats: [
+    { amount: 9, unit: "Companies" },
+    { amount: 10, unit: "Roles" },
+    { amount: 4, unit: "Cities" },
+    { amount: 14, unit: "Products Shipped" },
+  ],
   jobs: [
     {
       title: "Casual Tutor - Software Engineering Project Management",
