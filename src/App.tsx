@@ -48,11 +48,9 @@ function App() {
     >
       <PcRouter routes={navList} />
       <MobileRouter routes={navList} />
-      <div className="mx-8 lg:mx-0 max-w-4xl">
-        <SettingContext value={{ deviceWidth }}>
-          <Outlet />
-        </SettingContext>
-      </div>
+      <SettingContext value={{ deviceWidth }}>
+        <Outlet />
+      </SettingContext>
     </div>
   );
 }

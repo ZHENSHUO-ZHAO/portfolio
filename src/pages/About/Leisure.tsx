@@ -1,30 +1,72 @@
-import { CalendarCog } from "lucide-react";
-import type { DescriptiveItem } from "../../contexts/pageContext";
+import type { CardColor, Heading } from "../../contexts/pageContext";
 
 export default function Leisure({
-  desc,
-  tags,
+  details,
+  items,
 }: {
-  desc: string;
-  tags: DescriptiveItem[];
+  details: string;
+  items: Heading[];
 }) {
   return (
-    <div className="w-full p-8 bg-slate-200 border border-slate-300 rounded-lg space-y-6">
-      <p>{desc}</p>
-      <ul className="flex flex-wrap gap-3">
-        {tags.map((t) => (
-          <Tag tag={t} key={t.desc} />
+    <div className="relative rounded-3xl bg-white p-12 border-slate-200 shadow-xl xl:mx-8">
+      <p className="text-lg text-slate-700 leading-relaxed mb-8">{details}</p>
+      <ul className="grid grid-cols-1 min-[400px]:grid-cols-2 min-[860px]:grid-cols-4 gap-3 md:gap-4 justify-center">
+        {items.map((l, i) => (
+          <LeisureItem key={l.title} data={l} color={cardColors[i]} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Tag({ tag }: { tag: DescriptiveItem }) {
+function LeisureItem({ data, color }: { data: Heading; color: CardColor }) {
   return (
-    <li className="w-fit px-4 py-2 flex gap-2 bg-sky-600 rounded-full items-center">
-      <CalendarCog className="stroke-white size-3.5" />
-      <span className="text-white text-sm">{tag.desc}</span>
+    <li
+      className={`${color.bg} border ${color.border} flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 rounded-xl`}
+    >
+      {data.tag && data.tag.icon && (
+        <data.tag.icon
+          className={`flex-none text-base md:text-xl ${color.icon.text}`}
+        />
+      )}
+      <span className={`text-xs xs:text-base font-semibold ${color.icon.bg}`}>
+        {data.title}
+      </span>
     </li>
   );
 }
+
+const cardColors: CardColor[] = [
+  {
+    icon: {
+      text: "text-amber-600",
+      bg: "text-amber-900",
+    },
+    bg: "bg-gradient-to-r from-amber-50 to-amber-100",
+    border: "border-amber-200",
+  },
+  {
+    icon: {
+      text: "text-orange-600",
+      bg: "text-orange-900",
+    },
+    bg: "bg-gradient-to-r from-orange-50 to-orange-100",
+    border: "border-orange-200",
+  },
+  {
+    icon: {
+      text: "text-(--color-tone1-600)",
+      bg: "text-(--color-tone1-900)",
+    },
+    bg: "bg-gradient-to-r from-(--color-tone1-50) to-(--color-tone1-100)",
+    border: "border-(--color-tone1-200)",
+  },
+  {
+    icon: {
+      text: "text-(--color-tone5-600)",
+      bg: "text-(--color-tone5-900)",
+    },
+    bg: "bg-gradient-to-r from-(--color-tone5-50) to-(--color-tone5-100)",
+    border: "border-(--color-tone5-200)",
+  },
+];

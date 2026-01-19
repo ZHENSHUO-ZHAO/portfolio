@@ -1,21 +1,16 @@
-import { CalendarCog } from "lucide-react";
-import type {
-  CardColor,
-  DescriptiveItem,
-  Heading,
-} from "../../contexts/pageContext";
+import type { CardColor, Heading } from "../../contexts/pageContext";
 
-export default function Philosophy({ data }: { data: Heading[] }) {
+export default function Strength({ data }: { data: Heading[] }) {
   return (
     <ol className="relative grid grid-cols-1 xl:mx-8 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
       {data.map((s, i) => (
-        <PhilosophyItem key={s.title} data={s} color={cardColors[i]} />
+        <StrengthItem key={s.title} data={s} color={cardColors[i]} />
       ))}
     </ol>
   );
 }
 
-function PhilosophyItem({ data, color }: { data: Heading; color: CardColor }) {
+function StrengthItem({ data, color }: { data: Heading; color: CardColor }) {
   return (
     <li
       className={`${color.bg} border ${color.border} flex-1 p-6 sm:p-7 lg:p-6 rounded-xl md:rounded-2xl`}
@@ -71,34 +66,3 @@ const cardColors: CardColor[] = [
     border: "border-(--color-tone4-200)/30",
   },
 ];
-
-// export default function Philosophy({
-//   philosophy,
-// }: {
-//   philosophy: DescriptiveItem[];
-// }) {
-//   return (
-//     <ol className="grid grid-cols-1 min-[28rem]:grid-cols-2 lg:grid-cols-4 gap-4 justify-start items-stretch">
-//       <Card listData={philosophy} />
-//     </ol>
-//   );
-// }
-
-function Card({ listData }: { listData: DescriptiveItem[] }) {
-  return (
-    <>
-      {listData.map((data) => (
-        <li
-          key={data.title}
-          className="p-4 flex flex-col gap-2 items-start bg-slate-200 border border-slate-300 rounded-lg"
-        >
-          <div className="size-8 bg-sky-600 rounded-md flex justify-center items-center">
-            <CalendarCog className="stroke-white size-5" />
-          </div>
-          <h3 className="min-[28rem]:text-lg lg:text-xl">{data.title}</h3>
-          <p className="text-sm md:text-base text-muted">{data.desc}</p>
-        </li>
-      ))}
-    </>
-  );
-}

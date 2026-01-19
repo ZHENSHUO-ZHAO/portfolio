@@ -1,88 +1,323 @@
 import createPageContext from "./pageContext";
-import type { ContextPageBase, DescriptiveItem } from "./pageContext";
+import type {
+  ContextPageBase,
+  // DescriptiveItem,
+  Header,
+  // HybridText,
+  Heading,
+} from "./pageContext";
+import {
+  FaCircleUser,
+  FaGear,
+  FaWandMagicSparkles,
+  FaUsersGear,
+  FaGamepad,
+  FaFlask,
+  FaUserCheck,
+  FaSitemap,
+  FaChartLine,
+  FaHandshakeSimple,
+  FaCode,
+  FaLayerGroup,
+  FaClipboardCheck,
+  FaGraduationCap,
+  FaMugHot,
+  FaCertificate,
+  FaChess,
+  FaUserGraduate,
+  FaCircle,
+  FaEnvelope,
+  FaDownload,
+} from "react-icons/fa6";
+import { FaProjectDiagram, FaUsers, FaRocket, FaLink } from "react-icons/fa";
 
 export type AboutContent = ContextPageBase & {
-  introduction: string;
-  strength: string[];
-  journey: DescriptiveItem[];
-  philosophy: DescriptiveItem[];
-  aim: { desc: string; roles: string[] };
-  leisure: { desc: string; tags: DescriptiveItem[] };
+  header: Header;
+  strength: { heading: Heading; items: Heading[] };
+  journey: { heading: Heading; items: Heading[] };
+  philosophy: { heading: Heading; items: Heading[] };
+  aim: { heading: Heading; items: Heading[] };
+  leisure: { heading: Heading; details: string; items: Heading[] };
+  contact: { heading: Heading; items: Heading[] };
+  // introduction: string;
+  // statement: HybridText;
+  // strength: string[];
+  // journey: DescriptiveItem[];
+  // philosophy: DescriptiveItem[];
+  // aim: { desc: string; roles: string[] };
+  // leisure: { desc: string; tags: DescriptiveItem[] };
 };
 
 export const aboutContent = {
-  pageTitle: "Who am I?",
-  introduction:
-    "I'm a software engineer, game developer, and project manager with extensive experience delivering commercial games, interactive products, and scalable digital systems. My work blends engineering, UX-driven design, and cross-functional collaboration to build products enjoyed by global audiences. My strengths are anchored in four core areas.",
-  strength: [
-    "Engineering Precision",
-    "UX Intuition",
-    "System Thinking",
-    "Collaborative Leadership",
-  ],
-  journey: [
-    {
-      title: "Where I Am Now",
-      subtitle: "Present",
-      desc: "I work at the intersection of modern full-stack engineering, cloud computing, and technical leadership. Through RMIT coursework and hands-on projects, I've been building with React, Node.js, AWS, Docker, and CI/CD pipelines, while also tutoring Software Engineering Project Management, helping students turn ideas into working software using agile practices.",
+  header: {
+    tag: { icon: FaCircleUser, text: "Get to Know Me" },
+    title: "Who am I?",
+    statement: [
+      [
+        {
+          text: "I'm a software engineer, game developer, and project manager with extensive experience delivering commercial games, interactive products, and scalable digital systems.",
+        },
+      ],
+      [
+        { text: "My work blends " },
+        {
+          text: "engineering",
+          style: "font-bold text-(--color-statement-1)",
+        },
+        { text: ", " },
+        {
+          text: "UX-driven design",
+          style: "font-bold text-(--color-statement-2)",
+        },
+        { text: ", and " },
+        {
+          text: "cross-functional collaboration",
+          style: "font-bold text-(--color-statement-3)",
+        },
+        { text: " to build products enjoyed by global audiences." },
+      ],
+    ],
+  },
+  strength: {
+    heading: {
+      title: "My Core Strengths",
+      desc: "Four pillars that define my approach to building great products",
     },
-    {
-      title: "Growing into Leadership",
-      subtitle: "From Engineer to Leader",
-      desc: "Before this, I spent nearly a decade at DigitCube, growing from hands-on engineering into product management and technical leadership. I led multiplayer casino game development, designed real-time communication protocols, analyzed player behavior to improve retention, and supported the company's transition as it rebuilt its engineering team during its relocation to the UK.",
+    items: [
+      {
+        tag: { icon: FaGear },
+        title: "Engineering Precision",
+        desc: "Building robust, scalable systems with attention to technical excellence and code quality.",
+      },
+      {
+        tag: { icon: FaWandMagicSparkles },
+        title: "UX Intuition",
+        desc: "Creating intuitive experiences that resonate with users and drive engagement.",
+      },
+      {
+        tag: { icon: FaProjectDiagram },
+        title: "System Thinking",
+        desc: "Architecting solutions that scale, evolve, and maintain stability over time.",
+      },
+      {
+        tag: { icon: FaUsers },
+        title: "Collaborative Leadership",
+        desc: "Leading cross-functional teams with clear communication and shared vision.",
+      },
+    ],
+  },
+  journey: {
+    heading: {
+      title: "My Journey",
+      desc: "From interactive media to modern cloud engineering, here's how I got here",
     },
-    {
-      title: "Shipping Games at Scale",
-      subtitle: "Commercial Game Development",
-      desc: "Earlier in my career, I focused on game development, shipping titles across consoles, tablets, and web/mobile platforms for audiences across the US, UK, EU, and Asia. Working on releases for VTech, VinCi, and Facebook games sharpened my instincts for gameplay systems, performance, and scalable production pipelines.",
+    items: [
+      {
+        tag: { icon: FaRocket, text: "Present" },
+        title: "Where I Am Now",
+        desc: "I work at the intersection of modern full-stack engineering, cloud computing, and technical leadership. Through RMIT coursework and hands-on projects, I've been building with React, Node.js, AWS, Docker, and CI/CD pipelines, while also tutoring Software Engineering Project Management, helping students turn ideas into working software using agile practices.",
+      },
+      {
+        tag: { icon: FaUsersGear, text: "From Engineer to Leader" },
+        title: "Growing into Leadership",
+        desc: "Before this, I spent nearly a decade at DigitCube, growing from hands-on engineering into product management and technical leadership. I led multiplayer casino game development, designed real-time communication protocols, analyzed player behavior to improve retention, and supported the company's transition as it rebuilt its engineering team during its relocation to the UK.",
+      },
+      {
+        tag: { icon: FaGamepad, text: "Commercial Game Development" },
+        title: "Shipping Games at Scale",
+        desc: "Earlier in my career, I focused on game development, shipping titles across consoles, tablets, and web/mobile platforms for audiences across the US, UK, EU, and Asia. Working on releases for VTech, VinCi, and Facebook games sharpened my instincts for gameplay systems, performance, and scalable production pipelines.",
+      },
+      {
+        tag: { icon: FaFlask, text: "Interactive Media Origins" },
+        title: "My Foundations",
+        desc: "I began in interactive media and educational technology, creating VR-based edutainment applications. These early projects shaped how I approach software today - always starting from the user experience and building systems that are both engaging and purposeful.",
+      },
+      {
+        tag: { icon: FaLink },
+        title: "The Common Thread",
+        desc: "Across every stage, one theme has remained constant: using technology to create meaningful, interactive experiences — from learning and play to large-scale digital platforms.",
+      },
+    ],
+  },
+  philosophy: {
+    heading: {
+      title: "My Philosophy",
+      desc: "Four principles that guide every project and decision I make",
     },
-    {
-      title: "My Foundations",
-      subtitle: "Interactive Media Origins",
-      desc: "I began in interactive media and educational technology, creating VR-based edutainment applications. These early projects shaped how I approach software today — always starting from the user experience and building systems that are both engaging and purposeful.",
-    },
-    {
-      title: "The Common Thread",
-      desc: "Across every stage, one theme has remained constant: using technology to create meaningful, interactive experiences — from learning and play to large-scale digital platforms.",
-    },
-  ],
-  philosophy: [
-    {
-      title: "User-first design",
-      desc: "Great products begin with understanding user intention.",
-    },
-    {
-      title: "Systems thinking",
-      desc: "Good architecture enables stability and growth.",
-    },
-    {
-      title: "Data-driven iteration",
-      desc: "Metrics guide refinement and long-term success.",
-    },
-    {
-      title: "Clear collaboration",
-      desc: "Strong communication strengthens every team.",
-    },
-  ],
+    items: [
+      {
+        tag: { icon: FaUserCheck },
+        title: "User-first design",
+        desc: "Great products begin with understanding user intention.",
+      },
+      {
+        tag: { icon: FaSitemap },
+        title: "Systems thinking",
+        desc: "Good architecture enables stability and growth.",
+      },
+      {
+        tag: { icon: FaChartLine },
+        title: "Data-driven iteration",
+        desc: "Metrics guide refinement and long-term success.",
+      },
+      {
+        tag: { icon: FaHandshakeSimple },
+        title: "Clear collaboration",
+        desc: "Strong communication strengthens every team.",
+      },
+    ],
+  },
   aim: {
-    desc: "I'm open to opportunities in:",
-    roles: [
-      "Software Engineering",
-      "Game Development",
-      "Full-Stack Engineering",
-      "Technical Project Management",
-      "EdTech",
+    heading: {
+      title: "What I'm Looking For",
+      desc: "I'm open to opportunities in:",
+    },
+    items: [
+      {
+        tag: { icon: FaCode },
+        title: "Software Engineering",
+      },
+      {
+        tag: { icon: FaGamepad },
+        title: "Game Development",
+      },
+      {
+        tag: { icon: FaLayerGroup },
+        title: "Full-Stack Engineering",
+      },
+      {
+        tag: { icon: FaClipboardCheck },
+        title: "Technical Project Management",
+      },
+      {
+        tag: { icon: FaGraduationCap },
+        title: "EdTech",
+      },
     ],
   },
   leisure: {
-    desc: "I love exploring new technologies, playing strategy games, and mentoring aspiring engineers. Outside of engineering, I'm passionate about specialty coffee. I've earned SCA certifications in Brewing, Roasting, and Sensory Skills, and I enjoy experimenting with origins, processing methods, and precision extraction techniques.",
-    tags: [
-      { desc: "Specialty Coffee" },
-      { desc: "SCA Certified" },
-      { desc: "Strategy Games" },
-      { desc: "Mentoring" },
+    heading: {
+      title: "Outside of Work",
+      desc: "What keeps me curious, creative, and inspired",
+    },
+    details:
+      "I love exploring new technologies, playing strategy games, and mentoring aspiring engineers. Outside of engineering, I'm passionate about specialty coffee. I've earned SCA certifications in Brewing, Roasting, and Sensory Skills, and I enjoy experimenting with origins, processing methods, and precision extraction techniques.",
+    items: [
+      {
+        tag: { icon: FaMugHot },
+        title: "Specialty Coffee",
+      },
+      {
+        tag: { icon: FaCertificate },
+        title: "SCA Certified",
+      },
+      {
+        tag: { icon: FaChess },
+        title: "Strategy Games",
+      },
+      {
+        tag: { icon: FaUserGraduate },
+        title: "Mentoring",
+      },
     ],
   },
+  contact: {
+    heading: {
+      tag: { icon: FaCircle, text: "Available for opportunities" },
+      title: "Let's Create Something Amazing",
+      desc: "Whether you're looking for an engineer, a technical leader, or someone passionate about creating meaningful experiences, I'd love to connect.",
+    },
+    items: [
+      {
+        tag: { icon: FaEnvelope },
+        title: "Get in Touch",
+        desc: "",
+      },
+      {
+        tag: { icon: FaDownload },
+        title: "Download Resume",
+        desc: "",
+      },
+    ],
+  },
+  pageTitle: "Who am I?",
+  // introduction:
+  //   "I'm a software engineer, game developer, and project manager with extensive experience delivering commercial games, interactive products, and scalable digital systems. My work blends engineering, UX-driven design, and cross-functional collaboration to build products enjoyed by global audiences. My strengths are anchored in four core areas.",
+  // statement: [
+  //   { text: "My work blends " },
+  //   { text: "engineering", style: "font-semibold text-sky-600" },
+  //   { text: ", " },
+  //   { text: "UX-driven design", style: "font-semibold text-cyan-500" },
+  //   { text: ", and " },
+  //   {
+  //     text: "cross-functional collaboration",
+  //     style: "font-semibold text-emerald-600",
+  //   },
+  //   { text: " to build products enjoyed by global audiences." },
+  // ],
+  // journey: [
+  //   {
+  //     title: "Where I Am Now",
+  //     subtitle: "Present",
+  //     desc: "I work at the intersection of modern full-stack engineering, cloud computing, and technical leadership. Through RMIT coursework and hands-on projects, I've been building with React, Node.js, AWS, Docker, and CI/CD pipelines, while also tutoring Software Engineering Project Management, helping students turn ideas into working software using agile practices.",
+  //   },
+  //   {
+  //     title: "Growing into Leadership",
+  //     subtitle: "From Engineer to Leader",
+  //     desc: "Before this, I spent nearly a decade at DigitCube, growing from hands-on engineering into product management and technical leadership. I led multiplayer casino game development, designed real-time communication protocols, analyzed player behavior to improve retention, and supported the company's transition as it rebuilt its engineering team during its relocation to the UK.",
+  //   },
+  //   {
+  //     title: "Shipping Games at Scale",
+  //     subtitle: "Commercial Game Development",
+  //     desc: "Earlier in my career, I focused on game development, shipping titles across consoles, tablets, and web/mobile platforms for audiences across the US, UK, EU, and Asia. Working on releases for VTech, VinCi, and Facebook games sharpened my instincts for gameplay systems, performance, and scalable production pipelines.",
+  //   },
+  //   {
+  //     title: "My Foundations",
+  //     subtitle: "Interactive Media Origins",
+  //     desc: "I began in interactive media and educational technology, creating VR-based edutainment applications. These early projects shaped how I approach software today — always starting from the user experience and building systems that are both engaging and purposeful.",
+  //   },
+  //   {
+  //     title: "The Common Thread",
+  //     desc: "Across every stage, one theme has remained constant: using technology to create meaningful, interactive experiences — from learning and play to large-scale digital platforms.",
+  //   },
+  // ],
+  // philosophy: [
+  //   {
+  //     title: "User-first design",
+  //     desc: "Great products begin with understanding user intention.",
+  //   },
+  //   {
+  //     title: "Systems thinking",
+  //     desc: "Good architecture enables stability and growth.",
+  //   },
+  //   {
+  //     title: "Data-driven iteration",
+  //     desc: "Metrics guide refinement and long-term success.",
+  //   },
+  //   {
+  //     title: "Clear collaboration",
+  //     desc: "Strong communication strengthens every team.",
+  //   },
+  // ],
+  // aim: {
+  //   desc: "I'm open to opportunities in:",
+  //   roles: [
+  //     "Software Engineering",
+  //     "Game Development",
+  //     "Full-Stack Engineering",
+  //     "Technical Project Management",
+  //     "EdTech",
+  //   ],
+  // },
+  // leisure: {
+  //   desc: "I love exploring new technologies, playing strategy games, and mentoring aspiring engineers. Outside of engineering, I'm passionate about specialty coffee. I've earned SCA certifications in Brewing, Roasting, and Sensory Skills, and I enjoy experimenting with origins, processing methods, and precision extraction techniques.",
+  //   tags: [
+  //     { desc: "Specialty Coffee" },
+  //     { desc: "SCA Certified" },
+  //     { desc: "Strategy Games" },
+  //     { desc: "Mentoring" },
+  //   ],
+  // },
 } satisfies AboutContent;
 
 export const [AboutPageContext, useAboutPageContext] =

@@ -8,17 +8,111 @@
 
   --breakpoint-xs: 30rem;
 
-  --color-bg: theme(colors.neutral.50);
+  --color-bg: theme(colors.slate.50);
   --color-card: theme(colors.slate.200);
 
   --color-primary: theme(colors.neutral.900);
-  --color-secondary: theme(colors.neutral.700);
+  --color-secondary: theme(colors.neutral.600);
   --color-muted: theme(colors.neutral.500);
   --color-accent: theme(colors.sky.400);
   --color-complement: theme(colors.emerald.400);
 
+  /* =========================
+   TONE 1 — SKY (matches sky.400)
+   ========================= */
+  --color-tone1-50: oklch(98% 0.03 215);
+  --color-tone1-100: oklch(94% 0.06 215);
+  --color-tone1-200: oklch(88% 0.1 215);
+  --color-tone1-300: oklch(80% 0.15 215);
+  --color-tone1-400: oklch(72% 0.2 215);
+  --color-tone1-500: oklch(64% 0.23 215);
+  --color-tone1-600: oklch(54% 0.24 215);
+  --color-tone1-700: oklch(42% 0.23 215);
+  --color-tone1-800: oklch(32% 0.2 215);
+  --color-tone1-900: oklch(24% 0.16 215);
+
+  /* =========================
+   TONE 2 — SKY → CYAN
+   ========================= */
+  --color-tone2-50: oklch(98% 0.03 205);
+  --color-tone2-100: oklch(94% 0.06 205);
+  --color-tone2-200: oklch(88% 0.1 205);
+  --color-tone2-300: oklch(80% 0.15 205);
+  --color-tone2-400: oklch(72% 0.2 205);
+  --color-tone2-500: oklch(64% 0.23 205);
+  --color-tone2-600: oklch(54% 0.24 205);
+  --color-tone2-700: oklch(42% 0.23 205);
+  --color-tone2-800: oklch(32% 0.2 205);
+  --color-tone2-900: oklch(24% 0.16 205);
+
+  /* =========================
+   TONE 3 — CYAN / AQUA
+   ========================= */
+  --color-tone3-50: oklch(98% 0.03 195);
+  --color-tone3-100: oklch(94% 0.06 195);
+  --color-tone3-200: oklch(88% 0.1 195);
+  --color-tone3-300: oklch(80% 0.15 195);
+  --color-tone3-400: oklch(72% 0.2 195);
+  --color-tone3-500: oklch(64% 0.23 195);
+  --color-tone3-600: oklch(54% 0.24 195);
+  --color-tone3-700: oklch(42% 0.23 195);
+  --color-tone3-800: oklch(32% 0.2 195);
+  --color-tone3-900: oklch(24% 0.16 195);
+
+  /* =========================
+   TONE 4 — AQUA → TEAL
+   ========================= */
+  --color-tone4-50: oklch(98% 0.03 180);
+  --color-tone4-100: oklch(94% 0.06 180);
+  --color-tone4-200: oklch(88% 0.1 180);
+  --color-tone4-300: oklch(80% 0.15 180);
+  --color-tone4-400: oklch(72% 0.2 180);
+  --color-tone4-500: oklch(64% 0.23 180);
+  --color-tone4-600: oklch(54% 0.24 180);
+  --color-tone4-700: oklch(42% 0.23 180);
+  --color-tone4-800: oklch(32% 0.2 180);
+  --color-tone4-900: oklch(24% 0.16 180);
+
+  /* =========================
+   TONE 5 — EMERALD (matches emerald.400)
+   ========================= */
+  --color-tone5-50: oklch(98% 0.03 160);
+  --color-tone5-100: oklch(94% 0.06 160);
+  --color-tone5-200: oklch(88% 0.1 160);
+  --color-tone5-300: oklch(80% 0.15 160);
+  --color-tone5-400: oklch(72% 0.2 160);
+  --color-tone5-500: oklch(64% 0.23 160);
+  --color-tone5-600: oklch(54% 0.24 160);
+  --color-tone5-700: oklch(42% 0.23 160);
+  --color-tone5-800: oklch(32% 0.2 160);
+  --color-tone5-900: oklch(24% 0.16 160);
+
   --color-link: theme(colors.slate.700);
   --color-link-hover: theme(colors.slate.900);
+}
+
+@layer base {
+  :root {
+    --color-statement-1: var(--color-tone1-500);
+    --color-statement-2: var(--color-tone3-500);
+    --color-statement-3: var(--color-tone5-500);
+
+    --color-bg-header-tag: --alpha(var(--color-tone1-50) / 40%);
+    --color-border-header-tag: --alpha(var(--color-tone1-700) / 10%);
+    --color-text-header-tag: var(--color-tone1-700);
+
+    --color-bg1-header: var(--color-tone1-100);
+    --color-bg2-header: var(--color-tone3-100);
+    --color-bg3-header: var(--color-tone5-100);
+  }
+
+  /* Light mode accent surfaces */
+  [data-theme="light"] {
+  }
+
+  /* Dark mode accent surfaces & glow */
+  [data-theme="dark"] {
+  }
 }
 
 @layer base {
@@ -36,30 +130,29 @@
   h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6 {
+  h4 {
     color: var(--color-primary);
   }
 
   h1 {
-    @apply text-3xl font-extrabold sm:text-4xl;
+    @apply text-3xl font-extrabold md:text-6xl leading-tight tracking-tight;
   }
 
   h2 {
-    @apply text-2xl font-bold sm:text-3xl;
+    @apply text-2xl font-bold md:text-4xl text-center;
   }
 
   h3 {
-    @apply text-xl font-semibold sm:text-2xl;
+    @apply text-xl font-semibold md:text-2xl;
   }
 
   h4 {
-    @apply text-lg font-medium sm:text-xl;
+    @apply text-lg font-medium md:text-xl;
   }
 
   p {
     color: var(--color-secondary);
+    @apply leading-relaxed;
   }
 
   li {
@@ -72,14 +165,29 @@
 
   a:hover {
     color: var(--color-link-hover);
-  }
-
-  :root {
-    --tw-ring-color: var(--color-accent);
+    @apply cursor-pointer;
   }
 
   :focus-visible {
     outline: none;
-    @apply ring-2 rounded-xs;
+    @apply ring-2 rounded-xs ring-accent;
+  }
+}
+
+@layer components {
+  .bg-color-normal {
+    @apply bg-gradient-to-br from-slate-50 to-slate-100;
+  }
+
+  .bg-color-invert {
+    @apply bg-gradient-to-br from-slate-900 via-slate-900 to-slate-700;
+  }
+
+  .title-color-invert {
+    @apply text-white;
+  }
+
+  .text-color-invert {
+    @apply text-slate-300;
   }
 }

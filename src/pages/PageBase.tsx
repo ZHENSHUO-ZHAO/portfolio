@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
 import type { ContextPageBase, DescriptiveItem } from "../contexts/pageContext";
+import React from "react";
 
 export default function PageBase({
   content,
   headerElement,
   headerClassName,
+  headerComponent,
   children,
 }: {
   content: ContextPageBase;
@@ -14,28 +16,24 @@ export default function PageBase({
     headingClassName: string;
   }) => ReactNode;
   headerClassName?: string;
+  headerComponent?: ReactNode;
   children: ReactNode;
 }) {
   const headingClassName = "relative pb-2";
 
   return (
-    <main className="w-full grid grid-cols-1">
+    <main className="grid grid-cols-1 mx-8 lg:mx-0 max-w-4xl">
       <header className={`relative pb-4 pt-30 ${headerClassName || ""}`}>
-        <FullBleedContainer />
         {headerElement ? (
           headerElement({ headingClassName })
+        ) : headerComponent ? (
+          headerComponent
         ) : (
           <h1 className={headingClassName}>{content.pageTitle}</h1>
         )}
       </header>
       {children}
     </main>
-  );
-}
-
-export function FullBleedContainer() {
-  return (
-    <div className="absolute w-screen inset-y-0 left-1/2 -translate-x-1/2" />
   );
 }
 
@@ -64,7 +62,7 @@ export function Section({
       aria-labelledby={id}
       id={id}
     >
-      <FullBleedContainer />
+      {/* <FullBleedContainer /> */}
       {headerChildren ? (
         <header className="relative">
           <h2 className={h2ClassName} id={id}>

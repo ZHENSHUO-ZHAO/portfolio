@@ -125,7 +125,7 @@ export const experienceContent = {
       ],
       skills: ["Unity3D", "C#", "Flash/ActionScript 3", "REST API", "SVN"],
       products: ["Ninja Saga (Facebook + Mobile)"],
-      markets: ["Asia"],
+      markets: ["Global"],
     },
     {
       title: "Game Programmer",

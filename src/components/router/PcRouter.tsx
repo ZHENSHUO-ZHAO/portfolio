@@ -111,7 +111,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                     to={item.to}
                     end={item.end}
                     onClick={handleClick}
-                    className="whitespace-nowrap text-sm flex flex-col items-center justify-center tracking-tight font-medium"
+                    className="whitespace-nowrap text-base flex flex-col items-center justify-center tracking-tight font-medium"
                   >
                     {({ isActive }) => (
                       <>
