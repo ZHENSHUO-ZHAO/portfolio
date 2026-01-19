@@ -6,7 +6,6 @@ import SectionHeading from "./SectionHeading";
 export function CardSection({
   headingData,
   id,
-  children,
   bgChildren,
   invertColor,
   showCard,
@@ -15,7 +14,6 @@ export function CardSection({
 }: {
   headingData: Heading;
   id: string;
-  children: ReactNode;
   bgChildren?: ReactNode;
   invertColor?: boolean;
   showCard?: boolean;
@@ -56,18 +54,14 @@ export function CardSection({
               {links[1].title}
             </a>
           </div>
-          {children}
         </div>
       ) : (
-        <>
-          <SectionHeading
-            data={headingData}
-            invertColor={invertColor}
-            tagColor={tagColor}
-            bottomMargin="mb-4 md:mb-10"
-          />
-          {children}
-        </>
+        <SectionHeading
+          data={headingData}
+          invertColor={invertColor}
+          tagColor={tagColor}
+          bottomMargin="mb-4 md:mb-10"
+        />
       )}
     </section>
   );

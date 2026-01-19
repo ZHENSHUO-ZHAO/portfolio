@@ -8,8 +8,6 @@ import { useAboutPageContext } from "../../contexts/aboutContext";
 import Aim from "./Aim";
 import Journey from "./Journey";
 import Leisure from "./Leisure";
-// import Philosophy from "./Philosophy";
-// import Strength from "./Strength";
 
 export default function About() {
   const content = useAboutPageContext();
@@ -78,26 +76,7 @@ export default function About() {
           bg: "bg-white/20",
         }}
         links={content.contact.items}
-      >
-        {/* <Journey data={content.journey.items} /> */}
-        <div></div>
-      </CardSection>
-
-      {/* <Section id="journey-heading" title="My Professional Journey">
-        <Journey journey={content.journey} />
-      </Section>
-
-      <Section id="philosophy-heading" title="My Engineering Philosophy">
-        <Philosophy philosophy={content.philosophy} />
-      </Section>
-
-      <Section id="aim-heading" title="What I'm Looking For">
-        <Aim desc={content.aim.desc} roles={content.aim.roles} />
-      </Section>
-
-      <Section id="leisure-heading" title="Outside of Work">
-        <Leisure desc={content.leisure.desc} tags={content.leisure.tags} />
-      </Section> */}
+      />
     </Page>
   );
 }
