@@ -53,4 +53,5 @@ export type IconColor = {
   bg: string;
   shadow?: string;
   icon?: string;
+  border?: string;
 };

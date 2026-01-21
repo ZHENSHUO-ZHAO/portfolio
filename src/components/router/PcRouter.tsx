@@ -13,6 +13,7 @@ import { createConicGradient, mixColor } from "../../utils/util";
 import GlassSurface from "../glassFx/GlassSurface";
 
 export const routerBgColor: string = "bg-slate-300/60";
+export const routerHeight: number = 110;
 
 const colors = {
   sky1: mixColor(75, "var(--color-accent)", "transparent"),

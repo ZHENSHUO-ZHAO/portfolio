@@ -1,5 +1,13 @@
+import type { IconType } from "react-icons";
 import createPageContext from "./pageContext";
-import type { ContextPageBase } from "./pageContext";
+import type { ContextPageBase, Header, Heading } from "./pageContext";
+import {
+  FaBriefcase,
+  FaBuilding,
+  FaGlobe,
+  FaRocket,
+  FaUserGroup,
+} from "react-icons/fa6";
 
 export type Job = {
   title: string;
@@ -13,219 +21,248 @@ export type Job = {
 };
 
 export type Stat = {
+  icon: IconType;
   amount: number;
   unit: string;
 };
 
 export type ExperienceContent = ContextPageBase & {
-  introduction: string;
+  header: Header;
   stats: Stat[];
-  jobs: Job[];
+  career: { heading: Heading; items: Job[] };
 };
 
 export const experienceContent = {
-  pageTitle: "My Career Life",
-  introduction: "10+ years of building interactive experiences",
+  header: {
+    tag: { icon: FaBriefcase, text: "10+ Years in Tech" },
+    title: "My Career Life",
+    statement: [
+      [
+        { text: "From " },
+        {
+          text: "interactive VR",
+          style: "font-bold text-(--color-statement-1)",
+        },
+        { text: " to " },
+        {
+          text: "multiplayer gaming",
+          style: "font-bold text-(--color-statement-2)",
+        },
+        { text: " to " },
+        {
+          text: "modern cloud engineering",
+          style: "font-bold text-(--color-statement-3)",
+        },
+      ],
+    ],
+  },
   stats: [
-    { amount: 9, unit: "Companies" },
-    { amount: 10, unit: "Roles" },
-    { amount: 4, unit: "Cities" },
-    { amount: 14, unit: "Products Shipped" },
+    { icon: FaBuilding, amount: 9, unit: "Companies" },
+    { icon: FaUserGroup, amount: 10, unit: "Roles" },
+    { icon: FaGlobe, amount: 4, unit: "Cities" },
+    { icon: FaRocket, amount: 14, unit: "Products Shipped" },
   ],
-  jobs: [
-    {
-      title: "Casual Tutor - Software Engineering Project Management",
-      company: "RMIT University",
-      time: "Feb 2025 - Present",
-      location: { city: "Melbourne", country: "Australia" },
-      tasks: [
-        "Conduct workshops on Agile, Scrum, project planning, and engineering best practices.",
-        "Mentor students through sprint planning and teamwork.",
-        "Assess assignments and guide student teams in applying modern development workflows.",
-      ],
-      skills: ["Agile/Scrum", "Jira", "Trello"],
+  career: {
+    heading: {
+      title: "Career Timeline",
+      desc: "20+ years of building, learning, and leading",
     },
-    {
-      title: "Product Manager",
-      company: "DigitCube.com Limited",
-      time: "Apr 2022 - Feb 2023",
-      location: { city: "London", country: "United Kingdom" },
-      tasks: [
-        "Supported company relocation to the UK and helped establish the London development team.",
-        "Recruited engineers and designers and adapted team workflows to the UK's engineering culture.",
-        "Refactored internal tools and UI components using React.js to align with modern development standards.",
-      ],
-      skills: [
-        "React.js",
-        "Redux",
-        "TypeScript",
-        "Node.js",
-        "GitHub",
-        "Agile PM",
-        "Cross-Cultural Team Leadership",
-      ],
-    },
-    {
-      title: "Product Manager",
-      company: "DigitCube.com Limited",
-      time: "Apr 2021 - Apr 2022",
-      location: { city: "Hong Kong", country: "China" },
-      tasks: [
-        "Led development of multiplayer casino games and mobile platforms.",
-        "Coordinated designers, client-side developers, backend engineers, QA, mathematics, and marketing teams.",
-        "Defined socket communication structures and guided client-server integration.",
-        "Analyzed user data to improve gameplay, retention, and monetization.",
-        "Directed production workflows, schedules, task breakdowns, and incident response.",
-      ],
-      skills: [
-        "Phaser",
-        "MongoDB",
-        "GoLang",
-        "WebSocket",
-        "GitLab",
-        "Agile PM",
-      ],
-      products: ["YoPlay Platform", "Fish Hunter"],
-      markets: ["Asia"],
-    },
-    {
-      title: "Analyst Programmer",
-      company: "DigitCube.com Limited",
-      time: "Sep 2014 - Mar 2021",
-      location: { city: "Hong Kong", country: "China" },
-      tasks: [
-        "Developed multiplayer casino games for iOS, Android, and web.",
-        "Implemented core client-side gameplay and supported backend engineers with protocol design.",
-        "Prototyped visual effects and optimized pipelines for designers.",
-        "Built configuration systems and client integration APIs.",
-        "Analyzed user behavior for UX improvements and monetization tuning.",
-      ],
-      skills: [
-        "Unity3D",
-        "C#",
-        "TypeScript",
-        "Lua",
-        "Egret Engine",
-        "WebSocket",
-        "GitLab",
-      ],
-      products: ["YoPlay Platform", "金牛元帅", "零用钱大冒险"],
-      markets: ["Asia"],
-    },
-    {
-      title: "Game Developer",
-      company: "Emagist Entertainment Limited",
-      time: "Jan 2013 - Sep 2014",
-      location: { city: "Hong Kong", country: "China" },
-      tasks: [
-        "Developed and maintained Ninja Saga for Facebook and mobile.",
-        "Rebuilt the game for iOS and Android using Unity3D.",
-        "Created in-game campaigns, improved monetization through analytics, and designed cross-platform architecture.",
-        "Mentored junior developers and improved development workflows.",
-      ],
-      skills: ["Unity3D", "C#", "Flash/ActionScript 3", "REST API", "SVN"],
-      products: ["Ninja Saga (Facebook + Mobile)"],
-      markets: ["Global"],
-    },
-    {
-      title: "Game Programmer",
-      company: "Rullingnet Corporation Limited",
-      time: "Mar 2012 - Jan 2013",
-      location: { city: "Hong Kong", country: "China" },
-      tasks: [
-        "Built educational games for the VinCi Tablet (Android).",
-        "Developed internal tools and mini-apps for online campaigns.",
-        "Created an online store for product sales and marketing.",
-      ],
-      skills: ["Unity3D", "C#", "Android SDK", "Java", "SVN"],
-      products: [
-        "How Many Pins?",
-        "I Know 100!",
-        "Being Considerate",
-        "Playground",
-      ],
-      markets: ["US", "CA"],
-    },
-    {
-      title: "Game Designer",
-      company: "VTech Electronics Limited",
-      time: "Jul 2010 - Mar 2012",
-      location: { city: "Hong Kong", country: "China" },
-      tasks: [
-        "Designed educational games for V.Smile Motion, V.Reader, and InnoTab.",
-        "Collaborated with licensors (Disney, Pixar, Sanrio) for IP compliance.",
-        "Designed UX flows, logging components, and marketing trailers.",
-        "Contributed to UX planning for the InnoTab tablet.",
-      ],
-      skills: [
-        "Game Design",
-        "IP Compliance",
-        "UI/UX Design",
-        "Project Coordination",
-        "Story Writing",
-        "Flash/ActionScript 3",
-      ],
-      products: [
-        "Cars 2",
-        "Hello Kitty (V.Reader)",
-        "Hello Kitty (InnoTab)",
-        "Brave",
-      ],
-      markets: ["US", "UK", "EU"],
-    },
-    {
-      title: "Project Assistant",
-      company: "PlayLab - The Hong Kong Polytechnic University",
-      time: "Oct 2009 - Mar 2010",
-      location: { city: "Hong Kong", country: "China" },
-      tasks: [
-        "Conducted research on EEG-based games for children with ADD.",
-        "Developed Brainsic, an EEG-controlled music interaction game.",
-      ],
-      skills: [
-        "Game Design",
-        "Unity3D",
-        "C#",
-        "NeuroSky SDK",
-        "HCI Prototyping",
-      ],
-      products: ["Brainsic"],
-      markets: ["Hong Kong"],
-    },
-    {
-      title: "Interactive Designer & Animation Tutor",
-      company: "Guangzhou Children's Palace",
-      time: "Sep 2005 - Aug 2008",
-      location: { city: "Guangzhou", country: "China" },
-      tasks: [
-        "Built interactive learning applications for youth education.",
-        "Taught animation and created promotional materials.",
-      ],
-      skills: ["Photoshop", "Maya", "After Effects", "Premiere"],
-    },
-    {
-      title: "Interactive Designer",
-      company: "Canada Stanley Computer Animation Research Unit",
-      time: "Jul 2002 - Aug 2005",
-      location: { city: "Guangzhou", country: "China" },
-      tasks: [
-        "Developed 3D virtual reality applications for education.",
-        "Built the stereoscopic “Virtual Antique Museum” for Sun Yat-Sen University.",
-      ],
-      skills: ["Early VR frameworks", "Photoshop", "Maya"],
-    },
-    {
-      title: "Part-Time Interactive Designer",
-      company: "South China Normal University",
-      time: "Sep 2004 - Jul 2005",
-      location: { city: "Guangzhou", country: "China" },
-      tasks: [
-        "Researched the education methodology used in the TV broadcasting course lab.",
-        'Designed the "Virtual Broadcasting Lab" online education system.',
-      ],
-      skills: ["Early VR frameworks", "Photoshop", "Maya"],
-    },
-  ],
+    items: [
+      {
+        title: "Casual Tutor - Software Engineering Project Management",
+        company: "RMIT University",
+        time: "Feb 2025 - Present",
+        location: { city: "Melbourne", country: "Australia" },
+        tasks: [
+          "Conduct workshops on Agile, Scrum, project planning, and engineering best practices.",
+          "Mentor students through sprint planning and teamwork.",
+          "Assess assignments and guide student teams in applying modern development workflows.",
+        ],
+        skills: ["Agile/Scrum", "Jira", "Trello"],
+      },
+      {
+        title: "Product Manager",
+        company: "DigitCube.com Limited",
+        time: "Apr 2022 - Feb 2023",
+        location: { city: "London", country: "United Kingdom" },
+        tasks: [
+          "Supported company relocation to the UK and helped establish the London development team.",
+          "Recruited engineers and designers and adapted team workflows to the UK's engineering culture.",
+          "Refactored internal tools and UI components using React.js to align with modern development standards.",
+        ],
+        skills: [
+          "React.js",
+          "Redux",
+          "TypeScript",
+          "Node.js",
+          "GitHub",
+          "Agile PM",
+          "Cross-Cultural Team Leadership",
+        ],
+      },
+      {
+        title: "Product Manager",
+        company: "DigitCube.com Limited",
+        time: "Apr 2021 - Apr 2022",
+        location: { city: "Hong Kong", country: "China" },
+        tasks: [
+          "Led development of multiplayer casino games and mobile platforms.",
+          "Coordinated designers, client-side developers, backend engineers, QA, mathematics, and marketing teams.",
+          "Defined socket communication structures and guided client-server integration.",
+          "Analyzed user data to improve gameplay, retention, and monetization.",
+          "Directed production workflows, schedules, task breakdowns, and incident response.",
+        ],
+        skills: [
+          "Phaser",
+          "MongoDB",
+          "GoLang",
+          "WebSocket",
+          "GitLab",
+          "Agile PM",
+        ],
+        products: ["YoPlay Platform", "Fish Hunter"],
+        markets: ["Asia"],
+      },
+      {
+        title: "Analyst Programmer",
+        company: "DigitCube.com Limited",
+        time: "Sep 2014 - Mar 2021",
+        location: { city: "Hong Kong", country: "China" },
+        tasks: [
+          "Developed multiplayer casino games for iOS, Android, and web.",
+          "Implemented core client-side gameplay and supported backend engineers with protocol design.",
+          "Prototyped visual effects and optimized pipelines for designers.",
+          "Built configuration systems and client integration APIs.",
+          "Analyzed user behavior for UX improvements and monetization tuning.",
+        ],
+        skills: [
+          "Unity3D",
+          "C#",
+          "TypeScript",
+          "Lua",
+          "Egret Engine",
+          "WebSocket",
+          "GitLab",
+        ],
+        products: ["YoPlay Platform", "金牛元帅", "零用钱大冒险"],
+        markets: ["Asia"],
+      },
+      {
+        title: "Game Developer",
+        company: "Emagist Entertainment Limited",
+        time: "Jan 2013 - Sep 2014",
+        location: { city: "Hong Kong", country: "China" },
+        tasks: [
+          "Developed and maintained Ninja Saga for Facebook and mobile.",
+          "Rebuilt the game for iOS and Android using Unity3D.",
+          "Created in-game campaigns, improved monetization through analytics, and designed cross-platform architecture.",
+          "Mentored junior developers and improved development workflows.",
+        ],
+        skills: ["Unity3D", "C#", "Flash/ActionScript 3", "REST API", "SVN"],
+        products: ["Ninja Saga (Facebook + Mobile)"],
+        markets: ["Global"],
+      },
+      {
+        title: "Game Programmer",
+        company: "Rullingnet Corporation Limited",
+        time: "Mar 2012 - Jan 2013",
+        location: { city: "Hong Kong", country: "China" },
+        tasks: [
+          "Built educational games for the VinCi Tablet (Android).",
+          "Developed internal tools and mini-apps for online campaigns.",
+          "Created an online store for product sales and marketing.",
+        ],
+        skills: ["Unity3D", "C#", "Android SDK", "Java", "SVN"],
+        products: [
+          "How Many Pins?",
+          "I Know 100!",
+          "Being Considerate",
+          "Playground",
+        ],
+        markets: ["US", "CA"],
+      },
+      {
+        title: "Game Designer",
+        company: "VTech Electronics Limited",
+        time: "Jul 2010 - Mar 2012",
+        location: { city: "Hong Kong", country: "China" },
+        tasks: [
+          "Designed educational games for V.Smile Motion, V.Reader, and InnoTab.",
+          "Collaborated with licensors (Disney, Pixar, Sanrio) for IP compliance.",
+          "Designed UX flows, logging components, and marketing trailers.",
+          "Contributed to UX planning for the InnoTab tablet.",
+        ],
+        skills: [
+          "Game Design",
+          "IP Compliance",
+          "UI/UX Design",
+          "Project Coordination",
+          "Story Writing",
+          "Flash/ActionScript 3",
+        ],
+        products: [
+          "Cars 2",
+          "Hello Kitty (V.Reader)",
+          "Hello Kitty (InnoTab)",
+          "Brave",
+        ],
+        markets: ["US", "UK", "EU"],
+      },
+      {
+        title: "Project Assistant",
+        company: "PlayLab - The Hong Kong Polytechnic University",
+        time: "Oct 2009 - Mar 2010",
+        location: { city: "Hong Kong", country: "China" },
+        tasks: [
+          "Conducted research on EEG-based games for children with ADD.",
+          "Developed Brainsic, an EEG-controlled music interaction game.",
+        ],
+        skills: [
+          "Game Design",
+          "Unity3D",
+          "C#",
+          "NeuroSky SDK",
+          "HCI Prototyping",
+        ],
+        products: ["Brainsic"],
+        markets: ["Hong Kong"],
+      },
+      {
+        title: "Interactive Designer & Animation Tutor",
+        company: "Guangzhou Children's Palace",
+        time: "Sep 2005 - Aug 2008",
+        location: { city: "Guangzhou", country: "China" },
+        tasks: [
+          "Built interactive learning applications for youth education.",
+          "Taught animation and created promotional materials.",
+        ],
+        skills: ["Photoshop", "Maya", "After Effects", "Premiere"],
+      },
+      {
+        title: "Interactive Designer",
+        company: "Canada Stanley Computer Animation Research Unit",
+        time: "Jul 2002 - Aug 2005",
+        location: { city: "Guangzhou", country: "China" },
+        tasks: [
+          "Developed 3D virtual reality applications for education.",
+          "Built the stereoscopic “Virtual Antique Museum” for Sun Yat-Sen University.",
+        ],
+        skills: ["Early VR frameworks", "Photoshop", "Maya"],
+      },
+      {
+        title: "Part-Time Interactive Designer",
+        company: "South China Normal University",
+        time: "Sep 2004 - Jul 2005",
+        location: { city: "Guangzhou", country: "China" },
+        tasks: [
+          "Researched the education methodology used in the TV broadcasting course lab.",
+          'Designed the "Virtual Broadcasting Lab" online education system.',
+        ],
+        skills: ["Early VR frameworks", "Photoshop", "Maya"],
+      },
+    ],
+  },
+  pageTitle: "My Career Life",
 } satisfies ExperienceContent;
 
 export const [ExperiencePageContext, useExperiencePageContext] =

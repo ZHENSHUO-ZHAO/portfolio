@@ -1,72 +1,84 @@
 import { type Job } from "../../contexts/experienceContext";
 import { jobSlug } from "../../utils/util";
-import { Section } from "../PageBase";
-import JobTagList, { TextTag } from "./JobTagList";
 import Task from "./Task";
-import { HiCalendar } from "react-icons/hi";
-import { HiLocationMarker } from "react-icons/hi";
+import { FaLocationDot } from "react-icons/fa6";
+import Product from "./Product";
+import Skill from "./Skill";
+import type { CardColor } from "../../contexts/pageContext";
 
-export function Job({ job }: { job: Job }) {
+export function Job({ job, color }: { job: Job; color: CardColor }) {
   const jobId = jobSlug(job.time, job.title, job.company);
-  const headingStyle = "text-lg font-medium";
 
   return (
-    <Section
+    <li
       id={jobId}
-      title={job.title}
-      className="bg-white border border-slate-300 rounded-lg px-7 py-5! space-y-4"
-      headingClassName="text-xl mb-1! pb-0!"
-      childrenContainerClassName="space-y-4"
-      headerChildren={
-        <>
-          <p className="text-neutral-600 font-medium">{job.company}</p>
-          <div className="flex flex-col gap-0 min-[552px]:flex-row min-[552px]:gap-8">
-            <p className="text-muted flex gap-1 items-center">
-              <HiCalendar />
-              <time className="text-sm">{job.time}</time>
-            </p>
-            <p className="text-muted flex gap-1 items-center">
-              <HiLocationMarker />
-              <span className="text-sm">{`${job.location.city}, ${job.location.country}`}</span>
-            </p>
-          </div>
-        </>
-      }
+      className="flex gap-1 sm:gap-6 flex-col sm:flex-row p-5 sm:p-0 rounded-xl border sm:border-none border-slate-200 shadow-sm sm:shadow-none"
     >
-      <Task tasks={job.tasks} headingStyle={headingStyle} />
+      <div className="relative z-10 w-full sm:w-44 md:w-3xs lg:w-xs xl:w-lg flex-none flex flex-col sm:items-end sm:text-right">
+        {/* Time */}
+        <div className="relative mb-2 md:mb-4">
+          <time
+            className={`px-2 md:px-3 py-1 ${color.bg} border ${color.tags && color.tags[0].border} rounded-full ${color.tags && color.tags[0].text} text-xs md:text-sm font-semibold inline-flex gap-2 justify-start items-center`}
+          >
+            {/* Decorative bullet point smaller than sm */}
+            <span
+              aria-hidden="true"
+              className={`size-3 ${color.tags && color.tags[0].bg} rounded-full inline-block sm:hidden`}
+            />
+            <span>{job.time}</span>
+          </time>
+          {/* Decorative bullet point for sizes equal or greater than sm */}
+          <div
+            aria-hidden="true"
+            className="absolute h-px w-9 right-0 translate-x-full top-1/2 -translate-y-1/2 hidden sm:block"
+          >
+            <div
+              className={`absolute size-2 rounded-full right-0 translate-x-full top-1/2 -translate-y-1/2 ${color.tags && color.tags[0].bg}`}
+            >
+              <div className="absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent border border-slate-200 inset-shadow-xs" />
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            className={`absolute h-px w-9 right-0 translate-x-full top-1/2 -translate-y-1/2 ${color.tags && color.tags[0].bg} hidden sm:block`}
+          />
+        </div>
 
-      {/* Product List */}
-      {job.products && (
-        <JobTagList
-          title="Launched Products"
-          headingStyle={headingStyle}
-          liStyle="bg-accent/20 text-sky-700"
-          tagComponent={TextTag}
-          data={job.products}
-        />
-      )}
+        {/* Job title */}
+        <h3 className="text-lg md:text-lg lg:text-xl xl:text-2xl mb-1 md:mb-2">
+          {job.title}
+        </h3>
 
-      {/* Market List */}
-      {job.markets && (
-        <JobTagList
-          title="Markets"
-          headingStyle={headingStyle}
-          liStyle="bg-accent/20 text-sky-700"
-          tagComponent={TextTag}
-          data={job.markets}
-        />
-      )}
+        {/* Company */}
+        <p
+          className={`text-sm md:text-base lg:text-lg font-medium ${color.icon.text} mb-2 md:mb-4`}
+        >
+          {job.company}
+        </p>
 
-      {/* Skill List */}
-      {job.skills && (
-        <JobTagList
-          title="Expertise & Technologies"
-          headingStyle={headingStyle}
-          liStyle="bg-complement/20 text-emerald-700"
-          tagComponent={TextTag}
-          data={job.skills}
-        />
-      )}
-    </Section>
+        {/* Location */}
+        <p className="text-muted mb-3 md:mb-4 flex gap-1 items-center text-xs md:text-sm">
+          <FaLocationDot className="" />
+          <span className="">{`${job.location.city}, ${job.location.country}`}</span>
+        </p>
+      </div>
+
+      {/* Job details */}
+      <div className="relative flex-1 bg-white rounded-xl sm:p-4 md:p-6 sm:border sm:border-slate-200 sm:shadow-sm">
+        <Task tasks={job.tasks} color={color} />
+
+        {/* Product List */}
+        {job.products && (
+          <Product
+            products={job.products}
+            markets={job.markets}
+            color={color}
+          />
+        )}
+
+        {/* Skill List */}
+        <Skill data={job.skills} color={color} />
+      </div>
+    </li>
   );
 }
