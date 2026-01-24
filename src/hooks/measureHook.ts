@@ -12,7 +12,11 @@ export default function useMeasure<T extends HTMLElement>() {
       // Add event listener to track the ref's size.
       const observer = new ResizeObserver(([entry]) => {
         const { width, height } = entry.contentRect;
-        setSize({ width: Math.round(width), height: Math.round(height) });
+        const roundWidth = Math.round(width);
+        const roundHeight = Math.round(height);
+        if (roundWidth !== size.width || roundHeight !== size.height) {
+          setSize({ width: Math.round(width), height: Math.round(height) });
+        }
       });
 
       observer.observe(ref.current);

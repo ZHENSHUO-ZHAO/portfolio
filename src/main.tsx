@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, replace, Route, Routes } from "react-router";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Experience from "./pages/Experience/Experience";
@@ -26,14 +26,10 @@ import {
   EducationPageContext,
 } from "./contexts/educationContext.ts";
 import { hobbyContent, HobbyPageContext } from "./contexts/hobbyContext.ts";
-import type { ContextPageBase } from "./contexts/pageContext.ts";
+import type { route } from "./contexts/pageContext.ts";
+import ProjectCategory from "./pages/Project/ProjectCategory.tsx";
 
-const routes: {
-  path?: string;
-  content: ContextPageBase;
-  PageContext: React.Context<unknown>;
-  PageComponent: React.ComponentType;
-}[] = [
+const routes: route[] = [
   {
     content: homeContent,
     PageContext: HomePageContext as React.Context<unknown>,
@@ -56,6 +52,24 @@ const routes: {
     content: projectContent,
     PageContext: ProjectPageContext as React.Context<unknown>,
     PageComponent: Project,
+    subroute: [
+      { component: Navigate, props: { to: "commercial", replace } },
+      {
+        path: "commercial",
+        component: ProjectCategory,
+        props: { category: "commercial" },
+      },
+      {
+        path: "edutainment",
+        component: ProjectCategory,
+        props: { category: "edutainment" },
+      },
+      {
+        path: "research",
+        component: ProjectCategory,
+        props: { category: "research" },
+      },
+    ],
   },
   {
     path: "skill",
@@ -82,19 +96,49 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route element={<App />}>
-          {routes.map((route) => (
-            <Route
-              index={route.path === undefined}
-              path={route.path}
-              element={
-                <route.PageContext value={route.content}>
-                  <route.PageComponent />
-                </route.PageContext>
-              }
-            ></Route>
-          ))}
+          {routes.map((route, i) =>
+            route.path === undefined ? (
+              // index page (NO children)
+              <Route
+                key={`index-${i}`}
+                index
+                element={
+                  <route.PageContext value={route.content}>
+                    <route.PageComponent />
+                  </route.PageContext>
+                }
+              />
+            ) : (
+              // layout / normal page
+              <Route
+                key={route.path}
+                path={route.path}
+                element={
+                  <route.PageContext value={route.content}>
+                    <route.PageComponent />
+                  </route.PageContext>
+                }
+              >
+                {route.subroute?.map((sr, j) =>
+                  sr.path === undefined ? (
+                    <Route
+                      key={`sub-index-${j}`}
+                      index
+                      element={<sr.component {...sr.props} />}
+                    />
+                  ) : (
+                    <Route
+                      key={sr.path}
+                      path={sr.path}
+                      element={<sr.component {...sr.props} />}
+                    />
+                  ),
+                )}
+              </Route>
+            ),
+          )}
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

@@ -11,29 +11,34 @@ export default function Section({
   bgChildren,
   invertColor,
   tagColor,
+  paddingY = "py-16 md:py-20 lg:py-24",
+  ref,
 }: {
-  headingData: Heading;
+  headingData?: Heading;
   id: string;
   children: ReactNode;
   maxWidth?: string;
   bgChildren?: ReactNode;
   invertColor?: boolean;
   tagColor?: IconColor;
+  paddingY?: string;
+  ref?: React.RefObject<HTMLElement | null>;
 }) {
   return (
     <section
-      className={`relative ${maxWidth} py-16 md:py-20 lg:py-24`}
+      ref={ref}
+      className={`relative ${maxWidth} ${paddingY}`}
       aria-labelledby={id}
       id={id}
     >
       <FullBleedContainer>{bgChildren}</FullBleedContainer>
-      {
+      {headingData && (
         <SectionHeading
           data={headingData}
           invertColor={invertColor}
           tagColor={tagColor}
         />
-      }
+      )}
       {children}
     </section>
   );

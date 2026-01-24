@@ -222,7 +222,7 @@ export const aboutContent = {
       },
       {
         tag: { icon: FaDownload },
-        title: "Download Resume",
+        title: "View Resume",
         desc: "",
       },
     ],

@@ -80,7 +80,6 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
-    // The view to be scrolled to top before animating the underline of the NavLink. Otherwise, the previous page's y offset is counted in the animation, causing the underline to move from somewhere down the bar.
     window.scrollTo({ top: 0, behavior: "instant" });
     if (!show) {
       setShow(true);
@@ -89,7 +88,10 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
   };
 
   return (
-    <header className="fixed top-6 w-full z-50 hidden lg:block">
+    <motion.header
+      layoutScroll
+      className="fixed top-6 w-full z-50 hidden lg:block"
+    >
       <nav
         aria-label="Navigation Bar"
         className={`relative mx-auto max-w-[calc(56rem+10px)]`}
@@ -115,42 +117,41 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                     className="whitespace-nowrap text-base flex flex-col items-center justify-center tracking-tight font-medium"
                   >
                     {({ isActive }) => (
-                      <>
-                        <div className="relative flex flex-col justify-start items-center w-fit">
+                      <div className="relative flex flex-col justify-start items-center w-fit">
+                        <motion.div
+                          className="flex items-center gap-2"
+                          initial="rest"
+                          animate="rest"
+                          whileHover={!isActive ? "hover" : "rest"}
+                        >
+                          <motion.span
+                            variants={iconVariants}
+                            transition={{
+                              type: "spring",
+                              stiffness: 800,
+                              damping: 15,
+                            }}
+                          >
+                            <item.icon size={18} strokeWidth={2} />
+                          </motion.span>
+                          <span>{item.title}</span>
+                        </motion.div>
+                        <div className="h-0.5 w-full">
                           <AnimatePresence>
                             {isActive && (
-                              <motion.span
+                              <motion.div
                                 layoutId="nav-underline"
-                                className="absolute -bottom-1 h-0.5 w-full rounded-full bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"
+                                className="size-full rounded-full bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"
                                 transition={{
                                   type: "spring",
                                   stiffness: 500,
-                                  damping: 40,
+                                  damping: 35,
                                 }}
                               />
                             )}
                           </AnimatePresence>
-
-                          <motion.div
-                            className="flex items-center gap-2"
-                            initial="rest"
-                            animate="rest"
-                            whileHover={!isActive ? "hover" : "rest"}
-                          >
-                            <motion.span
-                              variants={iconVariants}
-                              transition={{
-                                type: "spring",
-                                stiffness: 800,
-                                damping: 15,
-                              }}
-                            >
-                              <item.icon size={18} strokeWidth={2} />
-                            </motion.span>
-                            <span>{item.title}</span>
-                          </motion.div>
                         </div>
-                      </>
+                      </div>
                     )}
                   </NavLink>
                 </li>
@@ -171,6 +172,6 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
           />
         )}
       </nav>
-    </header>
+    </motion.header>
   );
 }

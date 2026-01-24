@@ -12,6 +12,21 @@ export default function createPageContext<T extends ContextPageBase>(
 
 export type ContextPageBase = { pageTitle: string };
 
+export type route = {
+  path?: string;
+  content: ContextPageBase;
+  PageContext: React.Context<unknown>;
+  PageComponent: React.ComponentType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  subroute?: subroute<any>[];
+};
+
+export type subroute<P = object> = {
+  path?: string;
+  component: React.ComponentType<P>;
+  props?: P;
+};
+
 export type DescriptiveItem = {
   title?: string;
   subtitle?: string;
@@ -39,6 +54,12 @@ export type Heading = {
 export type Tag = {
   icon: IconType;
   text?: string;
+};
+
+export type Stat = {
+  icon?: IconType;
+  amount: string;
+  unit: string;
 };
 
 export type CardColor = {

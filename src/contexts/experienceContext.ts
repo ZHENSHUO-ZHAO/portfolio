@@ -1,6 +1,5 @@
-import type { IconType } from "react-icons";
 import createPageContext from "./pageContext";
-import type { ContextPageBase, Header, Heading } from "./pageContext";
+import type { ContextPageBase, Header, Heading, Stat } from "./pageContext";
 import {
   FaBriefcase,
   FaBuilding,
@@ -18,12 +17,6 @@ export type Job = {
   skills: string[];
   products?: string[];
   markets?: string[];
-};
-
-export type Stat = {
-  icon: IconType;
-  amount: number;
-  unit: string;
 };
 
 export type ExperienceContent = ContextPageBase & {
@@ -57,10 +50,10 @@ export const experienceContent = {
     ],
   },
   stats: [
-    { icon: FaBuilding, amount: 9, unit: "Companies" },
-    { icon: FaUserGroup, amount: 10, unit: "Roles" },
-    { icon: FaGlobe, amount: 4, unit: "Cities" },
-    { icon: FaRocket, amount: 14, unit: "Products Shipped" },
+    { icon: FaBuilding, amount: "9", unit: "Companies" },
+    { icon: FaUserGroup, amount: "10", unit: "Roles" },
+    { icon: FaGlobe, amount: "4", unit: "Cities" },
+    { icon: FaRocket, amount: "14", unit: "Products Shipped" },
   ],
   career: {
     heading: {
