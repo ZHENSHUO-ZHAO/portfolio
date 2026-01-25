@@ -1,6 +1,4 @@
 import { Outlet } from "react-router";
-import Header from "../../components/page/Header";
-import HeaderBackground from "../../components/page/HeaderBackground";
 import Page from "../../components/page/Page";
 import Section from "../../components/page/Section";
 import { useProjectPageContext } from "../../contexts/projectContext";
@@ -9,7 +7,8 @@ import useScrollToHash from "../../hooks/scrollToHashHook";
 import CategoryNav from "./CategoryNav";
 import { useRef } from "react";
 import Impact from "./Impact";
-import { CardSection } from "../../components/page/CardSection";
+import { ContactCardSection } from "../../components/page/ContactCardSection";
+import PageHeader from "../../components/page/PageHeader";
 
 export default function Project() {
   const content = useProjectPageContext();
@@ -19,16 +18,7 @@ export default function Project() {
   return (
     <Page
       headerComponent={
-        <Header data={content.header} bgChildren={<HeaderBackground />}>
-          <ol className="flex flex-wrap gap-4 text-sm">
-            {content.stats.map((s) => (
-              <li className="flex gap-2 items-center text-muted" key={s.unit}>
-                {s.icon && <s.icon />}
-                <span>{`${s.amount} ${s.unit}`}</span>
-              </li>
-            ))}
-          </ol>
-        </Header>
+        <PageHeader header={content.header} stats={content.stats} />
       }
     >
       <Section
@@ -54,14 +44,9 @@ export default function Project() {
         <Impact data={content.impact.items} />
       </Section>
 
-      <CardSection
+      <ContactCardSection
         id="collaborate-section"
         headingData={content.contact.heading}
-        tagColor={{
-          icon: "text-(--color-tone4-300)",
-          text: "text-secondary",
-          bg: "bg-white border-4 border-slate-100",
-        }}
         links={content.contact.items}
       />
     </Page>

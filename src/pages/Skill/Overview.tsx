@@ -1,19 +1,19 @@
 import type { CardColor, Heading } from "../../contexts/pageContext";
 
-export default function Aim({ data }: { data: Heading[] }) {
+export default function Overview({ data }: { data: Heading[] }) {
   return (
-    <ol className="relative flex flex-wrap gap-4 sm:gap-5 lg:gap-6 justify-center lg:mx-8">
+    <div className="relative grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 justify-center lg:mx-8">
       {data.map((s, i) => (
-        <AimItem key={s.title} data={s} color={cardColors[i]} />
+        <SkillItem key={s.title} data={s} color={cardColors[i]} />
       ))}
-    </ol>
+    </div>
   );
 }
 
-function AimItem({ data, color }: { data: Heading; color: CardColor }) {
+function SkillItem({ data, color }: { data: Heading; color: CardColor }) {
   return (
-    <li
-      className={`${color.bg} border ${color.border} flex-1 min-w-41 p-4 sm:p-6 lg:p-8 rounded-xl md:rounded-2xl flex flex-col items-center`}
+    <article
+      className={`${color.bg} border ${color.border} p-4 sm:p-6 lg:p-8 rounded-xl md:rounded-2xl flex flex-col items-start`}
     >
       {data.tag && (
         <div
@@ -22,10 +22,11 @@ function AimItem({ data, color }: { data: Heading; color: CardColor }) {
           {data.tag.icon && <data.tag.icon />}
         </div>
       )}
-      <h3 className="mb-0 md:mb-2 text-center title-color-invert text-sm md:text-lg">
+      <h3 className="mb-0 md:mb-2 title-color-invert text-lg md:text-xl">
         {data.title}
       </h3>
-    </li>
+      <p className="text-sm md:text-base text-slate-300">{data.desc}</p>
+    </article>
   );
 }
 

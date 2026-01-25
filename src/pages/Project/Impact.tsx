@@ -23,8 +23,8 @@ export default function Impact({ data }: { data: Stat[] }) {
 }
 
 const numberColors: string[] = [
-  "text-(--color-tone1-400)",
-  "text-(--color-tone2-400)",
-  "text-(--color-tone3-400)",
-  "text-(--color-tone4-400)",
+  "text-tone1-400",
+  "text-tone2-400",
+  "text-tone3-400",
+  "text-tone4-400",
 ];

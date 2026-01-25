@@ -221,17 +221,17 @@ type scrollDirection = "left" | "right";
 const navColors: CardColor[] = [
   {
     icon: { text: "", bg: "" },
-    bg: "bg-(--color-tone1-600)",
-    border: "border-(--color-tone1-100)",
+    bg: "bg-tone1-600",
+    border: "border-tone1-100",
   },
   {
     icon: { text: "", bg: "" },
-    bg: "bg-(--color-tone3-600)",
-    border: "border-(--color-tone3-100)",
+    bg: "bg-tone3-600",
+    border: "border-tone3-100",
   },
   {
     icon: { text: "", bg: "" },
-    bg: "bg-(--color-tone5-600)",
-    border: "border-(--color-tone5-100)",
+    bg: "bg-tone5-600",
+    border: "border-tone5-100",
   },
 ];

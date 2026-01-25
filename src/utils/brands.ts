@@ -9,6 +9,11 @@ import {
   SiAutodeskmaya,
   SiAdobeaftereffects,
   SiAdobepremierepro,
+  SiTailwindcss,
+  SiFramer,
+  SiGithubactions,
+  SiAmazondynamodb,
+  SiExpress,
 } from "react-icons/si";
 import {
   FaTrello,
@@ -20,7 +25,11 @@ import {
   FaUnity,
   FaAndroid,
   FaJava,
+  FaDocker,
+  FaAws,
+  FaLinux,
 } from "react-icons/fa6";
+import { GrMysql } from "react-icons/gr";
 
 export default function getBrandIcon(name: string): IconType | null {
   return iconMap[name.toLowerCase()] ?? null;
@@ -46,4 +55,14 @@ const iconMap: Record<string, IconType> = {
   maya: SiAutodeskmaya,
   "after effects": SiAdobeaftereffects,
   premiere: SiAdobepremierepro,
+  "tailwind css": SiTailwindcss,
+  "framer motion": SiFramer,
+  "github actions": SiGithubactions,
+  docker: FaDocker,
+  aws: FaAws,
+  "aws (ec2, lambda, s3, dynamodb)": FaAws,
+  "linux servers": FaLinux,
+  mysql: GrMysql,
+  dynamodb: SiAmazondynamodb,
+  "express.js": SiExpress,
 };

@@ -189,53 +189,87 @@ function TagList({
 
 const projectColors: CardColor[] = [
   {
-    icon: { text: "", bg: "bg-(--color-tone1-600)" },
-    bg: "from-(--color-tone1-50)/70",
-    border: "border-(--color-tone1-600)/10",
+    icon: { text: "", bg: "bg-tone1-600" },
+    bg: "from-tone1-50/70",
+    border: "border-tone1-600/10",
     tags: [
       {
-        text: "text-(--color-tone1-900)",
-        icon: "text-(--color-tone1-700)",
-        bg: "bg-(--color-tone1-100)/30",
-        border: "border-(--color-tone1-600)/10",
+        text: "text-tone1-900",
+        icon: "text-tone1-700",
+        bg: "bg-tone1-100/30",
+        border: "border-tone1-600/10",
       },
       {
-        text: "text-(--color-tone1-700)",
-        bg: "bg-(--color-tone1-600)/10",
+        text: "text-tone1-700",
+        bg: "bg-tone1-600/10",
       },
     ],
   },
   {
-    icon: { text: "", bg: "bg-(--color-tone3-600)" },
-    bg: "from-(--color-tone3-50)/70",
-    border: "border-(--color-tone3-600)/10",
+    icon: { text: "", bg: "bg-tone2-600" },
+    bg: "from-tone2-50/70",
+    border: "border-tone2-600/10",
     tags: [
       {
-        text: "text-(--color-tone3-900)",
-        icon: "text-(--color-tone3-700)",
-        bg: "bg-(--color-tone3-100)/30",
-        border: "border-(--color-tone3-600)/10",
+        text: "text-tone2-900",
+        icon: "text-tone2-700",
+        bg: "bg-tone2-100/30",
+        border: "border-tone2-600/10",
       },
       {
-        text: "text-(--color-tone3-700)",
-        bg: "bg-(--color-tone3-600)/10",
+        text: "text-tone2-700",
+        bg: "bg-tone2-600/10",
       },
     ],
   },
   {
-    icon: { text: "", bg: "bg-(--color-tone5-600)" },
-    bg: "from-(--color-tone5-50)/70",
-    border: "border-(--color-tone5-600)/10",
+    icon: { text: "", bg: "bg-tone3-600" },
+    bg: "from-tone3-50/70",
+    border: "border-tone3-600/10",
     tags: [
       {
-        text: "text-(--color-tone5-900)",
-        icon: "text-(--color-tone5-700)",
-        bg: "bg-(--color-tone5-100)/30",
-        border: "border-(--color-tone5-600)/10",
+        text: "text-tone3-900",
+        icon: "text-tone3-700",
+        bg: "bg-tone3-100/30",
+        border: "border-tone3-600/10",
       },
       {
-        text: "text-(--color-tone5-700)",
-        bg: "bg-(--color-tone5-600)/10",
+        text: "text-tone3-700",
+        bg: "bg-tone3-600/10",
+      },
+    ],
+  },
+  {
+    icon: { text: "", bg: "bg-tone4-600" },
+    bg: "from-tone4-50/70",
+    border: "border-tone4-600/10",
+    tags: [
+      {
+        text: "text-tone4-900",
+        icon: "text-tone4-700",
+        bg: "bg-tone4-100/30",
+        border: "border-tone4-600/10",
+      },
+      {
+        text: "text-tone4-700",
+        bg: "bg-tone4-600/10",
+      },
+    ],
+  },
+  {
+    icon: { text: "", bg: "bg-tone5-600" },
+    bg: "from-tone5-50/70",
+    border: "border-tone5-600/10",
+    tags: [
+      {
+        text: "text-tone5-900",
+        icon: "text-tone5-700",
+        bg: "bg-tone5-100/30",
+        border: "border-tone5-600/10",
+      },
+      {
+        text: "text-tone5-700",
+        bg: "bg-tone5-600/10",
       },
     ],
   },

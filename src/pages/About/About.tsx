@@ -1,8 +1,7 @@
-import { CardSection } from "../../components/page/CardSection";
+import { ContactCardSection } from "../../components/page/ContactCardSection";
 import { FourHorizontalCards } from "../../components/page/FourHorizontalCards";
-import Header from "../../components/page/Header";
-import HeaderBackground from "../../components/page/HeaderBackground";
 import Page from "../../components/page/Page";
+import PageHeader from "../../components/page/PageHeader";
 import Section from "../../components/page/Section";
 import { useAboutPageContext } from "../../contexts/aboutContext";
 import Aim from "./Aim";
@@ -13,11 +12,7 @@ export default function About() {
   const content = useAboutPageContext();
 
   return (
-    <Page
-      headerComponent={
-        <Header data={content.header} bgChildren={<HeaderBackground />} />
-      }
-    >
+    <Page headerComponent={<PageHeader header={content.header} />}>
       <Section
         id="strengths-section"
         headingData={content.strength.heading}
@@ -56,7 +51,7 @@ export default function About() {
         id="leisure-section"
         headingData={content.leisure.heading}
         bgChildren={
-          <div className="size-full bg-linear-to-br from-white via-slate-50 to-(--color-tone3-50)" />
+          <div className="size-full bg-linear-to-br from-white via-slate-50 to-tone3-50" />
         }
       >
         <Leisure
@@ -65,16 +60,10 @@ export default function About() {
         />
       </Section>
 
-      <CardSection
+      <ContactCardSection
         id="collaborate-section"
         headingData={content.contact.heading}
         invertColor
-        showCard
-        tagColor={{
-          icon: "text-(--color-tone4-300)",
-          text: "text-white",
-          bg: "bg-white/20",
-        }}
         links={content.contact.items}
       />
     </Page>

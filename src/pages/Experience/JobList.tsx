@@ -17,111 +17,111 @@ export default function JobList({ data }: { data: JobType[] }) {
 const cardColors: CardColor[] = [
   {
     icon: {
-      text: "text-(--color-tone1-600)",
+      text: "text-tone1-600",
       bg: "",
     }, // For company name
-    bg: "bg-(--color-tone1-50)/40", // For the bg of all the sub-sections
+    bg: "bg-tone1-50/40", // For the bg of all the sub-sections
     border: "",
     tags: [
       {
-        text: "text-(--color-tone1-700)",
-        bg: "bg-(--color-tone1-500)", // For the bullet point
-        icon: "text-(--color-tone1-700)/80",
-        border: "border-(--color-tone1-500)",
+        text: "text-tone1-700",
+        bg: "bg-tone1-500", // For the bullet point
+        icon: "text-tone1-700/80",
+        border: "border-tone1-500",
       }, // For time, checkmark, products titles and markets
-      { text: "text-(--color-tone1-900)", bg: "" }, // For products heading
+      { text: "text-tone1-900", bg: "" }, // For products heading
       {
-        text: "text-(--color-tone1-700)",
+        text: "text-tone1-700",
         bg: "",
-        border: "border-(--color-tone1-700)/30",
+        border: "border-tone1-700/30",
       }, // For skills
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone2-600)",
+      text: "text-tone2-600",
       bg: "",
     }, // For company name
-    bg: "bg-(--color-tone2-50)/40", // For the bg of all the sub-sections
+    bg: "bg-tone2-50/40", // For the bg of all the sub-sections
     border: "",
     tags: [
       {
-        text: "text-(--color-tone2-700)",
-        bg: "bg-(--color-tone2-500)", // For the bullet point
-        icon: "text-(--color-tone2-700)/80",
-        border: "border-(--color-tone2-500)",
+        text: "text-tone2-700",
+        bg: "bg-tone2-500", // For the bullet point
+        icon: "text-tone2-700/80",
+        border: "border-tone2-500",
       }, // For time, checkmark, products titles and markets
-      { text: "text-(--color-tone2-900)", bg: "" }, // For products heading
+      { text: "text-tone2-900", bg: "" }, // For products heading
       {
-        text: "text-(--color-tone2-700)",
+        text: "text-tone2-700",
         bg: "",
-        border: "border-(--color-tone2-700)/30",
+        border: "border-tone2-700/30",
       }, // For skills
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone3-600)",
+      text: "text-tone3-600",
       bg: "",
     }, // For company name
-    bg: "bg-(--color-tone3-50)/40", // For the bg of all the sub-sections
+    bg: "bg-tone3-50/40", // For the bg of all the sub-sections
     border: "",
     tags: [
       {
-        text: "text-(--color-tone3-700)",
-        bg: "bg-(--color-tone3-500)", // For the bullet point
-        icon: "text-(--color-tone3-700)/80",
-        border: "border-(--color-tone3-500)",
+        text: "text-tone3-700",
+        bg: "bg-tone3-500", // For the bullet point
+        icon: "text-tone3-700/80",
+        border: "border-tone3-500",
       }, // For time, checkmark, products titles and markets
-      { text: "text-(--color-tone3-900)", bg: "" }, // For products heading
+      { text: "text-tone3-900", bg: "" }, // For products heading
       {
-        text: "text-(--color-tone3-700)",
+        text: "text-tone3-700",
         bg: "",
-        border: "border-(--color-tone3-700)/30",
+        border: "border-tone3-700/30",
       }, // For skills
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone4-600)",
+      text: "text-tone4-600",
       bg: "",
     }, // For company name
-    bg: "bg-(--color-tone4-50)/40", // For the bg of all the sub-sections
+    bg: "bg-tone4-50/40", // For the bg of all the sub-sections
     border: "",
     tags: [
       {
-        text: "text-(--color-tone4-700)",
-        bg: "bg-(--color-tone4-500)", // For the bullet point
-        icon: "text-(--color-tone4-700)/80",
-        border: "border-(--color-tone4-500)",
+        text: "text-tone4-700",
+        bg: "bg-tone4-500", // For the bullet point
+        icon: "text-tone4-700/80",
+        border: "border-tone4-500",
       }, // For time, checkmark, products titles and markets
-      { text: "text-(--color-tone4-900)", bg: "" }, // For products heading
+      { text: "text-tone4-900", bg: "" }, // For products heading
       {
-        text: "text-(--color-tone4-700)",
+        text: "text-tone4-700",
         bg: "",
-        border: "border-(--color-tone4-700)/30",
+        border: "border-tone4-700/30",
       }, // For skills
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone5-600)",
+      text: "text-tone5-600",
       bg: "",
     }, // For company name
-    bg: "bg-(--color-tone5-50)/40", // For the bg of all the sub-sections
+    bg: "bg-tone5-50/40", // For the bg of all the sub-sections
     border: "",
     tags: [
       {
-        text: "text-(--color-tone5-700)",
-        bg: "bg-(--color-tone5-500)", // For the bullet point
-        icon: "text-(--color-tone5-700)/80",
-        border: "border-(--color-tone5-500)",
+        text: "text-tone5-700",
+        bg: "bg-tone5-500", // For the bullet point
+        icon: "text-tone5-700/80",
+        border: "border-tone5-500",
       }, // For time, checkmark, products titles and markets
-      { text: "text-(--color-tone5-900)", bg: "" }, // For products heading
+      { text: "text-tone5-900", bg: "" }, // For products heading
       {
-        text: "text-(--color-tone5-700)",
+        text: "text-tone5-700",
         bg: "",
-        border: "border-(--color-tone5-700)/30",
+        border: "border-tone5-700/30",
       }, // For skills
     ],
   },

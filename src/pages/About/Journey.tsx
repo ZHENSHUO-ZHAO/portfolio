@@ -56,67 +56,67 @@ function JourneyItem({
 const cardColors: CardColor[] = [
   {
     icon: {
-      text: "text-(--color-tone1-400)",
-      bg: "bg-(--color-tone1-100)",
+      text: "text-tone1-400",
+      bg: "bg-tone1-100",
     },
     bg: "bg-white",
-    border: "border-(--color-tone1-400)",
+    border: "border-tone1-400",
     tags: [
       {
-        text: "text-(--color-tone1-700)",
-        bg: "bg-(--color-tone1-50)",
+        text: "text-tone1-700",
+        bg: "bg-tone1-50",
       },
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone2-400)",
-      bg: "bg-(--color-tone2-100)",
+      text: "text-tone2-400",
+      bg: "bg-tone2-100",
     },
     bg: "bg-white",
-    border: "border-(--color-tone2-400)",
+    border: "border-tone2-400",
     tags: [
       {
-        text: "text-(--color-tone2-700)",
-        bg: "bg-(--color-tone2-50)",
+        text: "text-tone2-700",
+        bg: "bg-tone2-50",
       },
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone3-400)",
-      bg: "bg-(--color-tone3-100)",
+      text: "text-tone3-400",
+      bg: "bg-tone3-100",
     },
     bg: "bg-white",
-    border: "border-(--color-tone3-400)",
+    border: "border-tone3-400",
     tags: [
       {
-        text: "text-(--color-tone3-700)",
-        bg: "bg-(--color-tone3-50)",
+        text: "text-tone3-700",
+        bg: "bg-tone3-50",
       },
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone4-400)",
-      bg: "bg-(--color-tone4-100)",
+      text: "text-tone4-400",
+      bg: "bg-tone4-100",
     },
     bg: "bg-white",
-    border: "border-(--color-tone4-400)",
+    border: "border-tone4-400",
     tags: [
       {
-        text: "text-(--color-tone4-700)",
-        bg: "bg-(--color-tone4-50)",
+        text: "text-tone4-700",
+        bg: "bg-tone4-50",
       },
     ],
   },
   {
     icon: {
-      text: "text-(--color-tone1-400)",
-      bg: "bg-(--color-tone1-500)/20",
+      text: "text-tone1-400",
+      bg: "bg-tone1-500/20",
     },
     bg: "bg-color-invert",
-    border: "border-(--color-tone1-400)",
+    border: "border-tone1-400",
   },
 ];
 

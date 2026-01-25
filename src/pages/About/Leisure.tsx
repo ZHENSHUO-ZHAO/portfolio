@@ -8,7 +8,7 @@ export default function Leisure({
   items: Heading[];
 }) {
   return (
-    <div className="relative rounded-3xl bg-white p-12 border-slate-200 shadow-xl xl:mx-8">
+    <div className="relative rounded-3xl bg-white p-12 border-slate-200 shadow-xl lg:mx-8">
       <p className="text-lg text-slate-700 leading-relaxed mb-8">{details}</p>
       <ul className="grid grid-cols-1 min-[400px]:grid-cols-2 min-[860px]:grid-cols-4 gap-3 md:gap-4 justify-center">
         {items.map((l, i) => (
@@ -55,18 +55,18 @@ const cardColors: CardColor[] = [
   },
   {
     icon: {
-      text: "text-(--color-tone1-600)",
-      bg: "text-(--color-tone1-900)",
+      text: "text--tone1-600",
+      bg: "text-tone1-900",
     },
-    bg: "bg-gradient-to-r from-(--color-tone1-50) to-(--color-tone1-100)",
-    border: "border-(--color-tone1-200)",
+    bg: "bg-gradient-to-r from-tone1-50 to-tone1-100",
+    border: "border-tone1-200",
   },
   {
     icon: {
-      text: "text-(--color-tone5-600)",
-      bg: "text-(--color-tone5-900)",
+      text: "text-tone5-600",
+      bg: "text-tone5-900",
     },
-    bg: "bg-gradient-to-r from-(--color-tone5-50) to-(--color-tone5-100)",
-    border: "border-(--color-tone5-200)",
+    bg: "bg-gradient-to-r from-tone5-50 to-tone5-100",
+    border: "border-tone5-200",
   },
 ];

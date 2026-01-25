@@ -8,7 +8,7 @@ export function FourHorizontalCards({
   cardColors?: CardColor[];
 }) {
   return (
-    <ul className="relative grid grid-cols-1 xl:mx-8 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+    <ul className="relative grid grid-cols-1 lg:mx-8 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
       {data.map((s, i) => (
         <Card key={s.title} data={s} color={cardColors[i]} />
       ))}
@@ -40,37 +40,37 @@ const defaultColors: CardColor[] = [
   {
     icon: {
       text: "text-white",
-      bg: "bg-(--color-tone1-500)",
+      bg: "bg-tone1-500",
       shadow: "shadow-tone1-600/30",
     },
-    bg: "bg-gradient-to-br from-(--color-tone1-50)/20 via-(--color-tone1-100)/20 to-(--color-tone1-200)/40",
-    border: "border-(--color-tone1-200)/30",
+    bg: "bg-gradient-to-br from-tone1-50/20 via-tone1-100/20 to-tone1-200/40",
+    border: "border-tone1-200/30",
   },
   {
     icon: {
       text: "text-white",
-      bg: "bg-(--color-tone2-500)",
+      bg: "bg-tone2-500",
       shadow: "shadow-tone2-600/30",
     },
-    bg: "bg-gradient-to-br from-(--color-tone2-50)/20 via-(--color-tone2-100)/20 to-(--color-tone2-200)/40",
-    border: "border-(--color-tone2-200)/30",
+    bg: "bg-gradient-to-br from-tone2-50/20 via-tone2-100/20 to-tone2-200/40",
+    border: "border-tone2-200/30",
   },
   {
     icon: {
       text: "text-white",
-      bg: "bg-(--color-tone3-500)",
+      bg: "bg-tone3-500",
       shadow: "shadow-tone3-600/30",
     },
-    bg: "bg-gradient-to-br from-(--color-tone3-50)/20 via-(--color-tone3-100)/20 to-(--color-tone3-200)/40",
-    border: "border-(--color-tone3-200)/30",
+    bg: "bg-gradient-to-br from-tone3-50/20 via-tone3-100/20 to-tone3-200/40",
+    border: "border-tone3-200/30",
   },
   {
     icon: {
       text: "text-white",
-      bg: "bg-(--color-tone4-500)",
+      bg: "bg-tone4-500",
       shadow: "shadow-tone4-600/30",
     },
-    bg: "bg-gradient-to-br from-(--color-tone4-50)/20 via-(--color-tone41-100)/20 to-(--color-tone4-200)/40",
-    border: "border-(--color-tone4-200)/30",
+    bg: "bg-gradient-to-br from-tone4-50/20 via-tone4-100/20 to-tone4-200/40",
+    border: "border-tone4-200/30",
   },
 ];
