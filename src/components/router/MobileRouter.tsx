@@ -59,7 +59,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                   className="flex flex-col gap-2"
                   id="mobile-navigation"
                 >
-                  {routes.map((item) => (
+                  {routes.map((item, i, arr) => (
                     <motion.li variants={itemVariants} key={item.title}>
                       <NavLink
                         to={item.to}
@@ -67,7 +67,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                         className={({ isActive }) =>
                           `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 font-medium ${
                             isActive
-                              ? "border-l-4 border-l-accent bg-complement/10"
+                              ? `border-l-4 ${i === arr.length - 1 ? "border-l-coffee-300 bg-coffee-200/30" : "border-l-accent bg-complement/10"}`
                               : "border-l-4 border-l-transparent"
                           }`
                         }

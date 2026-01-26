@@ -107,7 +107,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
           borderRadius={32}
         >
           <ul className="flex flex-nowrap items-center w-full">
-            {routes.map((item, i) => (
+            {routes.map((item, i, arr) => (
               <React.Fragment key={item.title}>
                 <li className="flex-1">
                   <NavLink
@@ -141,7 +141,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                             {isActive && (
                               <motion.div
                                 layoutId="nav-underline"
-                                className="size-full rounded-full bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"
+                                className={`size-full rounded-full ${i === arr.length - 1 ? "bg-coffee-300 drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-coffee-300)_100%,transparent)]" : "bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"}`}
                                 transition={{
                                   type: "spring",
                                   stiffness: 500,
