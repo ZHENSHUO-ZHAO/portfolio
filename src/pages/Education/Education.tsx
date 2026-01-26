@@ -1,51 +1,43 @@
-import {
-  useEducationPageContext,
-  type Degree,
-} from "../../contexts/educationContext";
-import { slugify } from "../../utils/util";
-import PageBase, { Section } from "../PageBase";
+import LearningCardSection from "../../components/page/LearningCardSection";
+import Page from "../../components/page/Page";
+import PageHeader from "../../components/page/PageHeader";
+import Section from "../../components/page/Section";
+import { useEducationPageContext } from "../../contexts/educationContext";
+import Foundation from "./Foundation";
+import Timeline from "./Timeline";
+// import PageBase, { Section } from "../PageBase";
 
 export default function Education() {
   const content = useEducationPageContext();
   return (
-    <PageBase content={content}>
-      {content.degrees.map((d) => (
-        <Item key={d.time} degreeData={d} />
-      ))}
-    </PageBase>
-  );
-}
-
-function Item({ degreeData }: { degreeData: Degree }) {
-  const degreeId = slugify(degreeData.qualification);
-
-  return (
-    <Section
-      id={degreeId}
-      title={degreeData.qualification}
-      headerChildren={
-        <div className="my-2">
-          <p className="text-neutral-900 font-medium">
-            {degreeData.university}
-          </p>
-          <p className="text-sm text-muted">
-            <time>{degreeData.time}</time>
-          </p>
-        </div>
+    <Page
+      headerComponent={
+        <PageHeader header={content.header} stats={content.stats} />
       }
     >
-      {degreeData.gpa && (
-        <>
-          <h3 className="inline-block mr-2 mt-2">GPA: </h3>
-          <p className="inline-block">{degreeData.gpa}</p>
-        </>
-      )}
-      <h3 className="mt-4 mb-1">Achievements</h3>
-      <ul className="space-y-1">
-        {degreeData.achievements.map((a) => (
-          <li key={a}>{a}</li>
-        ))}
-      </ul>
-    </Section>
+      <Section
+        id="education-overview-section"
+        headingData={content.foundation.heading}
+        bgChildren={<div className="size-full bg-color-invert" />}
+        invertColor
+      >
+        <Foundation data={content.foundation.items} />
+      </Section>
+
+      <Section
+        id="academic-timeline-section"
+        headingData={content.timeline.heading}
+        maxWidth="mx-auto max-w-4xl"
+      >
+        <Timeline data={content.timeline.items} />
+      </Section>
+
+      <LearningCardSection
+        headingData={content.learning.heading}
+        items={content.learning.items}
+        id="learning-philosophy-section"
+        invertColor
+      />
+    </Page>
   );
 }

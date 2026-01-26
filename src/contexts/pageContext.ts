@@ -67,6 +67,7 @@ export type CardColor = {
   bg: string;
   border: string;
   tags?: IconColor[];
+  shadow?: string;
 };
 
 export type IconColor = {

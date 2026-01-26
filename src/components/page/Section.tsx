@@ -11,7 +11,7 @@ export default function Section({
   bgChildren,
   invertColor,
   tagColor,
-  paddingY = "py-16 md:py-20 lg:py-24",
+  paddingY = "py-16 md:py-20",
   ref,
 }: {
   headingData?: Heading;
