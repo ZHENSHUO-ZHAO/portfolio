@@ -96,10 +96,10 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
         aria-label="Navigation Bar"
         className={`relative mx-auto max-w-[calc(56rem+10px)]`}
       >
-        <div className={`absolute inset-0 bg-slate-50/60 ${rounded}`} />
+        <div className={`absolute inset-0 bg-white/70 ${rounded}`} />
         <GlassSurface
-          displace={5}
-          backgroundOpacity={0.1}
+          displace={2.5}
+          backgroundOpacity={0.05}
           greenOffset={0}
           blueOffset={0}
           width="100%"
@@ -114,7 +114,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                     to={item.to}
                     end={item.end}
                     onClick={handleClick}
-                    className="whitespace-nowrap text-base flex flex-col items-center justify-center tracking-tight font-medium"
+                    className="whitespace-nowrap text-base flex flex-col items-center justify-center tracking-tight font-semibold text-slate-600"
                   >
                     {({ isActive }) => (
                       <div className="relative flex flex-col justify-start items-center w-fit">

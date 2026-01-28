@@ -65,7 +65,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                         to={item.to}
                         end={item.end}
                         className={({ isActive }) =>
-                          `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 font-medium ${
+                          `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 text-slate-600 font-semibold ${
                             isActive
                               ? `border-l-4 ${i === arr.length - 1 ? "border-l-coffee-300 bg-coffee-400/20" : "border-l-accent bg-complement/10"}`
                               : "border-l-4 border-l-transparent"
