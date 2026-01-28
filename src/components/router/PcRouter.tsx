@@ -141,7 +141,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                             {isActive && (
                               <motion.div
                                 layoutId="nav-underline"
-                                className={`size-full rounded-full ${i === arr.length - 1 ? "bg-coffee-300 drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-coffee-300)_100%,transparent)]" : "bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"}`}
+                                className={`size-full rounded-full ${i === arr.length - 1 ? "bg-coffee-500 drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-coffee-500)_100%,transparent)]" : "bg-accent drop-shadow-[0_-3px_6px_color-mix(in_oklch,var(--color-accent)_100%,transparent)]"}`}
                                 transition={{
                                   type: "spring",
                                   stiffness: 500,

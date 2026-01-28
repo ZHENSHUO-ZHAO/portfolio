@@ -37,17 +37,25 @@ export type DescriptiveItem = {
   >;
 };
 
-export type HybridText = Array<{ text: string; style?: string }>;
+export type TextChunk = {
+  text: string;
+  style?: string;
+  icon?: IconType;
+};
+
+export type HybridText = Array<TextChunk>;
 
 export type Header = {
   tag: Tag;
   title: string;
+  hybridTitle?: HybridText;
   statement: HybridText[];
 };
 
 export type Heading = {
   tag?: Tag;
   title: string;
+  hybridTitle?: HybridText;
   desc?: string;
 };
 
@@ -56,11 +64,17 @@ export type Tag = {
   text?: string;
 };
 
+export type HybridDescription = (string | HybridText)[];
+
+export type HybridTag = { icon: IconType; text: string | HybridText };
+
 export type Stat = {
   icon?: IconType;
   amount: string;
   unit: string;
 };
+
+export type GalleryItem = { url: string; alt: string; text?: string };
 
 export type CardColor = {
   icon: IconColor;
@@ -77,3 +91,5 @@ export type IconColor = {
   icon?: string;
   border?: string;
 };
+
+export type HeadingColor = { title: string; desc: string };

@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 import FullBleedContainer from "./FullBleedContainer";
-import type { Heading as Heading, IconColor } from "../../contexts/pageContext";
+import type {
+  Heading as Heading,
+  HeadingColor,
+  IconColor,
+} from "../../contexts/pageContext";
 import SectionHeading from "./SectionHeading";
 
 export default function Section({
@@ -19,7 +23,7 @@ export default function Section({
   children: ReactNode;
   maxWidth?: string;
   bgChildren?: ReactNode;
-  invertColor?: boolean;
+  invertColor?: boolean | HeadingColor;
   tagColor?: IconColor;
   paddingY?: string;
   ref?: React.RefObject<HTMLElement | null>;

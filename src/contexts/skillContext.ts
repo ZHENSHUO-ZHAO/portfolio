@@ -262,13 +262,13 @@ export const skillContent = {
     },
     items: [
       {
-        tag: { icon: FaMagnifyingGlass },
-        title: "View My Work",
+        tag: { icon: FaEnvelope },
+        title: "Get in Touch",
         desc: "",
       },
       {
-        tag: { icon: FaEnvelope },
-        title: "Get in Touch",
+        tag: { icon: FaMagnifyingGlass },
+        title: "View My Work",
         desc: "",
       },
     ],

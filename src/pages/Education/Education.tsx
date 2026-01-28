@@ -5,7 +5,6 @@ import Section from "../../components/page/Section";
 import { useEducationPageContext } from "../../contexts/educationContext";
 import Foundation from "./Foundation";
 import Timeline from "./Timeline";
-// import PageBase, { Section } from "../PageBase";
 
 export default function Education() {
   const content = useEducationPageContext();

@@ -1,21 +1,28 @@
-import type { Heading, IconColor } from "../../contexts/pageContext";
+import type {
+  Heading,
+  HeadingColor,
+  IconColor,
+} from "../../contexts/pageContext";
+import HybridStatement from "./HybridStatement";
 
 export default function SectionHeading({
   data,
   invertColor,
   tagColor,
   bottomMargin = "mb-10 md:mb-16",
+  align = "center",
 }: {
   data: Heading;
-  invertColor?: boolean;
+  invertColor?: boolean | HeadingColor;
   tagColor?: IconColor;
   bottomMargin?: string;
+  align?: "center" | "start";
 }) {
   return (
     <div className="relative w-full flex flex-col gap-4 sm:gap-6 justify-start items-stretch">
       {data.tag && (
         <div
-          className={`self-center flex gap-2 justify-center items-center px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold ${tagColor && tagColor.bg}`}
+          className={`${align === "center" ? "self-center justify-center" : "self-start"} flex gap-2 items-center px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm ${tagColor && tagColor.bg}`}
         >
           <data.tag.icon
             className={`${tagColor && tagColor.icon && tagColor.icon}`}
@@ -28,12 +35,18 @@ export default function SectionHeading({
         </div>
       )}
       <div className={`flex flex-col gap-3 md:gap-5 ${bottomMargin}`}>
-        <h2 className={`${invertColor && "title-color-invert"}`}>
-          {data.title}
+        <h2
+          className={`${typeof invertColor === "object" ? invertColor.title : invertColor ? "title-color-invert" : ""} ${align === "center" ? "text-center" : "text-left"}`}
+        >
+          {data.hybridTitle ? (
+            <HybridStatement data={data.hybridTitle} />
+          ) : (
+            data.title
+          )}
         </h2>
         {data.desc && (
           <p
-            className={`text:sm md:text-xl text-center ${invertColor ? "text-color-invert" : "text-slate-600"}`}
+            className={`text:sm md:text-xl ${align === "center" ? "text-center" : "text-left"} ${typeof invertColor === "object" ? invertColor.desc : invertColor ? "text-color-invert" : "text-slate-600"}`}
           >
             {data.desc}
           </p>

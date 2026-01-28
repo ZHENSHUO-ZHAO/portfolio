@@ -1,0 +1,33 @@
+import type { Connection } from "../../contexts/hobbyContext";
+
+export default function Connection({ data }: { data: Connection[] }) {
+  return (
+    <div className="relative grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 lg:mx-8">
+      {data.map((c) => {
+        const Icon = c.tag!.icon;
+
+        return (
+          <div
+            key={c.title}
+            className="last:md:col-span-2 bg-white rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8 border-2 border-amber-200 hover:border-coffee-400 hover:bg-transparent hover:translate-x-1 hover:lg:translate-x-3 hover:shadow-[0_20px_40px_rgba(120,53,15,0.15)] hover:bg-linear-to-r hover:from-amber-800/5 hover:to-transparent transform transition duration-300"
+          >
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="size-11 md:size-12 lg:size-14 bg-amber-200 rounded-lg md:rounded-xl flex items-center justify-center shrink-0">
+                <Icon className="text-coffee-700 text-lg md:text-xl lg:text-2xl" />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-slate-900 mb-1 md:mb-2">
+                  {c.title}
+                </h3>
+                <p className="text-sm md:text-base text-slate-600 mb-2 md:mb-3 lg:mb-4">
+                  {c.desc}
+                </p>
+                <p className="text-xs md:text-sm text-slate-500">{c.detail}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

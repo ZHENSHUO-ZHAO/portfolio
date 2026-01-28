@@ -9,14 +9,22 @@ export function ContactCardSection({
   bgChildren,
   invertColor,
   links,
+  tagColor,
+  buttonsColor,
 }: {
   headingData: Heading;
   id: string;
   bgChildren?: ReactNode;
   invertColor?: boolean;
   links: Heading[];
+  tagColor?: IconColor;
+  buttonsColor?: IconColor[];
 }) {
-  const tagColor: IconColor = invertColor ? tagColorInvert : tagColorNormal;
+  const tagColorTmp: IconColor = tagColor
+    ? tagColor
+    : invertColor
+      ? tagColorInvert
+      : tagColorNormal;
 
   return (
     <section
@@ -30,20 +38,28 @@ export function ContactCardSection({
           <SectionHeading
             data={headingData}
             invertColor={invertColor}
-            tagColor={tagColor}
+            tagColor={tagColorTmp}
             bottomMargin="mb-4 md:mb-10"
           />
-          <ContactButtons links={links} invertColor={invertColor} />
+          <ContactButtons
+            links={links}
+            invertColor={invertColor}
+            buttonsColor={buttonsColor}
+          />
         </div>
       ) : (
         <>
           <SectionHeading
             data={headingData}
             invertColor={invertColor}
-            tagColor={tagColor}
+            tagColor={tagColorTmp}
             bottomMargin="mb-4 md:mb-10"
           />
-          <ContactButtons links={links} invertColor={invertColor} />
+          <ContactButtons
+            links={links}
+            invertColor={invertColor}
+            buttonsColor={buttonsColor}
+          />
         </>
       )}
     </section>
@@ -53,25 +69,32 @@ export function ContactCardSection({
 function ContactButtons({
   links,
   invertColor,
+  buttonsColor,
 }: {
   links: Heading[];
   invertColor?: boolean;
+  buttonsColor?: IconColor[];
 }) {
   const Icon1 = links[0].tag?.icon;
   const Icon2 = links[1].tag?.icon;
+  const buttonsColorTmp = buttonsColor
+    ? buttonsColor
+    : invertColor
+      ? buttonsColorInvert
+      : buttonsColorNormal;
 
   return (
     <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm xs:text-base">
       <a
         href={`${links[0]}`}
-        className={`px-8 py-4 ${invertColor ? "bg-white text-tone1-700" : "text-white bg-tone1-600"}  rounded-xl font-semibold flex gap-2 justify-center items-center`}
+        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center`}
       >
         {Icon1 && <Icon1 />}
         {links[0].title}
       </a>
       <a
         href={`${links[1]}`}
-        className={`px-8 py-4 bg-white/10 backdrop-blur-sm ${invertColor ? "text-white border-white/30" : "border-slate-200 text-secondary"} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center`}
+        className={`px-8 py-4 bg-white/10 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center`}
       >
         {Icon2 && <Icon2 />}
         {links[1].title}
@@ -91,3 +114,13 @@ const tagColorInvert: IconColor = {
   text: "text-white",
   bg: "bg-white/20",
 };
+
+const buttonsColorNormal: IconColor[] = [
+  { text: "text-white", bg: "bg-tone1-600", shadow: "shadow-tone1-600/20" },
+  { text: "text-secondary", bg: "", border: "border-slate-200" },
+];
+
+const buttonsColorInvert: IconColor[] = [
+  { text: "text-tone1-700", bg: "bg-white", shadow: "shadow-white/20" },
+  { text: "text-white", bg: "", border: "border-white/30" },
+];

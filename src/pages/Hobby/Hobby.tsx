@@ -1,48 +1,97 @@
+import { ContactCardSection } from "../../components/page/ContactCardSection";
+import Page from "../../components/page/Page";
+import Section from "../../components/page/Section";
 import { useHobbyPageContext } from "../../contexts/hobbyContext";
-import type { DescriptiveItem } from "../../contexts/pageContext";
-import { slugify } from "../../utils/util";
-import PageBase, { ArticleList, ItemList, Section } from "../PageBase";
+import Certification from "./Certification";
+import Comparison from "./Comparison";
+import Connection from "./Connection";
+import ExplainSection from "./ExplainSection";
+import Gallery from "./Gallery";
+import HobbyPageHeader from "./HobbyPageHeader";
 
 export default function Hobby() {
   const content = useHobbyPageContext();
-  const dailyId = slugify(content.daily.title);
 
   return (
-    <PageBase
-      content={content}
-      headerElement={HobbyPageHeader}
-      headerClassName="pb-8"
-    >
-      <Item
-        title={content.qualifications.title}
-        items={content.qualifications.certificates}
+    <Page headerComponent={<HobbyPageHeader header={content.header} />}>
+      <ExplainSection
+        data={content.craft}
+        id="coffee-intro-section"
+        imagePosition="left"
       />
-      <Item title={content.benefits.title} items={content.benefits.reasons} />
-      <Section id={dailyId} title={content.daily.title}>
-        <p>{content.daily.desc}</p>
+
+      <Section
+        id="sca-certification-section"
+        headingData={content.certification.heading}
+        bgChildren={
+          <div className="size-full bg-linear-to-br from-coffee-800 via-coffee-700 to-amber-900" />
+        }
+        invertColor={{ title: "text-white", desc: "text-amber-100" }}
+        tagColor={{
+          icon: "text-amber-200",
+          text: "text-amber-200",
+          bg: "bg-white/10",
+        }}
+      >
+        <Certification data={content.certification.items} />
       </Section>
-    </PageBase>
-  );
-}
 
-function HobbyPageHeader({ headingClassName }: { headingClassName: string }) {
-  const content = useHobbyPageContext();
+      <Section
+        id="connection-section"
+        headingData={content.connection.heading}
+        bgChildren={<div className="size-full bg-amber-50" />}
+        tagColor={{
+          icon: "text-coffee-700",
+          text: "text-coffee-700",
+          bg: "bg-amber-200",
+        }}
+      >
+        <Connection data={content.connection.items} />
+      </Section>
 
-  return (
-    <div className={headingClassName}>
-      <h1>{content.header.title}</h1>
-      <p className="mb-2">{content.header.desc}</p>
-      <ItemList listData={content.header.interests} />
-    </div>
-  );
-}
+      <ExplainSection
+        data={content.exploration}
+        id="coffee-scene-exploration-section"
+        imagePosition="right"
+      />
 
-function Item({ title, items }: { title: string; items: DescriptiveItem[] }) {
-  const titleId = slugify(title);
+      <Section
+        id="coffee-and-engineering-section"
+        headingData={content.comparison.heading}
+        bgChildren={
+          <div className="size-full bg-linear-to-br from-slate-900 to-coffee-800" />
+        }
+        invertColor={{ title: "text-white", desc: "text-amber-100" }}
+      >
+        <Comparison data={content.comparison} />
+      </Section>
 
-  return (
-    <Section id={titleId} title={title}>
-      <ArticleList listData={items} />
-    </Section>
+      <Section
+        id="hobby-gallery-section"
+        headingData={content.gallery.heading}
+        bgChildren={<div className="size-full bg-amber-50" />}
+      >
+        <Gallery data={content.gallery.items} />
+      </Section>
+
+      <ContactCardSection
+        id="contact-section"
+        headingData={content.contact.heading}
+        links={content.contact.items}
+        tagColor={{
+          icon: "text-coffee-700",
+          text: "text-coffee-600",
+          bg: "bg-white border-4 border-amber-100",
+        }}
+        buttonsColor={[
+          {
+            text: "text-white",
+            bg: "bg-coffee-600",
+            shadow: "shadow-coffee-700/20",
+          },
+          { text: "text-secondary", bg: "", border: "border-slate-200" },
+        ]}
+      />
+    </Page>
   );
 }
