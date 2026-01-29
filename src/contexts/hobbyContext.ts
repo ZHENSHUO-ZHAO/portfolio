@@ -77,7 +77,7 @@ export const hobbyContent = {
         style: "text-coffee-600",
       },
       {
-        text: "C/#/ffee",
+        text: "C{{icon}}ffee",
         icon: PiCoffeeBeanFill,
         style: "text-coffee-600 [&>svg]:text-xl [&>svg]:md:text-4xl",
       },
@@ -291,7 +291,7 @@ export const hobbyContent = {
       hybridTitle: [
         { text: "Coffee " },
         {
-          text: "/#/",
+          text: "{{icon}}",
           icon: MdCompareArrows,
           style: "align-middle",
         },
