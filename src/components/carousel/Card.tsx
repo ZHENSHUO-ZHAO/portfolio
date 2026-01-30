@@ -57,6 +57,7 @@ export default function Card({ dragX, data }: CardProp) {
       >
         <layoutContext.CardComponent
           content={layoutContext.contentList[data.index]}
+          index={data.index}
         />
       </motion.div>
     </motion.li>

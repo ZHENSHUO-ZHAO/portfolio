@@ -66,7 +66,7 @@ export default function CarouselContent<T>({
         offset: i * layoutData.snapSize,
         index,
       };
-    })
+    }),
   );
 
   const cleanupAnimations = () => {
@@ -98,46 +98,53 @@ export default function CarouselContent<T>({
     }
   };
 
+  // The callback for dot, buttons and wheel.
+  const onScrollEnd = () => {
+    // console.log(`onScrollEnd`);
+    // Snap the card to the center once the drag stops.
+    dragDataRef.current.isDragging = false;
+
+    startSnap().then(() => {
+      dragDataRef.current.x = dragX.get();
+    });
+  };
+
+  // The callback function used by motion's drag only. It scrolls through 0 to 3 cards depending on the drag velocity.
   const onDragEnd = () => {
     // console.log(`onDragEnd`);
-    // Use inertia to create the slow down animation once the drag stops.
     dragDataRef.current.isDragging = false;
     const velocity = dragX.getVelocity();
+    const speed = Math.abs(velocity);
+    const cardCount =
+      speed >= 10000 ? 3 : speed >= 5000 ? 2 : speed > 0 ? 1 : 0;
 
-    if (velocity !== 0) {
-      const inertiaControls = animate(dragX, dragX.get() + velocity * 0.1, {
-        type: "inertia",
-        velocity: velocity * 0.6,
-        power: 0.3,
-        timeConstant: 325,
-        bounce: 0,
-        restDelta: 20,
-      });
-      inertiaRef.current = inertiaControls.stop;
-      inertiaControls.finished.then(startSnap).then(() => {
-        dragDataRef.current.x = dragX.get();
-      });
-    } else {
+    if (cardCount === 0) {
       startSnap().then(() => {
         dragDataRef.current.x = dragX.get();
       });
+    } else {
+      const currentIndex = getMidCardIndex();
+      const targetIndex =
+        velocity < 0
+          ? (currentIndex + cardCount) % layoutData.contentList.length
+          : (currentIndex - cardCount + layoutData.contentList.length) %
+            layoutData.contentList.length;
+      onScroll(targetIndex);
     }
   };
 
   const startSnap = () => {
     // console.log(`startSnap`);
-    const springControls = animate(
+    const tweenControls = animate(
       dragX,
       Math.round(dragX.get() / layoutData.snapSize) * layoutData.snapSize,
       {
-        type: "spring",
-        stiffness: 3000,
-        damping: 50,
-        mass: 0.5,
-      }
+        type: "tween",
+        duration: 0.4,
+      },
     );
-    inertiaRef.current = springControls.stop;
-    return springControls.finished;
+    inertiaRef.current = tweenControls.stop;
+    return tweenControls.finished;
   };
 
   // Get the content index of the card in the center of the view.
@@ -175,10 +182,10 @@ export default function CarouselContent<T>({
         stiffness: 700,
         damping: 40,
         mass: 0.5,
-      }
+      },
     );
     inertiaRef.current = springControls.stop;
-    springControls.finished.then(onDragEnd);
+    springControls.finished.then(onScrollEnd);
   };
 
   // Flip to the next or previous card.
@@ -228,7 +235,7 @@ export default function CarouselContent<T>({
               (cards[cardsOrder[cardsOrder.length - 1]].index + 1) %
               layoutData.contentList.length;
             setViewContentIdex(
-              (prev) => (prev + 1) % layoutData.contentList.length
+              (prev) => (prev + 1) % layoutData.contentList.length,
             );
 
             // Teleport the leftmost card to the rightmost.
@@ -257,7 +264,7 @@ export default function CarouselContent<T>({
             setViewContentIdex(
               (prev) =>
                 (prev - 1 + layoutData.contentList.length) %
-                layoutData.contentList.length
+                layoutData.contentList.length,
             );
 
             // Teleport the rightmost card to the leftmost.
@@ -316,8 +323,8 @@ export default function CarouselContent<T>({
                 layoutData.contentList.length) %
               layoutData.contentList.length;
             return data;
-          }
-        )
+          },
+        ),
       );
     }
 
@@ -345,7 +352,7 @@ export default function CarouselContent<T>({
               clearTimeout(dragData.scrollTimeout);
             }
             dragData.scrollTimeout = setTimeout(() => {
-              onDragEnd();
+              onScrollEnd();
               dragData.scrollTimeout = null;
             }, 200);
           }

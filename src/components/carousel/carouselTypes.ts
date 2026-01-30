@@ -17,6 +17,7 @@ export type CardData = {
 
 export type CardItem<T> = {
   content: T;
+  index: number;
 };
 
 export type CardProp = {
