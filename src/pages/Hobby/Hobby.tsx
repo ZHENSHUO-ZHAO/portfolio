@@ -31,6 +31,7 @@ export default function Hobby() {
           icon: "text-amber-200",
           text: "text-amber-200",
           bg: "bg-white/10",
+          border: "border-amber-100/10",
         }}
       >
         <Certification data={content.certification.items} />
@@ -43,7 +44,8 @@ export default function Hobby() {
         tagColor={{
           icon: "text-coffee-700",
           text: "text-coffee-700",
-          bg: "bg-amber-200",
+          bg: "bg-amber-100",
+          border: "border-amber-200",
         }}
       >
         <Connection data={content.connection.items} />

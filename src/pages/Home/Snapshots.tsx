@@ -1,6 +1,6 @@
 import { motion, type Variants } from "motion/react";
 import GlowOutline from "../../components/glowFx/GlowOutline";
-import type { DescriptiveItem } from "../../contexts/pageContext";
+import type { Heading } from "../../contexts/pageContext";
 import {
   createInnerShadow,
   createLinearGradient,
@@ -8,161 +8,146 @@ import {
   mixColor,
 } from "../../utils/util";
 
-export default function Snapshots({
-  snapshot,
-}: {
-  snapshot: DescriptiveItem[];
-}) {
-  const outlineVariants: Variants = {
-    rest: {
-      opacity: 0,
-    },
-    hover: {
-      opacity: 1,
-    },
-  };
-
-  const outlineGradient: string = createLinearGradient(135, [
-    mixColor(60, "var(--color-accent)", "transparent"),
-    "transparent",
-    "transparent",
-    "transparent",
-    mixColor(60, "var(--color-complement)", "transparent"),
-  ]);
-
-  const topLeftVariants: Variants = {
-    rest: {
-      background: createRadialGradientWithStops(
-        undefined,
-        undefined,
-        [
-          [mixColor(20, "var(--color-accent)", "transparent"), 0],
-          ["transparent", 30],
-        ],
-        "20% 20%"
-      ),
-      filter: "grayscale(0.6)",
-      opacity: 0.7,
-    },
-    hover: {
-      background: createRadialGradientWithStops(
-        undefined,
-        undefined,
-        [
-          [mixColor(50, "var(--color-accent)", "transparent"), 0],
-          ["transparent", 30],
-        ],
-        "0% 0%"
-      ),
-      filter: "grayscale(0)",
-      opacity: 1,
-    },
-  };
-
-  const bottomRightVariants: Variants = {
-    rest: {
-      background: createRadialGradientWithStops(
-        undefined,
-        undefined,
-        [
-          [mixColor(20, "var(--color-complement)", "transparent"), 0],
-          ["transparent", 30],
-        ],
-        "80% 80%"
-      ),
-      filter: "grayscale(0.6)",
-      opacity: 0.7,
-    },
-    hover: {
-      background: createRadialGradientWithStops(
-        undefined,
-        undefined,
-        [
-          [mixColor(50, "var(--color-complement)", "transparent"), 0],
-          ["transparent", 30],
-        ],
-        "100% 100%"
-      ),
-      filter: "grayscale(0)",
-      opacity: 1,
-    },
-  };
-
-  const iconVariants: Variants = {
-    hover: {
-      boxShadow: `${createInnerShadow(
-        "-6px",
-        "-6px",
-        "8px",
-        "rgba(255,255,255,0.8)"
-      )}, ${createInnerShadow("6px", "6px", "10px", "rgba(0,0,0,0.25)")}`,
-    },
-    rest: {
-      boxShadow: `${createInnerShadow(
-        "-6px",
-        "-6px",
-        "8px",
-        "rgba(0,0,0,0.25)"
-      )}, ${createInnerShadow("6px", "6px", "10px", "rgba(255,255,255,0.8)")}`,
-    },
-  };
-
+export default function Snapshots({ data }: { data: Heading[] }) {
   return (
-    <ul className="grid grid-cols-1 min-[430px]:grid-cols-2 lg:grid-cols-4 gap-4">
-      {snapshot.map((s, i) => (
+    <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:mx-8">
+      {data.map((s, i) => (
         <motion.li
           key={s.desc}
           className="
-          relative flex flex-col justify-start items-center gap-4 py-4 px-4 rounded-xl bg-card border border-slate-200"
+          group relative p-6 lg:p-8 rounded-xl lg:rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10"
           initial="rest"
           whileHover="hover"
           whileTap="hover"
         >
           <motion.div
             className="absolute inset-0 rounded-xl"
-            variants={topLeftVariants}
+            variants={topRightVariants}
           />
           <motion.div
             className="absolute inset-0 rounded-xl"
-            variants={bottomRightVariants}
+            variants={bottomLeftVariants}
           />
 
-          <div className="relative h-20 flex justify-center items-center">
-            <motion.div
-              className="h-3/4 aspect-square bg-slate-200 p-3 rounded-full"
-              variants={iconVariants}
-              transition={{ ease: "easeIn", duration: 0.3 }}
-            >
-              {s.icon && (
-                <s.icon className="size-full " stroke={`url(#gradient_${i})`}>
-                  <defs>
-                    <linearGradient
-                      id={`gradient_${i}`}
-                      x1="0"
-                      y1="0"
-                      x2="100%"
-                      y2="100%"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop offset="0%" stopColor="var(--color-accent)" />
-                      <stop offset="100%" stopColor="var(--color-complement)" />
-                    </linearGradient>
-                  </defs>
-                </s.icon>
-              )}
-            </motion.div>
-          </div>
+          <motion.div
+            className="relative size-12 lg:size-16 flex justify-center items-center rounded-full mb-4 lg:mb-6"
+            variants={iconVariants}
+            transition={{ ease: "easeIn", duration: 0.3 }}
+          >
+            {s.tag! && <s.tag.icon className={`text-3xl ${iconColors[i]}`} />}
+          </motion.div>
 
-          <div className="relative flex-1 flex flex-col gap-1 justify-start items-center text-center">
-            <p className="text-lg font-bold">{s.title}</p>
-            <p className="text-md font-medium text-neutral-500">{s.desc}</p>
+          <div className="relative flex flex-col gap-2 lg:gap-3 justify-start items-start">
+            <h3 className="text-white text-lg lg:text-2xl font-bold">
+              {s.title}
+            </h3>
+            <p className="text-sm lg:text-lg font-medium text-slate-300">
+              {s.desc}
+            </p>
           </div>
 
           <motion.div className="absolute inset-0" variants={outlineVariants}>
-            <GlowOutline gradient={outlineGradient} rounded="rounded-xl" />
+            <GlowOutline
+              gradient={outlineGradient}
+              rounded="rounded-xl lg:rounded-2xl"
+            />
           </motion.div>
         </motion.li>
       ))}
     </ul>
   );
 }
+
+const iconColors: string[] = [
+  "text-tone1-400",
+  "text-tone2-400",
+  "text-tone3-400",
+  "text-tone4-400",
+];
+
+const outlineVariants: Variants = {
+  rest: {
+    opacity: 0,
+  },
+  hover: {
+    opacity: 1,
+  },
+};
+
+const outlineGradient: string = createLinearGradient(225, [
+  mixColor(60, "var(--color-accent)", "transparent"),
+  "transparent",
+  "transparent",
+  "transparent",
+  mixColor(60, "var(--color-complement)", "transparent"),
+]);
+
+const topRightVariants: Variants = {
+  rest: {
+    background: createRadialGradientWithStops(
+      undefined,
+      undefined,
+      [
+        [mixColor(20, "var(--color-accent)", "transparent"), 0],
+        ["transparent", 30],
+      ],
+      "80% 20%",
+    ),
+    opacity: 0.2,
+  },
+  hover: {
+    background: createRadialGradientWithStops(
+      undefined,
+      undefined,
+      [
+        [mixColor(50, "var(--color-accent)", "transparent"), 0],
+        ["transparent", 30],
+      ],
+      "100% 0%",
+    ),
+    opacity: 1,
+  },
+};
+
+const bottomLeftVariants: Variants = {
+  rest: {
+    background: createRadialGradientWithStops(
+      undefined,
+      undefined,
+      [
+        [mixColor(20, "var(--color-complement)", "transparent"), 0],
+        ["transparent", 30],
+      ],
+      "20% 80%",
+    ),
+    // filter: "grayscale(0.6)",
+    opacity: 0.7,
+  },
+  hover: {
+    background: createRadialGradientWithStops(
+      undefined,
+      undefined,
+      [
+        [mixColor(50, "var(--color-complement)", "transparent"), 0],
+        ["transparent", 30],
+      ],
+      "0% 100%",
+    ),
+    // filter: "grayscale(0)",
+    opacity: 1,
+  },
+};
+
+const iconVariants: Variants = {
+  rest: {
+    boxShadow: `${createInnerShadow(
+      "-3px",
+      "-3px",
+      "4px",
+      "rgba(255,255,255,0.4)",
+    )}`,
+  },
+  hover: {
+    boxShadow: `${createInnerShadow("3px", "3px", "4px", "rgba(255,255,255,0.8)")}`,
+  },
+};

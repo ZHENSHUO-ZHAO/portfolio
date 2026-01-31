@@ -1,3 +1,4 @@
+import React from "react";
 import type { HybridText, TextChunk } from "../../contexts/pageContext";
 
 export const IconToken = "{{icon}}";
@@ -33,10 +34,10 @@ function Text({ chunk }: { chunk: TextChunk }) {
   return (
     <span className={chunk.style || ""}>
       {chunk.text.split(NewlineToken).map((c, i, arr) => (
-        <>
+        <React.Fragment key={`part-${i}`}>
           {c}
           {i < arr.length - 1 && <br key={i} />}
-        </>
+        </React.Fragment>
       ))}
     </span>
   );
@@ -51,12 +52,12 @@ function TextAndIcon({ chunk }: { chunk: TextChunk }) {
       {texts.map((t, i, arr) => {
         const Icon = chunk.icon!;
         return (
-          <>
+          <React.Fragment key={`part-${i}`}>
             {t}
             {i < arr.length - 1 && (
               <Icon key={`text-and-icon${i}`} className="inline-block" />
             )}
-          </>
+          </React.Fragment>
         );
       })}
     </span>

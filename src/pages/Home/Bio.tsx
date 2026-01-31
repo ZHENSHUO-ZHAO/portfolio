@@ -1,7 +1,12 @@
-export default function Bio({ bio }: { bio: string }) {
+import type { Tag } from "../../contexts/pageContext";
+
+export default function Bio({ data }: { data: Tag }) {
   return (
-    <div className="bg-card rounded-r-md border-l-4 border-l-accent mb-8">
-      <p className="text-base text-left px-6 py-4 lg:text-lg">{bio}</p>
+    <div className="relative mx-auto bg-white border border-slate-200 shadow-lg rounded-xl md:rounded-2xl px-4 md:px-6 lg:px-8 py-4 md:py-5 lg:py-6 max-w-3xl">
+      <div className="absolute top-0 left-0 size-12 md:size-13 lg:size-14 flex items-center justify-center shrink-0">
+        <data.icon className="text-accent text-4xl md:text-5xl lg:text-6xl origin-bottom-right scale-125 -translate-y-2/3 md:-translate-y-1/2 -translate-x-1/4 lg:-translate-x-1/3" />
+      </div>
+      <p className="text-sm md:text-lg lg:text-xl">{data.text}</p>
     </div>
   );
 }

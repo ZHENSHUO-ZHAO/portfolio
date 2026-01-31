@@ -1,124 +1,159 @@
-import { useContext, useMemo } from "react";
-import { useHomePageContext } from "../../contexts/homeContext";
+import { useContext, type ReactNode } from "react";
+import { type HomeHeader } from "../../contexts/homeContext";
 import Portrait from "./Portrait";
-import React from "react";
 import CtaButton from "./CtaButton";
-import { FileDown, MessageCircleMore, ScanSearch } from "lucide-react";
 import { mixColor } from "../../utils/util";
 import { SettingContext } from "../../contexts/settingContext";
+import FullBleedContainer from "../../components/page/FullBleedContainer";
+import HybridStatement from "../../components/page/HybridStatement";
+import type { IconColor } from "../../contexts/pageContext";
 
 export default function HomePageHeader({
-  headingClassName,
+  data,
+  bgChildren,
 }: {
-  headingClassName: string;
+  data: HomeHeader;
+  bgChildren?: ReactNode;
 }) {
-  const content = useHomePageContext();
+  const IconPrimary = data.cta[0].icon;
+  const IconSecondary = data.cta[1].icon;
   const { deviceWidth } = useContext(SettingContext);
 
-  const roles = useMemo(() => {
-    // When screen size is less than 600px, change to the roles from 1 row to 2 rows.
-    const rows = deviceWidth.pixel >= 600 ? 1 : 2;
-    const itemsPerRow = content.roles.length / rows;
-    const newRoles = [];
-    for (let i = 0; i < rows; i++) {
-      if (i < rows - 1) {
-        newRoles.push(
-          content.roles.slice(i * itemsPerRow, (i + 1) * itemsPerRow)
-        );
-      } else {
-        newRoles.push(
-          content.roles.slice(i * itemsPerRow, content.roles.length)
-        );
-      }
-    }
-    return newRoles;
-  }, [deviceWidth, content.roles]);
-
   return (
-    <div
-      className={`${headingClassName} mx-2 lg:mx-4 min-h-[80dvh] flex justify-center items-center`}
-    >
-      <div className="lg:flex lg:gap-15 sm:justify-between sm:items-center">
-        <Portrait className="w-1/2 max-w-[220px] mx-auto mb-8 lg:flex-2 lg:mb-0" />
-        <div className="lg:flex-8 flex flex-col items-stretch lg:items-start">
-          <h1 className="text-center text-xl min-[370px]:text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold font-display tracking-tight">
-            {content.name}
+    <header className="relative lg:mx-8">
+      <FullBleedContainer>{bgChildren}</FullBleedContainer>
+      <div className="relative h-full pb-12 md:pb-16 lg:pb-20 pt-20 md:pt-25 xl:pt-60 flex flex-col-reverse xl:flex-row gap-4 xl:gap-15 items-center xl:justify-center">
+        <div className="text-center xl:text-left">
+          {/* Tag */}
+          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50 border border-tone1-200 rounded-full text-tone1-700 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6">
+            <data.tag.icon
+              aria-hidden="true"
+              focusable="false"
+              className="text-tone4-300 animate-pulse"
+            />
+            {data.tag.text && <span>{data.tag.text}</span>}
+          </div>
+
+          {/* Name */}
+          <h1 className="font-display text-2xl xs:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 md:mb-5 lg:mb-6">
+            {data.title}
           </h1>
-          <ul
-            aria-label="Professional roles"
-            className="flex flex-col justify-center items-center lg:items-start"
-          >
-            {roles.map((row, i) => (
-              <li
-                key={`RoleRow_${i}`}
-                className="flex gap-2 justify-center items-center"
-              >
-                {row.map((r, j, array) => (
-                  <React.Fragment key={r}>
-                    <span className="whitespace-nowrap text-base font-medium lg:text-lg">
-                      {r}
-                    </span>
-                    {j < array.length - 1 && (
-                      <div className="h-3 w-px border-r border-r-slate-500/50 border-l border-l-slate-200/50 rounded-full" />
-                    )}
-                  </React.Fragment>
-                ))}
-              </li>
-            ))}
-          </ul>
-          <p className="text-sm py-4 text-left min-[475px]:text-center lg:text-left whitespace-normal min-[475px]:whitespace-pre-line lg:whitespace-normal">
-            {content.statement}
-          </p>
-          <ul className="mt-8 w-full flex flex-wrap gap-x-4 gap-y-7 justify-start items-center text-base text-slate-800">
+
+          {/* Roles */}
+          <div className="flex flex-wrap justify-center xl:justify-start gap-y-3 gap-2 md:gap-3 mb-6 md:mb-7 lg:mb-8">
+            {data.roles.map((r, i) => {
+              const color: IconColor = roleColors[i];
+
+              return (
+                <span
+                  key={r}
+                  className={`px-3 md:px-4 py-1.5 md:py-2 bg-linear-to-r ${color.bg} text-xs md:text-sm lg:text-base text-white rounded-lg font-semibold shadow-lg ${color.shadow}`}
+                >
+                  {r}
+                </span>
+              );
+            })}
+          </div>
+
+          {/* Statement */}
+          {deviceWidth.pixel >= 1024
+            ? data.statement.map((s, i) => (
+                <p
+                  key={`p_${i}`}
+                  className="text-base md:text-xl lg:text-2xl font-medium mb-8 md:mb-9 lg:mb-10"
+                >
+                  <HybridStatement data={s} />
+                </p>
+              ))
+            : data.altStatement.map((s, i) => (
+                <p
+                  key={`p_${i}`}
+                  className="text-base md:text-xl lg:text-2xl font-medium mb-8 md:mb-9 lg:mb-10"
+                >
+                  <HybridStatement data={s} />
+                </p>
+              ))}
+
+          {/* CTA */}
+          <ul className="mt-8 w-full flex flex-col min-[500px]:flex-row gap-5 min-[500px]:gap-4 justify-center items-stretch min-[500px]:items-center text-sm md:text-base text-slate-800">
             <CtaButton
-              gradientColor={[
-                "var(--color-accent)",
-                "transparent",
-                "var(--color-complement)",
-                "var(--color-accent)",
-              ]}
+              gradientColor={ctaColors.primary.gradient}
               link="/project"
+              bgColor={ctaColors.primary.bg}
               useNavLink
               priority="primary"
+              className="flex-2"
+            >
+              {<IconPrimary />}
+              <span className="font-semibold">{data.cta[0].text}</span>
+            </CtaButton>
+            <CtaButton
+              gradientColor={ctaColors.secondary.gradient}
+              link="/resume.pdf"
+              bgColor={ctaColors.secondary.bg}
+              priority="secondary"
               className="flex-1"
             >
-              <ScanSearch width={20} />
-              <span className="font-medium">Projects</span>
+              <IconSecondary />
+              <span className="font-semibold">{data.cta[1].text}</span>
             </CtaButton>
-            <div className="flex-1 flex gap-4 justify-stretch items-center">
-              <CtaButton
-                gradientColor={[
-                  mixColor(5, "var(--color-slate-700)", "transparent"),
-                  mixColor(60, "var(--color-slate-700)", "transparent"),
-                  mixColor(10, "var(--color-slate-700)", "transparent"),
-                ]}
-                link="/resume.pdf"
-                bgColor="bg-slate-400/20"
-                linkProps={{ download: true }}
-                priority="secondary"
-                className="flex-3"
-              >
-                <FileDown width={20} />
-                Resume
-              </CtaButton>
-              <CtaButton
-                gradientColor={[
-                  mixColor(5, "var(--color-slate-600)", "transparent"),
-                  mixColor(40, "var(--color-slate-600)", "transparent"),
-                  mixColor(10, "var(--color-slate-600)", "transparent"),
-                ]}
-                link="/contact"
-                bgColor="bg-slate-300/20"
-                priority="tertiary"
-                className="flex-2"
-              >
-                <MessageCircleMore width={20} />
-                Contact
-              </CtaButton>
-            </div>
           </ul>
         </div>
+
+        <Portrait className="relative xl:w-1/3 max-w-[180px] xl:max-w-[300px] mb-4 md:mb-5 xl:mb-0" />
       </div>
-    </div>
+    </header>
   );
 }
+
+const roleColors: IconColor[] = [
+  {
+    bg: "from-tone1-500 to-tone1-600",
+    shadow: "shadow-tone1-500/30",
+    text: "",
+  },
+  {
+    bg: "from-tone2-500 to-tone2-600",
+    shadow: "shadow-tone2-500/30",
+    text: "",
+  },
+  {
+    bg: "from-tone3-500 to-tone3-600",
+    shadow: "shadow-tone3-500/30",
+    text: "",
+  },
+  {
+    bg: "from-tone4-500 to-tone4-600",
+    shadow: "shadow-tone4-500/30",
+    text: "",
+  },
+];
+
+type CtaColor = { bg: string; gradient: string[] };
+
+const ctaColors: { primary: CtaColor; secondary: CtaColor } = {
+  primary: {
+    bg: "transparent",
+    gradient: [
+      "var(--color-complement)",
+      "transparent",
+      "var(--color-accent)",
+      "var(--color-complement)",
+      "transparent",
+      "var(--color-accent)",
+      "var(--color-complement)",
+    ],
+  },
+  secondary: {
+    bg: "bg-slate-400/20",
+    gradient: [
+      mixColor(10, "var(--color-slate-700)", "transparent"),
+      "transparent",
+      mixColor(60, "var(--color-slate-700)", "transparent"),
+      mixColor(10, "var(--color-slate-700)", "transparent"),
+      "transparent",
+      mixColor(60, "var(--color-slate-700)", "transparent"),
+      mixColor(10, "var(--color-slate-700)", "transparent"),
+    ],
+  },
+};

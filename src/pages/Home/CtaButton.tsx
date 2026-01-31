@@ -1,7 +1,7 @@
 import { motion, type Variants } from "motion/react";
 import GlowOutline from "../../components/glowFx/GlowOutline";
 import { NavLink } from "react-router";
-import { createLinearGradient } from "../../utils/util";
+import { createConicGradient } from "../../utils/util";
 
 export default function CtaButton({
   gradientColor,
@@ -22,10 +22,11 @@ export default function CtaButton({
   priority: "primary" | "secondary" | "tertiary";
   className?: string;
 }) {
-  const linkStyle = "flex justify-center gap-2 rounded-full px-6 py-2";
+  const linkStyle =
+    "flex justify-center items-center gap-2 rounded-full px-6 md:px-7 lg:px-8 py-3 md:py-4";
   const glowVariants: Variants = {
     rest: {
-      background: createLinearGradient(520, gradientColor),
+      background: createConicGradient(378, gradientColor),
       transition: {
         duration: 1,
         ease: "linear",
@@ -33,11 +34,8 @@ export default function CtaButton({
     },
     hover: {
       background: [
-        createLinearGradient(160, gradientColor),
-        createLinearGradient(220, gradientColor),
-        createLinearGradient(350, gradientColor),
-        createLinearGradient(400, gradientColor),
-        createLinearGradient(520, gradientColor),
+        createConicGradient(18, gradientColor),
+        createConicGradient(378, gradientColor),
       ],
       transition: {
         duration: 3,

@@ -74,7 +74,7 @@ export type Stat = {
   unit: string;
 };
 
-export type GalleryItem = { url: string; alt: string; text?: string };
+export type Image = { url: string; alt: string; title?: string; desc?: string };
 
 export type CardColor = {
   icon: IconColor;

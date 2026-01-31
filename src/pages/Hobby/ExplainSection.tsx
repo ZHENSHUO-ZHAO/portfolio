@@ -34,6 +34,7 @@ export default function ExplainSection({
             icon: "text-coffee-700",
             bg: "bg-amber-100",
             text: "text-coffee-700",
+            border: "border-amber-200",
           }}
           bottomMargin="mb-3 md:mb-5"
           align="start"

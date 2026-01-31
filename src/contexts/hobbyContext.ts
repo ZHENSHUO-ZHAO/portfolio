@@ -27,7 +27,7 @@ import {
 } from "react-icons/fa6";
 import createPageContext, {
   type ContextPageBase,
-  type GalleryItem,
+  type Image,
   type Header,
   type Heading,
   type HybridDescription,
@@ -61,7 +61,7 @@ export type HobbyContent = ContextPageBase & {
   connection: { heading: Heading; items: Connection[] };
   exploration: ExplainSection;
   comparison: Comparison;
-  gallery: { heading: Heading; items: GalleryItem[] };
+  gallery: { heading: Heading; items: Image[] };
   contact: { heading: Heading; items: Heading[] };
 };
 
@@ -340,9 +340,9 @@ export const hobbyContent = {
       desc: "A glimpse into the craft",
     },
     items: [
-      { url: dummyImage, alt: "A dummy image", text: "Dummy" },
-      { url: dummyImage, alt: "A dummy image", text: "Dummy" },
-      { url: dummyImage, alt: "A dummy image", text: "Dummy" },
+      { url: dummyImage, alt: "A dummy image", title: "Dummy" },
+      { url: dummyImage, alt: "A dummy image", title: "Dummy" },
+      { url: dummyImage, alt: "A dummy image", title: "Dummy" },
     ],
   },
   contact: {

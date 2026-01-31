@@ -22,7 +22,7 @@ export default function SectionHeading({
     <div className="relative w-full flex flex-col gap-4 sm:gap-6 justify-start items-stretch">
       {data.tag && (
         <div
-          className={`${align === "center" ? "self-center justify-center" : "self-start"} flex gap-2 items-center px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm ${tagColor && tagColor.bg}`}
+          className={`${align === "center" ? "self-center justify-center" : "self-start"} flex gap-2 items-center px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm ${tagColor && tagColor.bg} ${tagColor && tagColor.border} ${tagColor && tagColor.border && "border"}`}
         >
           <data.tag.icon
             className={`${tagColor && tagColor.icon && tagColor.icon}`}

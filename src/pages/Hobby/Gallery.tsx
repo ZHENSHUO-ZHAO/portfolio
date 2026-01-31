@@ -1,6 +1,6 @@
-import type { GalleryItem } from "../../contexts/pageContext";
+import type { Image } from "../../contexts/pageContext";
 
-export default function Gallery({ data }: { data: GalleryItem[] }) {
+export default function Gallery({ data }: { data: Image[] }) {
   return (
     <div className="grid md:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
       {data.map((item, i) => (
@@ -15,7 +15,7 @@ export default function Gallery({ data }: { data: GalleryItem[] }) {
           />
           <div className="absolute inset-0 bg-linear-to-t from-coffee-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 md:p-5 lg:p-6">
             <p className="text-white font-semibold text-sm md:text-base lg:text-lg">
-              {item.text}
+              {item.title}
             </p>
           </div>
         </div>
