@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { NextButtonProp } from "./carouselTypes";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 
 export default function NextButton({ isToRight, onNext }: NextButtonProp) {
   const shadow = "0 0 3px 2px rgba(80,80,80,0.4)";
@@ -16,9 +16,9 @@ export default function NextButton({ isToRight, onNext }: NextButtonProp) {
       onTap={() => onNext(isToRight)}
     >
       {isToRight ? (
-        <ChevronRightIcon className="size-6 xs:size-7 md:size-8 stroke-white" />
+        <LuChevronRight className="size-6 xs:size-7 md:size-8 stroke-white" />
       ) : (
-        <ChevronLeftIcon className="size-6 xs:size-7 md:size-8 stroke-white" />
+        <LuChevronLeft className="size-6 xs:size-7 md:size-8 stroke-white" />
       )}
     </motion.button>
   );

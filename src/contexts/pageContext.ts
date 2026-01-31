@@ -1,4 +1,3 @@
-import type { LucideProps } from "lucide-react";
 import { createContext, useContext } from "react";
 import type { IconType } from "react-icons";
 
@@ -25,16 +24,6 @@ export type subroute<P = object> = {
   path?: string;
   component: React.ComponentType<P>;
   props?: P;
-};
-
-export type DescriptiveItem = {
-  title?: string;
-  subtitle?: string;
-  desc?: string;
-  image?: string;
-  icon?: React.ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
-  >;
 };
 
 export type TextChunk = {

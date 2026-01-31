@@ -1,38 +1,36 @@
 import { Outlet } from "react-router";
 import MobileRouter from "./components/router/MobileRouter";
 import PcRouter from "./components/router/PcRouter";
-import {
-  House,
-  CircleUserRound,
-  BriefcaseBusiness,
-  FolderGit2,
-  Cpu,
-  GraduationCap,
-  Coffee,
-  type LucideProps,
-} from "lucide-react";
 import useMeasure from "./hooks/measureHook";
 import { useMemo } from "react";
 import { SettingContext } from "./contexts/settingContext";
 import { getRem } from "./utils/util";
+import type { IconType } from "react-icons";
+import {
+  LuBriefcaseBusiness,
+  LuCircleUserRound,
+  LuCoffee,
+  LuCpu,
+  LuFolderGit2,
+  LuGraduationCap,
+  LuHouse,
+} from "react-icons/lu";
 
 export type RouterData = {
   to: string;
   title: string;
   end?: boolean;
-  icon: React.ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
-  >;
+  icon: IconType;
 }[];
 
 const navList: RouterData = [
-  { to: "/", title: "Home", end: true, icon: House },
-  { to: "/about", title: "About", icon: CircleUserRound },
-  { to: "/experience", title: "Experience", icon: BriefcaseBusiness },
-  { to: "/project", title: "Project", icon: FolderGit2 },
-  { to: "/skill", title: "Skill", icon: Cpu },
-  { to: "/education", title: "Education", icon: GraduationCap },
-  { to: "/hobby", title: "Hobby", icon: Coffee },
+  { to: "/", title: "Home", end: true, icon: LuHouse },
+  { to: "/about", title: "About", icon: LuCircleUserRound },
+  { to: "/experience", title: "Experience", icon: LuBriefcaseBusiness },
+  { to: "/project", title: "Project", icon: LuFolderGit2 },
+  { to: "/skill", title: "Skill", icon: LuCpu },
+  { to: "/education", title: "Education", icon: LuGraduationCap },
+  { to: "/hobby", title: "Hobby", icon: LuCoffee },
 ];
 
 function App() {

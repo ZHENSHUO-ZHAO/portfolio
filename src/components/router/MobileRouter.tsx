@@ -73,7 +73,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                         }
                         onClick={handleClick}
                       >
-                        <item.icon size={20} />
+                        <item.icon className="size-5" />
                         <span className="text-lg">{item.title}</span>
                       </NavLink>
                     </motion.li>

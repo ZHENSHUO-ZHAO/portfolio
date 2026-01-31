@@ -132,7 +132,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                               damping: 15,
                             }}
                           >
-                            <item.icon size={18} strokeWidth={2} />
+                            <item.icon className="size-4.5 stroke-2" />
                           </motion.span>
                           <span>{item.title}</span>
                         </motion.div>

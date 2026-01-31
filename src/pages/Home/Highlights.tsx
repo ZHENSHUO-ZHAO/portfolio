@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -12,6 +11,7 @@ import { type CardItem } from "../../components/carousel/carouselTypes";
 import type { IconColor } from "../../contexts/pageContext";
 import useMeasure from "../../hooks/measureHook";
 import type { HighlightItem } from "../../contexts/homeContext";
+import { LuArrowRight } from "react-icons/lu";
 
 export default function Highlights({ data }: { data: HighlightItem[] }) {
   const [aspectRatio, setAspectRatio] = useState(1);
@@ -141,7 +141,7 @@ function Card({ content, index }: CardItem<HighlightItem>) {
             }
           >
             <span>More Details</span>
-            <ArrowRight className="inline size-4 md:size-4.5" />
+            <LuArrowRight className="inline size-4 md:size-4.5" />
           </motion.button>
         </div>
       </div>
