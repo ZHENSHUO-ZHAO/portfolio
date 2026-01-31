@@ -32,6 +32,7 @@ import {
 } from "react-icons/fa6";
 import type { IconType } from "react-icons";
 import { BsChatRightQuoteFill } from "react-icons/bs";
+import { LuArrowRight } from "react-icons/lu";
 
 export type HomeHeader = Header & {
   altStatement: HybridText[];
@@ -39,7 +40,11 @@ export type HomeHeader = Header & {
   cta: [Tag, Tag];
 };
 
-export type HighlightItem = Image & { icon: IconType };
+export type HighlightItem = Image & {
+  icon: IconType;
+  detail: Tag;
+  href: string;
+};
 
 export type HomeContent = ContextPageBase & {
   header: HomeHeader;
@@ -102,6 +107,8 @@ export const homeContent = {
         url: yoplay,
         alt: "The opening screen of the YoPlay platform with its chubby boy mascot of fortune carrying a huge bag of gold coins in the middle.",
         icon: FaDice,
+        detail: { icon: LuArrowRight, text: "More Details" },
+        href: "/project/commercial/#yoplay",
       },
       {
         title: "Fish Hunter",
@@ -109,6 +116,8 @@ export const homeContent = {
         url: fishHunter,
         alt: "The title screen of Fish Hunter platform, an underwater arcade shooter game with colorful fish and ocean environment, dynamic action scene, vibrant gaming graphics.",
         icon: FaFish,
+        detail: { icon: LuArrowRight, text: "More Details" },
+        href: "/project/commercial/#fish-hunter",
       },
       {
         title: "Ninja Saga",
@@ -116,6 +125,8 @@ export const homeContent = {
         url: ninjaSaga,
         alt: "The title screen of Ninja Saga, anime-style ninja RPG game scene with character in action pose, vibrant Japanese-inspired art style, Facebook game aesthetic.",
         icon: FaUserNinja,
+        detail: { icon: LuArrowRight, text: "More Details" },
+        href: "/project/commercial/#ninja-saga",
       },
       {
         title: "Brainsic",
@@ -123,6 +134,8 @@ export const homeContent = {
         url: brainsic,
         alt: "An educational neuroscience game interface with brain visualization and music elements, child-friendly design, clinical training application.",
         icon: FaBrain,
+        detail: { icon: LuArrowRight, text: "More Details" },
+        href: "/project/research/#brainsic",
       },
     ],
   },

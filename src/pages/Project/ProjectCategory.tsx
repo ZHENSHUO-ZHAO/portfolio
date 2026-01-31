@@ -3,8 +3,8 @@ import {
   type ProjectCategory,
   type ProjectItem,
 } from "../../contexts/projectContext";
-import { jobSlug, slugify } from "../../utils/util";
-import React, { type ReactNode } from "react";
+import { slugify } from "../../utils/util";
+import React, { useEffect, useState, type ReactNode } from "react";
 import {
   FaBuilding,
   FaCalendar,
@@ -15,6 +15,9 @@ import {
 import SkillList from "../../components/page/SkillList";
 import type { CardColor, Tag } from "../../contexts/pageContext";
 import type { IconType } from "react-icons";
+import ProjectOutlineFx from "./ProjectOutlineFx";
+import { useLocation } from "react-router";
+import { AnimatePresence } from "motion/react";
 
 export default function ProjectCategory({
   category,
@@ -38,7 +41,7 @@ export default function ProjectCategory({
       <div className="w-full space-y-6 md:space-y-7 lg:space-y-8">
         {categoryData.items.map((item) => (
           <Item
-            key={jobSlug(item.time, item.title || "", item.company)}
+            key={item.id}
             itemData={item}
             color={projectColors[categoryIndex]}
           />
@@ -55,17 +58,28 @@ function Item({
   itemData: ProjectItem;
   color: CardColor;
 }) {
-  const projectId = jobSlug(
-    itemData.time,
-    itemData.title || "",
-    itemData.company,
-  );
+  const { hash } = useLocation();
+  const [showFx, setShowFx] = useState(false);
+
+  useEffect(() => {
+    if (!hash) return;
+    if (hash !== `#${itemData.id}`) return;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setShowFx(true);
+
+    const timer = setTimeout(() => {
+      setShowFx(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, [hash, itemData.id]);
 
   return (
     <article
-      aria-labelledby={projectId}
-      id={projectId}
-      className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8 shadow-sm`}
+      aria-labelledby={itemData.id}
+      id={itemData.id}
+      className={`relative bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8 shadow-sm`}
     >
       {/* Title */}
       <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
@@ -128,6 +142,8 @@ function Item({
         containerClassName="gap-2 md:gap-3"
         itemClassname={`gap-2 px-3 md:px-4 py-2 ${color.tags![1].bg} rounded-lg text-sm font-medium ${color.tags![1].text}`}
       />
+
+      <AnimatePresence>{showFx && <ProjectOutlineFx />}</AnimatePresence>
     </article>
   );
 }
@@ -206,23 +222,6 @@ const projectColors: CardColor[] = [
     ],
   },
   {
-    icon: { text: "", bg: "bg-tone2-600" },
-    bg: "from-tone2-50/70",
-    border: "border-tone2-600/10",
-    tags: [
-      {
-        text: "text-tone2-900",
-        icon: "text-tone2-700",
-        bg: "bg-tone2-100/30",
-        border: "border-tone2-600/10",
-      },
-      {
-        text: "text-tone2-700",
-        bg: "bg-tone2-600/10",
-      },
-    ],
-  },
-  {
     icon: { text: "", bg: "bg-tone3-600" },
     bg: "from-tone3-50/70",
     border: "border-tone3-600/10",
@@ -236,23 +235,6 @@ const projectColors: CardColor[] = [
       {
         text: "text-tone3-700",
         bg: "bg-tone3-600/10",
-      },
-    ],
-  },
-  {
-    icon: { text: "", bg: "bg-tone4-600" },
-    bg: "from-tone4-50/70",
-    border: "border-tone4-600/10",
-    tags: [
-      {
-        text: "text-tone4-900",
-        icon: "text-tone4-700",
-        bg: "bg-tone4-100/30",
-        border: "border-tone4-600/10",
-      },
-      {
-        text: "text-tone4-700",
-        bg: "bg-tone4-600/10",
       },
     ],
   },

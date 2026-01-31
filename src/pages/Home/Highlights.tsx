@@ -11,7 +11,7 @@ import { type CardItem } from "../../components/carousel/carouselTypes";
 import type { IconColor } from "../../contexts/pageContext";
 import useMeasure from "../../hooks/measureHook";
 import type { HighlightItem } from "../../contexts/homeContext";
-import { LuArrowRight } from "react-icons/lu";
+import { useNavigate } from "react-router";
 
 export default function Highlights({ data }: { data: HighlightItem[] }) {
   const [aspectRatio, setAspectRatio] = useState(1);
@@ -77,6 +77,7 @@ function CardMaxHeightTracker({
 
 function Card({ content, index }: CardItem<HighlightItem>) {
   const [isHover, setHover] = useState(false);
+  const navigate = useNavigate();
 
   const onMouseEnter = () => {
     setHover(true);
@@ -93,6 +94,7 @@ function Card({ content, index }: CardItem<HighlightItem>) {
       className="relative w-full h-[90%] flex flex-col justify-between"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onTap={() => navigate(content.href)}
     >
       <AnimatePresence>
         {isHover && (
@@ -140,8 +142,8 @@ function Card({ content, index }: CardItem<HighlightItem>) {
                 : { translateX: "calc(18px - 100%)" }
             }
           >
-            <span>More Details</span>
-            <LuArrowRight className="inline size-4 md:size-4.5" />
+            <span>{content.detail.text}</span>
+            <content.detail.icon className="inline size-4 md:size-4.5" />
           </motion.button>
         </div>
       </div>
