@@ -4,6 +4,7 @@ import { NavLink } from "react-router";
 import type { RouterData } from "../../App";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { routerBgColor } from "./PcRouter";
+import MobileFooter from "./MobileFooter";
 
 export default function MobileRouter({ routes }: { routes: RouterData }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,34 +52,40 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
           <div className="relative">
             <AnimatePresence>
               {isOpen && (
-                <motion.ul
-                  variants={listVariants}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  className="flex flex-col gap-2"
-                  id="mobile-navigation"
-                >
-                  {routes.map((item, i, arr) => (
-                    <motion.li variants={itemVariants} key={item.title}>
-                      <NavLink
-                        to={item.to}
-                        end={item.end}
-                        className={({ isActive }) =>
-                          `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 text-slate-600 font-semibold ${
-                            isActive
-                              ? `border-l-4 ${i === arr.length - 1 ? "border-l-coffee-300 bg-coffee-400/20" : "border-l-accent bg-complement/10"}`
-                              : "border-l-4 border-l-transparent"
-                          }`
-                        }
-                        onClick={handleClick}
-                      >
-                        <item.icon className="size-5" />
-                        <span className="text-lg">{item.title}</span>
-                      </NavLink>
-                    </motion.li>
-                  ))}
-                </motion.ul>
+                <div className="size-full flex flex-col justify-start gap-20">
+                  {/* Nav Link List */}
+                  <motion.ul
+                    variants={listVariants}
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                    className="flex flex-col gap-2"
+                    id="mobile-navigation"
+                  >
+                    {routes.map((item, i, arr) => (
+                      <motion.li variants={itemVariants} key={item.title}>
+                        <NavLink
+                          to={item.to}
+                          end={item.end}
+                          className={({ isActive }) =>
+                            `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 text-slate-600 font-semibold ${
+                              isActive
+                                ? `border-l-4 ${i === arr.length - 1 ? "border-l-coffee-300 bg-coffee-400/20" : "border-l-accent bg-complement/10"}`
+                                : "border-l-4 border-l-transparent"
+                            }`
+                          }
+                          onClick={handleClick}
+                        >
+                          <item.icon className="size-5" />
+                          <span className="text-lg">{item.title}</span>
+                        </NavLink>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+
+                  {/* Footer */}
+                  <MobileFooter />
+                </div>
               )}
             </AnimatePresence>
           </div>
@@ -175,7 +182,9 @@ const listVariants: Variants = {
     transition: { delayChildren: stagger(0.07, { startDelay: 0.2 }) },
   },
   closed: {
-    transition: { delayChildren: stagger(0.05, { from: "last" }) },
+    transition: {
+      delayChildren: stagger(0.05, { from: "last", startDelay: 0.15 }),
+    },
   },
 };
 

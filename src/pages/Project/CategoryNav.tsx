@@ -123,10 +123,8 @@ export default function CategoryNav({
     const ul = ulRef.current;
     if (!ul) return;
     ul.addEventListener("scrollend", updateScroll);
-    // window.addEventListener("resize", updateScroll);
     return () => {
       ul.removeEventListener("scrollend", updateScroll);
-      // window.removeEventListener("resize", updateScroll);
     };
   }, [updateScroll, setting.deviceWidth]);
 

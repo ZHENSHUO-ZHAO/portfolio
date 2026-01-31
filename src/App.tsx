@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import MobileRouter from "./components/router/MobileRouter";
 import PcRouter from "./components/router/PcRouter";
 import useMeasure from "./hooks/measureHook";
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { SettingContext } from "./contexts/settingContext";
 import { getRem } from "./utils/util";
 import type { IconType } from "react-icons";
@@ -15,6 +15,8 @@ import {
   LuGraduationCap,
   LuHouse,
 } from "react-icons/lu";
+import PcFooter from "./components/router/PCFooter";
+import { ThemeContext } from "./contexts/themeContext";
 
 export type RouterData = {
   to: string;
@@ -38,17 +40,23 @@ function App() {
   const deviceWidth: { pixel: number; rem: number } = useMemo(() => {
     return { pixel: size.width, rem: getRem(size.width) };
   }, [size]);
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleDarkMode = useCallback(() => setDarkMode((cur) => !cur), []);
 
   return (
     <div
       ref={ref}
       className="relative size-full flex flex-col justify-center items-center"
     >
-      <PcRouter routes={navList} />
-      <MobileRouter routes={navList} />
-      <SettingContext value={{ deviceWidth }}>
-        <Outlet />
-      </SettingContext>
+      <ThemeContext value={{ darkMode, toggleDarkMode }}>
+        <PcRouter routes={navList} />
+        <MobileRouter routes={navList} />
+        <SettingContext value={{ deviceWidth }}>
+          <Outlet />
+        </SettingContext>
+
+        <PcFooter />
+      </ThemeContext>
     </div>
   );
 }
