@@ -120,7 +120,6 @@ const bottomLeftVariants: Variants = {
       ],
       "20% 80%",
     ),
-    // filter: "grayscale(0.6)",
     opacity: 0.7,
   },
   hover: {
@@ -133,7 +132,6 @@ const bottomLeftVariants: Variants = {
       ],
       "0% 100%",
     ),
-    // filter: "grayscale(0)",
     opacity: 1,
   },
 };

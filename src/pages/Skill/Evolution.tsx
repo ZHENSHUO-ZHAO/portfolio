@@ -15,7 +15,8 @@ export default function Evolution({
           <div
             key={e.title}
             id={`${e.title} section`}
-            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-6 lg:p-8`}
+            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-6 lg:p-8
+            hover:-translate-y-1 active:-translate-y-1 hover:shadow-lg active:shadow-lg transition-all duration-300`}
           >
             <div
               className={`size-11 lg:size-12 ${color.icon.bg} rounded-xl flex items-center justify-center mb-4 shadow-lg ${color.icon.shadow}`}

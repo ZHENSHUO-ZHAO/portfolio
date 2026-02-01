@@ -92,32 +92,20 @@ function ContactButtons({
     <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm xs:text-base">
       <ContactLink
         data={links[0].contact}
-        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center`}
+        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center
+        hover:-translate-y-1 active:-translate-y-1 transition duration-300`}
       >
         {Icon1 && <Icon1 />}
         {links[0].heading.title}
       </ContactLink>
-      {/* <a
-        href={`${links[0]}`}
-        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center`}
-      >
-        {Icon1 && <Icon1 />}
-        {links[0].heading.title}
-      </a> */}
       <ContactLink
         data={links[1].contact}
-        className={`px-8 py-4 bg-white/10 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center`}
+        className={`px-8 py-4 bg-white/10 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center
+        hover:-translate-y-1 active:-translate-y-1 transition duration-300`}
       >
         {Icon2 && <Icon2 />}
         {links[1].heading.title}
       </ContactLink>
-      {/* <a
-        href={`${links[1]}`}
-        className={`px-8 py-4 bg-white/10 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center`}
-      >
-        {Icon2 && <Icon2 />}
-        {links[1].heading.title}
-      </a> */}
     </div>
   );
 }
@@ -135,11 +123,28 @@ const tagColorInvert: IconColor = {
 };
 
 const buttonsColorNormal: IconColor[] = [
-  { text: "text-white", bg: "bg-tone1-600", shadow: "shadow-tone1-600/20" },
-  { text: "text-secondary", bg: "", border: "border-slate-200" },
+  {
+    text: "text-white",
+    bg: "bg-tone1-700 hover:bg-tone1-600 active:bg-tone1-600",
+    shadow:
+      "shadow-tone1-700/20 hover:shadow-tone1-600/20 active:shadow-tone1-600/20",
+  },
+  {
+    text: "text-secondary",
+    bg: "bg-slate-100 hover:bg-white active:bg-white",
+    border: "border-slate-200",
+  },
 ];
 
 const buttonsColorInvert: IconColor[] = [
-  { text: "text-tone1-700", bg: "bg-white", shadow: "shadow-white/20" },
-  { text: "text-white", bg: "", border: "border-white/30" },
+  {
+    text: "text-tone1-700",
+    bg: "bg-sky-50 hover:bg-white active:bg-white",
+    shadow: "shadow-white/20 hover:shadow-white/30 active:shadow-white/30",
+  },
+  {
+    text: "text-white",
+    bg: "bg-white/10 hover:bg-white/20 active:bg-white/20",
+    border: "border-white/30",
+  },
 ];

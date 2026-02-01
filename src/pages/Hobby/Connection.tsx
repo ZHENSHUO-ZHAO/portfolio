@@ -9,7 +9,10 @@ export default function Connection({ data }: { data: Connection[] }) {
         return (
           <div
             key={c.title}
-            className="last:md:col-span-2 bg-white rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8 border-2 border-amber-200 hover:border-coffee-400 hover:bg-transparent hover:translate-x-1 hover:lg:translate-x-3 hover:shadow-[0_20px_40px_rgba(120,53,15,0.15)] hover:bg-linear-to-r hover:from-amber-800/5 hover:to-transparent transform transition duration-300"
+            className="last:md:col-span-2 bg-white rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8 border-2 border-amber-200 
+            hover:border-coffee-400 hover:bg-transparent hover:translate-x-1 hover:lg:translate-x-3 hover:shadow-[0_20px_40px_rgba(120,53,15,0.15)] hover:bg-linear-to-r hover:from-amber-800/5 hover:to-transparent 
+            active:border-coffee-400 active:bg-transparent active:translate-x-1 active:lg:translate-x-3 active:shadow-[0_20px_40px_rgba(120,53,15,0.15)] active:bg-linear-to-r active:from-amber-800/5 active:to-transparent
+            transform transition duration-300"
           >
             <div className="flex items-start gap-3 md:gap-4">
               <div className="size-11 md:size-12 lg:size-14 bg-amber-200 rounded-lg md:rounded-xl flex items-center justify-center shrink-0">

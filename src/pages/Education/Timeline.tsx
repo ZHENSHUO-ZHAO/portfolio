@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import type { Degree } from "../../contexts/educationContext";
 import type { CardColor } from "../../contexts/pageContext";
 
@@ -10,7 +11,8 @@ export default function Timeline({ data }: { data: Degree[] }) {
         return (
           <div
             key={d.university}
-            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl md:rounded-3xl p-6 md:p-10 space-y-4 md:space-y-6`}
+            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl md:rounded-3xl p-6 md:p-10 space-y-4 md:space-y-6
+            hover:translate-x-2 active:translate-x-2 hover:shadow-lg active:shadow-lg transition-all duration-300`}
           >
             {/* Heading Section */}
             <div className="flex items-start justify-between gap-4">
@@ -35,13 +37,27 @@ export default function Timeline({ data }: { data: Degree[] }) {
               {d.achievements && (
                 <div className="hidden md:flex md:gap-4">
                   {d.achievements.map((a, i) => (
-                    <div
+                    <motion.div
                       key={`circle-tag-${i}`}
-                      className={`size-25 lg:size-27 px-4 py-2 bg-linear-to-r ${color.tags![0].bg} text-white rounded-full font-bold text-sm shadow-lg flex flex-col justify-center items-center shrink-0`}
+                      className={`size-25 lg:size-27 px-4 py-2 bg-linear-to-r ${color.tags![0].bg} text-white rounded-full font-bold text-sm flex flex-col justify-center items-center shrink-0`}
+                      animate={{
+                        scale: [1, 1.05, 1], // pulse up, then back
+                        boxShadow: [
+                          "0px 4px 6px rgba(0,0,0,0.5)",
+                          "0px 10px 20px rgba(0,0,0,0.15)",
+                          "0px 4px 6px rgba(0,0,0,0.5)",
+                        ],
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
+                      }}
                     >
                       <a.icon className="text-2xl text-center" />
                       <span>{a.abbrev || a.text}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               )}

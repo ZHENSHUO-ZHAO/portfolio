@@ -10,7 +10,7 @@ export default function Foundation({ data }: { data: EducationFoundation[] }) {
         return (
           <div
             key={d.title}
-            className="flex flex-col justify-between bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 transition duration-300"
+            className="flex flex-col justify-between bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 active:bg-white/10 transition duration-300"
           >
             <div>
               <div

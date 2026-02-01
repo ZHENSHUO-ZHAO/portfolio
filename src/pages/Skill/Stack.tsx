@@ -11,7 +11,8 @@ export default function Stack({ data }: { data: Skill[] }) {
           <article
             key={s.title}
             id={`category ${s.title}`}
-            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8`}
+            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8
+            hover:translate-x-2 active:translate-x-2 hover:shadow-lg active:shadow-lg transition-all duration-300`}
           >
             <div className="flex items-start gap-4 md:gap-5 lg:gap-6 mb-5 md:mb-6">
               <div

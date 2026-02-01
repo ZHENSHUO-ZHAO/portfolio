@@ -88,10 +88,15 @@ export default function Hobby() {
         buttonsColor={[
           {
             text: "text-white",
-            bg: "bg-coffee-600",
-            shadow: "shadow-coffee-700/20",
+            bg: "bg-coffee-600 hover:bg-coffee-500 active:bg-coffee-500",
+            shadow:
+              "shadow-coffee-700/20 hover:shadow-coffee-600/20 active:shadow-coffee-600/20",
           },
-          { text: "text-secondary", bg: "", border: "border-slate-200" },
+          {
+            text: "text-secondary",
+            bg: "bg-slate-50 hover:bg-white active:bg-white",
+            border: "border-slate-200",
+          },
         ]}
       />
     </Page>

@@ -11,7 +11,7 @@ export default function Certification({ data }: { data: Certificate[] }) {
         return (
           <div
             key={`cert-${i}`}
-            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-7 lg:p-8 hover:bg-white/15 transition duration-300"
+            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-7 lg:p-8 hover:bg-white/15 active:bg-white/15 transition duration-300"
           >
             <div className="flex md:flex-col items-center md:items-start gap-3 md:gap-5 lg:gap-6 mb-4 md:mb-5 lg:mb-6">
               <div className="size-12 md:size-14 lg:size-16 bg-amber-500/20 backdrop-blur-sm rounded-xl md:rounded-2xl flex items-center justify-center">

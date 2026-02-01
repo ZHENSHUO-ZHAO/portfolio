@@ -19,7 +19,8 @@ export function FourHorizontalCards({
 function Card({ data, color }: { data: Heading; color: CardColor }) {
   return (
     <li
-      className={`${color.bg} border ${color.border} p-6 sm:p-7 lg:p-6 rounded-xl md:rounded-2xl flex flex-col xs:flex-row sm:flex-col lg:flex-row xl:flex-col gap-4 md:gap-6`}
+      className={`${color.bg} border ${color.border} p-6 sm:p-7 lg:p-6 rounded-xl md:rounded-2xl flex flex-col xs:flex-row sm:flex-col lg:flex-row xl:flex-col gap-4 md:gap-6 
+      hover:-translate-y-0.5 xl:hover:-translate-y-1 active:-translate-y-0.5 xl:active:-translate-y-1 hover:scale-[103%] active:scale-[103%] hover:shadow-lg xl:hover:shadow-xl active:shadow-lg xl:active:shadow-xl ${color.shadow} transition-all duration-300`}
     >
       {data.tag && (
         <div
@@ -45,6 +46,7 @@ const defaultColors: CardColor[] = [
     },
     bg: "bg-gradient-to-br from-tone1-50/20 via-tone1-100/20 to-tone1-200/40",
     border: "border-tone1-200/30",
+    shadow: "hover:shadow-tone1-600/30 active:shadow-tone1-600/30",
   },
   {
     icon: {
@@ -54,6 +56,7 @@ const defaultColors: CardColor[] = [
     },
     bg: "bg-gradient-to-br from-tone2-50/20 via-tone2-100/20 to-tone2-200/40",
     border: "border-tone2-200/30",
+    shadow: "hover:shadow-tone2-600/30 active:shadow-tone2-600/30",
   },
   {
     icon: {
@@ -63,6 +66,7 @@ const defaultColors: CardColor[] = [
     },
     bg: "bg-gradient-to-br from-tone3-50/20 via-tone3-100/20 to-tone3-200/40",
     border: "border-tone3-200/30",
+    shadow: "hover:shadow-tone3-600/30 active:shadow-tone3-600/30",
   },
   {
     icon: {
@@ -72,5 +76,6 @@ const defaultColors: CardColor[] = [
     },
     bg: "bg-gradient-to-br from-tone4-50/20 via-tone4-100/20 to-tone4-200/40",
     border: "border-tone4-200/30",
+    shadow: "hover:shadow-tone4-600/30 active:shadow-tone4-600/30",
   },
 ];

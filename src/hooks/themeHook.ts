@@ -18,8 +18,6 @@ export default function useTheme() {
   useEffect(() => {
     const root = document.documentElement;
 
-    console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
-
     if (darkMode) {
       root.classList.add("dark");
     } else {

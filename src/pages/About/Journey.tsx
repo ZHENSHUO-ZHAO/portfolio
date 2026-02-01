@@ -26,7 +26,8 @@ function JourneyItem({
 }) {
   return (
     <li
-      className={`rounded-2xl p-5 md:p-8 flex flex-col xs:flex-row gap-3 xs:gap-4 md:gap-6 border-l-4 ${color.bg} ${color.border}`}
+      className={`rounded-2xl p-5 md:p-8 flex flex-col xs:flex-row gap-3 xs:gap-4 md:gap-6 border-l-4 ${color.bg} ${color.border} 
+      ${color.shadow && "hover:translate-x-2 active:translate-x-2 hover:shadow-lg active:shadow-lg transition-all duration-300"} ${color.shadow}`}
     >
       <div
         className={`flex-none size-10 xs:size-12 md:size-14 rounded-xl flex justify-center items-center text-lg xs:text-xl md:text-2xl ${color.icon.text} ${color.icon.bg}`}
@@ -66,6 +67,7 @@ const cardColors: CardColor[] = [
         bg: "bg-tone1-50",
       },
     ],
+    shadow: "hover:shadow-tone1-600/30 active:shadow-tone1-600/30",
   },
   {
     icon: {
@@ -80,6 +82,7 @@ const cardColors: CardColor[] = [
         bg: "bg-tone2-50",
       },
     ],
+    shadow: "hover:shadow-tone2-600/30 active:shadow-tone2-600/30",
   },
   {
     icon: {
@@ -94,6 +97,7 @@ const cardColors: CardColor[] = [
         bg: "bg-tone3-50",
       },
     ],
+    shadow: "hover:shadow-tone3-600/30 active:shadow-tone3-600/30",
   },
   {
     icon: {
@@ -108,6 +112,7 @@ const cardColors: CardColor[] = [
         bg: "bg-tone4-50",
       },
     ],
+    shadow: "hover:shadow-tone4-600/30 active:shadow-tone4-600/30",
   },
   {
     icon: {

@@ -12,9 +12,7 @@ export default function Aim({ data }: { data: Heading[] }) {
 
 function AimItem({ data, color }: { data: Heading; color: CardColor }) {
   return (
-    <li
-      className={`${color.bg} border ${color.border} flex-1 min-w-41 p-4 sm:p-6 lg:p-8 rounded-xl md:rounded-2xl flex flex-col items-center`}
-    >
+    <li className="bg-white/5 hover:bg-white/15 active:bg-white/15 transition duration-300 border border-white/10 flex-1 min-w-41 p-4 sm:p-6 lg:p-8 rounded-xl md:rounded-2xl flex flex-col items-center">
       {data.tag && (
         <div
           className={`${color.icon.text} ${color.icon.bg} shadow-lg ${color.icon.shadow} size-12 md:size-16 flex justify-center items-center text-lg md:text-2xl rounded-lg md:rounded-xl mb-3 md:mb-4`}
@@ -36,8 +34,8 @@ const cardColors: CardColor[] = [
       bg: "bg-tone1-500",
       shadow: "shadow-tone1-600/30",
     },
-    bg: "bg-white/5",
-    border: "border-white/10",
+    bg: "",
+    border: "",
   },
   {
     icon: {
@@ -45,8 +43,8 @@ const cardColors: CardColor[] = [
       bg: "bg-tone2-500",
       shadow: "shadow-tone2-600/30",
     },
-    bg: "bg-white/5",
-    border: "border-white/10",
+    bg: "",
+    border: "",
   },
   {
     icon: {
@@ -54,8 +52,8 @@ const cardColors: CardColor[] = [
       bg: "bg-tone3-500",
       shadow: "shadow-tone3-600/30",
     },
-    bg: "bg-white/5",
-    border: "border-white/10",
+    bg: "",
+    border: "",
   },
   {
     icon: {
@@ -63,8 +61,8 @@ const cardColors: CardColor[] = [
       bg: "bg-tone4-500",
       shadow: "shadow-tone4-600/30",
     },
-    bg: "bg-white/5",
-    border: "border-white/10",
+    bg: "",
+    border: "",
   },
   {
     icon: {
@@ -72,7 +70,7 @@ const cardColors: CardColor[] = [
       bg: "bg-tone5-500",
       shadow: "shadow-tone5-600/30",
     },
-    bg: "bg-white/5",
-    border: "border-white/10",
+    bg: "",
+    border: "",
   },
 ];

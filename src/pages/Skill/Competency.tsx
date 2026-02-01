@@ -15,7 +15,8 @@ export default function Competency({
           <article
             id={`category ${s.title}`}
             key={s.title}
-            className={`flex flex-col justify-between bg-white border border-slate-200 rounded-2xl p-5 md:p-7 lg:p-8`}
+            className={`flex flex-col justify-between bg-white border border-slate-200 rounded-2xl p-5 md:p-7 lg:p-8
+              hover:-translate-y-1 active:-translate-y-1 hover:shadow-lg active:shadow-lg transition-all duration-300`}
           >
             <div className="flex items-start gap-4 md:gap-5 lg:gap-6 mb-5 md:mb-6">
               <div

@@ -6,7 +6,7 @@ export default function Impact({ data }: { data: Stat[] }) {
       {data.map((d, i) => (
         <div
           key={d.unit}
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 md:p-8 text-center"
+          className="bg-white/5 hover:bg-white/15 active:bg-white/15 transition duration-300 backdrop-blur-sm border border-white/10 rounded-2xl p-5 md:p-8 text-center"
         >
           <div
             className={`text-3xl md:text-5xl font-extrabold ${numberColors[i]} mb-1 md:mb-2`}
