@@ -1,5 +1,6 @@
 import createPageContext from "./pageContext";
 import type {
+  ContactButtonInfo,
   ContextPageBase,
   Header,
   Heading,
@@ -33,6 +34,7 @@ import {
 import type { IconType } from "react-icons";
 import { BsChatRightQuoteFill } from "react-icons/bs";
 import { LuArrowRight } from "react-icons/lu";
+import { cv, email } from "../utils/constants";
 
 export type HomeHeader = Header & {
   altStatement: HybridText[];
@@ -51,7 +53,7 @@ export type HomeContent = ContextPageBase & {
   highlight: { heading: Heading; items: HighlightItem[] };
   snapshot: { heading: Heading; items: Heading[] };
   bio: { heading: Heading; intro: Tag };
-  contact: { heading: Heading; items: Heading[] };
+  contact: { heading: Heading; items: ContactButtonInfo[] };
 };
 
 export const homeContent = {
@@ -190,14 +192,12 @@ export const homeContent = {
     },
     items: [
       {
-        tag: { icon: FaEnvelope },
-        title: "Get in Touch",
-        desc: "",
+        heading: { tag: { icon: FaEnvelope }, title: "Get in Touch", desc: "" },
+        contact: { href: email },
       },
       {
-        tag: { icon: FaDownload },
-        title: "View Resume",
-        desc: "",
+        heading: { tag: { icon: FaDownload }, title: "View Resume", desc: "" },
+        contact: { href: cv, download: true },
       },
     ],
   },

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { LuMoon, LuSun } from "react-icons/lu";
 import { useFooterContext } from "../../contexts/footerContext";
 import { ThemeContext } from "../../contexts/themeContext";
+import ContactLink from "../page/ContactLink";
 
 export default function MobileFooter() {
   const content = useFooterContext();
@@ -22,7 +23,7 @@ export default function MobileFooter() {
       >
         {/* Light/Dark mode toggle */}
         <button
-          className="relative flex items-center gap-1 p-0.5 text-xl md:text-2xl bg-slate-300 text-slate-500 rounded-full cursor-pointer"
+          className="relative flex items-center gap-1 p-0.5 text-xl bg-slate-300 text-slate-500 rounded-full cursor-pointer"
           onClick={theme.toggleDarkMode}
         >
           <div
@@ -42,17 +43,15 @@ export default function MobileFooter() {
         </button>
 
         {/* Contacts */}
-        <div className="flex items-center gap-6 text-2xl">
+        <div className="flex items-center gap-2.5 text-2xl">
           {content.contact.map((c) => (
-            <a
+            <ContactLink
               key={c.href}
-              href={c.href}
-              target={c.target}
-              rel={c.rel}
+              data={c}
               className="text-slate-600 hover:text-slate-500 transition"
             >
               <c.icon />
-            </a>
+            </ContactLink>
           ))}
         </div>
       </motion.div>

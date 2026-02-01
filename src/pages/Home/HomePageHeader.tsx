@@ -89,7 +89,7 @@ export default function HomePageHeader({
             </CtaButton>
             <CtaButton
               gradientColor={ctaColors.secondary.gradient}
-              link="/resume.pdf"
+              link="/about"
               bgColor={ctaColors.secondary.bg}
               priority="secondary"
               className="flex-1"

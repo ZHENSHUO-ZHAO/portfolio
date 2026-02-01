@@ -65,6 +65,15 @@ export type Stat = {
 
 export type Image = { url: string; alt: string; title?: string; desc?: string };
 
+export type Contact = {
+  href: string;
+  target?: string;
+  rel?: string;
+  download?: boolean;
+};
+
+export type ContactButtonInfo = { heading: Heading; contact: Contact };
+
 export type CardColor = {
   icon: IconColor;
   bg: string;

@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { motion } from "motion/react";
 import { FaAngleUp } from "react-icons/fa6";
 import { ThemeContext } from "../../contexts/themeContext";
+import ContactLink from "../page/ContactLink";
 
 export default function PcFooter() {
   const content = useFooterContext();
@@ -58,15 +59,13 @@ export default function PcFooter() {
         {/* Contacts */}
         <div className="flex items-center gap-4 md:gap-6 text-xl md:text-2xl">
           {content.contact.map((c) => (
-            <a
+            <ContactLink
               key={c.href}
-              href={c.href}
-              target={c.target}
-              rel={c.rel}
+              data={c}
               className="text-slate-400 hover:text-slate-500 transition"
             >
               <c.icon />
-            </a>
+            </ContactLink>
           ))}
         </div>
       </div>

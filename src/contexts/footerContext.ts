@@ -1,29 +1,26 @@
 import { createContext, useContext } from "react";
-import type { IconType } from "react-icons";
 import { FaEnvelope, FaLinkedin } from "react-icons/fa6";
-
-export type Contact = {
-  icon: IconType;
-  href: string;
-  target?: string;
-  rel?: string;
-};
+import { cv, email, linkedin } from "../utils/constants";
+import { FaFileDownload } from "react-icons/fa";
+import type { Contact } from "./pageContext";
+import type { IconType } from "react-icons";
 
 export type FooterContent = {
   declaration: string;
-  contact: Contact[];
+  contact: (Contact & { icon: IconType })[];
 };
 
 export const footerContent: FooterContent = {
   declaration: "© {{year}} Zhenshuo Zhao",
   contact: [
-    { icon: FaEnvelope, href: "mailto:vincentjill@hotmail.com" },
+    { icon: FaEnvelope, href: email },
     {
       icon: FaLinkedin,
-      href: "https://www.linkedin.com/in/zhenshuo-vincent-zhao/",
+      href: linkedin,
       target: "_blank",
       rel: "noopener noreferrer",
     },
+    { icon: FaFileDownload, href: cv, download: true },
   ],
 };
 

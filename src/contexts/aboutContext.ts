@@ -1,5 +1,10 @@
 import createPageContext from "./pageContext";
-import type { ContextPageBase, Header, Heading } from "./pageContext";
+import type {
+  ContactButtonInfo,
+  ContextPageBase,
+  Header,
+  Heading,
+} from "./pageContext";
 import {
   FaCircleUser,
   FaGear,
@@ -24,6 +29,7 @@ import {
   FaDownload,
 } from "react-icons/fa6";
 import { FaProjectDiagram, FaUsers, FaRocket, FaLink } from "react-icons/fa";
+import { cv, email } from "../utils/constants";
 
 export type AboutContent = ContextPageBase & {
   header: Header;
@@ -32,7 +38,7 @@ export type AboutContent = ContextPageBase & {
   philosophy: { heading: Heading; items: Heading[] };
   aim: { heading: Heading; items: Heading[] };
   leisure: { heading: Heading; details: string; items: Heading[] };
-  contact: { heading: Heading; items: Heading[] };
+  contact: { heading: Heading; items: ContactButtonInfo[] };
 };
 
 export const aboutContent = {
@@ -216,14 +222,12 @@ export const aboutContent = {
     },
     items: [
       {
-        tag: { icon: FaEnvelope },
-        title: "Get in Touch",
-        desc: "",
+        heading: { tag: { icon: FaEnvelope }, title: "Get in Touch", desc: "" },
+        contact: { href: email },
       },
       {
-        tag: { icon: FaDownload },
-        title: "View Resume",
-        desc: "",
+        heading: { tag: { icon: FaDownload }, title: "View Resume", desc: "" },
+        contact: { href: cv, download: true },
       },
     ],
   },

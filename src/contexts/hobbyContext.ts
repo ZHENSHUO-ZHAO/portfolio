@@ -33,12 +33,14 @@ import createPageContext, {
   type HybridDescription,
   type HybridTag,
   type Tag,
+  type ContactButtonInfo,
 } from "./pageContext";
 import { GiNoseSide } from "react-icons/gi";
 import { PiCoffeeBeanFill } from "react-icons/pi";
 import { MdCompareArrows } from "react-icons/md";
 import dummyImage from "../assets/images/hobby/dummy.webp";
 import { BsChatRightQuoteFill } from "react-icons/bs";
+import { cv, email } from "../utils/constants";
 
 export type HobbyHeader = Header & { interestHeading: string; interest: Tag[] };
 export type ExplainSection = {
@@ -62,7 +64,7 @@ export type HobbyContent = ContextPageBase & {
   exploration: ExplainSection;
   comparison: Comparison;
   gallery: { heading: Heading; items: Image[] };
-  contact: { heading: Heading; items: Heading[] };
+  contact: { heading: Heading; items: ContactButtonInfo[] };
 };
 
 export const hobbyContent = {
@@ -353,14 +355,12 @@ export const hobbyContent = {
     },
     items: [
       {
-        tag: { icon: FaEnvelope },
-        title: "Get in Touch",
-        desc: "",
+        heading: { tag: { icon: FaEnvelope }, title: "Get in Touch", desc: "" },
+        contact: { href: email },
       },
       {
-        tag: { icon: FaDownload },
-        title: "View Resume",
-        desc: "",
+        heading: { tag: { icon: FaDownload }, title: "View Resume", desc: "" },
+        contact: { href: cv, download: true },
       },
     ],
   },

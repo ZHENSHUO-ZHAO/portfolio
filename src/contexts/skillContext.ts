@@ -23,7 +23,14 @@ import {
   FaUserGear,
 } from "react-icons/fa6";
 import createPageContext from "./pageContext";
-import type { ContextPageBase, Header, Heading, Stat } from "./pageContext";
+import type {
+  ContactButtonInfo,
+  ContextPageBase,
+  Header,
+  Heading,
+  Stat,
+} from "./pageContext";
+import { email } from "../utils/constants";
 
 export type Skill = Heading & { skills: string[] };
 
@@ -35,7 +42,7 @@ export type SkillContent = ContextPageBase & {
   competency: { heading: Heading; items: (Heading & { stat: Stat })[] };
   evolution: { heading: Heading; items: (Heading & { stack: string[] })[] };
   learning: { heading: Heading; items: Heading[] };
-  contact: { heading: Heading; items: Heading[] };
+  contact: { heading: Heading; items: ContactButtonInfo[] };
 };
 
 export const skillContent = {
@@ -262,14 +269,16 @@ export const skillContent = {
     },
     items: [
       {
-        tag: { icon: FaEnvelope },
-        title: "Get in Touch",
-        desc: "",
+        heading: { tag: { icon: FaEnvelope }, title: "Get in Touch", desc: "" },
+        contact: { href: email },
       },
       {
-        tag: { icon: FaMagnifyingGlass },
-        title: "View My Work",
-        desc: "",
+        heading: {
+          tag: { icon: FaMagnifyingGlass },
+          title: "View My Work",
+          desc: "",
+        },
+        contact: { href: "/project/commercial" },
       },
     ],
   },
