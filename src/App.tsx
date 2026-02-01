@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import MobileRouter from "./components/router/MobileRouter";
 import PcRouter from "./components/router/PcRouter";
 import useMeasure from "./hooks/measureHook";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { SettingContext } from "./contexts/settingContext";
 import { getRem } from "./utils/util";
 import type { IconType } from "react-icons";
@@ -17,6 +17,7 @@ import {
 } from "react-icons/lu";
 import PcFooter from "./components/router/PCFooter";
 import { ThemeContext } from "./contexts/themeContext";
+import useTheme from "./hooks/themeHook";
 
 export type RouterData = {
   to: string;
@@ -40,8 +41,7 @@ function App() {
   const deviceWidth: { pixel: number; rem: number } = useMemo(() => {
     return { pixel: size.width, rem: getRem(size.width) };
   }, [size]);
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = useCallback(() => setDarkMode((cur) => !cur), []);
+  const [darkMode, toggleDarkMode] = useTheme();
 
   return (
     <div
