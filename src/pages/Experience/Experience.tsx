@@ -19,7 +19,7 @@ export default function Experience() {
       <Section
         id="career-timeline-section"
         headingData={content.career.heading}
-        bgChildren={<div className="size-full bg-white" />}
+        bgChildren={<div className="size-full bg-white dark:bg-slate-900/50" />}
         maxWidth="lg:mx-8 xl:mx-0"
       >
         <JobList data={content.career.items} />

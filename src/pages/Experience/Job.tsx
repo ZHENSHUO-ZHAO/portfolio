@@ -12,7 +12,7 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
   return (
     <li
       id={jobId}
-      className="flex gap-1 sm:gap-6 flex-col sm:flex-row p-5 sm:p-0 rounded-xl border sm:border-none border-slate-200 shadow-sm sm:shadow-none"
+      className="flex gap-1 sm:gap-6 flex-col sm:flex-row p-5 sm:p-0 rounded-xl border sm:border-none border-slate-200 dark:border-slate-700 shadow-sm sm:shadow-none"
     >
       <div className="relative z-10 w-full sm:w-44 md:w-3xs lg:w-xs xl:w-lg flex-none flex flex-col sm:items-end sm:text-right">
         {/* Time */}
@@ -35,7 +35,7 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
             <div
               className={`absolute size-2 rounded-full right-0 translate-x-full top-1/2 -translate-y-1/2 ${color.tags && color.tags[0].bg}`}
             >
-              <div className="absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent border border-slate-200 inset-shadow-xs" />
+              <div className="absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent border border-slate-200 dark:border-slate-400 inset-shadow-xs" />
             </div>
           </div>
           <div
@@ -64,7 +64,7 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
       </div>
 
       {/* Job details */}
-      <div className="relative flex-1 bg-white rounded-xl sm:p-4 md:p-6 sm:border sm:border-slate-200 sm:shadow-sm">
+      <div className="relative flex-1 sm:bg-white dark:sm:bg-slate-800 rounded-xl sm:p-4 md:p-6 sm:border sm:border-slate-200 dark:sm:border-slate-700 sm:shadow-sm">
         <Task tasks={job.tasks} color={color} />
 
         {/* Product List */}

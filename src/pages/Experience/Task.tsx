@@ -11,7 +11,10 @@ export default function Task({
   return (
     <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
       {tasks.map((t) => (
-        <li key={t} className="flex items-start gap-3 text-neutral-700">
+        <li
+          key={t}
+          className="flex items-start gap-3 text-neutral-700 dark:text-secondary"
+        >
           <div
             aria-hidden="true"
             role="presentation"
