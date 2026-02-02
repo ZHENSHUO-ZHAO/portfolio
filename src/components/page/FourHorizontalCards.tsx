@@ -8,7 +8,7 @@ export function FourHorizontalCards({
   cardColors?: CardColor[];
 }) {
   return (
-    <ul className="relative grid grid-cols-1 lg:mx-8 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+    <ul className="relative grid grid-cols-1 lg:mx-8 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6">
       {data.map((s, i) => (
         <Card key={s.title} data={s} color={cardColors[i]} />
       ))}
@@ -44,9 +44,10 @@ const defaultColors: CardColor[] = [
       bg: "bg-tone1-500",
       shadow: "shadow-tone1-600/30",
     },
-    bg: "bg-gradient-to-br from-tone1-50/20 via-tone1-100/20 to-tone1-200/40",
-    border: "border-tone1-200/30",
-    shadow: "hover:shadow-tone1-600/30 active:shadow-tone1-600/30",
+    bg: "bg-gradient-to-br from-tone1-50/20 via-tone1-100/20 to-tone1-200/40 dark:from-tone1-500/18 dark:via-tone1-500/5 dark:to-tone1-600/5",
+    border: "border-tone1-200/30 dark:border-tone1-200/20",
+    shadow:
+      "hover:shadow-tone1-600/30 dark:hover:shadow-tone1-600/50 active:shadow-tone1-600/30 dark:active:shadow-tone1-600/50",
   },
   {
     icon: {
@@ -54,9 +55,10 @@ const defaultColors: CardColor[] = [
       bg: "bg-tone2-500",
       shadow: "shadow-tone2-600/30",
     },
-    bg: "bg-gradient-to-br from-tone2-50/20 via-tone2-100/20 to-tone2-200/40",
-    border: "border-tone2-200/30",
-    shadow: "hover:shadow-tone2-600/30 active:shadow-tone2-600/30",
+    bg: "bg-gradient-to-br from-tone2-50/20 via-tone2-100/20 to-tone2-200/40 dark:from-tone2-500/18 dark:via-tone2-500/5 dark:to-tone2-600/5",
+    border: "border-tone2-200/30 dark:border-tone2-200/20",
+    shadow:
+      "hover:shadow-tone2-600/30 dark:hover:shadow-tone2-600/50 active:shadow-tone2-600/30 dark:active:shadow-tone2-600/50",
   },
   {
     icon: {
@@ -64,9 +66,10 @@ const defaultColors: CardColor[] = [
       bg: "bg-tone3-500",
       shadow: "shadow-tone3-600/30",
     },
-    bg: "bg-gradient-to-br from-tone3-50/20 via-tone3-100/20 to-tone3-200/40",
-    border: "border-tone3-200/30",
-    shadow: "hover:shadow-tone3-600/30 active:shadow-tone3-600/30",
+    bg: "bg-gradient-to-br from-tone3-50/20 via-tone3-100/20 to-tone3-200/40 dark:from-tone3-500/18 dark:via-tone3-500/5 dark:to-tone3-600/5",
+    border: "border-tone3-200/30 dark:border-tone3-200/20",
+    shadow:
+      "hover:shadow-tone3-600/30 dark:hover:shadow-tone3-600/50 active:shadow-tone3-600/30 dark:active:shadow-tone3-600/50",
   },
   {
     icon: {
@@ -74,8 +77,9 @@ const defaultColors: CardColor[] = [
       bg: "bg-tone4-500",
       shadow: "shadow-tone4-600/30",
     },
-    bg: "bg-gradient-to-br from-tone4-50/20 via-tone4-100/20 to-tone4-200/40",
-    border: "border-tone4-200/30",
-    shadow: "hover:shadow-tone4-600/30 active:shadow-tone4-600/30",
+    bg: "bg-gradient-to-br from-tone4-50/20 via-tone4-100/20 to-tone4-200/40 dark:from-tone4-500/18 dark:via-tone4-500/5 dark:to-tone4-600/5",
+    border: "border-tone4-200/30 dark:border-tone4-200/20",
+    shadow:
+      "hover:shadow-tone4-600/30 dark:hover:shadow-tone4-600/50 active:shadow-tone4-600/30 dark:active:shadow-tone4-600/50",
   },
 ];

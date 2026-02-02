@@ -132,6 +132,18 @@
   }
 
   .dark {
+    --color-statement-1: var(--color-tone1-400);
+    --color-statement-2: var(--color-tone3-400);
+    --color-statement-3: var(--color-tone5-400);
+
+    --color-bg-header-tag: --alpha(theme(colors.sky.500) / 20%);
+    --color-border-header-tag: --alpha(theme(colors.sky.500) / 20%);
+    --color-text-header-tag: theme(colors.sky.400);
+
+    --color-bg1-header: --alpha(var(--color-tone1-500) / 30%);
+    --color-bg2-header: --alpha(var(--color-tone3-500) / 30%);
+    --color-bg3-header: --alpha(var(--color-tone5-500) / 30%);
+
     --color-cta-secondary: theme(colors.slate.100);
     --carousel-button-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.9);
     --carousel-dot-shadow: 0 0 3px 1px rgba(200, 200, 200, 0.5);

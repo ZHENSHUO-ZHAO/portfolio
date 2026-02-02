@@ -35,7 +35,7 @@ function JourneyItem({
         {data.tag && <data.tag.icon />}
       </div>
       <div className="flex-1">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-0.5 sm:gap-2 md:gap-4 mb-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 mb-5">
           <h3 className={`${invert && "title-color-invert"}`}>{data.title}</h3>
           {data.tag?.text && (
             <span
@@ -57,69 +57,73 @@ const cardColors: CardColor[] = [
   {
     icon: {
       text: "text-tone1-400",
-      bg: "bg-tone1-100",
+      bg: "bg-tone1-100 dark:bg-tone1-500/20",
     },
-    bg: "bg-white",
-    border: "border-tone1-400",
+    bg: "bg-white dark:bg-slate-800/50",
+    border: "border-tone1-400 dark:border-tone1-500",
     tags: [
       {
-        text: "text-tone1-700",
-        bg: "bg-tone1-50",
+        text: "text-tone1-700 dark:text-tone1-400",
+        bg: "bg-tone1-50 dark:bg-tone1-500/20",
       },
     ],
-    shadow: "hover:shadow-tone1-600/30 active:shadow-tone1-600/30",
+    shadow:
+      "hover:shadow-tone1-600/30 active:shadow-tone1-600/30 dark:hover:shadow-tone1-600/60 dark:active:shadow-tone1-600/60",
   },
   {
     icon: {
       text: "text-tone2-400",
-      bg: "bg-tone2-100",
+      bg: "bg-tone2-100 dark:bg-tone2-500/20",
     },
-    bg: "bg-white",
-    border: "border-tone2-400",
+    bg: "bg-white dark:bg-slate-800/50",
+    border: "border-tone2-400 dark:border-tone2-500",
     tags: [
       {
-        text: "text-tone2-700",
-        bg: "bg-tone2-50",
+        text: "text-tone2-700 dark:text-tone2-400",
+        bg: "bg-tone2-50 dark:bg-tone2-500/20",
       },
     ],
-    shadow: "hover:shadow-tone2-600/30 active:shadow-tone2-600/30",
+    shadow:
+      "hover:shadow-tone2-600/30 active:shadow-tone2-600/30 dark:hover:shadow-tone2-600/60 dark:active:shadow-tone2-600/60",
   },
   {
     icon: {
       text: "text-tone3-400",
-      bg: "bg-tone3-100",
+      bg: "bg-tone3-100 dark:bg-tone3-500/20",
     },
-    bg: "bg-white",
-    border: "border-tone3-400",
+    bg: "bg-white dark:bg-slate-800/50",
+    border: "border-tone3-400 dark:border-tone3-500",
     tags: [
       {
-        text: "text-tone3-700",
-        bg: "bg-tone3-50",
+        text: "text-tone3-700 dark:text-tone3-400",
+        bg: "bg-tone3-50 dark:bg-tone3-500/20",
       },
     ],
-    shadow: "hover:shadow-tone3-600/30 active:shadow-tone3-600/30",
+    shadow:
+      "hover:shadow-tone3-600/30 active:shadow-tone3-600/30 dark:hover:shadow-tone3-600/60 dark:active:shadow-tone3-600/60",
   },
   {
     icon: {
       text: "text-tone4-400",
-      bg: "bg-tone4-100",
+      bg: "bg-tone4-100 dark:bg-tone4-500/20",
     },
-    bg: "bg-white",
-    border: "border-tone4-400",
+    bg: "bg-white dark:bg-slate-800/50",
+    border: "border-tone4-400 dark:border-tone4-500",
     tags: [
       {
-        text: "text-tone4-700",
-        bg: "bg-tone4-50",
+        text: "text-tone4-700 dark:text-tone4-400",
+        bg: "bg-tone4-50 dark:bg-tone4-500/20",
       },
     ],
-    shadow: "hover:shadow-tone4-600/30 active:shadow-tone4-600/30",
+    shadow:
+      "hover:shadow-tone4-600/30 active:shadow-tone4-600/30 dark:hover:shadow-tone4-600/60 dark:active:shadow-tone4-600/60",
   },
   {
     icon: {
       text: "text-tone1-400",
-      bg: "bg-tone1-500/20",
+      bg: "bg-tone1-500/20 dark:bg-tone1-500/30",
     },
-    bg: "bg-color-invert",
+    bg: "bg-color-invert dark:from-tone1-700 dark:via-tone1-700 dark:to-tone1-800",
     border: "border-tone1-400",
   },
 ];

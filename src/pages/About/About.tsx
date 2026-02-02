@@ -16,7 +16,7 @@ export default function About() {
       <Section
         id="strengths-section"
         headingData={content.strength.heading}
-        bgChildren={<div className="size-full bg-white" />}
+        bgChildren={<div className="size-full bg-white dark:bg-slate-900" />}
       >
         <FourHorizontalCards data={content.strength.items} />
       </Section>
@@ -25,7 +25,9 @@ export default function About() {
         id="journey-section"
         headingData={content.journey.heading}
         maxWidth="mx-auto max-w-4xl"
-        bgChildren={<div className="size-full bg-color-normal" />}
+        bgChildren={
+          <div className="size-full bg-color-normal dark:bg-linear-to-br dark:from-slate-950 dark:to-slate-900" />
+        }
       >
         <Journey data={content.journey.items} />
       </Section>
@@ -33,7 +35,7 @@ export default function About() {
       <Section
         id="philosophy-section"
         headingData={content.philosophy.heading}
-        bgChildren={<div className="size-full bg-white" />}
+        bgChildren={<div className="size-full bg-white dark:bg-slate-900" />}
       >
         <FourHorizontalCards data={content.philosophy.items} />
       </Section>
@@ -41,7 +43,9 @@ export default function About() {
       <Section
         id="aim-section"
         headingData={content.aim.heading}
-        bgChildren={<div className="size-full bg-color-invert" />}
+        bgChildren={
+          <div className="size-full bg-color-invert dark:from-slate-950 dark:via-none dark:to-slate-800" />
+        }
         invertColor
       >
         <Aim data={content.aim.items} />
@@ -51,7 +55,7 @@ export default function About() {
         id="leisure-section"
         headingData={content.leisure.heading}
         bgChildren={
-          <div className="size-full bg-linear-to-br from-white via-slate-50 to-tone3-50" />
+          <div className="size-full bg-linear-to-br from-white via-slate-50 to-tone3-50 dark:from-slate-900 dark:via-none dark:to-slate-950" />
         }
       >
         <Leisure
