@@ -13,7 +13,7 @@ export default function PcFooter() {
 
   return (
     <footer
-      className={`fixed bottom-0 inset-x-0 hidden lg:flex flex-col items-center ${hide ? "translate-y-[calc(100%-1.5rem)]" : "translate-y-0"} transition-transform`}
+      className={`z-50 fixed bottom-0 inset-x-0 hidden lg:flex flex-col items-center ${hide ? "translate-y-[calc(100%-1.5rem)]" : "translate-y-0"} transition-transform`}
     >
       {/* Open/Close button */}
       <button
