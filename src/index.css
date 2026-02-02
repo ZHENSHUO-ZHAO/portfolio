@@ -214,6 +214,10 @@
     @apply bg-linear-to-br from-slate-50 to-slate-100;
   }
 
+  .dark .bg-color-normal {
+    @apply bg-linear-to-br from-slate-950 to-slate-900;
+  }
+
   .bg-color-invert {
     @apply bg-linear-to-br from-slate-900 via-slate-900 to-slate-700;
   }

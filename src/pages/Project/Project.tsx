@@ -48,6 +48,7 @@ export default function Project() {
         id="collaborate-section"
         headingData={content.contact.heading}
         links={content.contact.items}
+        bgChildren={<div className="size-full dark:bg-slate-950" />}
       />
     </Page>
   );

@@ -53,7 +53,7 @@ export function ContactCardSection({
           />
         </div>
       ) : (
-        <>
+        <div className="relative">
           <SectionHeading
             data={headingData}
             invertColor={invertColor}
@@ -65,7 +65,7 @@ export function ContactCardSection({
             invertColor={invertColor}
             buttonsColor={buttonsColor}
           />
-        </>
+        </div>
       )}
     </section>
   );
@@ -100,7 +100,7 @@ function ContactButtons({
       </ContactLink>
       <ContactLink
         data={links[1].contact}
-        className={`px-8 py-4 bg-white/10 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center
+        className={`px-8 py-4 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center
         hover:-translate-y-1 active:-translate-y-1 transition duration-300`}
       >
         {Icon2 && <Icon2 />}
@@ -113,25 +113,25 @@ function ContactButtons({
 const tagColorNormal: IconColor = {
   icon: "text-tone5-300",
   text: "text-secondary",
-  bg: "bg-white border-4 border-slate-100",
+  bg: "bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-900",
 };
 
 const tagColorInvert: IconColor = {
   icon: "text-tone5-300",
   text: "text-white",
-  bg: "bg-white/20",
+  bg: "bg-white/10 border-4 border-white/15",
 };
 
 const buttonsColorNormal: IconColor[] = [
   {
     text: "text-white",
-    bg: "bg-tone1-700 hover:bg-tone1-600 active:bg-tone1-600",
+    bg: "bg-tone1-700 dark:bg-tone1-600 hover:bg-tone1-600 dark:hover:bg-tone1-500 active:bg-tone1-600 dark:active:bg-tone1-500",
     shadow:
-      "shadow-tone1-700/20 hover:shadow-tone1-600/20 active:shadow-tone1-600/20",
+      "shadow-tone1-700/20 dark:shadow-tone1-600/50 hover:shadow-tone1-600/20 dark:hover:shadow-tone1-500/50 dark:active:shadow-tone1-500/50 active:shadow-tone1-600/20",
   },
   {
     text: "text-secondary",
-    bg: "bg-slate-100 hover:bg-white active:bg-white",
+    bg: "bg-slate-200 dark:bg-white/10 hover:bg-slate-100 dark:hover:bg-white/40 active:bg-slate-100 dark:active:bg-white/40 ",
     border: "border-slate-200",
   },
 ];

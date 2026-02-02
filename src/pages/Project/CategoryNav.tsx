@@ -148,7 +148,7 @@ export default function CategoryNav({
       )}
       <ul
         ref={ulRef}
-        className="absolute inset-x-0 flex items-center gap-2 sm:gap-4 rounded-full p-0.5 bg-slate-400/30 backdrop-blur-sm overflow-x-scroll shadow-[0_10px_15px_rgba(0,0,0,0.3)]"
+        className="absolute inset-x-0 flex items-center gap-2 sm:gap-4 rounded-full p-0.5 bg-slate-400/30 dark:bg-slate-700/70 backdrop-blur-sm overflow-x-scroll shadow-[0_10px_15px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_18px_rgba(0,0,0,1)]"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -203,12 +203,12 @@ function ScrollButton({
   return (
     <button
       onClick={() => callback(direction)}
-      className={`absolute ${direction === "left" ? "-left-px" : "-right-px"} top-0 bottom-1 aspect-square px-2 z-20 flex items-center justify-center bg-slate-200/50 backdrop-blur-xs rounded-full cursor-pointer border border-slate-200/50`}
+      className={`absolute ${direction === "left" ? "-left-px" : "-right-px"} top-0 bottom-1 aspect-square px-2 z-20 flex items-center justify-center bg-slate-200/50 dark:bg-slate-500/50 backdrop-blur-xs rounded-full cursor-pointer border border-slate-200/50 dark:border-slate-500/50`}
     >
       {direction === "left" ? (
-        <FaChevronLeft className="text-neutral-500" />
+        <FaChevronLeft className="text-neutral-500 dark:text-neutral-300" />
       ) : (
-        <FaChevronRight className="text-neutral-500" />
+        <FaChevronRight className="text-neutral-500 dark:text-neutral-300" />
       )}
     </button>
   );
@@ -219,17 +219,17 @@ type scrollDirection = "left" | "right";
 const navColors: CardColor[] = [
   {
     icon: { text: "", bg: "" },
-    bg: "bg-tone1-600",
-    border: "border-tone1-100",
+    bg: "bg-tone1-600/70 dark:bg-tone1-500/50",
+    border: "",
   },
   {
     icon: { text: "", bg: "" },
-    bg: "bg-tone3-600",
-    border: "border-tone3-100",
+    bg: "bg-tone3-600/70 dark:bg-tone3-500/50",
+    border: "",
   },
   {
     icon: { text: "", bg: "" },
-    bg: "bg-tone5-600",
-    border: "border-tone5-100",
+    bg: "bg-tone5-600/70 dark:bg-tone5-500/50",
+    border: "",
   },
 ];

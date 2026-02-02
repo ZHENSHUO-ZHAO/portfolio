@@ -31,7 +31,7 @@ const cardColors: CardColor[] = [
       }, // For time, checkmark, products titles and markets
       { text: "text-tone1-900 dark:text-tone1-400", bg: "" }, // For products heading
       {
-        text: "text-tone1-700 dark:text-tone1-400",
+        text: "text-tone1-600 [&>span]:text-tone1-700 dark:text-tone1-400 dark:[&>span]:text-tone1-200",
         bg: "",
         border: "border-tone1-700/30 dark:border-tone1-500/20",
         shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
@@ -57,7 +57,7 @@ const cardColors: CardColor[] = [
       }, // For time, checkmark, products titles and markets
       { text: "text-tone2-900 dark:text-tone2-400", bg: "" }, // For products heading
       {
-        text: "text-tone2-700 dark:text-tone2-400",
+        text: "text-tone2-600 [&>span]:text-tone2-700 dark:text-tone2-400 dark:[&>span]:text-tone2-200",
         bg: "",
         border: "border-tone2-700/30 dark:border-tone2-500/20",
         shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone2-700)_50%,transparent)]
@@ -83,7 +83,7 @@ const cardColors: CardColor[] = [
       }, // For time, checkmark, products titles and markets
       { text: "text-tone3-900 dark:text-tone3-400", bg: "" }, // For products heading
       {
-        text: "text-tone3-700 dark:text-tone3-400",
+        text: "text-tone3-600 [&>span]:text-tone3-700 dark:text-tone3-400 dark:[&>span]:text-tone3-200",
         bg: "",
         border: "border-tone3-700/30 dark:border-tone3-500/20",
         shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
@@ -109,7 +109,7 @@ const cardColors: CardColor[] = [
       }, // For time, checkmark, products titles and markets
       { text: "text-tone4-900 dark:text-tone4-400", bg: "" }, // For products heading
       {
-        text: "text-tone4-700 dark:text-tone4-400",
+        text: "text-tone4-600 [&>span]:text-tone4-700 dark:text-tone4-400 dark:[&>span]:text-tone4-200",
         bg: "",
         border: "border-tone4-700/30 dark:border-tone4-500/20",
         shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone4-700)_50%,transparent)]
@@ -135,7 +135,7 @@ const cardColors: CardColor[] = [
       }, // For time, checkmark, products titles and markets
       { text: "text-tone5-900 dark:text-tone5-400", bg: "" }, // For products heading
       {
-        text: "text-tone5-700 dark:text-tone5-400",
+        text: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200",
         bg: "",
         border: "border-tone5-700/30 dark:border-tone5-500/20",
         shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]

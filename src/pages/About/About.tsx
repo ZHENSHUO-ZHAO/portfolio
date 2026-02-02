@@ -25,9 +25,7 @@ export default function About() {
         id="journey-section"
         headingData={content.journey.heading}
         maxWidth="mx-auto max-w-4xl"
-        bgChildren={
-          <div className="size-full bg-color-normal dark:bg-linear-to-br dark:from-slate-950 dark:to-slate-900" />
-        }
+        bgChildren={<div className="size-full bg-color-normal" />}
       >
         <Journey data={content.journey.items} />
       </Section>

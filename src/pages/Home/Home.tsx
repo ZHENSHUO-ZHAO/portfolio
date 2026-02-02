@@ -62,7 +62,7 @@ export default function Home() {
         tagColor={{
           icon: "text-white",
           text: "text-white",
-          bg: "bg-white/20",
+          bg: "bg-white/10 border-4 border-white/15",
         }}
         links={content.contact.items}
         bgChildren={

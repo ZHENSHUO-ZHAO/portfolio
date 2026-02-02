@@ -33,7 +33,7 @@ export default function ProjectCategory({
 
   return (
     <section className="relative" aria-labelledby={categoryId} id={categoryId}>
-      <p className="w-full text-center text-slate-600 text-sm md:text-base lg:text-lg mb-8 md:mb-12">
+      <p className="w-full text-center text-slate-600 dark:text-slate-400 text-sm md:text-base lg:text-lg mb-8 md:mb-12">
         <span className="font-semibold">{categoryData.category}</span>
         <span>: {categoryData.definition}</span>
       </p>
@@ -79,10 +79,10 @@ function Item({
     <article
       aria-labelledby={itemData.id}
       id={itemData.id}
-      className={`relative bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8 shadow-sm`}
+      className={`relative bg-linear-to-br ${color.bg} to-white dark:to-slate-900 border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8 shadow-sm`}
     >
       {/* Title */}
-      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
+      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-2">
         {itemData.title}
       </h3>
 
@@ -102,7 +102,7 @@ function Item({
 
       {/* Roles */}
       <div
-        className={`px-3 md:px-4 py-2 w-fit ${color.icon.bg} text-white text-xs font-semibold rounded-full mb-3 md:mb-4 flex flex-wrap gap-1 items-center`}
+        className={`px-3 md:px-4 py-2 w-fit ${color.icon.bg} text-white text-xs font-semibold rounded-full mb-6 flex flex-wrap gap-1 items-center`}
       >
         {itemData.roles.map((r, i) => (
           <React.Fragment key={`role_${i}`}>
@@ -121,7 +121,8 @@ function Item({
           <TagList
             data={itemData.releases}
             containerClassName="gap-2"
-            itemClassname={`gap-1.5 px-3 md:px-4 py-1 md:py-2 ${color.tags![0].bg} rounded-lg text-sm font-medium ${color.tags![0].icon} border ${color.tags![0].border}`}
+            itemClassname={`gap-1.5 px-3 md:px-4 py-1 md:py-2 ${color.tags![0].bg} rounded-lg text-sm font-medium ${color.tags![0].icon} border ${color.tags![0].border}
+            ${color.tags![0].shadow} hover:-translate-y-0.5 active:-translate-y-0.5 transition duration-300`}
             defaultIcon={FaStar}
           />
         </SubSection>
@@ -132,7 +133,8 @@ function Item({
         <SkillList
           data={itemData.skills}
           ulClassName="gap-2"
-          liClassName={`flex justify-center items-center gap-1.5 px-3 md:px-4 py-1 md:py-2 ${color.tags![0].bg} ${color.tags![0].icon} text-sm font-medium rounded-lg border ${color.tags![0].border}`}
+          liClassName={`flex justify-center items-center gap-1.5 px-3 md:px-4 py-1 md:py-2 ${color.tags![0].bg} ${color.tags![0].icon} text-sm font-medium rounded-lg border ${color.tags![0].border}
+          ${color.tags![0].shadow} hover:-translate-y-0.5 active:-translate-y-0.5 transition duration-300`}
         />
       </SubSection>
 
@@ -140,7 +142,8 @@ function Item({
       <TagList
         data={itemData.tags}
         containerClassName="gap-2 md:gap-3"
-        itemClassname={`gap-2 px-3 md:px-4 py-2 ${color.tags![1].bg} rounded-lg text-sm font-medium ${color.tags![1].text}`}
+        itemClassname={`gap-2 px-3 md:px-4 py-2 ${color.tags![1].bg} rounded-lg text-sm font-medium ${color.tags![1].text}
+        ${color.tags![1].shadow} hover:-translate-y-0.5 active:-translate-y-0.5 transition duration-300`}
       />
 
       <AnimatePresence>{showFx && <ProjectOutlineFx />}</AnimatePresence>
@@ -159,7 +162,7 @@ function SubSection({
 }) {
   return (
     <div
-      className={`bg-white rounded-xl p-4 md:p-5 border ${color.border} mb-4 md:mb-6`}
+      className={`bg-white dark:bg-slate-950/50 rounded-xl p-4 md:p-5 border ${color.border} mb-4 md:mb-6`}
     >
       <p
         className={`text-xs font-bold ${color.tags![0].text} uppercase mb-2 md:mb-3`}
@@ -206,52 +209,76 @@ function TagList({
 const projectColors: CardColor[] = [
   {
     icon: { text: "", bg: "bg-tone1-600" },
-    bg: "from-tone1-50/70",
-    border: "border-tone1-600/10",
+    bg: "from-tone1-50/70 dark:from-tone1-900/30",
+    border: "border-tone1-600/10 dark:border-tone1-300/10",
     tags: [
       {
-        text: "text-tone1-900",
-        icon: "text-tone1-700",
-        bg: "bg-tone1-100/30",
-        border: "border-tone1-600/10",
+        text: "text-tone1-900 dark:text-tone1-400", // For sub-section heading
+        icon: "text-tone1-600 [&>span]:text-tone1-700 dark:text-tone1-400 dark:[&>span]:text-tone1-200", // For sub-section tag list
+        bg: "bg-tone1-100/30 dark:bg-tone1-800/30", // For sub-section tag list
+        border: "border-tone1-600/10 dark:border-tone1-700/80", // For sub-section tag list
+        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
+          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
+          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]
+          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]`,
       },
       {
-        text: "text-tone1-700",
-        bg: "bg-tone1-600/10",
+        text: "text-tone1-600 [&>span]:text-tone1-700 dark:text-tone1-400 dark:[&>span]:text-tone1-200", // For bottom tag list
+        bg: "bg-tone1-600/10 dark:bg-tone1-900/40", // For bottom tag list
+        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
+          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
+          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]
+          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]`,
       },
     ],
   },
   {
     icon: { text: "", bg: "bg-tone3-600" },
-    bg: "from-tone3-50/70",
-    border: "border-tone3-600/10",
+    bg: "from-tone3-50/70 dark:from-tone3-900/30",
+    border: "border-tone3-600/10 dark:border-tone3-300/10",
     tags: [
       {
-        text: "text-tone3-900",
-        icon: "text-tone3-700",
-        bg: "bg-tone3-100/30",
-        border: "border-tone3-600/10",
+        text: "text-tone3-900 dark:text-tone3-400", // For sub-section heading
+        icon: "text-tone3-600 [&>span]:text-tone3-700 dark:text-tone3-400 dark:[&>span]:text-tone3-200", // For sub-section tag list
+        bg: "bg-tone3-100/30 dark:bg-tone3-800/30", // For sub-section tag list
+        border: "border-tone3-600/10 dark:border-tone3-700/80", // For sub-section tag list
+        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
+          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
+          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]
+          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]`,
       },
       {
-        text: "text-tone3-700",
-        bg: "bg-tone3-600/10",
+        text: "text-tone3-600 [&>span]:text-tone3-700 dark:text-tone3-400 dark:[&>span]:text-tone3-200", // For bottom tag list
+        bg: "bg-tone3-600/10 dark:bg-tone3-900/40", // For bottom tag list
+        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
+          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
+          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]
+          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]`,
       },
     ],
   },
   {
     icon: { text: "", bg: "bg-tone5-600" },
-    bg: "from-tone5-50/70",
-    border: "border-tone5-600/10",
+    bg: "from-tone5-50/70 dark:from-tone5-900/30",
+    border: "border-tone5-600/10 dark:border-tone5-300/10",
     tags: [
       {
-        text: "text-tone5-900",
-        icon: "text-tone5-700",
-        bg: "bg-tone5-100/30",
-        border: "border-tone5-600/10",
+        text: "text-tone5-900 dark:text-tone5-400", // For sub-section heading
+        icon: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200", // For sub-section tag list
+        bg: "bg-tone5-100/30 dark:bg-tone5-800/30", // For sub-section tag list
+        border: "border-tone5-600/10 dark:border-tone5-700/80", // For sub-section tag list
+        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
+          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
+          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]
+          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]`,
       },
       {
-        text: "text-tone5-700",
-        bg: "bg-tone5-600/10",
+        text: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200", // For bottom tag list
+        bg: "bg-tone5-600/10 dark:bg-tone5-900/40", // For bottom tag list
+        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
+          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
+          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]
+          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]`,
       },
     ],
   },
