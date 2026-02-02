@@ -61,14 +61,14 @@ export default function CtaButton({
       {useNavLink ? (
         <NavLink
           to={link}
-          className={`${linkStyle} ${bgColor || ""} text-slate-800`}
+          className={`${linkStyle} ${bgColor || ""} text-slate-800 dark:text-primary`}
         >
           {children}
         </NavLink>
       ) : (
         <a
           href={link}
-          className={`${linkStyle} ${bgColor || ""} text-slate-500`}
+          className={`${linkStyle} ${bgColor || ""} text-slate-500 dark:text-secondary`}
           {...linkProps}
         >
           {children}

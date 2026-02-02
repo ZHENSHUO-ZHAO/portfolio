@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* For body and nav bar */
   --font-sans: "Inter", system-ui, sans-serif;
@@ -10,10 +12,10 @@
 
   --color-bg: theme(colors.slate.50);
   --color-card: theme(colors.slate.200);
-
   --color-primary: theme(colors.neutral.900);
   --color-secondary: theme(colors.neutral.600);
   --color-muted: theme(colors.neutral.500);
+
   --color-accent: theme(colors.sky.400);
   --color-complement: theme(colors.emerald.400);
 
@@ -102,6 +104,14 @@
   --color-link-hover: theme(colors.slate.900);
 }
 
+.dark {
+  --color-bg: theme(colors.slate.900);
+  --color-card: theme(colors.slate.800);
+  --color-primary: theme(colors.slate.50);
+  --color-secondary: theme(colors.slate.300);
+  --color-muted: theme(colors.slate.400);
+}
+
 @layer base {
   :root {
     --color-statement-1: var(--color-tone1-500);
@@ -115,14 +125,16 @@
     --color-bg1-header: var(--color-tone1-100);
     --color-bg2-header: var(--color-tone3-100);
     --color-bg3-header: var(--color-tone5-100);
+
+    --color-cta-secondary: theme(colors.slate.700);
+    --carousel-button-shadow: 0 0 3px 2px rgba(80, 80, 80, 0.4);
+    --carousel-dot-shadow: 0 0 3px 1px rgba(100, 100, 100, 0.5);
   }
 
-  /* Light mode accent surfaces */
-  [data-theme="light"] {
-  }
-
-  /* Dark mode accent surfaces & glow */
-  [data-theme="dark"] {
+  .dark {
+    --color-cta-secondary: theme(colors.slate.100);
+    --carousel-button-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.9);
+    --carousel-dot-shadow: 0 0 3px 1px rgba(200, 200, 200, 0.5);
   }
 }
 
@@ -195,7 +207,7 @@
   }
 
   .title-color-invert {
-    @apply text-white;
+    @apply text-slate-50;
   }
 
   .text-color-invert {

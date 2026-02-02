@@ -66,7 +66,7 @@ export const homeContent = {
         { text: "I craft engaging digital experiences\n" },
         {
           text: "- from immersive games to intuitive educational platforms -\n",
-          style: "text-tone1-600",
+          style: "text-tone1-600 dark:text-tone1-400",
         },
         {
           text: "blending technical expertise with creative problem-solving \nto deliver solutions that make an impact.",
@@ -78,7 +78,7 @@ export const homeContent = {
         { text: "I craft engaging digital experiences" },
         {
           text: "- from immersive games to intuitive educational platforms -",
-          style: "text-tone1-600",
+          style: "text-tone1-600 dark:text-tone1-400",
         },
         {
           text: "blending technical expertise with creative problem-solving to deliver solutions that make an impact.",

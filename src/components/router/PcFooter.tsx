@@ -26,7 +26,7 @@ export default function PcFooter() {
       </button>
 
       {/* Footer Bar */}
-      <div className="w-full bg-slate-200/85 backdrop-blur-md rounded-t-4xl px-[calc((100%-56rem-10px)*0.5)] py-2 flex justify-between items-center">
+      <div className="relative w-full bg-slate-200/85 backdrop-blur-md rounded-t-4xl px-[calc((100%-56rem-10px)*0.5)] py-2 flex justify-between items-center">
         {/* Light/Dark mode toggle */}
         <button
           className="relative flex items-center gap-1 p-0.5 text-xl md:text-2xl bg-slate-300 text-slate-400 rounded-full cursor-pointer"
@@ -49,7 +49,7 @@ export default function PcFooter() {
         </button>
 
         {/* Declaration */}
-        <p className="text-slate-400 text-xs md:text-sm">
+        <p className="absolute inset-x-0 my-auto text-center text-slate-400 text-xs md:text-sm pointer-events-none">
           {content.declaration.replace(
             "{{year}}",
             `${new Date().getFullYear()}`,

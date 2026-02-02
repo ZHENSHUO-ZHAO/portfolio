@@ -3,12 +3,12 @@ import type { DotProp } from "./carouselTypes";
 
 export default function Dot({ index, onScroll, viewContentIndex }: DotProp) {
   // Width is responsive to its parent.
-  const shadow = `0 0 3px 1px rgba(100,100,100,0.5)`;
+  const shadow = "var(--carousel-dot-shadow)";
 
   return (
     <motion.li
       onClick={() => onScroll(index)}
-      className="bg-slate-500 rounded-full min-h-2 max-h-4"
+      className="bg-slate-500 dark:bg-slate-300 rounded-full min-h-2 max-h-4"
       initial={{ width: "30px", opacity: 0.5 }}
       animate={{
         width: viewContentIndex === index ? "30px" : "12px",

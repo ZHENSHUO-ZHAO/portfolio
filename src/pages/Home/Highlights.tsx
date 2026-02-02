@@ -109,8 +109,8 @@ function Card({ content, index }: CardItem<HighlightItem>) {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="absolute inset-0 bg-linear-to-br from-slate-300 to-card rounded-2xl border border-white" />
-      <div className="relative overflow-hidden w-full aspect-[2.37] rounded-t-2xl border-x border-t border-white">
+      <div className="absolute inset-0 bg-linear-to-br from-slate-300 dark:from-slate-600 to-card rounded-2xl border border-white dark:border-slate-600" />
+      <div className="relative overflow-hidden w-full aspect-[2.37] rounded-t-2xl border-x border-t border-white dark:border-slate-600">
         <motion.img
           src={content.url}
           alt={content.alt}

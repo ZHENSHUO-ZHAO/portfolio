@@ -25,11 +25,11 @@ export default function HomePageHeader({
       <div className="relative h-full pb-12 md:pb-16 lg:pb-20 pt-20 md:pt-25 xl:pt-60 flex flex-col-reverse xl:flex-row gap-4 xl:gap-15 items-center xl:justify-center">
         <div className="text-center xl:text-left">
           {/* Tag */}
-          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50 border border-tone1-200 rounded-full text-tone1-700 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6">
+          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50 dark:bg-tone1-900 border border-tone1-200 rounded-full text-tone1-700 dark:text-tone1-200 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6">
             <data.tag.icon
               aria-hidden="true"
               focusable="false"
-              className="text-tone4-300 animate-pulse"
+              className="text-tone4-300 dark:text-yellow-200 animate-pulse"
             />
             {data.tag.text && <span>{data.tag.text}</span>}
           </div>
@@ -75,7 +75,7 @@ export default function HomePageHeader({
               ))}
 
           {/* CTA */}
-          <ul className="mt-8 w-full flex flex-col min-[500px]:flex-row gap-5 min-[500px]:gap-4 justify-center items-stretch min-[500px]:items-center text-sm md:text-base text-slate-800">
+          <ul className="mt-8 w-full flex flex-col min-[500px]:flex-row gap-5 min-[500px]:gap-4 justify-center items-stretch min-[500px]:items-center text-sm md:text-base">
             <CtaButton
               gradientColor={ctaColors.primary.gradient}
               link="/project"
@@ -145,15 +145,15 @@ const ctaColors: { primary: CtaColor; secondary: CtaColor } = {
     ],
   },
   secondary: {
-    bg: "bg-slate-400/20",
+    bg: "bg-slate-400/20 dark:bg-slate-800",
     gradient: [
-      mixColor(10, "var(--color-slate-700)", "transparent"),
+      mixColor(10, "var(--color-cta-secondary)", "transparent"),
       "transparent",
-      mixColor(60, "var(--color-slate-700)", "transparent"),
-      mixColor(10, "var(--color-slate-700)", "transparent"),
+      mixColor(60, "var(--color-cta-secondary)", "transparent"),
+      mixColor(10, "var(--color-cta-secondary)", "transparent"),
       "transparent",
-      mixColor(60, "var(--color-slate-700)", "transparent"),
-      mixColor(10, "var(--color-slate-700)", "transparent"),
+      mixColor(60, "var(--color-cta-secondary)", "transparent"),
+      mixColor(10, "var(--color-cta-secondary)", "transparent"),
     ],
   },
 };

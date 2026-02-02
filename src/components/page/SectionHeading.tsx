@@ -46,7 +46,7 @@ export default function SectionHeading({
         </h2>
         {data.desc && (
           <p
-            className={`text:sm md:text-xl ${align === "center" ? "text-center" : "text-left"} ${typeof invertColor === "object" ? invertColor.desc : invertColor ? "text-color-invert" : "text-slate-600"}`}
+            className={`text:sm md:text-xl ${align === "center" ? "text-center" : "text-left"} ${typeof invertColor === "object" ? invertColor.desc : invertColor ? "text-color-invert" : "text-slate-600 dark:text-slate-400"}`}
           >
             {data.desc}
           </p>
