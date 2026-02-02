@@ -1,8 +1,14 @@
 import GlowOutline from "../../components/glowFx/GlowOutline";
-import portrait from "../../assets/images/home/portrait.webp";
 import { createConicGradient, mixColor } from "../../utils/util";
+import type { Image } from "../../contexts/pageContext";
 
-export default function Portrait({ className }: { className: string }) {
+export default function Portrait({
+  data,
+  className,
+}: {
+  data: Image;
+  className: string;
+}) {
   return (
     <div className={className}>
       <svg viewBox="0 0 100 150" className="absolute w-0 h-0">
@@ -40,8 +46,8 @@ export default function Portrait({ className }: { className: string }) {
           <div className="relative size-full grid grid-cols-1 place-items-end">
             <div className="relative w-full col-start-1 row-start-1 aspect-square rounded-full " />
             <img
-              src={portrait}
-              alt="Portrait of Vincent Zhao"
+              src={data.url}
+              alt={data.alt}
               className="relative w-full col-start-1 row-start-1"
             />
           </div>

@@ -100,7 +100,10 @@ export default function HomePageHeader({
           </ul>
         </div>
 
-        <Portrait className="relative xl:w-1/3 max-w-[180px] xl:max-w-[300px] mb-4 md:mb-5 xl:mb-0" />
+        <Portrait
+          data={data.portrait}
+          className="relative xl:w-1/3 max-w-[180px] xl:max-w-[300px] mb-4 md:mb-5 xl:mb-0"
+        />
       </div>
     </header>
   );

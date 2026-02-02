@@ -12,6 +12,7 @@ import yoplay from "../assets/images/home/yoplay.webp";
 import fishHunter from "../assets/images/home/fish-hunter.webp";
 import ninjaSaga from "../assets/images/home/ninja-saga.webp";
 import brainsic from "../assets/images/home/brainsic.webp";
+import portrait from "../assets/images/home/portrait.webp";
 import {
   FaBoltLightning,
   FaBrain,
@@ -40,6 +41,7 @@ export type HomeHeader = Header & {
   altStatement: HybridText[];
   roles: string[];
   cta: [Tag, Tag];
+  portrait: Image;
 };
 
 export type HighlightItem = Image & {
@@ -95,6 +97,10 @@ export const homeContent = {
       { icon: FaMagnifyingGlass, text: "View My Work" },
       { icon: FaUser, text: "About Me" },
     ],
+    portrait: {
+      url: portrait,
+      alt: "Professional portrait of Zhenshuo Vincent Zhao, Asian male software engineer, confident expression, modern casual business attire, classic black frame glasses, clean studio lighting, thinking outside the box concept, without background.",
+    },
   },
   highlight: {
     heading: {
