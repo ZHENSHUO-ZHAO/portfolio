@@ -7,6 +7,7 @@ import type {
 } from "../../contexts/pageContext";
 import SectionHeading from "./SectionHeading";
 import ContactLink from "./ContactLink";
+import { transition, upAnim_4px } from "../../utils/constants";
 
 export function ContactCardSection({
   headingData,
@@ -92,16 +93,14 @@ function ContactButtons({
     <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm xs:text-base">
       <ContactLink
         data={links[0].contact}
-        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center
-        hover:-translate-y-1 active:-translate-y-1 transition duration-300`}
+        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center ${upAnim_4px}  ${transition}`}
       >
         {Icon1 && <Icon1 />}
         {links[0].heading.title}
       </ContactLink>
       <ContactLink
         data={links[1].contact}
-        className={`px-8 py-4 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center
-        hover:-translate-y-1 active:-translate-y-1 transition duration-300`}
+        className={`px-8 py-4 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center ${upAnim_4px}  ${transition}`}
       >
         {Icon2 && <Icon2 />}
         {links[1].heading.title}

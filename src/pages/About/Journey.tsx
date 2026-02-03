@@ -1,4 +1,5 @@
 import type { CardColor, Heading } from "../../contexts/pageContext";
+import { rightAnim_8px } from "../../utils/constants";
 
 export default function Journey({ data }: { data: Heading[] }) {
   return (
@@ -27,7 +28,7 @@ function JourneyItem({
   return (
     <li
       className={`rounded-2xl p-5 md:p-8 flex flex-col xs:flex-row gap-3 xs:gap-4 md:gap-6 border-l-4 ${color.bg} ${color.border} 
-      ${color.shadow && "hover:translate-x-2 active:translate-x-2 hover:shadow-lg active:shadow-lg transition-all duration-300"} ${color.shadow}`}
+      ${color.shadow && `${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`} ${color.shadow}`}
     >
       <div
         className={`flex-none size-10 xs:size-12 md:size-14 rounded-xl flex justify-center items-center text-lg xs:text-xl md:text-2xl ${color.icon.text} ${color.icon.bg}`}

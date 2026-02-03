@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import type { Degree } from "../../contexts/educationContext";
 import type { CardColor } from "../../contexts/pageContext";
+import { rightAnim_8px } from "../../utils/constants";
 
 export default function Timeline({ data }: { data: Degree[] }) {
   return (
@@ -12,7 +13,7 @@ export default function Timeline({ data }: { data: Degree[] }) {
           <div
             key={d.university}
             className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl md:rounded-3xl p-6 md:p-10 space-y-4 md:space-y-6
-            hover:translate-x-2 active:translate-x-2 hover:shadow-lg active:shadow-lg transition-all duration-300`}
+            ${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`}
           >
             {/* Heading Section */}
             <div className="flex items-start justify-between gap-4">

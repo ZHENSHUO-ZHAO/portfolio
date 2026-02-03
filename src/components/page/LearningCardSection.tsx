@@ -73,16 +73,25 @@ const colorNormal: CardColor = {
   icon: {
     icon: "text-white",
     bg: "bg-linear-to-br from-tone1-500 to-tone5-500",
-    text: "text-slate-900",
+    text: "text-primary",
   },
-  bg: "bg-white",
-  border: "border border-slate-200",
-  shadow: "shadow-xl",
+  bg: "bg-white dark:bg-slate-800/50",
+  border: "border border-slate-200  dark:border-slate-700/50",
+  shadow: "shadow-xl dark:shadow-slate-800",
   tags: [
-    { text: "text-tone1-600", bg: "bg-tone1-100/60" },
-    { text: "text-tone3-600", bg: "bg-tone3-100/60" },
-    { text: "text-tone5-600", bg: "bg-tone5-100/60" },
-    { text: "text-slate-600", bg: "" }, // For desc
+    {
+      text: "text-tone1-600 dark:text-tone1-400",
+      bg: "bg-tone1-100/60 dark:bg-tone1-600/20",
+    },
+    {
+      text: "text-tone3-600 dark:text-tone3-400",
+      bg: "bg-tone3-100/60 dark:bg-tone3-600/20",
+    },
+    {
+      text: "text-tone5-600 dark:text-tone5-400",
+      bg: "bg-tone5-100/60 dark:bg-tone5-600/20",
+    },
+    { text: "text-muted", bg: "" }, // For desc
   ],
 };
 

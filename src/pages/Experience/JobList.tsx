@@ -1,5 +1,6 @@
 import type { Job as JobType } from "../../contexts/experienceContext";
 import type { CardColor } from "../../contexts/pageContext";
+import { shadowAnim } from "../../utils/constants";
 import { Job } from "./Job";
 
 export default function JobList({ data }: { data: JobType[] }) {
@@ -34,10 +35,7 @@ const cardColors: CardColor[] = [
         text: "text-tone1-600 [&>span]:text-tone1-700 dark:text-tone1-400 dark:[&>span]:text-tone1-200",
         bg: "",
         border: "border-tone1-700/30 dark:border-tone1-500/20",
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone1,
       }, // For skills
     ],
   },
@@ -60,10 +58,7 @@ const cardColors: CardColor[] = [
         text: "text-tone2-600 [&>span]:text-tone2-700 dark:text-tone2-400 dark:[&>span]:text-tone2-200",
         bg: "",
         border: "border-tone2-700/30 dark:border-tone2-500/20",
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone2-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone2-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone2-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone2-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone2,
       }, // For skills
     ],
   },
@@ -86,10 +81,7 @@ const cardColors: CardColor[] = [
         text: "text-tone3-600 [&>span]:text-tone3-700 dark:text-tone3-400 dark:[&>span]:text-tone3-200",
         bg: "",
         border: "border-tone3-700/30 dark:border-tone3-500/20",
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone3,
       }, // For skills
     ],
   },
@@ -112,10 +104,7 @@ const cardColors: CardColor[] = [
         text: "text-tone4-600 [&>span]:text-tone4-700 dark:text-tone4-400 dark:[&>span]:text-tone4-200",
         bg: "",
         border: "border-tone4-700/30 dark:border-tone4-500/20",
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone4-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone4-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone4-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone4-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone4,
       }, // For skills
     ],
   },
@@ -138,10 +127,7 @@ const cardColors: CardColor[] = [
         text: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200",
         bg: "",
         border: "border-tone5-700/30 dark:border-tone5-500/20",
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone5,
       }, // For skills
     ],
   },

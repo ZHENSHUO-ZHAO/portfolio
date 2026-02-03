@@ -31,6 +31,7 @@ export default function Skill() {
         id="technical-proficiencies-section"
         headingData={content.stacks.heading}
         maxWidth="mx-auto max-w-4xl"
+        bgChildren={<div className="size-full dark:bg-slate-950" />}
       >
         <Stack data={content.stacks.items} />
       </Section>
@@ -39,6 +40,9 @@ export default function Skill() {
         id="core-competencies-section"
         headingData={content.competency.heading}
         maxWidth="mx-auto max-w-4xl"
+        bgChildren={
+          <div className="size-full bg-slate-100 dark:bg-slate-900" />
+        }
       >
         <Competency data={content.competency.items} />
       </Section>
@@ -46,6 +50,7 @@ export default function Skill() {
       <Section
         id="skill-evolution-section"
         headingData={content.evolution.heading}
+        bgChildren={<div className="size-full dark:bg-slate-950" />}
       >
         <Evolution data={content.evolution.items} />
       </Section>
@@ -54,7 +59,7 @@ export default function Skill() {
         headingData={content.learning.heading}
         items={content.learning.items}
         bgChildren={
-          <div className="size-full bg-linear-to-br from-tone1-100/20 to-tone5-100/20" />
+          <div className="size-full bg-linear-to-br from-tone1-100/20 dark:from-tone1-950/20 to-tone5-100/20 dark:to-tone1-950/20" />
         }
         id="continuous-learning-section"
       />

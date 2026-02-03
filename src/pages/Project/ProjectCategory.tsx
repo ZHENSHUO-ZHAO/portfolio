@@ -18,6 +18,7 @@ import type { IconType } from "react-icons";
 import ProjectOutlineFx from "./ProjectOutlineFx";
 import { useLocation } from "react-router";
 import { AnimatePresence } from "motion/react";
+import { shadowAnim, transition, upAnim_2px } from "../../utils/constants";
 
 export default function ProjectCategory({
   category,
@@ -122,7 +123,7 @@ function Item({
             data={itemData.releases}
             containerClassName="gap-2"
             itemClassname={`gap-1.5 px-3 md:px-4 py-1 md:py-2 ${color.tags![0].bg} rounded-lg text-sm font-medium ${color.tags![0].icon} border ${color.tags![0].border}
-            ${color.tags![0].shadow} hover:-translate-y-0.5 active:-translate-y-0.5 transition duration-300`}
+            ${color.tags![0].shadow} ${upAnim_2px}  ${transition}`}
             defaultIcon={FaStar}
           />
         </SubSection>
@@ -134,7 +135,7 @@ function Item({
           data={itemData.skills}
           ulClassName="gap-2"
           liClassName={`flex justify-center items-center gap-1.5 px-3 md:px-4 py-1 md:py-2 ${color.tags![0].bg} ${color.tags![0].icon} text-sm font-medium rounded-lg border ${color.tags![0].border}
-          ${color.tags![0].shadow} hover:-translate-y-0.5 active:-translate-y-0.5 transition duration-300`}
+          ${color.tags![0].shadow} ${upAnim_2px} ${transition}`}
         />
       </SubSection>
 
@@ -143,7 +144,7 @@ function Item({
         data={itemData.tags}
         containerClassName="gap-2 md:gap-3"
         itemClassname={`gap-2 px-3 md:px-4 py-2 ${color.tags![1].bg} rounded-lg text-sm font-medium ${color.tags![1].text}
-        ${color.tags![1].shadow} hover:-translate-y-0.5 active:-translate-y-0.5 transition duration-300`}
+        ${color.tags![1].shadow} ${upAnim_2px} ${transition}`}
       />
 
       <AnimatePresence>{showFx && <ProjectOutlineFx />}</AnimatePresence>
@@ -217,18 +218,12 @@ const projectColors: CardColor[] = [
         icon: "text-tone1-600 [&>span]:text-tone1-700 dark:text-tone1-400 dark:[&>span]:text-tone1-200", // For sub-section tag list
         bg: "bg-tone1-100/30 dark:bg-tone1-800/30", // For sub-section tag list
         border: "border-tone1-600/10 dark:border-tone1-700/80", // For sub-section tag list
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone1,
       },
       {
         text: "text-tone1-600 [&>span]:text-tone1-700 dark:text-tone1-400 dark:[&>span]:text-tone1-200", // For bottom tag list
         bg: "bg-tone1-600/10 dark:bg-tone1-900/40", // For bottom tag list
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone1-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone1,
       },
     ],
   },
@@ -242,18 +237,12 @@ const projectColors: CardColor[] = [
         icon: "text-tone3-600 [&>span]:text-tone3-700 dark:text-tone3-400 dark:[&>span]:text-tone3-200", // For sub-section tag list
         bg: "bg-tone3-100/30 dark:bg-tone3-800/30", // For sub-section tag list
         border: "border-tone3-600/10 dark:border-tone3-700/80", // For sub-section tag list
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone3,
       },
       {
         text: "text-tone3-600 [&>span]:text-tone3-700 dark:text-tone3-400 dark:[&>span]:text-tone3-200", // For bottom tag list
         bg: "bg-tone3-600/10 dark:bg-tone3-900/40", // For bottom tag list
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone3-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone3,
       },
     ],
   },
@@ -267,18 +256,12 @@ const projectColors: CardColor[] = [
         icon: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200", // For sub-section tag list
         bg: "bg-tone5-100/30 dark:bg-tone5-800/30", // For sub-section tag list
         border: "border-tone5-600/10 dark:border-tone5-700/80", // For sub-section tag list
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone5,
       },
       {
         text: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200", // For bottom tag list
         bg: "bg-tone5-600/10 dark:bg-tone5-900/40", // For bottom tag list
-        shadow: `hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
-          active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-700)_50%,transparent)]
-          dark:hover:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]
-          dark:active:shadow-[0_2px_8px_color-mix(in_oklch,var(--color-tone5-500)_70%,transparent)]`,
+        shadow: shadowAnim.tone5,
       },
     ],
   },
