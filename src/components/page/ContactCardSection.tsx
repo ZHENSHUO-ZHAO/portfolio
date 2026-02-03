@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import FullBleedContainer from "./FullBleedContainer";
 import type {
+  CardColor,
   ContactButtonInfo,
   Heading as Heading,
   IconColor,
@@ -23,10 +24,10 @@ export function ContactCardSection({
   bgChildren?: ReactNode;
   invertColor?: boolean;
   links: ContactButtonInfo[];
-  tagColor?: IconColor;
+  tagColor?: CardColor;
   buttonsColor?: IconColor[];
 }) {
-  const tagColorTmp: IconColor = tagColor
+  const tagColorTmp: CardColor = tagColor
     ? tagColor
     : invertColor
       ? tagColorInvert
@@ -44,8 +45,13 @@ export function ContactCardSection({
           <SectionHeading
             data={headingData}
             invertColor={invertColor}
-            tagColor={tagColorTmp}
+            tagColor={tagColorTmp.icon}
             bottomMargin="mb-4 md:mb-10"
+            tagChildren={
+              <div
+                className={`absolute -inset-1 border-4 ${tagColorTmp?.border} rounded-full animate-pulse`}
+              />
+            }
           />
           <ContactButtons
             links={links}
@@ -58,8 +64,13 @@ export function ContactCardSection({
           <SectionHeading
             data={headingData}
             invertColor={invertColor}
-            tagColor={tagColorTmp}
+            tagColor={tagColorTmp.icon}
             bottomMargin="mb-4 md:mb-10"
+            tagChildren={
+              <div
+                className={`absolute -inset-1 border-4 ${tagColorTmp?.border} rounded-full animate-pulse`}
+              />
+            }
           />
           <ContactButtons
             links={links}
@@ -109,16 +120,24 @@ function ContactButtons({
   );
 }
 
-const tagColorNormal: IconColor = {
-  icon: "text-tone5-300",
-  text: "text-secondary",
-  bg: "bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-900",
+const tagColorNormal: CardColor = {
+  icon: {
+    icon: "text-tone5-300",
+    text: "text-secondary",
+    bg: "bg-white dark:bg-slate-700",
+  },
+  border: "border-slate-200 dark:border-slate-800",
+  bg: "",
 };
 
-const tagColorInvert: IconColor = {
-  icon: "text-tone5-300",
-  text: "text-white",
-  bg: "bg-white/10 border-4 border-white/15",
+const tagColorInvert: CardColor = {
+  icon: {
+    icon: "text-tone5-300",
+    text: "text-white",
+    bg: "bg-white/10",
+  },
+  border: "border-white/30",
+  bg: "",
 };
 
 const buttonsColorNormal: IconColor[] = [

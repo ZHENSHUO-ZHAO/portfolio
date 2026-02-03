@@ -84,9 +84,13 @@ export default function Hobby() {
         headingData={content.contact.heading}
         links={content.contact.items}
         tagColor={{
-          icon: "text-coffee-700 dark:text-coffee-300",
-          text: "text-coffee-600 dark:text-coffee-300",
-          bg: "bg-white dark:bg-slate-800 border-4 border-amber-100 dark:border-coffee-500/20",
+          icon: {
+            icon: "text-coffee-700 dark:text-coffee-300",
+            text: "text-coffee-600 dark:text-coffee-300",
+            bg: "bg-white dark:bg-slate-800",
+          },
+          border: "border-amber-100 dark:border-coffee-400/20",
+          bg: "",
         }}
         buttonsColor={[
           {

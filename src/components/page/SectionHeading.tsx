@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type {
   Heading,
   HeadingColor,
@@ -9,12 +10,14 @@ export default function SectionHeading({
   data,
   invertColor,
   tagColor,
+  tagChildren,
   bottomMargin = "mb-10 md:mb-16",
   align = "center",
 }: {
   data: Heading;
   invertColor?: boolean | HeadingColor;
   tagColor?: IconColor;
+  tagChildren?: ReactNode;
   bottomMargin?: string;
   align?: "center" | "start";
 }) {
@@ -22,13 +25,14 @@ export default function SectionHeading({
     <div className="relative w-full flex flex-col gap-4 sm:gap-6 justify-start items-stretch">
       {data.tag && (
         <div
-          className={`${align === "center" ? "self-center justify-center" : "self-start"} flex gap-2 items-center px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm ${tagColor && tagColor.bg} ${tagColor && tagColor.border} ${tagColor && tagColor.border && "border"}`}
+          className={`relative ${align === "center" ? "self-center justify-center" : "self-start"} flex gap-2 items-center px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm ${tagColor && tagColor.bg} ${tagColor && tagColor.border} ${tagColor && tagColor.border && "border"}`}
         >
+          {tagChildren}
           <data.tag.icon
-            className={`${tagColor && tagColor.icon && tagColor.icon}`}
+            className={`relative ${tagColor && tagColor.icon && tagColor.icon}`}
           />
           {data.tag.text && (
-            <span className={`${tagColor && tagColor.text}`}>
+            <span className={`relative ${tagColor && tagColor.text}`}>
               {data.tag.text}
             </span>
           )}

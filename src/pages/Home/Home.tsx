@@ -60,9 +60,13 @@ export default function Home() {
         headingData={content.contact.heading}
         invertColor
         tagColor={{
-          icon: "text-white",
-          text: "text-white",
-          bg: "bg-white/10 border-4 border-white/15",
+          icon: {
+            icon: "text-white",
+            text: "text-white",
+            bg: "bg-white/10",
+          },
+          border: "border-white/30",
+          bg: "",
         }}
         links={content.contact.items}
         bgChildren={
