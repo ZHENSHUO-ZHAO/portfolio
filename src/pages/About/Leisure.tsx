@@ -1,4 +1,5 @@
 import type { CardColor, Heading } from "../../contexts/pageContext";
+import { transition, upAnim_4px } from "../../utils/constants";
 
 export default function Leisure({
   details,
@@ -24,7 +25,8 @@ export default function Leisure({
 function LeisureItem({ data, color }: { data: Heading; color: CardColor }) {
   return (
     <li
-      className={`${color.bg} border ${color.border} flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 rounded-xl`}
+      className={`${color.bg} border ${color.border} flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 rounded-xl
+      ${upAnim_4px} ${transition} hover:shadow-lg ${color.shadow}`}
     >
       {data.tag && data.tag.icon && (
         <data.tag.icon
@@ -47,6 +49,7 @@ const cardColors: CardColor[] = [
     },
     bg: "bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-500/20 dark:to-amber-600/10",
     border: "border-amber-200 dark:border-amber-500/30",
+    shadow: "dark:shadow-amber-500/30",
   },
   {
     icon: {
@@ -56,6 +59,7 @@ const cardColors: CardColor[] = [
     },
     bg: "bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-500/20 dark:to-orange-600/10",
     border: "border-orange-200 dark:border-orange-500/30",
+    shadow: "dark:shadow-orange-500/30",
   },
   {
     icon: {
@@ -65,6 +69,7 @@ const cardColors: CardColor[] = [
     },
     bg: "bg-gradient-to-r from-tone1-50 to-tone1-100 dark:from-tone1-500/20 dark:to-tone1-600/10",
     border: "border-tone1-200 dark:border-tone1-500/30",
+    shadow: "dark:shadow-tone1-500/30",
   },
   {
     icon: {
@@ -74,5 +79,6 @@ const cardColors: CardColor[] = [
     },
     bg: "bg-gradient-to-r from-tone5-50 to-tone5-100 dark:from-tone5-500/20 dark:to-tone5-600/10",
     border: "border-tone5-200 dark:border-tone5-500/30",
+    shadow: "dark:shadow-tone5-500/30",
   },
 ];
