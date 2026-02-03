@@ -1,7 +1,7 @@
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 import type { Degree } from "../../contexts/educationContext";
 import type { CardColor } from "../../contexts/pageContext";
-import { rightAnim_8px } from "../../utils/constants";
+import { rightAnim_8px, transition } from "../../utils/constants";
 
 export default function Timeline({ data }: { data: Degree[] }) {
   return (
@@ -12,8 +12,8 @@ export default function Timeline({ data }: { data: Degree[] }) {
         return (
           <div
             key={d.university}
-            className={`bg-linear-to-br ${color.bg} to-white border ${color.border} rounded-2xl md:rounded-3xl p-6 md:p-10 space-y-4 md:space-y-6
-            ${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`}
+            className={`bg-linear-to-br ${color.bg} to-white dark:to-slate-900 border ${color.border} rounded-2xl md:rounded-3xl p-6 md:p-10 space-y-4 md:space-y-6
+            ${rightAnim_8px} hover:shadow-lg active:shadow-lg ${color.shadow} ${transition}`}
           >
             {/* Heading Section */}
             <div className="flex items-start justify-between gap-4">
@@ -24,7 +24,7 @@ export default function Timeline({ data }: { data: Degree[] }) {
                 >
                   {d.time}
                 </div>
-                <h3 className="text-xl md:text-3xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl md:text-3xl font-bold mb-2">
                   {d.qualification}
                 </h3>
                 <p
@@ -38,27 +38,37 @@ export default function Timeline({ data }: { data: Degree[] }) {
               {d.achievements && (
                 <div className="hidden md:flex md:gap-4">
                   {d.achievements.map((a, i) => (
-                    <motion.div
+                    <div
                       key={`circle-tag-${i}`}
-                      className={`size-25 lg:size-27 px-4 py-2 bg-linear-to-r ${color.tags![0].bg} text-white rounded-full font-bold text-sm flex flex-col justify-center items-center shrink-0`}
-                      animate={{
-                        scale: [1, 1.05, 1], // pulse up, then back
-                        boxShadow: [
-                          "0px 4px 6px rgba(0,0,0,0.5)",
-                          "0px 10px 20px rgba(0,0,0,0.15)",
-                          "0px 4px 6px rgba(0,0,0,0.5)",
-                        ],
-                      }}
-                      transition={{
-                        duration: 5,
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut",
-                      }}
+                      className={`relative size-25 lg:size-27 px-4 py-2 text-white font-bold text-sm flex flex-col justify-center items-center shrink-0`}
                     >
-                      <a.icon className="text-2xl text-center" />
-                      <span>{a.abbrev || a.text}</span>
-                    </motion.div>
+                      <MotionConfig
+                        transition={{
+                          duration: 5,
+                          repeat: Infinity,
+                          repeatType: "loop",
+                          ease: "easeInOut",
+                        }}
+                      >
+                        <motion.div
+                          className={`absolute -inset-1 rounded-full bg-black/50 ${color.tags![0].shadow}`}
+                          animate={{
+                            translateX: ["3px", "6px", "3px"],
+                            translateY: ["3px", "6px", "3px"],
+                            opacity: [0, 100, 0],
+                            filter: ["blur(2px)", "blur(8px)", "blur(2px)"],
+                          }}
+                        />
+                        <motion.div
+                          className={`absolute inset-0 bg-linear-to-br ${color.tags![0].bg} rounded-full`}
+                          animate={{
+                            scale: [1, 1.05, 1],
+                          }}
+                        />
+                      </MotionConfig>
+                      <a.icon className="relative text-2xl text-center" />
+                      <span className="relative">{a.abbrev || a.text}</span>
+                    </div>
                   ))}
                 </div>
               )}
@@ -89,7 +99,7 @@ export default function Timeline({ data }: { data: Degree[] }) {
                   <dt.icon
                     className={`${color.tags![1].icon} text-base md:text-lg mt-0.5 md:mt-1`}
                   />
-                  <p className="flex-1 text-slate-700 text-sm md:text-base">
+                  <p className="flex-1 text-muted text-sm md:text-base">
                     {dt.text}
                   </p>
                 </div>
@@ -104,30 +114,45 @@ export default function Timeline({ data }: { data: Degree[] }) {
 
 const colors: CardColor[] = [
   {
-    icon: { text: "text-tone1-700", bg: "bg-tone1-600" },
-    bg: "from-tone1-50",
-    border: "border-tone1-200",
+    icon: { text: "text-tone1-700 dark:text-tone1-400", bg: "bg-tone1-600" },
+    bg: "from-tone1-50 dark:from-slate-800",
+    border: "border-tone1-200 dark:border-tone1-800",
+    shadow: "dark:shadow-tone1-600/60",
     tags: [
-      { text: "", bg: "from-tone1-600 to-tone1-700" },
-      { text: "", bg: "", icon: "text-tone1-600" },
+      {
+        text: "",
+        bg: "from-tone1-600 to-tone1-700",
+        shadow: "dark:bg-tone1-800",
+      },
+      { text: "", bg: "", icon: "text-tone1-600 dark:text-tone1-500" },
     ],
   },
   {
-    icon: { text: "text-tone3-700", bg: "bg-tone3-600" },
-    bg: "from-tone3-50",
-    border: "border-tone3-200",
+    icon: { text: "text-tone3-700 dark:text-tone3-400", bg: "bg-tone3-600" },
+    bg: "from-tone3-50 dark:from-slate-800",
+    border: "border-tone3-200 dark:border-tone3-800",
+    shadow: "dark:shadow-tone3-600/60",
     tags: [
-      { text: "", bg: "from-tone3-600 to-tone3-700" },
-      { text: "", bg: "", icon: "text-tone3-600" },
+      {
+        text: "",
+        bg: "from-tone3-600 to-tone3-700",
+        shadow: "dark:bg-tone3-800",
+      },
+      { text: "", bg: "", icon: "text-tone3-600 dark:text-tone3-500" },
     ],
   },
   {
-    icon: { text: "text-tone5-700", bg: "bg-tone5-600" },
-    bg: "from-tone5-50",
-    border: "border-tone5-200",
+    icon: { text: "text-tone5-700 dark:text-tone5-400", bg: "bg-tone5-600" },
+    bg: "from-tone5-50 dark:from-slate-800",
+    border: "border-tone5-200 dark:border-tone5-800",
+    shadow: "dark:shadow-tone5-600/60",
     tags: [
-      { text: "", bg: "from-tone5-600 to-tone5-700" },
-      { text: "", bg: "", icon: "text-tone5-600" },
+      {
+        text: "",
+        bg: "from-tone5-600 to-tone5-700",
+        shadow: "dark:bg-tone5-800",
+      },
+      { text: "", bg: "", icon: "text-tone5-600 dark:text-tone5-500" },
     ],
   },
 ];

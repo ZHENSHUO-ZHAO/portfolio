@@ -101,13 +101,13 @@ const colorInvert: CardColor = {
     bg: "bg-white/20",
     text: "text-white",
   },
-  bg: "bg-gradient-to-br from-tone1-600 via-tone3-600 to-tone5-600",
+  bg: "bg-gradient-to-br from-tone1-600 via-tone3-600 to-tone5-600 dark:from-tone1-800 dark:via-tone3-800 dark:to-tone5-800",
   border: "",
   shadow: "",
   tags: [
     { text: "text-white", bg: "bg-white/20 backdrop-blur-sm" },
     { text: "text-white", bg: "bg-white/20 backdrop-blur-sm" },
     { text: "text-white", bg: "bg-white/20 backdrop-blur-sm" },
-    { text: "text-white/90", bg: "" }, // For desc
+    { text: "text-white/80", bg: "" }, // For desc
   ],
 };
