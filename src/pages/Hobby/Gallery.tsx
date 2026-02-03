@@ -6,7 +6,7 @@ export default function Gallery({ data }: { data: Image[] }) {
       {data.map((item, i) => (
         <div
           key={`image-${i}`}
-          className="group relative overflow-hidden rounded-xl md:rounded-2xl h-56 md:h-68 lg:h-80 bg-linear-to-br from-amber-200 to-orange-200"
+          className="group relative overflow-hidden rounded-xl md:rounded-2xl h-56 md:h-68 lg:h-80"
         >
           <img
             className="w-full h-full object-cover group-hover:scale-110 group-active:scale-110 transition duration-500"

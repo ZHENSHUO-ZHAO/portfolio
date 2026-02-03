@@ -31,10 +31,10 @@ export default function ExplainSection({
         <SectionHeading
           data={data.heading}
           tagColor={{
-            icon: "text-coffee-700",
-            bg: "bg-amber-100",
-            text: "text-coffee-700",
-            border: "border-amber-200",
+            icon: "text-coffee-700 dark:text-amber-400",
+            bg: "bg-amber-100 dark:bg-amber-500/20",
+            text: "text-coffee-700 dark:text-amber-400",
+            border: "border-amber-200 dark:border-amber-600/20",
           }}
           bottomMargin="mb-3 md:mb-5"
           align="start"
@@ -43,7 +43,7 @@ export default function ExplainSection({
           {data.desc.map((d, i) => (
             <p
               key={`description-${i}`}
-              className="text-sm md:text-lg text-slate-700"
+              className="text-sm md:text-lg text-slate-700 dark:text-slate-300"
             >
               {typeof d === "string" ? d : <HybridStatement data={d} />}
             </p>
@@ -53,10 +53,10 @@ export default function ExplainSection({
         <div className="space-y-3 md:space-y-4">
           {data.items.map((item, i) => (
             <div key={`item-${i}`} className="flex items-center gap-3">
-              <div className="size-10 bg-amber-200 rounded-lg flex items-center justify-center shrink-0">
-                <item.icon className="text-coffee-600" />
+              <div className="size-10 bg-amber-200 dark:bg-amber-500/20 rounded-lg flex items-center justify-center shrink-0">
+                <item.icon className="text-coffee-600 dark:text-amber-400" />
               </div>
-              <p className="text-sm md:text-base text-slate-700">
+              <p className="text-sm md:text-base text-slate-700 dark:text-slate-300">
                 {typeof item.text === "string" ? (
                   item.text
                 ) : (

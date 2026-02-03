@@ -24,14 +24,17 @@ export default function Hobby() {
         id="sca-certification-section"
         headingData={content.certification.heading}
         bgChildren={
-          <div className="size-full bg-linear-to-br from-coffee-800 via-coffee-700 to-amber-900" />
+          <div className="size-full bg-linear-to-br from-coffee-800 via-coffee-700 to-amber-900 dark:from-coffee-950 dark:via-coffee-900 dark:to-amber-950" />
         }
-        invertColor={{ title: "text-white", desc: "text-amber-100" }}
+        invertColor={{
+          title: "text-white",
+          desc: "text-amber-100 dark:text-slate-300",
+        }}
         tagColor={{
-          icon: "text-amber-200",
-          text: "text-amber-200",
-          bg: "bg-white/10",
-          border: "border-amber-100/10",
+          icon: "text-amber-200 dark:text-amber-400",
+          text: "text-amber-200 dark:text-amber-400",
+          bg: "bg-white/10 dark:bg-amber-500/20",
+          border: "border-amber-100/10 dark:border-amber-500/10",
         }}
       >
         <Certification data={content.certification.items} />
@@ -40,12 +43,12 @@ export default function Hobby() {
       <Section
         id="connection-section"
         headingData={content.connection.heading}
-        bgChildren={<div className="size-full bg-amber-50" />}
+        bgChildren={<div className="size-full bg-amber-50 dark:bg-slate-950" />}
         tagColor={{
-          icon: "text-coffee-700",
-          text: "text-coffee-700",
-          bg: "bg-amber-100",
-          border: "border-amber-200",
+          icon: "text-coffee-700 dark:text-amber-400",
+          text: "text-coffee-700 dark:text-amber-400",
+          bg: "bg-amber-100 dark:bg-amber-500/20",
+          border: "border-amber-200 dark:border-amber-600/20",
         }}
       >
         <Connection data={content.connection.items} />
@@ -71,7 +74,7 @@ export default function Hobby() {
       <Section
         id="hobby-gallery-section"
         headingData={content.gallery.heading}
-        bgChildren={<div className="size-full bg-amber-50" />}
+        bgChildren={<div className="size-full bg-amber-50 dark:bg-slate-950" />}
       >
         <Gallery data={content.gallery.items} />
       </Section>
@@ -81,21 +84,21 @@ export default function Hobby() {
         headingData={content.contact.heading}
         links={content.contact.items}
         tagColor={{
-          icon: "text-coffee-700",
-          text: "text-coffee-600",
-          bg: "bg-white border-4 border-amber-100",
+          icon: "text-coffee-700 dark:text-coffee-300",
+          text: "text-coffee-600 dark:text-coffee-300",
+          bg: "bg-white dark:bg-slate-800 border-4 border-amber-100 dark:border-coffee-500/20",
         }}
         buttonsColor={[
           {
             text: "text-white",
             bg: "bg-coffee-600 hover:bg-coffee-500 active:bg-coffee-500",
             shadow:
-              "shadow-coffee-700/20 hover:shadow-coffee-600/20 active:shadow-coffee-600/20",
+              "shadow-coffee-700/20 dark:shadow-coffee-600/40 hover:shadow-coffee-600/20 dark:hover:shadow-coffee-500/40 active:shadow-coffee-600/20 dark:active:shadow-coffee-500/40",
           },
           {
-            text: "text-secondary",
-            bg: "bg-slate-50 hover:bg-white active:bg-white",
-            border: "border-slate-200",
+            text: "text-secondary dark:text-white",
+            bg: "bg-slate-50 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 active:bg-white dark:active:bg-white/20",
+            border: "border-slate-200 dark:border-white/30",
           },
         ]}
       />

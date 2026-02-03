@@ -32,7 +32,7 @@ export default function Certification({ data }: { data: Certificate[] }) {
                   <FaCircleCheck
                     className={`${color.tags![0].icon} text-xs md:text-base shrink-0`}
                   />
-                  <span className="text-sm md:text-base text-amber-100">
+                  <span className="text-sm md:text-base text-amber-100 dark:text-slate-300">
                     {s}
                   </span>
                 </li>

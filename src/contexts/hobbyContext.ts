@@ -76,12 +76,13 @@ export const hobbyContent = {
       { text: "My Passion for " },
       {
         text: "Specialty ",
-        style: "text-coffee-600",
+        style: "text-coffee-600 dark:text-amber-400",
       },
       {
         text: "C{{icon}}ffee",
         icon: PiCoffeeBeanFill,
-        style: "text-coffee-600 [&>svg]:text-xl [&>svg]:md:text-4xl",
+        style:
+          "text-coffee-600 dark:text-amber-400 [&>svg]:text-xl [&>svg]:md:text-4xl",
       },
     ],
     statement: [
@@ -89,21 +90,21 @@ export const hobbyContent = {
         { text: "Coffee is a craft that blends " },
         {
           text: "science",
-          style: "font-bold text-coffee-600",
+          style: "font-bold text-coffee-600 dark:text-amber-400",
         },
         {
           text: ", ",
         },
         {
           text: "sensory awareness",
-          style: "font-bold text-coffee-600",
+          style: "font-bold text-coffee-600 dark:text-amber-400",
         },
         {
           text: ", and ",
         },
         {
           text: "iterative refinement",
-          style: "font-bold text-coffee-600",
+          style: "font-bold text-coffee-600 dark:text-amber-400",
         },
         {
           text: " - qualities that also shape how I think as an engineer.",
@@ -130,7 +131,7 @@ export const hobbyContent = {
         },
         {
           text: "the balance between precision and creativity",
-          style: "text-coffee-600 font-semibold",
+          style: "text-coffee-600 dark:text-amber-400 font-semibold",
         },
         { text: "." },
       ],
@@ -250,17 +251,17 @@ export const hobbyContent = {
         },
         {
           text: "balance",
-          style: "text-coffee-600 font-semibold",
+          style: "text-coffee-600 dark:text-amber-400 font-semibold",
         },
         { text: ", " },
         {
           text: "focus",
-          style: "text-coffee-600 font-semibold",
+          style: "text-coffee-600 dark:text-amber-400 font-semibold",
         },
         { text: ", and a " },
         {
           text: "hands-on craft",
-          style: "text-coffee-600 font-semibold",
+          style: "text-coffee-600 dark:text-amber-400 font-semibold",
         },
         {
           text: " to enjoy outside of engineering. It's a space where science and creativity meet — and I carry that mindset with me into the work I do in software and game development.",
