@@ -12,7 +12,7 @@ import {
 import { createConicGradient, mixColor } from "../../utils/util";
 import GlassSurface from "../glassFx/GlassSurface";
 
-export const routerBgColor: string = "bg-slate-300/60";
+export const routerBgColor: string = "bg-slate-300/60 dark:bg-slate-700/60";
 export const routerHeight: number = 110;
 
 const colors = {
@@ -96,10 +96,9 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
         aria-label="Navigation Bar"
         className={`relative mx-auto max-w-[calc(56rem+10px)]`}
       >
-        <div className={`absolute inset-0 bg-white/70 ${rounded}`} />
         <GlassSurface
-          displace={2.5}
-          backgroundOpacity={0.05}
+          displace={3}
+          backgroundOpacity={0.6}
           greenOffset={0}
           blueOffset={0}
           width="100%"
@@ -114,7 +113,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                     to={item.to}
                     end={item.end}
                     onClick={handleClick}
-                    className="whitespace-nowrap text-base flex flex-col items-center justify-center tracking-tight font-semibold text-slate-600"
+                    className="whitespace-nowrap text-base flex flex-col items-center justify-center tracking-tight font-semibold text-slate-600 dark:text-slate-300"
                   >
                     {({ isActive }) => (
                       <div className="relative flex flex-col justify-start items-center w-fit">
@@ -156,7 +155,7 @@ export default function PcRouter({ routes }: { routes: RouterData }) {
                   </NavLink>
                 </li>
                 {i < routes.length - 1 && (
-                  <div className="flex-none h-4 w-px border-r border-r-slate-500/50 border-l border-l-slate-100/50 rounded-full" />
+                  <div className="flex-none h-4 w-px border-r border-r-slate-500/50 dark:border-r-slate-600/40 border-l border-l-slate-100/50 dark:border-l-slate-50/40 rounded-full" />
                 )}
               </React.Fragment>
             ))}

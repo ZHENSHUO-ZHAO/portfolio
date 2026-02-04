@@ -23,7 +23,7 @@ export default function MobileFooter() {
       >
         {/* Light/Dark mode toggle */}
         <button
-          className="relative flex items-center gap-1 p-0.5 text-xl bg-slate-300 text-slate-500 rounded-full cursor-pointer"
+          className="relative flex items-center gap-1 p-0.5 text-xl bg-slate-300/80 dark:bg-slate-600/80 text-slate-500/80 dark:text-slate-100/80 rounded-full cursor-pointer"
           onClick={theme.toggleDarkMode}
         >
           <div
@@ -31,7 +31,7 @@ export default function MobileFooter() {
           >
             <motion.div
               layout
-              className="aspect-square h-full bg-white rounded-full"
+              className="aspect-square h-full bg-white/80 dark:bg-slate-800/80 rounded-full"
             />
           </div>
           <div className="relative aspect-square p-1">
@@ -48,7 +48,9 @@ export default function MobileFooter() {
             <ContactLink
               key={c.href}
               data={c}
-              className="text-slate-600 hover:text-slate-500 transition"
+              className="text-slate-600/80 hover:text-slate-500/80 active:text-slate-500/80
+              dark:text-slate-400/80 dark:hover:text-slate-300/80 dark:active:text-slate-300/80
+              transition"
             >
               <c.icon />
             </ContactLink>
@@ -56,15 +58,16 @@ export default function MobileFooter() {
         </div>
       </motion.div>
 
+      {/* Splitter */}
       <motion.div
         variants={itemVariants}
-        className="w-full h-px bg-linear-to-r from-transparent via-slate-600 to-transparent"
+        className="w-full h-px bg-linear-to-r from-transparent via-slate-400 dark:via-slate-500 to-transparent"
       />
 
       {/* Declaration */}
       <motion.p
         variants={itemVariants}
-        className="text-slate-600 text-xs md:text-sm"
+        className="text-slate-400 dark:text-slate-500 text-xs md:text-sm"
       >
         {content.declaration.replace("{{year}}", `${new Date().getFullYear()}`)}
       </motion.p>

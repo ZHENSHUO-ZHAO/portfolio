@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState, useId } from "react";
+import React, { useEffect, useRef, useState, useId, useContext } from "react";
+import { ThemeContext } from "../../contexts/themeContext";
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
@@ -41,22 +42,22 @@ export interface GlassSurfaceProps {
   style?: React.CSSProperties;
 }
 
-const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(false);
+// const useDarkMode = () => {
+//   const [isDark, setIsDark] = useState(false);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+//   useEffect(() => {
+//     if (typeof window === "undefined") return;
 
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDark(mediaQuery.matches);
+//     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+//     setIsDark(mediaQuery.matches);
 
-    const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
+//     const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
+//     mediaQuery.addEventListener("change", handler);
+//     return () => mediaQuery.removeEventListener("change", handler);
+//   }, []);
 
-  return isDark;
-};
+//   return isDark;
+// };
 
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
   children,
@@ -94,7 +95,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const blueChannelRef = useRef<SVGFEDisplacementMapElement>(null);
   const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null);
 
-  const isDarkMode = useDarkMode();
+  // const isDarkMode = useDarkMode();
+  const theme = useContext(ThemeContext);
 
   const generateDisplacementMap = () => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -118,10 +120,10 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" rx="${borderRadius}" fill="url(#${redGradId})" />
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" rx="${borderRadius}" fill="url(#${blueGradId})" style="mix-blend-mode: ${mixBlendMode}" />
         <rect x="${edgeSize}" y="${edgeSize}" width="${
-      actualWidth - edgeSize * 2
-    }" height="${
-      actualHeight - edgeSize * 2
-    }" rx="${borderRadius}" fill="hsl(0 0% ${brightness}% / ${opacity})" style="filter:blur(${blur}px)" />
+          actualWidth - edgeSize * 2
+        }" height="${
+          actualHeight - edgeSize * 2
+        }" rx="${borderRadius}" fill="hsl(0 0% ${brightness}% / ${opacity})" style="filter:blur(${blur}px)" />
       </svg>
     `;
 
@@ -142,7 +144,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       if (ref.current) {
         ref.current.setAttribute(
           "scale",
-          (distortionScale + offset).toString()
+          (distortionScale + offset).toString(),
         );
         ref.current.setAttribute("xChannelSelector", xChannel);
         ref.current.setAttribute("yChannelSelector", yChannel);
@@ -244,11 +246,11 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     if (svgSupported) {
       return {
         ...baseStyles,
-        background: isDarkMode
+        background: theme.darkMode
           ? `hsl(0 0% 0% / ${backgroundOpacity})`
           : `hsl(0 0% 100% / ${backgroundOpacity})`,
         backdropFilter: `url(#${filterId}) saturate(${saturation})`,
-        boxShadow: isDarkMode
+        boxShadow: theme.darkMode
           ? `0 0 2px 1px color-mix(in oklch, white, transparent 65%) inset,
              0 0 10px 4px color-mix(in oklch, white, transparent 85%) inset,
              0px 4px 16px rgba(17, 17, 26, 0.05),
@@ -267,7 +269,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
              0px 16px 56px rgba(17, 17, 26, 0.05) inset`,
       };
     } else {
-      if (isDarkMode) {
+      if (theme.darkMode) {
         if (!backdropFilterSupported) {
           return {
             ...baseStyles,
@@ -316,7 +318,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const glassSurfaceClasses =
     "relative flex items-center justify-center overflow-hidden transition-opacity duration-[260ms] ease-out";
 
-  const focusVisibleClasses = isDarkMode
+  const focusVisibleClasses = theme.darkMode
     ? "focus-visible:outline-2 focus-visible:outline-[#0A84FF] focus-visible:outline-offset-2"
     : "focus-visible:outline-2 focus-visible:outline-[#007AFF] focus-visible:outline-offset-2";
 

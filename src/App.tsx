@@ -15,9 +15,9 @@ import {
   LuGraduationCap,
   LuHouse,
 } from "react-icons/lu";
-import PcFooter from "./components/router/PCFooter";
 import { ThemeContext } from "./contexts/themeContext";
 import useTheme from "./hooks/themeHook";
+import PcFooter from "./components/router/PcFooter";
 
 export type RouterData = {
   to: string;

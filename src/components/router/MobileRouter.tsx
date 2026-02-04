@@ -68,7 +68,7 @@ export default function MobileRouter({ routes }: { routes: RouterData }) {
                           to={item.to}
                           end={item.end}
                           className={({ isActive }) =>
-                            `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 text-slate-600 font-semibold ${
+                            `relative pl-9 pr-20 mr-3 py-1 whitespace-nowrap flex items-center gap-4 text-slate-600 dark:text-slate-300 font-semibold ${
                               isActive
                                 ? `border-l-4 ${i === arr.length - 1 ? "border-l-coffee-300 bg-coffee-400/20" : "border-l-accent bg-complement/10"}`
                                 : "border-l-4 border-l-transparent"
@@ -150,7 +150,7 @@ interface PathProps {
 function Path(pathProps: PathProps) {
   return (
     <motion.path
-      className="fill-transparent stroke-3 stroke-slate-800"
+      className="fill-transparent stroke-3 stroke-slate-600 dark:stroke-slate-400"
       strokeLinecap="round"
       {...pathProps}
     />
@@ -209,7 +209,7 @@ function BackgroundClip() {
   return (
     <motion.div
       variants={backgroundVariants}
-      className={`absolute inset-0 pointer-events-none border-r border-white backdrop-blur-lg rounded-r-2xl mr-3 ${routerBgColor}`}
+      className={`absolute inset-0 pointer-events-none border-r border-white dark:border-slate-600 backdrop-blur-lg rounded-r-2xl mr-3 ${routerBgColor}`}
       style={{
         boxShadow: "5px 0 5px rgb(0 0 0 / 30%)",
       }}
