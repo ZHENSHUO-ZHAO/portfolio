@@ -116,7 +116,7 @@ const colors: CardColor[] = [
   {
     icon: { text: "text-tone1-700 dark:text-tone1-400", bg: "bg-tone1-600" },
     bg: "from-tone1-50 dark:from-slate-800",
-    border: "border-tone1-200 dark:border-tone1-800",
+    border: "border-tone1-200/50 dark:border-tone1-800/50",
     shadow: "dark:shadow-tone1-600/60",
     tags: [
       {
@@ -130,7 +130,7 @@ const colors: CardColor[] = [
   {
     icon: { text: "text-tone3-700 dark:text-tone3-400", bg: "bg-tone3-600" },
     bg: "from-tone3-50 dark:from-slate-800",
-    border: "border-tone3-200 dark:border-tone3-800",
+    border: "border-tone3-200/50 dark:border-tone3-800/50",
     shadow: "dark:shadow-tone3-600/60",
     tags: [
       {
@@ -144,7 +144,7 @@ const colors: CardColor[] = [
   {
     icon: { text: "text-tone5-700 dark:text-tone5-400", bg: "bg-tone5-600" },
     bg: "from-tone5-50 dark:from-slate-800",
-    border: "border-tone5-200 dark:border-tone5-800",
+    border: "border-tone5-200/50 dark:border-tone5-800/50",
     shadow: "dark:shadow-tone5-600/60",
     tags: [
       {
