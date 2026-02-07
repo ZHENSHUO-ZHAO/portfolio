@@ -7,7 +7,7 @@ export default function Dot({ index, onScroll, viewContentIndex }: DotProp) {
 
   return (
     <motion.li
-      onClick={() => onScroll(index)}
+      onTap={() => onScroll(index)}
       className="bg-slate-500 dark:bg-slate-300 rounded-full min-h-2 max-h-4"
       initial={{ width: "30px", opacity: 0.5 }}
       animate={{
@@ -19,6 +19,9 @@ export default function Dot({ index, onScroll, viewContentIndex }: DotProp) {
         scale: 1.1,
       }}
       whileTap={{ scale: 0.9, boxShadow: shadow }}
+      role="tab"
+      aria-selected={index === viewContentIndex}
+      aria-label={`Go to item ${index + 1}`}
     />
   );
 }

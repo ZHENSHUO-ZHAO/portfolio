@@ -33,6 +33,9 @@ export default function Card({ dragX, data }: CardProp) {
   return (
     <motion.li
       className="absolute top-0 left-0 cursor-pointer"
+      role="group"
+      aria-roledescription="slide"
+      aria-label={`Item ${data.index + 1}`}
       style={{
         width: `${layoutContext.cardWidth}px`,
         height: `${layoutContext.cardHeight}px`,

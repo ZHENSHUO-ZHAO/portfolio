@@ -49,6 +49,9 @@ export default function Carousel<T>({
         <div
           ref={ref}
           className="relative overflow-hidden flex flex-col justify-center items-center gap-1 w-full"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Content carousel"
         >
           {Number.isNaN(layoutData.cardWidth) || (
             <CarouselContent layoutData={layoutData} />

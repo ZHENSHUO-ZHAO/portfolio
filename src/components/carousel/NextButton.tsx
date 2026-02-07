@@ -17,6 +17,7 @@ export default function NextButton({ isToRight, onNext }: NextButtonProp) {
       }}
       // The callback should use "onTap" instead of "onClick" here, as Motion suppress the point events when the snapping animation is being played to avoid accidental taps while snapping. This is the default behavior of Motion. This case only occurs on mobile. Desktop separates mouse and pointer streams, while mobile has single pointer stream. The click events of the buttons are cancelled by motion. "onTap" is motion-level events, which won't be cancelled in such cases, and it bypasses native click suppression.
       onTap={() => onNext(isToRight)}
+      aria-label={isToRight ? "Next item" : "Previous item"}
     >
       {isToRight ? (
         <LuChevronRight className="size-6 xs:size-7 md:size-8 stroke-white" />

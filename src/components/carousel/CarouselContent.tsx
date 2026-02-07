@@ -366,6 +366,9 @@ export default function CarouselContent<T>({
 
   return (
     <>
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Item {viewContentIndex + 1} of {layoutData.contentList.length}
+      </div>
       {/* This div is the holder for the drag view as well as the buttons. The buttons cannot be inside the drag view as the maskImage dim the button due to its opacity gradients. The buttons group use absolute position to overlay the drag view aligning with the center of the drag view vertically. */}
       <div className="relative w-full">
         <motion.div
@@ -385,6 +388,9 @@ export default function CarouselContent<T>({
           <LayoutContext value={layoutData as LayoutData<unknown>}>
             <motion.ul
               ref={cardsHolderRef}
+              role="list"
+              aria-live="off"
+              aria-label="Carousel items"
               className="relative will-change-transform"
               style={{
                 width: `${layoutData.cardWidth}px`,
@@ -404,6 +410,8 @@ export default function CarouselContent<T>({
         </div>
       </div>
       <ul
+        role="tablist"
+        aria-label="Carousel navigation"
         className="flex justify-center items-center gap-2 py-2 px-2"
         style={{
           width: `${layoutData.cardWidth * 2}px`,
