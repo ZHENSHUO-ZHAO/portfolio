@@ -19,6 +19,8 @@ import ProjectOutlineFx from "./ProjectOutlineFx";
 import { useLocation } from "react-router";
 import { AnimatePresence } from "motion/react";
 import { shadowAnim, transition, upAnim_2px } from "../../utils/constants";
+import Carousel from "../../components/carousel/Carousel";
+import Screenshot from "./Screenshot";
 
 export default function ProjectCategory({
   category,
@@ -127,6 +129,14 @@ function Item({
             defaultIcon={FaStar}
           />
         </SubSection>
+      )}
+
+      {itemData.screenshots && (
+        <Carousel
+          aspectRatio={itemData.screenshots.aspectRatio}
+          CardComponent={Screenshot}
+          contentList={itemData.screenshots.images}
+        />
       )}
 
       {/* Skills */}

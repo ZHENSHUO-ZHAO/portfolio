@@ -7,10 +7,12 @@ export default function Carousel<T>({
   aspectRatio,
   CardComponent,
   contentList,
+  className,
 }: {
   aspectRatio: number;
   CardComponent: React.ComponentType<CardItem<T>>;
   contentList: T[];
+  className?: string;
 }) {
   const [ref, size] = useMeasure<HTMLDivElement>();
 
@@ -40,12 +42,19 @@ export default function Carousel<T>({
 
   return (
     <div
-      ref={ref}
-      className="relative overflow-hidden flex flex-col justify-center items-center gap-1 w-full"
+      className={`relative w-full mb-10 ${className}`}
+      style={{ aspectRatio: aspectRatio / 0.7 }}
     >
-      {Number.isNaN(layoutData.cardWidth) || (
-        <CarouselContent layoutData={layoutData} />
-      )}
+      <div className="absolute inset-x-0">
+        <div
+          ref={ref}
+          className="relative overflow-hidden flex flex-col justify-center items-center gap-1 w-full"
+        >
+          {Number.isNaN(layoutData.cardWidth) || (
+            <CarouselContent layoutData={layoutData} />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

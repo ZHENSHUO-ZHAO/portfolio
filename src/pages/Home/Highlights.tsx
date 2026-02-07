@@ -19,13 +19,12 @@ export default function Highlights({ data }: { data: HighlightItem[] }) {
   // The 4th highlight content has the longest description. Use it in the tracker to calculate the maximum height, which can be used to calculate the aspect ration for the Carousel. It enforce all cards in the Carousel with the same size. As the aspect ration depends on the track, it's unnecessary to add breakpoints to aspect ratio.
   return (
     <div className="relative h-fit">
-      <div className="absolute inset-x-0">
-        <Carousel
-          aspectRatio={aspectRatio}
-          CardComponent={Card}
-          contentList={data}
-        />
-      </div>
+      <Carousel
+        aspectRatio={aspectRatio}
+        CardComponent={Card}
+        contentList={data}
+        className="mb-7!"
+      />
       <CardMaxHeightTracker content={data[3]} setAspectRatio={setAspectRatio} />
     </div>
   );
@@ -52,7 +51,7 @@ function CardMaxHeightTracker({
       aria-hidden="true"
       role="presentation"
       tabIndex={-1}
-      className="w-[70%] h-fit bg-amber-600 pointer-events-none select-none invisible"
+      className="absolute w-[70%] h-fit bg-amber-600 pointer-events-none select-none invisible"
     >
       <div className="w-full py-4 flex flex-col justify-between">
         <div className="rounded-t-2xl border-x border-t border-white">

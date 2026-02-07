@@ -1,3 +1,5 @@
+import type { Image } from "../contexts/pageContext";
+
 export function slugify(text: string): string {
   return text
     .toLowerCase()
@@ -25,7 +27,7 @@ export function createLinearGradient(degree: number, colors: string[]): string {
  */
 export function createLinearGradientWithStops(
   degree: number,
-  stops: Array<[string, number?]>
+  stops: Array<[string, number?]>,
 ): string {
   const stopsStr = stops
     .map(([color, pct]) => (pct !== undefined ? `${color} ${pct}%` : color))
@@ -52,7 +54,7 @@ export function createLinearGradientWithStops(
 export function createConicGradient(
   degree: number,
   colors: string[],
-  center: string = "center"
+  center: string = "center",
 ): string {
   return `conic-gradient(from ${degree}deg at ${center}, ${colors.join(", ")})`;
 }
@@ -77,7 +79,7 @@ export function createConicGradient(
 export function createConicGradientWithStops(
   degree: number,
   stops: Array<[string, number?]>,
-  center: string = "center"
+  center: string = "center",
 ): string {
   const stopsStr = stops
     .map(([color, pct]) => (pct !== undefined ? `${color} ${pct}%` : color))
@@ -102,7 +104,7 @@ export function createRadialGradient(
   shape: "circle" | "ellipse" = "ellipse",
   size: string = "farthest-corner",
   colors: string[],
-  center: string = "center"
+  center: string = "center",
 ): string {
   return `radial-gradient(${shape} ${size} at ${center}, ${colors.join(", ")})`;
 }
@@ -130,7 +132,7 @@ export function createRadialGradientWithStops(
   shape: "circle" | "ellipse" = "ellipse",
   size: string = "farthest-corner",
   stops: Array<[string, number?]>,
-  center: string = "center"
+  center: string = "center",
 ): string {
   const stopsStr = stops
     .map(([color, pct]) => (pct !== undefined ? `${color} ${pct}%` : color))
@@ -158,7 +160,7 @@ export function createInnerShadow(
   offsetX: string | number = "0px",
   offsetY: string | number = "4px",
   blur: string | number = "6px",
-  color: string = "rgba(0,0,0,0.2)"
+  color: string = "rgba(0,0,0,0.2)",
 ): string {
   return `inset ${offsetX} ${offsetY} ${blur} ${color}`;
 }
@@ -166,14 +168,25 @@ export function createInnerShadow(
 export function mixColor(
   color1Percentage: number,
   color1: string,
-  color2: string
+  color2: string,
 ): string {
   return `color-mix(in oklch, ${color1} ${color1Percentage}%, ${color2})`;
 }
 
 export function getRem(pixels: number): number {
   const rootFontSize = parseFloat(
-    getComputedStyle(document.documentElement).fontSize
+    getComputedStyle(document.documentElement).fontSize,
   );
   return pixels / rootFontSize;
+}
+
+/**
+ * Create Image data for a batch of images
+ *
+ * @param paths - The urls for the images.
+ * @param alts - The alt properties for each image.
+ * @returns An Image object array.
+ */
+export function createImageDataBatch(paths: string[], alts: string[]): Image[] {
+  return paths.sort().map((src, i) => ({ url: src, alt: alts[i] }) as Image);
 }

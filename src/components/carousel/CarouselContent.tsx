@@ -404,7 +404,7 @@ export default function CarouselContent<T>({
         </div>
       </div>
       <ul
-        className="flex justify-center items-center gap-2 pb-2 px-2"
+        className="flex justify-center items-center gap-2 py-2 px-2"
         style={{
           width: `${layoutData.cardWidth * 2}px`,
         }}
