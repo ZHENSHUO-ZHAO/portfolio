@@ -4,10 +4,8 @@ import {
   FaBrain,
   FaChalkboardUser,
   FaCircleCheck,
-  FaGamepad,
   FaGraduationCap,
   FaHandsHoldingCircle,
-  FaLaptopCode,
   FaLightbulb,
   FaStar,
   FaTrophy,
@@ -21,6 +19,12 @@ import type {
   Stat,
   Tag,
 } from "./pageContext";
+import rmit from "../assets/images/education/rmit.webp";
+import polyu from "../assets/images/education/polyu.webp";
+import scnu from "../assets/images/education/scnu.webp";
+import rmitLogo from "../assets/images/education/logo_rmit.webp";
+import polyuLogo from "../assets/images/education/logo_polyu.webp";
+import scnuLogo from "../assets/images/education/logo_scnu.webp";
 
 export type Degree = {
   qualification: string;
@@ -28,9 +32,14 @@ export type Degree = {
   time: string;
   achievements?: (Tag & { abbrev?: string })[];
   details: Tag[];
+  bgUrl: string;
 };
 
-export type EducationFoundation = Heading & { achievement: Stat };
+export type EducationFoundation = Heading & {
+  university: string;
+  achievement: Stat;
+  logo: string;
+};
 
 export type EducationContent = ContextPageBase & {
   header: Header;
@@ -69,22 +78,25 @@ export const educationContent = {
     },
     items: [
       {
-        tag: { icon: FaLaptopCode, text: "RMIT University" },
         title: "Master of IT",
         desc: "Cloud computing, full-stack development, and modern software engineering practices",
         achievement: { amount: "3.7", unit: "GPA" },
+        logo: rmitLogo,
+        university: "RMIT University",
       },
       {
-        tag: { icon: FaGamepad, text: "Hong Kong Polytechnic University" },
         title: "MSc in Multimedia & Entertainment",
         desc: "Entertainment technology, interactive media, and advanced game development",
         achievement: { amount: "3.71", unit: "GPA" },
+        logo: polyuLogo,
+        university: "Hong Kong Polytechnic University",
       },
       {
-        tag: { icon: FaLaptopCode, text: "South China Normal University" },
         title: "BSc in Multimedia & Network",
         desc: "Multimedia design, network technologies, and interactive systems",
         achievement: { amount: "Scholarship", unit: "Award" },
+        logo: scnuLogo,
+        university: "South China Normal University",
       },
     ],
   },
@@ -116,6 +128,7 @@ export const educationContent = {
             text: "Casual Tutor in Software Engineering Project Management",
           },
         ],
+        bgUrl: rmit,
       },
       {
         qualification:
@@ -140,6 +153,7 @@ export const educationContent = {
             text: "Focused on interactive entertainment systems, game development methodologies, and multimedia production",
           },
         ],
+        bgUrl: polyu,
       },
       {
         qualification: "Bachelor of Science in Multimedia & Network",
@@ -155,6 +169,7 @@ export const educationContent = {
             text: "Foundation in multimedia design, network architecture, and interactive technology systems",
           },
         ],
+        bgUrl: scnu,
       },
     ],
   },
