@@ -15,14 +15,13 @@ export default function Gallery({ data }: { data: CarouselData }) {
 
 function Screenshot({ content }: CardItem<Image>) {
   return (
-    <div className="relative size-full">
-      <ImageSlide data={content} />
-      <div className="absolute inset-x-0.5 bottom-0.5 h-fit px-3 py-px md:py-1">
-        <div className="absolute inset-0 bg-slate-300/10 backdrop-blur-xs rounded-b-xl" />
+    <ImageSlide data={content}>
+      <div className="absolute inset-x-0 bottom-0 h-fit px-3 py-px md:py-1">
+        <div className="absolute inset-0 bg-slate-300/10 backdrop-blur-xs" />
         <p className="relative text-white text-xs md:text-sm">
           {content.title}
         </p>
       </div>
-    </div>
+    </ImageSlide>
   );
 }
