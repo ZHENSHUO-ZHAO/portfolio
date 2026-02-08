@@ -5,16 +5,28 @@ import { FaLocationDot } from "react-icons/fa6";
 import Product from "./Product";
 import Skill from "./Skill";
 import type { CardColor } from "../../contexts/pageContext";
+import { motion } from "motion/react";
+import { useContext } from "react";
+import { SettingContext } from "../../contexts/settingContext";
 
 export function Job({ job, color }: { job: Job; color: CardColor }) {
   const jobId = jobSlug(job.time, job.title, job.company);
+  const { deviceWidth } = useContext(SettingContext);
 
   return (
     <li
       id={jobId}
-      className="flex gap-1 sm:gap-6 flex-col sm:flex-row p-5 sm:p-0 rounded-xl border sm:border-none border-slate-200 dark:border-slate-700 shadow-sm sm:shadow-none"
+      className="flex gap-1 sm:gap-6 flex-col sm:flex-row p-5 sm:p-0 rounded-xl border sm:border-none border-slate-200 dark:border-slate-700 shadow-sm sm:shadow-none perspective-[1000px]"
     >
-      <div className="relative z-10 w-full sm:w-44 md:w-3xs lg:w-xs xl:w-lg flex-none flex flex-col sm:items-end sm:text-right">
+      <motion.div
+        className="relative z-10 origin-left sm:origin-right w-full sm:w-44 md:w-3xs lg:w-xs xl:w-lg flex-none flex flex-col sm:items-end sm:text-right"
+        initial={{
+          opacity: 0,
+          rotateY: deviceWidth.pixel >= 640 ? "-90deg" : "90deg",
+        }}
+        whileInView={{ opacity: 1, rotateY: "0deg" }}
+        viewport={{ once: true }}
+      >
         {/* Time */}
         <div className="relative mb-2 md:mb-4">
           <time
@@ -61,10 +73,15 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
           <FaLocationDot className="" />
           <span className="">{`${job.location.city}, ${job.location.country}`}</span>
         </p>
-      </div>
+      </motion.div>
 
       {/* Job details */}
-      <div className="relative flex-1 sm:bg-white dark:sm:bg-slate-800 rounded-xl sm:p-4 md:p-6 sm:border sm:border-slate-200 dark:sm:border-slate-700 sm:shadow-sm">
+      <motion.div
+        className="relative origin-left flex-1 sm:bg-white dark:sm:bg-slate-800 rounded-xl sm:p-4 md:p-6 sm:border sm:border-slate-200 dark:sm:border-slate-700 sm:shadow-sm"
+        initial={{ opacity: 0, rotateY: "90deg" }}
+        whileInView={{ opacity: 1, rotateY: "0deg" }}
+        viewport={{ once: true }}
+      >
         <Task tasks={job.tasks} color={color} />
 
         {/* Product List */}
@@ -78,7 +95,7 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
 
         {/* Skill List */}
         <Skill data={job.skills} color={color} />
-      </div>
+      </motion.div>
     </li>
   );
 }
