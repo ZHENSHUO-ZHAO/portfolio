@@ -12,7 +12,7 @@ export default function ScaLogo() {
     if (containerRef.current && imgRef.current) {
       const containerHeight = containerRef.current.offsetHeight;
       const imgHeight = imgRef.current.offsetHeight;
-      setMaxTranslateY(Math.abs(containerHeight - imgHeight));
+      setMaxTranslateY(Math.max(containerHeight - imgHeight, 0));
     }
   }, []);
 
