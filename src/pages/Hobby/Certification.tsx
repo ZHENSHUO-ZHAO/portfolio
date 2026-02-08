@@ -13,19 +13,24 @@ export default function Certification({ data }: { data: Certificate[] }) {
             key={`cert-${i}`}
             className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-7 lg:p-8 hover:bg-white/15 active:bg-white/15 transition duration-300"
           >
-            <div className="flex md:flex-col items-center md:items-start gap-3 md:gap-5 lg:gap-6 mb-4 md:mb-5 lg:mb-6">
-              <div className="size-12 md:size-14 lg:size-16 bg-amber-500/20 backdrop-blur-sm rounded-xl md:rounded-2xl flex items-center justify-center">
-                <c.icon
-                  className={`${color.icon.icon} text-xl md:text-2xl lg:text-3xl`}
+            <div className="flex flex-row min-[800px]:flex-col lg:flex-row items-start mb-4 min-[800px]:mb-7 lg:mb-6">
+              <div
+                style={
+                  {
+                    "--bg-image": `url(${c.iconUrl})`,
+                  } as React.CSSProperties
+                }
+                className="relative -translate-x-2 bg-(image:--bg-image) bg-cover bg-center size-12 md:size-14 lg:size-16 opacity-90"
+              />
+              <div className="flex-1 flex flex-col justify-between items-start gap-3">
+                <h3 className="text-white text-xl md:text-2xl font-bold">
+                  {c.title}
+                </h3>
+                <div
+                  className={`h-1 w-24 md:w-14 lg:w-16 bg-linear-to-r ${color.bg} rounded-full`}
                 />
               </div>
-              <h3 className="text-white text-xl md:text-2xl font-bold">
-                {c.text}
-              </h3>
             </div>
-            <div
-              className={`h-1 w-24 md:w-14 lg:w-16 bg-linear-to-r ${color.bg} rounded-full mb-4 md:mb-6`}
-            ></div>
             <ul className="space-y-2 md:space-y-3 text-sm md:text-base">
               {c.skills.map((s) => (
                 <li key={s} className="flex items-baseline gap-2">
@@ -47,19 +52,19 @@ export default function Certification({ data }: { data: Certificate[] }) {
 
 const colors: CardColor[] = [
   {
-    icon: { icon: "text-amber-300", bg: "bg-amber-500/20", text: "" },
+    icon: { icon: "", bg: "bg-amber-500/20", text: "" },
     bg: "from-amber-400 to-orange-400",
     border: "",
     tags: [{ icon: "text-amber-400", text: "", bg: "" }],
   },
   {
-    icon: { icon: "text-orange-300", bg: "bg-orange-500/20", text: "" },
+    icon: { icon: "", bg: "bg-orange-500/20", text: "" },
     bg: "from-orange-400 to-red-400",
     border: "",
     tags: [{ icon: "text-orange-400", text: "", bg: "" }],
   },
   {
-    icon: { icon: "text-yellow-300", bg: "bg-yellow-500/20", text: "" },
+    icon: { icon: "", bg: "bg-yellow-500/20", text: "" },
     bg: "from-yellow-400 to-amber-400",
     border: "",
     tags: [{ icon: "text-yellow-400", text: "", bg: "" }],

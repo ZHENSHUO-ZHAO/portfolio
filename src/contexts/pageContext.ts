@@ -74,6 +74,8 @@ export type Contact = {
 
 export type ContactButtonInfo = { heading: Heading; contact: Contact };
 
+export type CarouselData = { aspectRatio: number; images: Image[] };
+
 export type CardColor = {
   icon: IconColor;
   bg: string;

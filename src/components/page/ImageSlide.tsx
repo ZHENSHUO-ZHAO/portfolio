@@ -1,8 +1,14 @@
 import { FaImage } from "react-icons/fa6";
 import type { Image } from "../../contexts/pageContext";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
-export default function ImageSlide({ data }: { data: Image }) {
+export default function ImageSlide({
+  data,
+  children,
+}: {
+  data: Image;
+  children?: ReactNode;
+}) {
   const [loadedUrl, setLoadedUrl] = useState<string | null>(null);
   const isLoading = loadedUrl !== data.url;
 
@@ -21,6 +27,7 @@ export default function ImageSlide({ data }: { data: Image }) {
           <FaImage className="text-6xl block mx-auto align-middle h-full text-slate-400 animate-pulse" />
         </div>
       )}
+      {children}
     </div>
   );
 }

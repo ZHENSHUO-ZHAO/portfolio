@@ -2,7 +2,7 @@ import FullBleedContainer from "../../components/page/FullBleedContainer";
 import HybridStatement from "../../components/page/HybridStatement";
 import SectionHeading from "../../components/page/SectionHeading";
 import type { ExplainSection } from "../../contexts/hobbyContext";
-import dummyImage from "../../assets/images/hobby/dummy.webp";
+import Slideshow from "./Slideshow";
 
 export default function ExplainSection({
   data,
@@ -23,7 +23,10 @@ export default function ExplainSection({
       <div
         className={`relative size-full md:row-start-1 ${imagePosition === "left" ? "md:col-start-1" : "md:col-start-2"}`}
       >
-        <img src={dummyImage} className="size-full rounded-2xl object-cover" />
+        <Slideshow
+          data={data.slides}
+          className="max-md:w-full max-md:aspect-square"
+        />
       </div>
       <div
         className={`relative w-full md:row-start-1 ${imagePosition === "left" ? "md:col-start-2" : "md:col-start-1"}`}

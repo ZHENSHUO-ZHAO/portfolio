@@ -185,8 +185,18 @@ export function getRem(pixels: number): number {
  *
  * @param paths - The urls for the images.
  * @param alts - The alt properties for each image.
+ * @param titles - The optional title properties for each image.
  * @returns An Image object array.
  */
-export function createImageDataBatch(paths: string[], alts: string[]): Image[] {
-  return paths.sort().map((src, i) => ({ url: src, alt: alts[i] }) as Image);
+export function createImageDataBatch(
+  paths: string[],
+  alts: string[],
+  titles?: string[],
+): Image[] {
+  return paths
+    .sort()
+    .map(
+      (src, i) =>
+        ({ url: src, alt: alts[i], title: titles && titles[i] }) as Image,
+    );
 }

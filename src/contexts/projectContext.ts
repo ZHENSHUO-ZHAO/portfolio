@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
 import createPageContext from "./pageContext";
 import type {
+  CarouselData,
   ContactButtonInfo,
   ContextPageBase,
   Header,
@@ -101,7 +102,7 @@ export type ProjectItem = {
   releases?: string[];
   skills: string[];
   tags: Tag[];
-  screenshots?: { aspectRatio: number; images: Image[] };
+  screenshots?: CarouselData;
 };
 
 export type ProjectContent = ContextPageBase & {

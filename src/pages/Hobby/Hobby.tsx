@@ -8,6 +8,7 @@ import Connection from "./Connection";
 import ExplainSection from "./ExplainSection";
 import Gallery from "./Gallery";
 import HobbyPageHeader from "./HobbyPageHeader";
+import ScaLogo from "./ScaLogo";
 
 export default function Hobby() {
   const content = useHobbyPageContext();
@@ -23,9 +24,7 @@ export default function Hobby() {
       <Section
         id="sca-certification-section"
         headingData={content.certification.heading}
-        bgChildren={
-          <div className="size-full bg-linear-to-br from-coffee-800 via-coffee-700 to-amber-900 dark:from-coffee-950 dark:via-coffee-900 dark:to-amber-950" />
-        }
+        bgChildren={<ScaLogo />}
         invertColor={{
           title: "text-white",
           desc: "text-amber-100 dark:text-slate-300",
@@ -76,7 +75,7 @@ export default function Hobby() {
         headingData={content.gallery.heading}
         bgChildren={<div className="size-full bg-amber-50 dark:bg-slate-950" />}
       >
-        <Gallery data={content.gallery.items} />
+        <Gallery data={content.gallery.photos} />
       </Section>
 
       <ContactCardSection
