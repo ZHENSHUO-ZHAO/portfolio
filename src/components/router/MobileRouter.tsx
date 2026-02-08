@@ -169,7 +169,7 @@ const backgroundVariants: Variants = {
   closed: {
     clipPath: "circle(24px at 52px 40px)",
     transition: {
-      delay: 0.2,
+      delay: 0.35,
       type: "spring",
       stiffness: 400,
       damping: 40,
