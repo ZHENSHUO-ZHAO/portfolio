@@ -27,7 +27,7 @@ export default function Home() {
                 colors={
                   theme.darkMode
                     ? ["#0295b3", "#02b3a7", "#02b378"]
-                    : ["#00afc9", "#00c9b5", "#00c980"]
+                    : ["#00b1cc", "#00bdaa", "#00d97b"]
                 }
                 warpStrength={0.95}
                 noise={0}

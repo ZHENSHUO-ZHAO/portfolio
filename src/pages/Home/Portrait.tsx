@@ -22,7 +22,7 @@ export default function Portrait({
       </svg>
 
       <div className="relative w-full aspect-[1/1.5]">
-        <div className="absolute aspect-square bottom-0 w-full rounded-full bg-neutral-100/50 dark:bg-slate-900/50 backdrop-blur-xs">
+        <div className="absolute aspect-square bottom-0 w-full rounded-full bg-neutral-100/30 dark:bg-slate-900/50 backdrop-blur-xs">
           <GlowOutline
             gradient={createConicGradient(0, [
               "transparent",
