@@ -7,6 +7,7 @@ import { SettingContext } from "../../contexts/settingContext";
 import FullBleedContainer from "../../components/page/FullBleedContainer";
 import HybridStatement from "../../components/page/HybridStatement";
 import type { IconColor } from "../../contexts/pageContext";
+import GlassSurface from "../../components/glassFx/GlassSurface";
 
 export default function HomePageHeader({
   data,
@@ -25,7 +26,7 @@ export default function HomePageHeader({
       <div className="relative h-full pb-12 md:pb-16 lg:pb-20 pt-20 md:pt-25 xl:pt-60 flex flex-col-reverse xl:flex-row gap-4 xl:gap-15 items-center xl:justify-center">
         <div className="text-center xl:text-left">
           {/* Tag */}
-          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50 dark:bg-tone1-900 border border-tone1-200 rounded-full text-tone1-700 dark:text-tone1-200 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6">
+          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50/70 dark:bg-tone1-900/70 border border-tone1-200 rounded-full text-tone1-700 dark:text-tone1-200 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6">
             <data.tag.icon
               aria-hidden="true"
               focusable="false"
@@ -79,10 +80,23 @@ export default function HomePageHeader({
             <CtaButton
               gradientColor={ctaColors.primary.gradient}
               link="/project"
-              bgColor={ctaColors.primary.bg}
+              bgColor={`${ctaColors.primary.bg} relative`}
               useNavLink
               priority="primary"
               className="flex-2"
+              bgFx={
+                <div className="absolute inset-0">
+                  <GlassSurface
+                    borderWidth={1}
+                    displace={3}
+                    greenOffset={0}
+                    blueOffset={0}
+                    width="100%"
+                    height="100%"
+                    borderRadius={9999}
+                  />
+                </div>
+              }
             >
               {<IconPrimary />}
               <span className="font-semibold">{data.cta[0].text}</span>
@@ -90,7 +104,7 @@ export default function HomePageHeader({
             <CtaButton
               gradientColor={ctaColors.secondary.gradient}
               link="/about"
-              bgColor={ctaColors.secondary.bg}
+              bgColor={`${ctaColors.secondary.bg} backdrop-blur-sm`}
               priority="secondary"
               className="flex-1"
             >
@@ -111,22 +125,22 @@ export default function HomePageHeader({
 
 const roleColors: IconColor[] = [
   {
-    bg: "from-tone1-500 to-tone1-600",
+    bg: "from-tone1-500/70 to-tone1-600/70",
     shadow: "shadow-tone1-500/30",
     text: "",
   },
   {
-    bg: "from-tone2-500 to-tone2-600",
+    bg: "from-tone2-500/70 to-tone2-600/70",
     shadow: "shadow-tone2-500/30",
     text: "",
   },
   {
-    bg: "from-tone3-500 to-tone3-600",
+    bg: "from-tone3-500/70 to-tone3-600/70",
     shadow: "shadow-tone3-500/30",
     text: "",
   },
   {
-    bg: "from-tone4-500 to-tone4-600",
+    bg: "from-tone4-500/70 to-tone4-600/70",
     shadow: "shadow-tone4-500/30",
     text: "",
   },
@@ -148,7 +162,7 @@ const ctaColors: { primary: CtaColor; secondary: CtaColor } = {
     ],
   },
   secondary: {
-    bg: "bg-slate-400/20 dark:bg-slate-800",
+    bg: "bg-slate-400/20 dark:bg-slate-400/30",
     gradient: [
       mixColor(10, "var(--color-cta-secondary)", "transparent"),
       "transparent",

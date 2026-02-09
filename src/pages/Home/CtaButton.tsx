@@ -2,6 +2,7 @@ import { motion, type Variants } from "motion/react";
 import GlowOutline from "../../components/glowFx/GlowOutline";
 import { NavLink } from "react-router";
 import { createConicGradient } from "../../utils/util";
+import type { ReactNode } from "react";
 
 export default function CtaButton({
   gradientColor,
@@ -12,15 +13,17 @@ export default function CtaButton({
   children,
   priority,
   className,
+  bgFx,
 }: {
   gradientColor: string[];
   link: string;
   bgColor?: string;
   useNavLink?: boolean;
   linkProps?: object;
-  children: React.ReactNode;
+  children: ReactNode;
   priority: "primary" | "secondary" | "tertiary";
   className?: string;
+  bgFx?: ReactNode;
 }) {
   const linkStyle =
     "flex justify-center items-center gap-2 rounded-full px-6 md:px-7 lg:px-8 py-3 md:py-4";
@@ -53,6 +56,7 @@ export default function CtaButton({
       whileTap="hover"
       tabIndex={-1}
     >
+      {bgFx}
       <GlowOutline
         gradient={{ variants: glowVariants }}
         rounded="rounded-full"

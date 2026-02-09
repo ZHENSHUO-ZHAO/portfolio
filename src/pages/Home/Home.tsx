@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import ColorBends from "../../components/backgroundFx/ColorBends";
 import { ContactCardSection } from "../../components/page/ContactCardSection";
 import Page from "../../components/page/Page";
 import Section from "../../components/page/Section";
@@ -6,12 +8,39 @@ import Bio from "./Bio";
 import Highlights from "./Highlights";
 import HomePageHeader from "./HomePageHeader";
 import Snapshots from "./Snapshots";
+import { ThemeContext } from "../../contexts/themeContext";
+import { SettingContext } from "../../contexts/settingContext";
 
 export default function Home() {
   const content = useHomePageContext();
+  const theme = useContext(ThemeContext);
+  const { deviceWidth } = useContext(SettingContext);
 
   return (
-    <Page headerComponent={<HomePageHeader data={content.header} />}>
+    <Page
+      headerComponent={
+        <HomePageHeader
+          data={content.header}
+          bgChildren={
+            <div className="size-full opacity-40 dark:opacity-60">
+              <ColorBends
+                colors={
+                  theme.darkMode
+                    ? ["#0295b3", "#02b3a7", "#02b378"]
+                    : ["#00afc9", "#00c9b5", "#00c980"]
+                }
+                warpStrength={0.95}
+                noise={0}
+                transparent
+                autoRotate={3}
+                scale={deviceWidth.pixel >= 640 ? 1 : 0.5}
+                usePreliminaryAlpha={theme.darkMode}
+              />
+            </div>
+          }
+        />
+      }
+    >
       <Section
         id="project-highlight-section"
         headingData={content.highlight.heading}
