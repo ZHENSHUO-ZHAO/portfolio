@@ -27,13 +27,16 @@ export default function HeaderBackground({
     "bg-(--color-bg2-header)/30",
     "bg-(--color-bg3-header)/20",
   ],
+  floatingLineGradient = ["#00687a", "#008074", "#017a5c"],
 }: {
   colors?: string[];
+  floatingLineGradient?: string[];
 }) {
   return (
     <div className="relative size-full overflow-hidden">
       <FloatingLines
-        linesGradient={["#00687a", "#008074", "#017a5c"]}
+        // linesGradient={["#7a2500", "#803a00", "#7a5a01"]}
+        linesGradient={floatingLineGradient}
         enabledWaves={["middle"]}
         lineCount={5}
         lineDistance={50}
