@@ -27,7 +27,9 @@ export default function Education() {
         id="academic-timeline-section"
         headingData={content.timeline.heading}
         maxWidth="mx-auto max-w-4xl"
-        bgChildren={<div className="size-full dark:bg-slate-950" />}
+        bgChildren={
+          <div className="size-full bg-slate-100 dark:bg-slate-950" />
+        }
       >
         <Timeline data={content.timeline.items} />
       </Section>
