@@ -94,7 +94,9 @@ export default function HomePageHeader({
                     width="100%"
                     height="100%"
                     borderRadius={9999}
+                    className="shadow-none!"
                   />
+                  <div className="absolute inset-0 bg-sky-300/8 dark:bg-accent/5 rounded-full" />
                 </div>
               }
             >
