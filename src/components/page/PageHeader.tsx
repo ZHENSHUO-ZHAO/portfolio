@@ -13,7 +13,11 @@ export default function PageHeader({
   stats?: Stat[];
 }) {
   return (
-    <Header data={header} bgChildren={<HeaderBackground />}>
+    <Header
+      data={header}
+      bgChildren={<HeaderBackground />}
+      interactiveBg={true}
+    >
       <ol className="flex flex-wrap gap-4 text-sm">
         {stats &&
           stats.map((s) => (

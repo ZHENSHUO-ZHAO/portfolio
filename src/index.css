@@ -138,12 +138,12 @@
   }
 
   .dark {
-    --color-statement-1: var(--color-tone1-400);
-    --color-statement-2: var(--color-tone3-400);
-    --color-statement-3: var(--color-tone5-400);
+    --color-statement-1: var(--color-tone1-300);
+    --color-statement-2: var(--color-tone3-300);
+    --color-statement-3: var(--color-tone5-300);
 
-    --color-bg-header-tag: --alpha(theme(colors.sky.500) / 20%);
-    --color-border-header-tag: --alpha(theme(colors.sky.500) / 20%);
+    --color-bg-header-tag: --alpha(theme(colors.sky.800) / 80%);
+    --color-border-header-tag: --alpha(theme(colors.sky.500) / 40%);
     --color-text-header-tag: theme(colors.sky.400);
 
     --color-bg1-header: --alpha(var(--color-tone1-500) / 30%);

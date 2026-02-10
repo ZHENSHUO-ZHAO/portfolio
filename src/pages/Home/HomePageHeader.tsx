@@ -22,11 +22,11 @@ export default function HomePageHeader({
 
   return (
     <header className="relative lg:mx-8">
-      <FullBleedContainer>{bgChildren}</FullBleedContainer>
+      <FullBleedContainer interactive={true}>{bgChildren}</FullBleedContainer>
       <div className="relative h-full pb-12 md:pb-16 lg:pb-20 pt-20 md:pt-25 xl:pt-60 flex flex-col-reverse xl:flex-row gap-4 xl:gap-15 items-center xl:justify-center">
         <div className="text-center xl:text-left">
           {/* Tag */}
-          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50/70 dark:bg-tone1-900/70 border border-tone1-200 rounded-full text-tone1-700 dark:text-tone1-200 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6">
+          <div className="inline-flex gap-1 md:gap-2 items-center px-3 md:px-4 py-1 bg-tone1-50/70 dark:bg-tone1-900/70 border border-tone1-200 rounded-full text-tone1-700 dark:text-tone1-200 text-xs md:text-sm font-semibold mb-4 md:mb-5 lg:mb-6 pointer-events-none">
             <data.tag.icon
               aria-hidden="true"
               focusable="false"
@@ -36,12 +36,12 @@ export default function HomePageHeader({
           </div>
 
           {/* Name */}
-          <h1 className="font-display text-2xl xs:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 md:mb-5 lg:mb-6">
+          <h1 className="font-display text-2xl xs:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 md:mb-5 lg:mb-6 pointer-events-none">
             {data.title}
           </h1>
 
           {/* Roles */}
-          <div className="flex flex-wrap justify-center xl:justify-start gap-y-3 gap-2 md:gap-3 mb-6 md:mb-7 lg:mb-8">
+          <div className="flex flex-wrap justify-center xl:justify-start gap-y-3 gap-2 md:gap-3 mb-6 md:mb-7 lg:mb-8 pointer-events-none">
             {data.roles.map((r, i) => {
               const color: IconColor = roleColors[i];
 
@@ -118,7 +118,7 @@ export default function HomePageHeader({
 
         <Portrait
           data={data.portrait}
-          className="relative xl:w-1/3 max-w-[180px] xl:max-w-[300px] mb-4 md:mb-5 xl:mb-0"
+          className="relative xl:w-1/3 max-w-[180px] xl:max-w-[300px] mb-4 md:mb-5 xl:mb-0 pointer-events-none"
         />
       </div>
     </header>

@@ -1,4 +1,5 @@
 import { motion, type Variants } from "motion/react";
+import FloatingLines from "../backgroundFx/FloatingLines";
 
 const ambientBlob = (
   scaleTo: number,
@@ -31,6 +32,16 @@ export default function HeaderBackground({
 }) {
   return (
     <div className="relative size-full overflow-hidden">
+      <FloatingLines
+        linesGradient={["#00687a", "#008074", "#017a5c"]}
+        enabledWaves={["middle"]}
+        lineCount={5}
+        lineDistance={50}
+        bendRadius={5}
+        bendStrength={-0.5}
+        interactive={true}
+        parallax={true}
+      />
       <motion.div
         variants={ambientBlob(1.05, 0.85, 0.95, 4, 48)}
         animate="animate"

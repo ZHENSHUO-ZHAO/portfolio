@@ -9,18 +9,22 @@ export default function Header({
   bgChildren,
   tagColor = {
     text: "text-(--color-text-header-tag)",
-    bg: "bg-(--color-bg-header-tag)/90",
+    bg: "bg-(--color-bg-header-tag)",
     border: "border-(--color-border-header-tag)",
   },
+  interactiveBg = false,
 }: {
   data: Header;
   children?: ReactNode;
   bgChildren?: ReactNode;
   tagColor?: IconColor;
+  interactiveBg?: boolean;
 }) {
   return (
     <header className="relative mx-auto max-w-4xl">
-      <FullBleedContainer>{bgChildren}</FullBleedContainer>
+      <FullBleedContainer interactive={interactiveBg}>
+        {bgChildren}
+      </FullBleedContainer>
       <div className="relative h-full pt-28 pb-12 md:pt-34 md:pb-16 lg:pt-40 lg:pb-20">
         <div
           className={`inline-flex gap-2 items-center px-4 py-1 ${tagColor.bg} border ${tagColor.border} rounded-full ${tagColor.text} text-xs md:text-sm font-semibold mb-6`}
