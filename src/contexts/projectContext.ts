@@ -6,7 +6,6 @@ import type {
   ContextPageBase,
   Header,
   Heading,
-  Image,
   Stat,
   Tag,
 } from "./pageContext";
