@@ -9,7 +9,7 @@ export default function Task({
   color: CardColor;
 }) {
   return (
-    <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+    <ul className="relative space-y-2 md:space-y-3 mb-4 md:mb-6">
       {tasks.map((t) => (
         <li
           key={t}

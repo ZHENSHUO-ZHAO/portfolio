@@ -12,7 +12,7 @@ export default function Product({
   color: CardColor;
 }) {
   return (
-    <div className={`${color.bg} rounded-lg p-3 md:p-4 mb-3 md:mb-4`}>
+    <div className={`relative ${color.bg} rounded-lg p-3 md:p-4 mb-3 md:mb-4`}>
       <p
         className={`text-xs font-bold ${color.tags && color.tags[1].text} uppercase mb-1 md:mb-2`}
       >

@@ -5,6 +5,7 @@ import JobList from "./JobList";
 import { routerHeight } from "../../components/router/PcRouter";
 import useScrollToHash from "../../hooks/scrollToHashHook";
 import PageHeader from "../../components/page/PageHeader";
+import WavyParallax from "../../components/backgroundFx/WavyParallax";
 
 export default function Experience() {
   const content = useExperiencePageContext();
@@ -19,7 +20,7 @@ export default function Experience() {
       <Section
         id="career-timeline-section"
         headingData={content.career.heading}
-        bgChildren={<div className="size-full bg-white dark:bg-slate-900/50" />}
+        bgChildren={<WavyParallax />}
         maxWidth="lg:mx-8 xl:mx-0"
       >
         <JobList data={content.career.items} />
