@@ -2,6 +2,8 @@ import { FaArrowRight } from "react-icons/fa6";
 import type { Comparison } from "../../contexts/hobbyContext";
 import type { CardColor } from "../../contexts/pageContext";
 import HybridStatement from "../../components/page/HybridStatement";
+import { motion } from "motion/react";
+import { getMultipleRowAnimation } from "../../hooks/responsiveFadeInHook";
 
 export default function Comparison({ data }: { data: Comparison }) {
   return (
@@ -12,7 +14,8 @@ export default function Comparison({ data }: { data: Comparison }) {
           const color: CardColor = colors[i];
 
           return (
-            <div
+            <motion.div
+              {...getMultipleRowAnimation()}
               key={c.title}
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8"
             >
@@ -34,11 +37,14 @@ export default function Comparison({ data }: { data: Comparison }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           );
         })}
       </div>
-      <div className="mx-auto mt-8 md:mt-10 lg:mt-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl md:rounded-2xl px-4 md:px-6 lg:px-8 py-4 md:py-5 lg:py-6 max-w-3xl flex items-start justify-center gap-2 md:gap-3 lg:gap-4">
+      <motion.div
+        {...getMultipleRowAnimation()}
+        className="mx-auto mt-8 md:mt-10 lg:mt-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl md:rounded-2xl px-4 md:px-6 lg:px-8 py-4 md:py-5 lg:py-6 max-w-3xl flex items-start justify-center gap-2 md:gap-3 lg:gap-4"
+      >
         <div className="size-12 md:size-13 lg:size-14 flex items-center justify-center shrink-0">
           <data.summary.icon className="text-coffee-50 text-4xl md:text-5xl lg:text-6xl origin-bottom-right scale-125 -translate-y-2/3 md:-translate-y-1/2 lg:-translate-y-1/3" />
         </div>
@@ -47,7 +53,7 @@ export default function Comparison({ data }: { data: Comparison }) {
             <HybridStatement data={data.summary.text} />
           )}
         </p>
-      </div>
+      </motion.div>
     </>
   );
 }

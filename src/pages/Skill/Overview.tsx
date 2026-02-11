@@ -1,32 +1,45 @@
+import { motion } from "motion/react";
 import type { CardColor, Heading } from "../../contexts/pageContext";
+import useResponsiveFadeIn from "../../hooks/responsiveFadeInHook";
 
 export default function Overview({ data }: { data: Heading[] }) {
   return (
     <div className="relative grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 justify-center lg:mx-8">
       {data.map((s, i) => (
-        <SkillItem key={s.title} data={s} color={cardColors[i]} />
+        <SkillItem key={s.title} data={s} color={cardColors[i]} index={i} />
       ))}
     </div>
   );
 }
 
-function SkillItem({ data, color }: { data: Heading; color: CardColor }) {
+function SkillItem({
+  data,
+  color,
+  index,
+}: {
+  data: Heading;
+  color: CardColor;
+  index: number;
+}) {
+  const animationProps = useResponsiveFadeIn(1024, index);
   return (
-    <article
-      className={`bg-white/5 hover:bg-white/15 active:bg-white/15 transition duration-300 border border-white/10 p-4 sm:p-6 lg:p-8 rounded-xl md:rounded-2xl flex flex-col items-start`}
-    >
-      {data.tag && (
-        <div
-          className={`${color.icon.text} ${color.icon.bg} shadow-lg ${color.icon.shadow} size-12 md:size-16 flex justify-center items-center text-lg md:text-2xl rounded-lg md:rounded-xl mb-3 md:mb-4`}
-        >
-          {data.tag.icon && <data.tag.icon />}
-        </div>
-      )}
-      <h3 className="mb-0 md:mb-2 title-color-invert text-lg md:text-xl">
-        {data.title}
-      </h3>
-      <p className="text-sm md:text-base text-slate-300">{data.desc}</p>
-    </article>
+    <motion.article {...animationProps}>
+      <div
+        className={`size-full bg-white/5 hover:bg-white/15 active:bg-white/15 transition duration-300 border border-white/10 p-4 sm:p-6 lg:p-8 rounded-xl md:rounded-2xl flex flex-col items-start`}
+      >
+        {data.tag && (
+          <div
+            className={`${color.icon.text} ${color.icon.bg} shadow-lg ${color.icon.shadow} size-12 md:size-16 flex justify-center items-center text-lg md:text-2xl rounded-lg md:rounded-xl mb-3 md:mb-4`}
+          >
+            {data.tag.icon && <data.tag.icon />}
+          </div>
+        )}
+        <h3 className="mb-0 md:mb-2 title-color-invert text-lg md:text-xl">
+          {data.title}
+        </h3>
+        <p className="text-sm md:text-base text-slate-300">{data.desc}</p>
+      </div>
+    </motion.article>
   );
 }
 

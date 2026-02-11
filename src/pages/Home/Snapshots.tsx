@@ -7,54 +7,64 @@ import {
   createRadialGradientWithStops,
   mixColor,
 } from "../../utils/util";
+import useResponsiveFadeIn from "../../hooks/responsiveFadeInHook";
 
 export default function Snapshots({ data }: { data: Heading[] }) {
   return (
     <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:mx-8">
       {data.map((s, i) => (
-        <motion.li
-          key={s.desc}
-          className="
-          group relative p-6 lg:p-8 rounded-xl lg:rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10"
-          initial="rest"
-          whileHover="hover"
-          whileTap="hover"
-        >
-          <motion.div
-            className="absolute inset-0 rounded-xl"
-            variants={topRightVariants}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-xl"
-            variants={bottomLeftVariants}
-          />
-
-          <motion.div
-            className="relative size-12 lg:size-16 flex justify-center items-center rounded-full mb-4 lg:mb-6"
-            variants={iconVariants}
-            transition={{ ease: "easeIn", duration: 0.3 }}
-          >
-            {s.tag! && <s.tag.icon className={`text-3xl ${iconColors[i]}`} />}
-          </motion.div>
-
-          <div className="relative flex flex-col gap-2 lg:gap-3 justify-start items-start">
-            <h3 className="text-white text-lg lg:text-2xl font-bold">
-              {s.title}
-            </h3>
-            <p className="text-sm lg:text-lg font-medium text-slate-300">
-              {s.desc}
-            </p>
-          </div>
-
-          <motion.div className="absolute inset-0" variants={outlineVariants}>
-            <GlowOutline
-              gradient={outlineGradient}
-              rounded="rounded-xl lg:rounded-2xl"
-            />
-          </motion.div>
-        </motion.li>
+        <SnapshotItem data={s} index={i} key={s.desc} />
       ))}
     </ul>
+  );
+}
+
+function SnapshotItem({ data, index }: { data: Heading; index: number }) {
+  const animationProps = useResponsiveFadeIn(768, index);
+  return (
+    <motion.li className="group" {...animationProps}>
+      <motion.div
+        className="relative size-full p-6 lg:p-8 rounded-xl lg:rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10"
+        initial="rest"
+        whileHover="hover"
+        whileTap="hover"
+      >
+        <motion.div
+          className="absolute inset-0 rounded-xl"
+          variants={topRightVariants}
+        />
+        <motion.div
+          className="absolute inset-0 rounded-xl"
+          variants={bottomLeftVariants}
+        />
+
+        <motion.div
+          className="relative size-12 lg:size-16 flex justify-center items-center rounded-full mb-4 lg:mb-6"
+          variants={iconVariants}
+          transition={{ ease: "easeIn", duration: 0.3 }}
+        >
+          {data.tag! && (
+            <data.tag.icon className={`text-3xl ${iconColors[index]}`} />
+          )}
+        </motion.div>
+
+        <div className="relative flex flex-col gap-2 lg:gap-3 justify-start items-start">
+          <h3 className="text-white text-lg lg:text-2xl font-bold">
+            {data.title}
+          </h3>
+          <p className="text-sm lg:text-lg font-medium text-slate-300">
+            {data.desc}
+          </p>
+        </div>
+
+        <motion.div className="absolute inset-0" variants={outlineVariants}>
+          <GlowOutline
+            gradient={outlineGradient}
+            rounded="rounded-xl lg:rounded-2xl"
+          />
+        </motion.div>
+      </motion.div>
+    </motion.li>
   );
 }
 

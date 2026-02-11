@@ -1,5 +1,7 @@
+import { motion } from "motion/react";
 import type { CardColor, Heading } from "../../contexts/pageContext";
 import { rightAnim_8px } from "../../utils/constants";
+import { getMultipleRowAnimation } from "../../hooks/responsiveFadeInHook";
 
 export default function Journey({ data }: { data: Heading[] }) {
   return (
@@ -26,31 +28,35 @@ function JourneyItem({
   invert?: boolean;
 }) {
   return (
-    <li
-      className={`rounded-2xl p-5 md:p-8 flex flex-col xs:flex-row gap-3 xs:gap-4 md:gap-6 border-l-4 ${color.bg} ${color.border} 
-      ${color.shadow && `${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`} ${color.shadow}`}
-    >
+    <motion.li {...getMultipleRowAnimation()}>
       <div
-        className={`flex-none size-10 xs:size-12 md:size-14 rounded-xl flex justify-center items-center text-lg xs:text-xl md:text-2xl ${color.icon.text} ${color.icon.bg}`}
+        className={`rounded-2xl p-5 md:p-8 flex flex-col xs:flex-row gap-3 xs:gap-4 md:gap-6 border-l-4 ${color.bg} ${color.border} 
+      ${color.shadow && `${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`} ${color.shadow}`}
       >
-        {data.tag && <data.tag.icon />}
-      </div>
-      <div className="flex-1">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 mb-5">
-          <h3 className={`${invert && "title-color-invert"}`}>{data.title}</h3>
-          {data.tag?.text && (
-            <span
-              className={`px-3 py-1 text-xs md:text-sm font-semibold rounded-full ${color.tags ? color.tags[0].text : ""} ${color.tags ? color.tags[0].bg : ""}`}
-            >
-              {data.tag?.text}
-            </span>
-          )}
+        <div
+          className={`flex-none size-10 xs:size-12 md:size-14 rounded-xl flex justify-center items-center text-lg xs:text-xl md:text-2xl ${color.icon.text} ${color.icon.bg}`}
+        >
+          {data.tag && <data.tag.icon />}
         </div>
-        <p className={`text-sm md:text-lg ${invert && "text-color-invert"}`}>
-          {data.desc}
-        </p>
+        <div className="flex-1">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 mb-5">
+            <h3 className={`${invert && "title-color-invert"}`}>
+              {data.title}
+            </h3>
+            {data.tag?.text && (
+              <span
+                className={`px-3 py-1 text-xs md:text-sm font-semibold rounded-full ${color.tags ? color.tags[0].text : ""} ${color.tags ? color.tags[0].bg : ""}`}
+              >
+                {data.tag?.text}
+              </span>
+            )}
+          </div>
+          <p className={`text-sm md:text-lg ${invert && "text-color-invert"}`}>
+            {data.desc}
+          </p>
+        </div>
       </div>
-    </li>
+    </motion.li>
   );
 }
 

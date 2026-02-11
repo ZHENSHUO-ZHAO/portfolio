@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import SkillList from "../../components/page/SkillList";
 import type { CardColor } from "../../contexts/pageContext";
 import type { Skill } from "../../contexts/skillContext";
@@ -7,6 +8,7 @@ import {
   transition,
   upAnim_2px,
 } from "../../utils/constants";
+import { getMultipleRowAnimation } from "../../hooks/responsiveFadeInHook";
 
 export default function Stack({ data }: { data: Skill[] }) {
   return (
@@ -14,34 +16,38 @@ export default function Stack({ data }: { data: Skill[] }) {
       {data.map((s, i) => {
         const color: CardColor = skillColors[i];
         return (
-          <article
+          <motion.article
+            {...getMultipleRowAnimation()}
             key={s.title}
             id={`category ${s.title}`}
-            className={`bg-linear-to-br ${color.bg} to-white dark:to-slate-900 border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8
-            ${color.shadow} ${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`}
           >
-            <div className="flex items-start gap-4 md:gap-5 lg:gap-6 mb-5 md:mb-6">
-              <div
-                className={`size-12 md:size-16 ${color.icon.bg} rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 text-white text-lg md:text-2xl shadow-lg ${color.icon.shadow}`}
-              >
-                {s.tag && <s.tag.icon />}
+            <div
+              className={`bg-linear-to-br ${color.bg} to-white dark:to-slate-900 border ${color.border} rounded-2xl p-5 md:p-7 lg:p-8
+              ${color.shadow} ${rightAnim_8px} hover:shadow-lg active:shadow-lg transition-all duration-300`}
+            >
+              <div className="flex items-start gap-4 md:gap-5 lg:gap-6 mb-5 md:mb-6">
+                <div
+                  className={`size-12 md:size-16 ${color.icon.bg} rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 text-white text-lg md:text-2xl shadow-lg ${color.icon.shadow}`}
+                >
+                  {s.tag && <s.tag.icon />}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-slate-600 dark:text-muted">
+                    {s.desc}
+                  </p>
+                </div>
               </div>
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  {s.title}
-                </h3>
-                <p className="text-sm md:text-base text-slate-600 dark:text-muted">
-                  {s.desc}
-                </p>
-              </div>
-            </div>
-            <SkillList
-              data={s.skills}
-              ulClassName="gap-2 md:gap-3"
-              liClassName={`flex justify-center items-center gap-1.5 px-2 md:px-3 py-1 bg-white ${color.tags![0].text} text-xs md:text-sm font-semibold rounded-lg md:rounded-xl border-2 ${color.tags![0].border} shadow-sm dark:bg-white/20
+              <SkillList
+                data={s.skills}
+                ulClassName="gap-2 md:gap-3"
+                liClassName={`flex justify-center items-center gap-1.5 px-2 md:px-3 py-1 bg-white ${color.tags![0].text} text-xs md:text-sm font-semibold rounded-lg md:rounded-xl border-2 ${color.tags![0].border} shadow-sm dark:bg-white/20
               ${color.tags![0].shadow} ${upAnim_2px} ${transition}`}
-            />
-          </article>
+              />
+            </div>
+          </motion.article>
         );
       })}
     </div>

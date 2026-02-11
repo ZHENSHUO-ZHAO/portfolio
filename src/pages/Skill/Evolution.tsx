@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import SkillList from "../../components/page/SkillList";
 import type { CardColor, Heading } from "../../contexts/pageContext";
 import {
@@ -6,6 +7,7 @@ import {
   upAnim_2px,
   upAnim_4px,
 } from "../../utils/constants";
+import useResponsiveFadeIn from "../../hooks/responsiveFadeInHook";
 
 export default function Evolution({
   data,
@@ -14,34 +16,45 @@ export default function Evolution({
 }) {
   return (
     <div className="relative grid lg:grid-cols-3 gap-6 lg:gap-8 lg:mx-8">
-      {data.map((e, i) => {
-        const Icon = e.tag!.icon;
-        const color = colors[i];
-        return (
-          <div
-            key={e.title}
-            id={`${e.title} section`}
-            className={`bg-linear-to-br ${color.bg} to-white dark:to-slate-900 border ${color.border} rounded-2xl p-6 lg:p-8 ${color.shadow}
-            ${upAnim_4px} hover:shadow-lg active:shadow-lg transition-all duration-300`}
-          >
-            <div
-              className={`size-11 lg:size-12 ${color.icon.bg} rounded-xl flex items-center justify-center mb-4 shadow-lg ${color.icon.shadow}`}
-            >
-              <Icon className="text-white text-lg lg:text-xl" />
-            </div>
-            <h3 className="text-lg lg:text-xl font-bold text-primary mb-2 lg:mb-3">
-              {e.title}
-            </h3>
-            <p className="text-base text-muted mb-4">{e.desc}</p>
-            <SkillList
-              data={e.stack}
-              ulClassName="gap-2"
-              liClassName={`flex gap-1 items-center px-3 py-1 ${color.tags![0].bg} ${color.tags![0].text} text-xs font-medium rounded-full ${color.tags![0].shadow} ${upAnim_2px} ${transition}`}
-            />
-          </div>
-        );
-      })}
+      {data.map((e, i) => (
+        <EvolutionItem data={e} index={i} key={e.title} />
+      ))}
     </div>
+  );
+}
+
+function EvolutionItem({
+  data,
+  index,
+}: {
+  data: Heading & { stack: string[] };
+  index: number;
+}) {
+  const Icon = data.tag!.icon;
+  const color = colors[index];
+  const animationProps = useResponsiveFadeIn(1024, index);
+  return (
+    <motion.div {...animationProps} id={`${data.title} section`}>
+      <div
+        className={`size-full bg-linear-to-br ${color.bg} to-white dark:to-slate-900 border ${color.border} rounded-2xl p-6 lg:p-8 ${color.shadow}
+        ${upAnim_4px} hover:shadow-lg active:shadow-lg transition-all duration-300`}
+      >
+        <div
+          className={`size-11 lg:size-12 ${color.icon.bg} rounded-xl flex items-center justify-center mb-4 shadow-lg ${color.icon.shadow}`}
+        >
+          <Icon className="text-white text-lg lg:text-xl" />
+        </div>
+        <h3 className="text-lg lg:text-xl font-bold text-primary mb-2 lg:mb-3">
+          {data.title}
+        </h3>
+        <p className="text-base text-muted mb-4">{data.desc}</p>
+        <SkillList
+          data={data.stack}
+          ulClassName="gap-2"
+          liClassName={`flex gap-1 items-center px-3 py-1 ${color.tags![0].bg} ${color.tags![0].text} text-xs font-medium rounded-full ${color.tags![0].shadow} ${upAnim_2px} ${transition}`}
+        />
+      </div>
+    </motion.div>
   );
 }
 

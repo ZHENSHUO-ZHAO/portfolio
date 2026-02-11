@@ -9,6 +9,8 @@ import type {
 import SectionHeading from "./SectionHeading";
 import ContactLink from "./ContactLink";
 import { transition, upAnim_4px } from "../../utils/constants";
+import { motion } from "motion/react";
+import useResponsiveFadeIn from "../../hooks/responsiveFadeInHook";
 
 export function ContactCardSection({
   headingData,
@@ -94,6 +96,8 @@ function ContactButtons({
 }) {
   const Icon1 = links[0].heading.tag?.icon;
   const Icon2 = links[1].heading.tag?.icon;
+  const animationProps1 = useResponsiveFadeIn(640, 0);
+  const animationProps2 = useResponsiveFadeIn(640, 1);
   const buttonsColorTmp = buttonsColor
     ? buttonsColor
     : invertColor
@@ -102,20 +106,24 @@ function ContactButtons({
 
   return (
     <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm xs:text-base">
-      <ContactLink
-        data={links[0].contact}
-        className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center ${upAnim_4px}  ${transition}`}
-      >
-        {Icon1 && <Icon1 />}
-        {links[0].heading.title}
-      </ContactLink>
-      <ContactLink
-        data={links[1].contact}
-        className={`px-8 py-4 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center ${upAnim_4px}  ${transition}`}
-      >
-        {Icon2 && <Icon2 />}
-        {links[1].heading.title}
-      </ContactLink>
+      <motion.div {...animationProps1}>
+        <ContactLink
+          data={links[0].contact}
+          className={`px-8 py-4 ${buttonsColorTmp[0].text} ${buttonsColorTmp[0].bg} ${buttonsColorTmp[0].shadow} shadow-lg rounded-xl font-semibold flex gap-2 justify-center items-center ${upAnim_4px}  ${transition}`}
+        >
+          {Icon1 && <Icon1 />}
+          {links[0].heading.title}
+        </ContactLink>
+      </motion.div>
+      <motion.div {...animationProps2}>
+        <ContactLink
+          data={links[1].contact}
+          className={`px-8 py-4 backdrop-blur-sm ${buttonsColorTmp[1].text} ${buttonsColorTmp[1].bg}  ${buttonsColorTmp[1].border} border-2 rounded-xl font-semibold flex gap-2 justify-center items-center ${upAnim_4px}  ${transition}`}
+        >
+          {Icon2 && <Icon2 />}
+          {links[1].heading.title}
+        </ContactLink>
+      </motion.div>
     </div>
   );
 }

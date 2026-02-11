@@ -1,4 +1,6 @@
+import { motion } from "motion/react";
 import type { CardColor, Heading } from "../../contexts/pageContext";
+import useResponsiveFadeIn from "../../hooks/responsiveFadeInHook";
 
 export function FourHorizontalCards({
   data,
@@ -10,30 +12,41 @@ export function FourHorizontalCards({
   return (
     <ul className="relative grid grid-cols-1 lg:mx-8 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6">
       {data.map((s, i) => (
-        <Card key={s.title} data={s} color={cardColors[i]} />
+        <Card key={s.title} data={s} color={cardColors[i]} index={i} />
       ))}
     </ul>
   );
 }
 
-function Card({ data, color }: { data: Heading; color: CardColor }) {
+function Card({
+  data,
+  color,
+  index,
+}: {
+  data: Heading;
+  color: CardColor;
+  index: number;
+}) {
+  const animationProps = useResponsiveFadeIn(1280, index);
   return (
-    <li
-      className={`${color.bg} border ${color.border} p-6 sm:p-7 lg:p-6 rounded-xl md:rounded-2xl flex flex-col xs:flex-row sm:flex-col lg:flex-row xl:flex-col gap-4 md:gap-6 
+    <motion.li className="size-full" {...animationProps}>
+      <div
+        className={`size-full ${color.bg} border ${color.border} p-6 sm:p-7 lg:p-6 rounded-xl md:rounded-2xl flex flex-col xs:flex-row sm:flex-col lg:flex-row xl:flex-col gap-4 md:gap-6 
       hover:-translate-y-0.5 xl:hover:-translate-y-1 active:-translate-y-0.5 xl:active:-translate-y-1 hover:scale-[103%] active:scale-[103%] hover:shadow-lg xl:hover:shadow-xl active:shadow-lg xl:active:shadow-xl ${color.shadow} transition-all duration-300`}
-    >
-      {data.tag && (
-        <div
-          className={`${color.icon.text} ${color.icon.bg} shadow-lg ${color.icon.shadow} size-12 md:size-16 flex-none flex justify-center items-center text-lg md:text-2xl rounded-xl md:rounded-2xl`}
-        >
-          {data.tag.icon && <data.tag.icon />}
+      >
+        {data.tag && (
+          <div
+            className={`${color.icon.text} ${color.icon.bg} shadow-lg ${color.icon.shadow} size-12 md:size-16 flex-none flex justify-center items-center text-lg md:text-2xl rounded-xl md:rounded-2xl`}
+          >
+            {data.tag.icon && <data.tag.icon />}
+          </div>
+        )}
+        <div className="flex-1">
+          <h3 className="mb-2 mb:mb-3">{data.title}</h3>
+          {data.desc && <p className="text-sm md:text-base">{data.desc}</p>}
         </div>
-      )}
-      <div className="flex-1">
-        <h3 className="mb-2 mb:mb-3">{data.title}</h3>
-        {data.desc && <p className="text-sm md:text-base">{data.desc}</p>}
       </div>
-    </li>
+    </motion.li>
   );
 }
 
