@@ -81,7 +81,6 @@ export default function HomePageHeader({
               gradientColor={ctaColors.primary.gradient}
               link="/project"
               bgColor={`${ctaColors.primary.bg} relative`}
-              useNavLink
               priority="primary"
               className="flex-2"
               bgFx={

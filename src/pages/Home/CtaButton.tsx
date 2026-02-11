@@ -8,8 +8,6 @@ export default function CtaButton({
   gradientColor,
   link,
   bgColor,
-  useNavLink,
-  linkProps,
   children,
   priority,
   className,
@@ -18,10 +16,8 @@ export default function CtaButton({
   gradientColor: string[];
   link: string;
   bgColor?: string;
-  useNavLink?: boolean;
-  linkProps?: object;
   children: ReactNode;
-  priority: "primary" | "secondary" | "tertiary";
+  priority: "primary" | "secondary";
   className?: string;
   bgFx?: ReactNode;
 }) {
@@ -62,22 +58,12 @@ export default function CtaButton({
         rounded="rounded-full"
         excludeGlow={priority !== "primary"}
       />
-      {useNavLink ? (
-        <NavLink
-          to={link}
-          className={`${linkStyle} ${bgColor || ""} text-slate-800 dark:text-primary`}
-        >
-          {children}
-        </NavLink>
-      ) : (
-        <a
-          href={link}
-          className={`${linkStyle} ${bgColor || ""} text-slate-500 dark:text-secondary`}
-          {...linkProps}
-        >
-          {children}
-        </a>
-      )}
+      <NavLink
+        to={link}
+        className={`${linkStyle} ${bgColor || ""} text-slate-800 dark:text-primary`}
+      >
+        {children}
+      </NavLink>
     </motion.li>
   );
 }
