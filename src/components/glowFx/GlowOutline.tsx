@@ -22,9 +22,6 @@ export default function GlowOutline({
   rounded?: string;
   excludeGlow?: boolean;
 }) {
-  //   const gradient =
-  //     "conic-gradient(in oklch, red 90deg, orange 95deg, transparent 200deg, transparent 250deg, red 360deg)";
-  //   const rounded = "rounded-3xl";
   return (
     <>
       {!excludeGlow && (

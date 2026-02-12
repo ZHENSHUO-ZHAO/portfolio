@@ -12,13 +12,18 @@ export default function Glow({
   rounded?: string;
   blurSize?: string;
 }) {
+  const ua = navigator.userAgent;
+  const isSafari =
+    ua.includes("Safari") &&
+    !ua.includes("Chrome") &&
+    !ua.includes("Chromium") &&
+    !ua.includes("Edg");
+
   return (
     <>
       {typeof gradient === "string" ? (
         <div
-          className={`absolute ${insetWidth || "-inset-1"} ${rounded || ""} ${
-            blurSize || "blur-sm"
-          }`}
+          className={`absolute ${insetWidth || "-inset-1"} ${rounded || ""} ${!isSafari && (blurSize || "blur-sm")}`}
           style={{
             background: `${gradient}`,
           }}
@@ -26,9 +31,7 @@ export default function Glow({
         />
       ) : (
         <motion.div
-          className={`absolute ${insetWidth || "-inset-1"} ${rounded || ""} ${
-            blurSize || "blur-sm"
-          }`}
+          className={`absolute ${insetWidth || "-inset-1"} ${rounded || ""} ${!isSafari && (blurSize || "blur-sm")}`}
           initial={gradient.initial ?? undefined}
           animate={gradient.keyframes ?? undefined}
           variants={gradient.variants ?? undefined}

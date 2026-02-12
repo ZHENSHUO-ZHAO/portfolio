@@ -104,7 +104,10 @@ function Card({ content, index }: CardItem<HighlightItem>) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Glow gradient={{ keyframes: glowKeyframes }} />
+            <Glow
+              gradient={{ keyframes: glowKeyframes }}
+              rounded="rounded-2xl"
+            />
           </motion.div>
         )}
       </AnimatePresence>

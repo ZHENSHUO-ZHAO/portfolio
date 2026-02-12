@@ -13,11 +13,11 @@ export default function Portrait({
     <div className={className}>
       <svg viewBox="0 0 100 150" className="absolute w-0 h-0">
         <defs>
-          <mask id="portrait-mask" maskContentUnits="objectBoundingBox">
+          <clipPath id="portrait-mask" clipPathUnits="objectBoundingBox">
             <rect x="0" y="0" width="1" height="0.6667" fill="white" />
 
             <ellipse cx="0.5" cy="0.6667" rx="0.5" ry="0.3333" fill="white" />
-          </mask>
+          </clipPath>
         </defs>
       </svg>
 
@@ -39,8 +39,8 @@ export default function Portrait({
         <div
           className="w-full h-full"
           style={{
-            mask: "url(#portrait-mask)",
-            WebkitMask: "url(#portrait-mask)",
+            clipPath: "url(#portrait-mask)",
+            WebkitClipPath: "url(#portrait-mask)",
           }}
         >
           <div className="relative size-full grid grid-cols-1 place-items-end">
