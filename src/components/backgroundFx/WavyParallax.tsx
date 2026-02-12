@@ -40,7 +40,7 @@ export default function WavyParallax() {
         <motion.div
           ref={bgRef}
           style={{ y }}
-          className="h-[75%] pointer-events-none will-change-transform text-slate-700 dark:text-slate-400"
+          className="h-[75%] pointer-events-none will-change-transform text-slate-600/50 dark:text-slate-400/80"
         >
           <WavySvg />
         </motion.div>
@@ -59,27 +59,55 @@ function WavySvg() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="waveFade1" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient
+          id="waveFade1"
+          gradientUnits="userSpaceOnUse"
+          x1="120"
+          y1="0"
+          x2="1200"
+          y2="120"
+        >
           <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
-          <stop offset="50%" stopColor="currentColor" stopOpacity="0.1" />
+          <stop offset="50%" stopColor="currentColor" stopOpacity="0.7" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
 
-        <linearGradient id="waveFade2" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient
+          id="waveFade2"
+          gradientUnits="userSpaceOnUse"
+          x1="120"
+          y1="0"
+          x2="1200"
+          y2="120"
+        >
           <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
-          <stop offset="40%" stopColor="currentColor" stopOpacity="0.1" />
+          <stop offset="40%" stopColor="currentColor" stopOpacity="0.7" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
 
-        <linearGradient id="waveFade3" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="currentColor" stopOpacity="0.03" />
-          <stop offset="60%" stopColor="currentColor" stopOpacity="0.1" />
+        <linearGradient
+          id="waveFade3"
+          gradientUnits="userSpaceOnUse"
+          x1="120"
+          y1="0"
+          x2="1200"
+          y2="120"
+        >
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
+          <stop offset="60%" stopColor="currentColor" stopOpacity="0.7" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
 
-        <linearGradient id="waveFade4" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient
+          id="waveFade4"
+          gradientUnits="userSpaceOnUse"
+          x1="120"
+          y1="0"
+          x2="1200"
+          y2="120"
+        >
           <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
-          <stop offset="50%" stopColor="currentColor" stopOpacity="0.1" />
+          <stop offset="50%" stopColor="currentColor" stopOpacity="0.7" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
       </defs>

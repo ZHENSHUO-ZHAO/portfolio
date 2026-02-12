@@ -35,7 +35,7 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
             {/* Decorative bullet point smaller than sm */}
             <span
               aria-hidden="true"
-              className={`size-3 ${color.tags && color.tags[0].bg} rounded-full inline-block sm:hidden`}
+              className={`size-3 ${color.tags && color.tags[0].bg} rounded-full inline-block animate-pulse sm:hidden`}
             />
             <span>{job.time}</span>
           </time>
@@ -44,10 +44,11 @@ export function Job({ job, color }: { job: Job; color: CardColor }) {
             aria-hidden="true"
             className="absolute h-px w-9 right-0 translate-x-full top-1/2 -translate-y-1/2 hidden sm:block"
           >
-            <div
-              className={`absolute size-2 rounded-full right-0 translate-x-full top-1/2 -translate-y-1/2 ${color.tags && color.tags[0].bg}`}
-            >
-              <div className="absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent border border-slate-200 dark:border-slate-400 inset-shadow-xs" />
+            <div className="absolute size-2 right-0 translate-x-full top-1/2 -translate-y-1/2">
+              <div
+                className={`absolute inset-0 rounded-full ${color.tags && color.tags[0].bg} animate-pulse`}
+              />
+              <div className="absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent border border-slate-200 dark:border-slate-700 inset-shadow-xs" />
             </div>
           </div>
           <div
