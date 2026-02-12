@@ -61,6 +61,7 @@ export default function CtaButton({
       <NavLink
         to={link}
         className={`${linkStyle} ${bgColor || ""} text-slate-800 dark:text-primary`}
+        onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
       >
         {children}
       </NavLink>
