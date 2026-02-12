@@ -50,7 +50,7 @@ export type EducationContent = ContextPageBase & {
 };
 
 export const educationContent = {
-  pageTitle: "Certifications & Academic Achievements",
+  pageId: "Education",
   header: {
     tag: { icon: FaGraduationCap, text: "Academic Journey" },
     title: "Certifications & Academic Achievements",

@@ -59,7 +59,7 @@ export type HomeContent = ContextPageBase & {
 };
 
 export const homeContent = {
-  pageTitle: "Home Page",
+  pageId: "Home",
   header: {
     tag: { icon: FaBoltLightning, text: "Ambitious for Challenges" },
     title: "Zhenshuo (Vincent) Zhao",

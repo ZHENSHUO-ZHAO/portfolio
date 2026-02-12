@@ -10,6 +10,7 @@ export default function Education() {
   const content = useEducationPageContext();
   return (
     <Page
+      id={content.pageId}
       headerComponent={
         <PageHeader header={content.header} stats={content.stats} />
       }

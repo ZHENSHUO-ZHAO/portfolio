@@ -14,7 +14,10 @@ export default function Hobby() {
   const content = useHobbyPageContext();
 
   return (
-    <Page headerComponent={<HobbyPageHeader header={content.header} />}>
+    <Page
+      id={content.pageId}
+      headerComponent={<HobbyPageHeader header={content.header} />}
+    >
       <ExplainSection
         data={content.craft}
         id="coffee-intro-section"

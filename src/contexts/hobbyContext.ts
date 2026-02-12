@@ -96,7 +96,7 @@ export type HobbyContent = ContextPageBase & {
 };
 
 export const hobbyContent = {
-  pageTitle: "Beyond Work",
+  pageId: "Hobby",
   header: {
     tag: { icon: FaMugHot, text: "Beyond Work" },
     title: "My Passion for Specialty Coffee",

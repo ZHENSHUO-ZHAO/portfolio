@@ -117,7 +117,7 @@ export type ProjectContent = ContextPageBase & {
 };
 
 export const projectContent = {
-  pageTitle: "Notable Projects",
+  pageId: "Project",
   header: {
     tag: { icon: FaRocket, text: "Featured Work" },
     title: "Notable Projects",

@@ -18,6 +18,7 @@ export default function Home() {
 
   return (
     <Page
+      id={content.pageId}
       headerComponent={
         <HomePageHeader
           data={content.header}

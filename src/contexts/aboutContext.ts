@@ -42,6 +42,7 @@ export type AboutContent = ContextPageBase & {
 };
 
 export const aboutContent = {
+  pageId: "About",
   header: {
     tag: { icon: FaCircleUser, text: "Get to Know Me" },
     title: "Who am I?",
@@ -231,7 +232,6 @@ export const aboutContent = {
       },
     ],
   },
-  pageTitle: "Who am I?",
 } satisfies AboutContent;
 
 export const [AboutPageContext, useAboutPageContext] =

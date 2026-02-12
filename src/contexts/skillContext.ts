@@ -46,7 +46,7 @@ export type SkillContent = ContextPageBase & {
 };
 
 export const skillContent = {
-  pageTitle: "Core Skills",
+  pageId: "Skill",
   header: {
     tag: { icon: FaCode, text: "Technical Expertise" },
     title: "Core Skills",

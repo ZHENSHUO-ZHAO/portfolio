@@ -12,7 +12,10 @@ export default function About() {
   const content = useAboutPageContext();
 
   return (
-    <Page headerComponent={<PageHeader header={content.header} />}>
+    <Page
+      id={content.pageId}
+      headerComponent={<PageHeader header={content.header} />}
+    >
       <Section
         id="strengths-section"
         headingData={content.strength.heading}

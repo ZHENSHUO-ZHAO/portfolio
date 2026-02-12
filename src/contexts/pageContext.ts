@@ -9,7 +9,7 @@ export default function createPageContext<T extends ContextPageBase>(
   return [PageContext, usePageContext] as const;
 }
 
-export type ContextPageBase = { pageTitle: string };
+export type ContextPageBase = { pageId: string };
 
 export type route = {
   path?: string;

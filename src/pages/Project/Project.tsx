@@ -17,6 +17,7 @@ export default function Project() {
 
   return (
     <Page
+      id={content.pageId}
       headerComponent={
         <PageHeader header={content.header} stats={content.stats} />
       }

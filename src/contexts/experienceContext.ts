@@ -255,7 +255,7 @@ export const experienceContent = {
       },
     ],
   },
-  pageTitle: "My Career Life",
+  pageId: "Experience",
 } satisfies ExperienceContent;
 
 export const [ExperiencePageContext, useExperiencePageContext] =
