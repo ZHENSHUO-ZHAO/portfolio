@@ -49,7 +49,7 @@ export const aboutContent = {
     statement: [
       [
         {
-          text: "I'm a software engineer, game developer, and project manager with extensive experience delivering commercial games, interactive products, and scalable digital systems.",
+          text: "I'm a product manager, software engineer, and game developer with extensive experience delivering commercial games, interactive products, and scalable digital systems.",
         },
       ],
       [

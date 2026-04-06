@@ -3,6 +3,7 @@ import Page from "../../components/page/Page";
 import PageHeader from "../../components/page/PageHeader";
 import Section from "../../components/page/Section";
 import { useEducationPageContext } from "../../contexts/educationContext";
+import Certification from "./Certification";
 import Foundation from "./Foundation";
 import Timeline from "./Timeline";
 
@@ -15,6 +16,15 @@ export default function Education() {
         <PageHeader header={content.header} stats={content.stats} />
       }
     >
+      <Section
+        id="certification-section"
+        headingData={content.certification.heading}
+        maxWidth="lg:mx-8 xl:mx-0"
+        bgChildren={<div className="size-full bg-color-invert" />}
+        invertColor
+      >
+        <Certification data={content.certification.items} />
+      </Section>
       <Section
         id="education-overview-section"
         headingData={content.foundation.heading}

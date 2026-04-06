@@ -88,10 +88,10 @@ export const homeContent = {
       ],
     ],
     roles: [
+      "Product Manager",
       "Software Engineer",
-      "Game Developer",
-      "Project Manager",
       "RMIT Tutor",
+      "Game Developer",
     ],
     cta: [
       { icon: FaMagnifyingGlass, text: "View My Work" },

@@ -25,6 +25,7 @@ import scnu from "../assets/images/education/scnu.webp";
 import rmitLogo from "../assets/images/education/logo_rmit.webp";
 import polyuLogo from "../assets/images/education/logo_polyu.webp";
 import scnuLogo from "../assets/images/education/logo_scnu.webp";
+import psmi from "../assets/images/education/psmi.webp";
 
 export type Degree = {
   qualification: string;
@@ -41,9 +42,17 @@ export type EducationFoundation = Heading & {
   logo: string;
 };
 
+export type Certificate = Heading & {
+  logo: string;
+  issuer: string;
+  issueDate: string;
+  credentialLink?: string;
+};
+
 export type EducationContent = ContextPageBase & {
   header: Header;
   stats: Stat[];
+  certification: { heading: Heading; items: Certificate[] };
   foundation: { heading: Heading; items: EducationFoundation[] };
   timeline: { heading: Heading; items: Degree[] };
   learning: { heading: Heading; items: Heading[] };
@@ -71,6 +80,21 @@ export const educationContent = {
     { icon: FaAward, amount: "3", unit: "Degrees" },
     { icon: FaStar, amount: "2", unit: "with Distinction" },
   ],
+  certification: {
+    heading: {
+      title: "Professional Certification",
+    },
+    items: [
+      {
+        title: "Professional Scrum Master™ I (PSM I)",
+        logo: psmi,
+        issuer: "Scrum.org",
+        issueDate: "Apr 2026",
+        credentialLink:
+          "https://www.credly.com/badges/9fc10553-f03d-4a45-af53-05354a6c084d/",
+      },
+    ],
+  },
   foundation: {
     heading: {
       title: "Educational Foundation",
