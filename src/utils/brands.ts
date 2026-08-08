@@ -28,6 +28,7 @@ import {
   FaDocker,
   FaAws,
   FaLinux,
+  FaPython,
 } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
 
@@ -51,6 +52,7 @@ const iconMap: Record<string, IconType> = {
   lua: SiLua,
   "android sdk": FaAndroid,
   java: FaJava,
+  python: FaPython,
   photoshop: SiAdobephotoshop,
   maya: SiAutodeskmaya,
   "after effects": SiAdobeaftereffects,

@@ -134,6 +134,9 @@ export const skillContent = {
           "TypeScript",
           "WebSocket",
           "Lua",
+          "Java",
+          "Python",
+          "Android SDK",
         ],
       },
       {
