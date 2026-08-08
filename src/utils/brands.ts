@@ -29,6 +29,7 @@ import {
   FaAws,
   FaLinux,
   FaPython,
+  FaSquareJs,
 } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
 
@@ -42,6 +43,7 @@ const iconMap: Record<string, IconType> = {
   react: FaReact,
   "react.js": FaReact,
   redux: SiRedux,
+  javascript: FaSquareJs,
   typescript: SiTypescript,
   "node.js": FaNodeJs,
   github: FaGithub,

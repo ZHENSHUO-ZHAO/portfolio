@@ -131,6 +131,7 @@ export const skillContent = {
           "Gameplay Architecture",
           "Phaser",
           "Egret Engine",
+          "JavaScript",
           "TypeScript",
           "WebSocket",
           "Lua",
