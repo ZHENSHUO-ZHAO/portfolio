@@ -90,6 +90,11 @@ export type ProjectCategory = {
   items: ProjectItem[];
 };
 
+export type ProjectDocument = {
+  title: string;
+  url: string;
+};
+
 export type ProjectItem = {
   title: string;
   id: string;
@@ -102,6 +107,7 @@ export type ProjectItem = {
   skills: string[];
   tags: Tag[];
   screenshots?: CarouselData;
+  documents?: ProjectDocument[];
 };
 
 export type ProjectContent = ContextPageBase & {
@@ -187,6 +193,12 @@ export const projectContent = {
               "Horse Racing single-player betting game interface showing race selections and odds.",
             ]),
           },
+          documents: [
+            {
+              title: "A technical specification extract for the Crash game.",
+              url: "/files/Technical_Specification_Extract.pdf",
+            },
+          ],
         },
         {
           title: "Fish Hunter - Multiplayer Arcade Shooter",

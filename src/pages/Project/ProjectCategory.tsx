@@ -21,6 +21,7 @@ import { AnimatePresence } from "motion/react";
 import { shadowAnim, transition, upAnim_2px } from "../../utils/constants";
 import Carousel from "../../components/carousel/Carousel";
 import Screenshot from "./Screenshot";
+import { FaFileDownload } from "react-icons/fa";
 
 export default function ProjectCategory({
   category,
@@ -149,6 +150,26 @@ function Item({
         />
       </SubSection>
 
+      {/* Documents */}
+      {itemData.documents && (
+        <SubSection title="Technical Artifacts" color={color}>
+          <ul className={`flex flex-wrap`}>
+            {itemData.documents.map((d) => (
+              <li key={d.url}>
+                <a
+                  href={d.url}
+                  download={true}
+                  className={`flex items-center gap-2 text-sm font-medium ${color.tags![2].text} transition`}
+                >
+                  <FaFileDownload className="shrink-0" />
+                  <span>{d.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </SubSection>
+      )}
+
       {/* Tags */}
       <TagList
         data={itemData.tags}
@@ -235,6 +256,11 @@ const projectColors: CardColor[] = [
         bg: "bg-tone1-600/10 dark:bg-tone1-900/40", // For bottom tag list
         shadow: shadowAnim.tone1,
       },
+      {
+        // For documents
+        text: "text-tone1-600 [&>span]:text-tone1-700 hover:text-tone1-500 [&>span]:hover:text-tone1-700 dark:text-tone1-400 dark:hover:text-tone1-300 dark:[&>span]:text-tone1-200 dark:[&>span]:hover:text-tone1-100",
+        bg: "",
+      },
     ],
   },
   {
@@ -254,6 +280,11 @@ const projectColors: CardColor[] = [
         bg: "bg-tone3-600/10 dark:bg-tone3-900/40", // For bottom tag list
         shadow: shadowAnim.tone3,
       },
+      {
+        // For documents
+        text: "text-tone3-600 [&>span]:text-tone3-700 hover:text-tone3-500 [&>span]:hover:text-tone3-700 dark:text-tone3-400 dark:hover:text-tone3-300 dark:[&>span]:text-tone3-200 dark:[&>span]:hover:text-tone3-100",
+        bg: "",
+      },
     ],
   },
   {
@@ -272,6 +303,11 @@ const projectColors: CardColor[] = [
         text: "text-tone5-600 [&>span]:text-tone5-700 dark:text-tone5-400 dark:[&>span]:text-tone5-200", // For bottom tag list
         bg: "bg-tone5-600/10 dark:bg-tone5-900/40", // For bottom tag list
         shadow: shadowAnim.tone5,
+      },
+      {
+        // For documents
+        text: "text-tone5-600 [&>span]:text-tone5-700 hover:text-tone5-500 [&>span]:hover:text-tone5-700 dark:text-tone5-400 dark:hover:text-tone5-300 dark:[&>span]:text-tone5-200 dark:[&>span]:hover:text-tone5-100",
+        bg: "",
       },
     ],
   },
