@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal portfolio website showcasing my experience across **software engineering, product management, Agile delivery, and digital product development**.
 
-Currently, two official plugins are available:
+🌐 **Live website:** https://vincentzsz-portfolio.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+This portfolio was designed and developed as a modern web application to present my professional experience, technical skills, selected projects, and background in software engineering and product management.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The website was built from scratch using **React, TypeScript, and Vite**, with a focus on responsive design, reusable components, maintainable code, and a smooth user experience.
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend:** React, TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Animation:** Framer Motion
+- **Deployment:** Vercel
+- **Version Control:** Git / GitHub
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Responsive portfolio website for desktop and mobile
+- Professional profile and career overview
+- Technical skills and technology experience
+- Selected software development and digital product projects
+- Product management and software engineering experience
+- Interactive UI components and animations
+- Responsive navigation and page transitions
+- Deployed as a production website using Vercel
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Selected Projects
+
+The portfolio includes selected projects demonstrating my experience in software development and digital product delivery, including:
+
+- **YoPlay** — Multiplayer social gaming platform
+- **Fish Hunter** — Real-time multiplayer arcade gaming platform
+- **Ninja Saga** — Social RPG / multiplayer game
+
+More details and project demonstrations are available on the live portfolio website.
+
+## Background
+
+I am a software professional and product manager with **10+ years of industry experience** across software development, digital products, gaming, SaaS, and technology delivery.
+
+My technical background includes:
+
+- C# / Unity
+- JavaScript / TypeScript
+- React
+- Node.js
+- REST APIs
+- WebSocket / real-time systems
+- SQL and NoSQL databases
+- AWS
+- Git / GitHub
+- Agile / Scrum
+
+I also hold a **Master of Information Technology from RMIT University** and Professional Scrum Master™ I (PSM I) certification.
+
+## Development
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Install dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+## Deployment
+
+The website is deployed using **Vercel** and is connected to this GitHub repository for continuous deployment.
+
+## Contact
+
+For professional enquiries or collaboration, please visit my portfolio:
+
+**https://vincentzsz-portfolio.vercel.app/**
