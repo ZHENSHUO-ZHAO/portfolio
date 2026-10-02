@@ -352,6 +352,9 @@ export const projectContent = {
           screenshots: {
             aspectRatio: 1.333,
             images: createImageDataBatch(jamaScreenshots, [
+              "The philosophy of this project is the belief in gaming as a better option for brain training.",
+              "The six causes of ADHD.",
+              "The symbolic ADHD iceberg illustrating the obvious and invisible ADHD symptoms.",
               "Home screen of 'Jack's Adventure' - The main character Jack flying in a rocket with the navigation menu, ready to save an imaginary planet from environmental crises.",
               "Shooting water in 'Jack's Adventure' - Player uses attention detected by a Neurosky headset to control Jack's rocket and spray water to prevent drought.",
               "Growing plants in Jack's Adventure' - Player uses attention to make plants grow and protect polar icebergs from melting within the time limit.",
@@ -382,11 +385,13 @@ export const projectContent = {
           screenshots: {
             aspectRatio: 1.333,
             images: createImageDataBatch(brainsicScreenshots, [
+              "Introduction screen presenting the NeuroSky brain-sensing headset used to measure player attention.",
+              "Different types of brainwaves and their functions.",
+              "A visualization of the Delta, Beta, Alpha and Theta brainwave frequency band.",
               "Brainsic home page featuring colorful music blocks in the background, the PlayLab Hong Kong Polytechnic University logo, and the main navigation menu.",
               "Gameplay interface showing a character flying along lanes with diamonds while musical instruments are triggered based on a low attention level of 50 percent, activating drums and guitar.",
               "Gameplay interface showing a character flying along lanes with diamonds while musical instruments are triggered based on a high attention level of 90 percent, activating drums, guitar, bass, and keyboard.",
               "Round completion screen displaying trophies earned by the player and available navigation options.",
-              "Introduction screen presenting the NeuroSky brain-sensing headset used to measure player attention.",
             ]),
           },
         },
